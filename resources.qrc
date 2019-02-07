@@ -1,0 +1,10 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+    <file>resources/BookBackground.jpeg</file>
+    <file>resources/Spells.json</file>
+    <file>resources/star_empty.png</file>
+    <file>resources/star_filled.png</file>
+    <file>resources/star_filled_2.png</file>
+</qresource>
+</RCC>
+
