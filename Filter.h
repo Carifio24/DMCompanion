@@ -1,7 +1,7 @@
 #ifndef FILTER_H
 #define FILTER_H
 
-#include "Classes.h"
+#include "Enumerations.h"
 
 bool usableByClass(const Spell& spell, const CasterClass& caster);
 
