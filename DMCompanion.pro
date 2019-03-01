@@ -22,7 +22,8 @@ SOURCES += main.cpp \
     jstring.cpp \
     jsoncpp/jsoncpp.cpp \
     spellbook.cpp \
-    Spell.cpp
+    Spell.cpp \
+    monstermanual.cpp
 
 HEADERS  += spellbook.h \
     dmcompanion.h \
@@ -33,10 +34,15 @@ HEADERS  += spellbook.h \
     jsoncpp/json/json-forwards.h \
     jstring.h \
     Enumerations.h \
-    Spell.h
+    Spell.h \
+    Monster.h \
+    action.h \
+    ability.h \
+    monstermanual.h
 
 FORMS    += dmcompanion.ui \
-    spellbook.ui
+    spellbook.ui \
+    monstermanual.ui
 
 CONFIG    += c++11
 

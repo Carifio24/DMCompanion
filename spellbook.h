@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <QWidget>
+#include <QCheckBox>
 #include <QIcon>
 #include <QPixmap>
 #include "Enumerations.h"
@@ -41,6 +42,12 @@ private slots:
 
     void on_searchBar_textEdited(const QString &arg1);
 
+    void on_phbCheckbox_toggled(bool checked);
+
+    void on_xgeCheckbox_toggled(bool checked);
+
+    void on_scagCheckbox_toggled(bool checked);
+
 private:
 
     void filter_by_class(const CasterClass& cc);
@@ -66,6 +73,7 @@ private:
     void sort(const std::string& sort_field1, const std::string& sort_field2);
     void display_spelldata(const int& ind);
     std::string favorites_file = "Favorites.txt";
+    std::vector<QCheckBox*> sourcebookCheckboxes;
     QPixmap star_empty;
     QPixmap star_filled;
     QIcon fav_icon;

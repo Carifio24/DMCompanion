@@ -95,7 +95,7 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>129</y>
+     <y>160</y>
      <width>431</width>
      <height>671</height>
     </rect>
@@ -423,6 +423,48 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
    </property>
    <property name="text">
     <string>Sort field 2</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="phbCheckbox">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>130</y>
+     <width>141</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Player's Handbook</string>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="xgeCheckbox">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>130</y>
+     <width>121</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Xanathar's GTE</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="scagCheckbox">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>130</y>
+     <width>161</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Sword Coast AG</string>
    </property>
   </widget>
  </widget>

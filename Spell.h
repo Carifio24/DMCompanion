@@ -29,7 +29,7 @@ struct Spell {
     std::vector<Subclass> subclasses;
 
     // Methods
-    std::string componentsText();
+    std::string componentsString() const;
 
 };
 

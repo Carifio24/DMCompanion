@@ -6,6 +6,7 @@
 #include <string>
 #include <array>
 #include "Enumerations.h"
+#include "Spell.h"
 #include "jsoncpp/json/json.h"
 #include <QFile>
 
@@ -14,6 +15,8 @@ extern const std::vector<std::string> schoolNames;
 extern const std::vector<std::string> casterNames;
 
 extern const std::vector<std::string> subclassNames;
+
+extern const std::vector<std::string> sourcebookNames;
 
 extern const std::vector<std::string> sourcebookCodes;
 

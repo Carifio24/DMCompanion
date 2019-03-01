@@ -6,8 +6,11 @@
 #include "jsoncpp/json/json.h"
 #include <boost/algorithm/string/predicate.hpp>
 #include <boost/algorithm/string/case_conv.hpp>
-
 #include <QFile>
+#include <QCheckBox>
+#include <QStandardItemModel>
+
+#include <iostream>
 
 Spellbook::Spellbook(QWidget *parent) :
     QWidget(parent),
@@ -80,6 +83,24 @@ Spellbook::Spellbook(QWidget *parent) :
 
     // Put the description label inside the scroll area
     ui->descScrollArea->setWidget(ui->descriptionLabel);
+
+    // Add the sourcebooks to the selector
+//    QStandardItemModel sourcebookModel(N_SOURCES, 1);
+//    for (size_t i = 0; i < N_SOURCES; i++) {
+//        QStandardItem* item = new QStandardItem(QString::fromStdString(sourcebookNames[i]));
+//        item->setFlags((Qt::ItemIsUserCheckable | Qt::ItemIsEnabled));
+//        if (i == 0) {
+//            item->setData(Qt::Checked, Qt::CheckStateRole);
+//        } else {
+//            item->setData(Qt::Unchecked, Qt::CheckStateRole);
+//        }
+//        std::cout << sourcebookNames[i] << std::endl;
+//        sourcebookModel.setItem(i, item);
+//    }
+//    std::cout << sourcebookModel.rowCount() << std::endl;
+//    ui->sourcebookSelector->setModel(&sourcebookModel);
+
+    sourcebookCheckboxes = { ui->phbCheckbox, ui->xgeCheckbox, ui->scagCheckbox };
 
     // Font settings
     QString fontstyle = QString::fromStdString("font-weight: 750");
@@ -249,12 +270,17 @@ void Spellbook::load_favorites() {
 }
 
 bool Spellbook::filter_item(const bool& isClass, const bool& isFav, const bool& isText, const Spell& s, const CasterClass& cc, const std::string& text) {
+   if (sourcebookCheckboxes.size() == 0) {
+       sourcebookCheckboxes = { ui->phbCheckbox, ui->xgeCheckbox, ui->scagCheckbox };
+   }
     bool toHide = false;
     std::string spname = s.name;
     boost::to_lower(spname);
     toHide = toHide || (isClass && !usableByClass(s, cc));
     toHide = toHide || (isFav && !s.favorite);
     toHide = toHide || (isText && !boost::contains(spname, text));
+    QCheckBox* checkbox = sourcebookCheckboxes[(int)s.sourcebook];
+    toHide = toHide || ( !sourcebookCheckboxes[(int)s.sourcebook]->isChecked() );
     return toHide;
 }
 
@@ -340,6 +366,7 @@ void Spellbook::sort(const std::string& sort_field1, const std::string& sort_fie
 
 
 void Spellbook::display_spelldata(const int& ind) {
+
     // Get the spell
     Spell spell = spellsList()[ind];
     // Create the display text
@@ -353,8 +380,9 @@ void Spellbook::display_spelldata(const int& ind) {
     QString descriptionText = QString::fromStdString(spell.description + "\n\n" + spell.higherLevel);
     QString durationText = "<b>Duration: </b>" + QString::fromStdString(spell.duration);
     QString castingTimeText = "<b>Casting Time: </b>" + QString::fromStdString(spell.castingTime);
-    QString pageText = "<b>Location: </b> PHB " + QString::fromStdString(std::to_string(spell.page));
-    std::string compStr = spell.componentsText();
+    std::string locationText = sourcebookCodes[(int)spell.sourcebook] + " " + std::to_string(spell.page);
+    QString pageText = "<b>Location: </b> " + QString::fromStdString(locationText);
+    std::string compStr = spell.componentsString();
     QString compText = "<b>Components: </b>" + QString::fromStdString(compStr);
     QString materialText;
     if (spell.components[2]) {
@@ -421,4 +449,19 @@ void Spellbook::update_button() {
         ui->favButton->setIcon(not_fav_icon);
     }
     ui->favButton->setIconSize(QSize(iconSize,iconSize));
+}
+
+void Spellbook::on_phbCheckbox_toggled(bool checked)
+{
+    filter();
+}
+
+void Spellbook::on_xgeCheckbox_toggled(bool checked)
+{
+    filter();
+}
+
+void Spellbook::on_scagCheckbox_toggled(bool checked)
+{
+    filter();
 }

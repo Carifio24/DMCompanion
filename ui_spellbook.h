@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -55,12 +56,15 @@ public:
     QLabel *pageLabel;
     QLabel *durationLabel;
     QLabel *sort2Label;
+    QCheckBox *phbCheckbox;
+    QCheckBox *xgeCheckbox;
+    QCheckBox *scagCheckbox;
 
     void setupUi(QWidget *Spellbook)
     {
         if (Spellbook->objectName().isEmpty())
             Spellbook->setObjectName(QStringLiteral("Spellbook"));
-        Spellbook->resize(1250, 890);
+        Spellbook->resize(1343, 850);
         nameLabel = new QLabel(Spellbook);
         nameLabel->setObjectName(QStringLiteral("nameLabel"));
         nameLabel->setGeometry(QRect(559, 69, 591, 71));
@@ -88,7 +92,7 @@ public:
         classesLabel->setGeometry(QRect(580, 400, 451, 17));
         spellList = new QTableWidget(Spellbook);
         spellList->setObjectName(QStringLiteral("spellList"));
-        spellList->setGeometry(QRect(50, 129, 431, 671));
+        spellList->setGeometry(QRect(50, 160, 431, 671));
         spellList->setLineWidth(1);
         spellList->setShowGrid(false);
         spellList->setGridStyle(Qt::NoPen);
@@ -173,6 +177,16 @@ public:
         sort2Label = new QLabel(Spellbook);
         sort2Label->setObjectName(QStringLiteral("sort2Label"));
         sort2Label->setGeometry(QRect(220, 39, 81, 17));
+        phbCheckbox = new QCheckBox(Spellbook);
+        phbCheckbox->setObjectName(QStringLiteral("phbCheckbox"));
+        phbCheckbox->setGeometry(QRect(50, 130, 141, 20));
+        phbCheckbox->setChecked(true);
+        xgeCheckbox = new QCheckBox(Spellbook);
+        xgeCheckbox->setObjectName(QStringLiteral("xgeCheckbox"));
+        xgeCheckbox->setGeometry(QRect(210, 130, 121, 20));
+        scagCheckbox = new QCheckBox(Spellbook);
+        scagCheckbox->setObjectName(QStringLiteral("scagCheckbox"));
+        scagCheckbox->setGeometry(QRect(350, 130, 161, 20));
 
         retranslateUi(Spellbook);
 
@@ -204,6 +218,9 @@ public:
         pageLabel->setText(QString());
         durationLabel->setText(QString());
         sort2Label->setText(QApplication::translate("Spellbook", "Sort field 2", 0));
+        phbCheckbox->setText(QApplication::translate("Spellbook", "Player's Handbook", 0));
+        xgeCheckbox->setText(QApplication::translate("Spellbook", "Xanathar's GTE", 0));
+        scagCheckbox->setText(QApplication::translate("Spellbook", "Sword Coast AG", 0));
     } // retranslateUi
 
 };

@@ -5,6 +5,7 @@
 #include <string>
 #include <QList>
 #include "Enumerations.h"
+#include "Spell.h"
 
 
 // This class provides a template function that sorts based on a member value of the user's choice

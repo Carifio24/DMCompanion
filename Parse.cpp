@@ -18,11 +18,17 @@ const std::vector<std::string> casterNames = {"Bard", "Cleric", "Druid", "Paladi
 
 const std::vector<std::string> subclassNames = {"Land", "Lore", "Life", "Devotion", "Fiend"};
 
-const int N_SCHOOLS = schoolNames.size();
+const std::vector<std::string> sourcebookNames = {"Player's Handbook", "Xanathar's Guide to Everything", "Sword Coast Adventurer's Guide"};
 
-const int N_CASTERS = casterNames.size();
+const std::vector<std::string> sourcebookCodes = {"PHB", "XGE", "SCAG"};
 
-const int N_SUBCLASSES = subclassNames.size();
+const size_t N_SCHOOLS = schoolNames.size();
+
+const size_t N_CASTERS = casterNames.size();
+
+const size_t N_SUBCLASSES = subclassNames.size();
+
+const size_t N_SOURCES = sourcebookNames.size();
 
 bool yn_to_bool(const std::string& yn) {
 	if (yn == "no") {
@@ -70,14 +76,17 @@ Spell parse_spell(const Json::Value& root) {
 	spell.name = root["name"].asString();
     std::vector<std::string> pdata = jstring::split(root["page"].asString(), " ");
     spell.page = std::stoi(pdata[pdata.size()-1]);
+    std::string bookCode = pdata[0];
+    boost::to_upper(bookCode);
+    spell.sourcebook = enum_from_name<Sourcebook>(sourcebookCodes, bookCode);
     spell.range = root["range"].asString();
     spell.castingTime = root["casting_time"].asString();
     spell.level = root["level"].asInt();
     spell.duration = root["duration"].asString();
-    if (root.isMember("concentration")) {
-        spell.concentration = yn_to_bool(root["concentration"].asString());
-    } else if (boost::starts_with(spell.duration, "Up to")) {
+    if (boost::starts_with(spell.duration, "Up to")) {
         spell.concentration = true;
+    } else if (root.isMember("concentration")) {
+        spell.concentration = yn_to_bool(root["concentration"].asString());
     } else {
         spell.concentration = false;
     }
@@ -125,7 +134,12 @@ Spell parse_spell(const Json::Value& root) {
 	// Get the caster classes
 	std::vector<CasterClass> classes;
 	for (const auto& v : root["classes"]) {
-		classes.push_back(enum_from_name<CasterClass>(casterNames, v["name"].asString()));
+        try {
+            classes.push_back(enum_from_name<CasterClass>(casterNames, v["name"].asString()));
+        }
+        catch (Json::LogicError) {
+            classes.push_back(enum_from_name<CasterClass>(casterNames, v.asString()));
+        }
 	}
 	classes.shrink_to_fit();
 	spell.classes = classes;
