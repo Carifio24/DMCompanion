@@ -1,4 +1,5 @@
-#include "Classes.h"
+#include "Enumerations.h"
+#include "Spell.h"
 
 bool usableByClass(const Spell& spell, const CasterClass& caster) {
 	for (const CasterClass& cc : spell.classes) {

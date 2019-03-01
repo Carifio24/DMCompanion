@@ -154,6 +154,8 @@ Spell parse_spell(const Json::Value& root) {
 
     spell.favorite = false;
 
+    std::cout << spell.name << std::endl;
+
 	return spell;
 
 }

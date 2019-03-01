@@ -285,6 +285,7 @@ bool Spellbook::filter_item(const bool& isClass, const bool& isFav, const bool& 
 }
 
 void Spellbook::filter() {
+    std::cout << "Running filter" << std::endl;
     int classIndex = ui->filterBox->currentIndex();
     bool isClass = (classIndex != 0);
     CasterClass cc;
@@ -297,13 +298,13 @@ void Spellbook::filter() {
     std::string searchText = ui->searchBar->text().toStdString();
     boost::to_lower(searchText);
     bool isText = (searchText != "");
-    if (!(isText || favorites || isClass) ) {
-        unfilter();
-    } else {
+//    if (!(isText || favorites || isClass) ) {
+//        unfilter();
+//    } else {
         for (size_t i = 0; i < spells.size(); i++) {
             ui->spellList->setRowHidden(i, filter_item(isClass, favorites, isText, spells[i], cc, searchText));
         }
-    }
+    //}
 
 }
 
@@ -453,15 +454,18 @@ void Spellbook::update_button() {
 
 void Spellbook::on_phbCheckbox_toggled(bool checked)
 {
+    std::cout << "Toggled PHB" << std::endl;
     filter();
 }
 
 void Spellbook::on_xgeCheckbox_toggled(bool checked)
 {
+    std::cout << "Toggled XGE" << std::endl;
     filter();
 }
 
 void Spellbook::on_scagCheckbox_toggled(bool checked)
 {
+    std::cout << "Toggled SCAG" << std::endl;
     filter();
 }
