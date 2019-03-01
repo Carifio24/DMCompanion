@@ -100,6 +100,7 @@ Spellbook::Spellbook(QWidget *parent) :
 //    std::cout << sourcebookModel.rowCount() << std::endl;
 //    ui->sourcebookSelector->setModel(&sourcebookModel);
 
+    // The checkboxes for the sourcebooks
     sourcebookCheckboxes = { ui->phbCheckbox, ui->xgeCheckbox, ui->scagCheckbox };
 
     // Font settings
@@ -279,13 +280,11 @@ bool Spellbook::filter_item(const bool& isClass, const bool& isFav, const bool& 
     toHide = toHide || (isClass && !usableByClass(s, cc));
     toHide = toHide || (isFav && !s.favorite);
     toHide = toHide || (isText && !boost::contains(spname, text));
-    QCheckBox* checkbox = sourcebookCheckboxes[(int)s.sourcebook];
-    toHide = toHide || ( !sourcebookCheckboxes[(int)s.sourcebook]->isChecked() );
+    toHide = toHide || ( !sourcebookCheckboxes[+s.sourcebook]->isChecked() );
     return toHide;
 }
 
 void Spellbook::filter() {
-    std::cout << "Running filter" << std::endl;
     int classIndex = ui->filterBox->currentIndex();
     bool isClass = (classIndex != 0);
     CasterClass cc;
@@ -356,7 +355,7 @@ void Spellbook::sort(const std::string& sort_field1, const std::string& sort_fie
     for (size_t i = 0; i < spells.size(); i++) {
         //std::cout << i << std::endl;
         ui->spellList->setItem(i,0,new QTableWidgetItem(QString::fromStdString(spells[i].name)));
-        ui->spellList->setItem(i,1,new QTableWidgetItem(QString::fromStdString(schoolNames[static_cast<int>(spells[i].school)])));
+        ui->spellList->setItem(i,1,new QTableWidgetItem(QString::fromStdString(schoolNames[+spells[i].school])));
         ui->spellList->setItem(i,2,new QTableWidgetItem(QString::number(spells[i].level)));
     }
 
@@ -372,7 +371,7 @@ void Spellbook::display_spelldata(const int& ind) {
     Spell spell = spellsList()[ind];
     // Create the display text
     QString nameText = QString::fromStdString(spell.name);
-    QString schoolText = "<b>School: </b>" + QString::fromStdString(schoolNames[static_cast<int>(spell.school)]);
+    QString schoolText = "<b>School: </b>" + QString::fromStdString(schoolNames[+spell.school]);
     QString ritualText = "<b>Ritual: </b>" + QString::fromStdString(bool_to_yn((spell.ritual)));
     QString concentrationText = "<b>Concentration: </b>" + QString::fromStdString(bool_to_yn(spell.concentration));
     QString levelText = "<b>Level: </b>" + QString::fromStdString(std::to_string(spell.level));
@@ -395,7 +394,7 @@ void Spellbook::display_spelldata(const int& ind) {
     std::string classesString;
     QString classesText;
     for (const CasterClass& cclass : spell.classes) {
-        classesString += casterNames[static_cast<int>(cclass)];
+        classesString += casterNames[+cclass];
         classesString += ", ";
     }
     if (spell.classes.size() > 0) {
@@ -452,20 +451,17 @@ void Spellbook::update_button() {
     ui->favButton->setIconSize(QSize(iconSize,iconSize));
 }
 
-void Spellbook::on_phbCheckbox_toggled(bool checked)
+void Spellbook::on_phbCheckbox_toggled(bool) // Unnamed: checked
 {
-    std::cout << "Toggled PHB" << std::endl;
     filter();
 }
 
-void Spellbook::on_xgeCheckbox_toggled(bool checked)
+void Spellbook::on_xgeCheckbox_toggled(bool) // Unnamed: checked
 {
-    std::cout << "Toggled XGE" << std::endl;
     filter();
 }
 
-void Spellbook::on_scagCheckbox_toggled(bool checked)
+void Spellbook::on_scagCheckbox_toggled(bool) // Unnamed: checked
 {
-    std::cout << "Toggled SCAG" << std::endl;
     filter();
 }

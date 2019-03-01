@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1420</width>
-    <height>900</height>
+    <height>862</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -32,23 +32,29 @@
       <x>0</x>
       <y>0</y>
       <width>1421</width>
-      <height>821</height>
+      <height>831</height>
      </rect>
     </property>
     <property name="autoFillBackground">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="Spellbook" name="spellTab">
+     <property name="autoFillBackground">
+      <bool>true</bool>
+     </property>
      <attribute name="title">
       <string>Spellbook</string>
      </attribute>
     </widget>
-    <widget class="QWidget" name="tab_2">
+    <widget class="QWidget" name="monsterTab">
+     <property name="autoFillBackground">
+      <bool>true</bool>
+     </property>
      <attribute name="title">
-      <string>Tab 2</string>
+      <string>Monster Manual</string>
      </attribute>
     </widget>
    </widget>

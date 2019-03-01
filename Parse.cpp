@@ -4,6 +4,7 @@
 #include <array>
 #include <exception>
 #include <iostream>
+#include <assert.h>
 #include "jstring.h"
 #include "Enumerations.h"
 #include "Parse.h"
@@ -22,6 +23,8 @@ const std::vector<std::string> sourcebookNames = {"Player's Handbook", "Xanathar
 
 const std::vector<std::string> sourcebookCodes = {"PHB", "XGE", "SCAG"};
 
+const std::vector<std::string> sizeNames = {"Tiny", "Small", "Medium", "Large", "Huge", "Gargantuan"};
+
 const size_t N_SCHOOLS = schoolNames.size();
 
 const size_t N_CASTERS = casterNames.size();
@@ -29,6 +32,8 @@ const size_t N_CASTERS = casterNames.size();
 const size_t N_SUBCLASSES = subclassNames.size();
 
 const size_t N_SOURCES = sourcebookNames.size();
+
+const size_t N_SIZES = sizeNames.size();
 
 bool yn_to_bool(const std::string& yn) {
 	if (yn == "no") {
@@ -154,8 +159,6 @@ Spell parse_spell(const Json::Value& root) {
 
     spell.favorite = false;
 
-    std::cout << spell.name << std::endl;
-
 	return spell;
 
 }
@@ -170,7 +173,6 @@ std::vector<Spell> read_spellfile(QFile* qspellfile) {
 	Json::CharReaderBuilder builder;
 	Json::CharReader* reader = builder.newCharReader();
 	std::string errors;
-    //std::string data((std::istreambuf_iterator<char>(ifs)), (std::istreambuf_iterator<char>()));
 	reader->parse(data.c_str(), data.c_str() + data.size(), &root, &errors);
 
 	std::vector<Spell> spells;
@@ -179,4 +181,24 @@ std::vector<Spell> read_spellfile(QFile* qspellfile) {
 	}
 	spells.shrink_to_fit();
 	return spells;
+}
+
+Size size_from_text(const std::string& s) {
+    auto it = std::find(sizeNames.begin(), sizeNames.end(), s);
+    int idx = std::distance(sizeNames.begin(), it);
+    assert(idx < N_SIZES);
+    Size sz = static_cast<Size>(idx);
+    return sz;
+}
+
+Monster parse_monster(const Json::Value& root) {
+
+    // Create the monster
+    Monster m;
+
+    // Get the basic info
+    m.name = root["name"].asString();
+    m.size = size_from_text(root["size"].asString());
+
+
 }

@@ -7,6 +7,7 @@
 #include <array>
 #include "Enumerations.h"
 #include "Spell.h"
+#include "Monster.h"
 #include "jsoncpp/json/json.h"
 #include <QFile>
 
@@ -20,6 +21,8 @@ extern const std::vector<std::string> sourcebookNames;
 
 extern const std::vector<std::string> sourcebookCodes;
 
+extern const std::vector<std::string> sizeNames;
+
 extern const size_t N_SCHOOLS;
 
 extern const size_t N_CASTERS;
@@ -27,6 +30,8 @@ extern const size_t N_CASTERS;
 extern const size_t N_SUBCLASSES;
 
 extern const size_t N_SOURCES;
+
+extern const size_t N_SIZES;
 
 bool yn_to_bool(const std::string& yn);
 

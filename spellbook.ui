@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1343</width>
-    <height>850</height>
+    <height>829</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QLabel" name="nameLabel">
    <property name="geometry">
     <rect>
-     <x>559</x>
-     <y>69</y>
+     <x>529</x>
+     <y>49</y>
      <width>591</width>
      <height>71</height>
     </rect>
@@ -45,8 +45,8 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
   <widget class="QLabel" name="descriptionTitle">
    <property name="geometry">
     <rect>
-     <x>580</x>
-     <y>460</y>
+     <x>550</x>
+     <y>440</y>
      <width>111</width>
      <height>20</height>
     </rect>
@@ -58,8 +58,8 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
   <widget class="QLabel" name="subclassesLabel">
    <property name="geometry">
     <rect>
-     <x>580</x>
-     <y>430</y>
+     <x>550</x>
+     <y>410</y>
      <width>451</width>
      <height>17</height>
     </rect>
@@ -71,8 +71,8 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
   <widget class="QComboBox" name="sort1Box">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>69</y>
+     <x>30</x>
+     <y>49</y>
      <width>111</width>
      <height>25</height>
     </rect>
@@ -81,8 +81,8 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
   <widget class="QLabel" name="classesLabel">
    <property name="geometry">
     <rect>
-     <x>580</x>
-     <y>400</y>
+     <x>550</x>
+     <y>380</y>
      <width>451</width>
      <height>17</height>
     </rect>
@@ -94,8 +94,8 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
   <widget class="QTableWidget" name="spellList">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>160</y>
+     <x>20</x>
+     <y>140</y>
      <width>431</width>
      <height>671</height>
     </rect>
@@ -131,8 +131,8 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
   <widget class="QLabel" name="componentsLabel">
    <property name="geometry">
     <rect>
-     <x>580</x>
-     <y>310</y>
+     <x>550</x>
+     <y>290</y>
      <width>181</width>
      <height>16</height>
     </rect>
@@ -144,8 +144,8 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
   <widget class="QRadioButton" name="favoritesButton">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>99</y>
+     <x>30</x>
+     <y>79</y>
      <width>112</width>
      <height>23</height>
     </rect>
@@ -157,8 +157,8 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
   <widget class="QLabel" name="descriptionLabel">
    <property name="geometry">
     <rect>
-     <x>580</x>
-     <y>490</y>
+     <x>550</x>
+     <y>470</y>
      <width>591</width>
      <height>301</height>
     </rect>
@@ -176,8 +176,8 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
   <widget class="QLabel" name="castingTimeLabel">
    <property name="geometry">
     <rect>
-     <x>580</x>
-     <y>189</y>
+     <x>550</x>
+     <y>169</y>
      <width>241</width>
      <height>21</height>
     </rect>
@@ -189,8 +189,8 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
   <widget class="QLabel" name="materialLabel">
    <property name="geometry">
     <rect>
-     <x>580</x>
-     <y>340</y>
+     <x>550</x>
+     <y>320</y>
      <width>641</width>
      <height>51</height>
     </rect>
@@ -208,8 +208,8 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
   <widget class="QComboBox" name="sort2Box">
    <property name="geometry">
     <rect>
-     <x>210</x>
-     <y>69</y>
+     <x>180</x>
+     <y>49</y>
      <width>111</width>
      <height>25</height>
     </rect>
@@ -218,8 +218,8 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
   <widget class="QLabel" name="concentrationLabel">
    <property name="geometry">
     <rect>
-     <x>580</x>
-     <y>250</y>
+     <x>550</x>
+     <y>230</y>
      <width>141</width>
      <height>17</height>
     </rect>
@@ -231,8 +231,8 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
   <widget class="QLabel" name="schoolLabel">
    <property name="geometry">
     <rect>
-     <x>580</x>
-     <y>155</y>
+     <x>550</x>
+     <y>135</y>
      <width>201</width>
      <height>21</height>
     </rect>
@@ -244,8 +244,8 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
   <widget class="QLabel" name="sort1Label">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>39</y>
+     <x>30</x>
+     <y>19</y>
      <width>81</width>
      <height>17</height>
     </rect>
@@ -257,8 +257,8 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
   <widget class="QComboBox" name="filterBox">
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>69</y>
+     <x>340</x>
+     <y>49</y>
      <width>101</width>
      <height>25</height>
     </rect>
@@ -267,8 +267,8 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
   <widget class="QLabel" name="levelLabel">
    <property name="geometry">
     <rect>
-     <x>810</x>
-     <y>156</y>
+     <x>780</x>
+     <y>136</y>
      <width>121</width>
      <height>20</height>
     </rect>
@@ -280,8 +280,8 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
   <widget class="QLineEdit" name="searchBar">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>99</y>
+     <x>140</x>
+     <y>79</y>
      <width>311</width>
      <height>25</height>
     </rect>
@@ -302,8 +302,8 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
   <widget class="QLabel" name="ritualLabel">
    <property name="geometry">
     <rect>
-     <x>820</x>
-     <y>247</y>
+     <x>790</x>
+     <y>227</y>
      <width>171</width>
      <height>20</height>
     </rect>
@@ -315,8 +315,8 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
   <widget class="QScrollArea" name="descScrollArea">
    <property name="geometry">
     <rect>
-     <x>580</x>
-     <y>490</y>
+     <x>550</x>
+     <y>470</y>
      <width>591</width>
      <height>321</height>
     </rect>
@@ -344,8 +344,8 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
   <widget class="QPushButton" name="favButton">
    <property name="geometry">
     <rect>
-     <x>1160</x>
-     <y>69</y>
+     <x>1130</x>
+     <y>49</y>
      <width>71</width>
      <height>71</height>
     </rect>
@@ -360,8 +360,8 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
   <widget class="QLabel" name="rangeLabel">
    <property name="geometry">
     <rect>
-     <x>580</x>
-     <y>220</y>
+     <x>550</x>
+     <y>200</y>
      <width>211</width>
      <height>17</height>
     </rect>
@@ -376,8 +376,8 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
   <widget class="QLabel" name="filterLabel">
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>39</y>
+     <x>340</x>
+     <y>19</y>
      <width>101</width>
      <height>17</height>
     </rect>
@@ -389,8 +389,8 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
   <widget class="QLabel" name="pageLabel">
    <property name="geometry">
     <rect>
-     <x>1010</x>
-     <y>159</y>
+     <x>980</x>
+     <y>139</y>
      <width>171</width>
      <height>17</height>
     </rect>
@@ -402,8 +402,8 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
   <widget class="QLabel" name="durationLabel">
    <property name="geometry">
     <rect>
-     <x>580</x>
-     <y>280</y>
+     <x>550</x>
+     <y>260</y>
      <width>281</width>
      <height>17</height>
     </rect>
@@ -415,8 +415,8 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
   <widget class="QLabel" name="sort2Label">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>39</y>
+     <x>190</x>
+     <y>19</y>
      <width>81</width>
      <height>17</height>
     </rect>
@@ -428,8 +428,8 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
   <widget class="QCheckBox" name="phbCheckbox">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>130</y>
+     <x>20</x>
+     <y>110</y>
      <width>141</width>
      <height>20</height>
     </rect>
@@ -444,8 +444,8 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
   <widget class="QCheckBox" name="xgeCheckbox">
    <property name="geometry">
     <rect>
-     <x>210</x>
-     <y>130</y>
+     <x>180</x>
+     <y>110</y>
      <width>121</width>
      <height>20</height>
     </rect>
@@ -457,8 +457,8 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
   <widget class="QCheckBox" name="scagCheckbox">
    <property name="geometry">
     <rect>
-     <x>350</x>
-     <y>130</y>
+     <x>320</x>
+     <y>110</y>
      <width>161</width>
      <height>20</height>
     </rect>

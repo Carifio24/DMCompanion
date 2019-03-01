@@ -17,10 +17,36 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>180</y>
+     <y>140</y>
      <width>551</width>
-     <height>711</height>
+     <height>751</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="minCRlabel">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>50</y>
+     <width>81</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Minimum CR</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="maxCRlabel">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>80</y>
+     <width>81</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Maximum CR</string>
    </property>
   </widget>
  </widget>

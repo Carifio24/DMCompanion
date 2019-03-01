@@ -11,9 +11,10 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = DMCompanion
 TEMPLATE = app
 
+QMAKE_CXXFLAGS += -O3
 
 SOURCES += main.cpp \
-        dmcompanion.cpp \
+    dmcompanion.cpp \
     Parse.cpp \
     Filter.cpp \
     Sort.cpp \
@@ -23,7 +24,8 @@ SOURCES += main.cpp \
     jsoncpp/jsoncpp.cpp \
     spellbook.cpp \
     Spell.cpp \
-    monstermanual.cpp
+    monstermanual.cpp \
+    alignment.cpp
 
 HEADERS  += spellbook.h \
     dmcompanion.h \
@@ -38,13 +40,14 @@ HEADERS  += spellbook.h \
     Monster.h \
     action.h \
     ability.h \
-    monstermanual.h
+    monstermanual.h \
+    alignment.h
 
 FORMS    += dmcompanion.ui \
     spellbook.ui \
     monstermanual.ui
 
-CONFIG    += c++11
+CONFIG    += c++14
 
 DISTFILES += \
     BookBackground.jpeg \

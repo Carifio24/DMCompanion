@@ -2,6 +2,8 @@
 #define MONSTER_H
 
 #include "Enumerations.h"
+#include "ability.h"
+#include "action.h"
 
 #include <utility>
 
@@ -12,7 +14,7 @@ struct Monster {
     Size size;
     CreatureType type;
     std::string subtype;
-    Alignment alignment;
+    //Alignment alignment;
     int challengeRating;
 
     // Combat statistics
@@ -30,12 +32,12 @@ struct Monster {
     int charisma;
 
     // Saving throws
-    int strengthSave;
-    int dexteristySave;
-    int constitutionSave;
-    int intelligenceSave;
-    int wisdomSave;
-    int charismaSave;
+    int strengthSave = 0;
+    int dexteritySave = 0;
+    int constitutionSave = 0;
+    int intelligenceSave = 0;
+    int wisdomSave = 0;
+    int charismaSave = 0;
 
     // Other attributes
     int history;
