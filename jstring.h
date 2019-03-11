@@ -12,6 +12,8 @@ namespace jstring {
 
 	std::vector<std::string> split(std::string s, const std::string& dlm);
 
+    std::pair<std::string,std::string> split_once(std::string s, const std::string& dlm);
+
 	std::vector<std::string> split_whitespace(const std::string& s);
 
 	std::vector<std::string> split_multi(std::string s, const std::vector<std::string>& delims);

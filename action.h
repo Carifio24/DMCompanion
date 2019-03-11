@@ -3,6 +3,8 @@
 
 #include "Enumerations.h"
 
+#include <jsoncpp/json/json.h>
+
 struct Action {
 
     // Properties
@@ -18,6 +20,12 @@ struct Action {
 
     // Default values for damageDice and damageBonus
     Action(const std::string& name, const std::string& desc, const int& attackBonus) : Action(name, desc, attackBonus, {{0,Die::d4}}, 0) {}
+
+    // JSON constructor
+    Action(const Json::Value& root);
+
+    // Default constructor
+    Action() : Action("", "", 0) {}
 
 
 };

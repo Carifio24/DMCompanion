@@ -68,6 +68,8 @@ private:
 
     bool filter_item(const bool& isClass, const bool& isFav, const bool& isText, const Spell& s, const CasterClass& cc, const std::string& text);
 
+    void populateSpellTable(const std::vector<Spell>& spells);
+
     Ui::Spellbook *ui;
     std::vector<Spell> spells;
     void sort(const std::string& sort_field1, const std::string& sort_field2);

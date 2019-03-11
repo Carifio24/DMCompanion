@@ -35,6 +35,12 @@
       <height>831</height>
      </rect>
     </property>
+    <property name="maximumSize">
+     <size>
+      <width>4000</width>
+      <height>4000</height>
+     </size>
+    </property>
     <property name="autoFillBackground">
      <bool>true</bool>
     </property>
@@ -42,6 +48,12 @@
      <number>1</number>
     </property>
     <widget class="Spellbook" name="spellTab">
+     <property name="maximumSize">
+      <size>
+       <width>4000</width>
+       <height>4000</height>
+      </size>
+     </property>
      <property name="autoFillBackground">
       <bool>true</bool>
      </property>
@@ -49,7 +61,16 @@
       <string>Spellbook</string>
      </attribute>
     </widget>
-    <widget class="QWidget" name="monsterTab">
+    <widget class="MonsterManual" name="monsterTab">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>4000</width>
+       <height>4000</height>
+      </size>
+     </property>
      <property name="autoFillBackground">
       <bool>true</bool>
      </property>
@@ -67,6 +88,12 @@
    <class>Spellbook</class>
    <extends>QWidget</extends>
    <header location="global">spellbook.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>MonsterManual</class>
+   <extends>QWidget</extends>
+   <header>monstermanual.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

@@ -33,6 +33,19 @@ namespace jstring {
 
 	}
 
+    std::pair<std::string, std::string> split_once(std::string s, const std::string& dlm) {
+        // This function splits the gien string at the first location that it finds the given delimiter
+
+        int dlm_len = dlm.length();
+
+        size_t pos = s.find(dlm);
+        std::string piece = s.substr(0, pos);
+        s.erase(0, pos + dlm_len);
+        auto res = std::make_pair(piece, s);
+        return res;
+
+    }
+
 	std::vector<std::string> split_whitespace(const std::string& s) {
 		// This function splits the given string by whitespace
 		// Returns a vector containing the pieces of the split string

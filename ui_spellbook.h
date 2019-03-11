@@ -64,7 +64,7 @@ public:
     {
         if (Spellbook->objectName().isEmpty())
             Spellbook->setObjectName(QStringLiteral("Spellbook"));
-        Spellbook->resize(1343, 850);
+        Spellbook->resize(1343, 829);
         nameLabel = new QLabel(Spellbook);
         nameLabel->setObjectName(QStringLiteral("nameLabel"));
         nameLabel->setGeometry(QRect(529, 49, 591, 71));
@@ -96,6 +96,7 @@ public:
         spellList->setLineWidth(1);
         spellList->setShowGrid(false);
         spellList->setGridStyle(Qt::NoPen);
+        spellList->setSortingEnabled(false);
         spellList->horizontalHeader()->setVisible(false);
         spellList->horizontalHeader()->setDefaultSectionSize(175);
         spellList->horizontalHeader()->setHighlightSections(false);

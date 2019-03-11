@@ -8,34 +8,29 @@
 #include "Enumerations.h"
 #include "Spell.h"
 #include "Monster.h"
+#include "enummaps.h"
 #include "jsoncpp/json/json.h"
 #include <QFile>
 
-extern const std::vector<std::string> schoolNames;
-
-extern const std::vector<std::string> casterNames;
-
-extern const std::vector<std::string> subclassNames;
-
-extern const std::vector<std::string> sourcebookNames;
-
-extern const std::vector<std::string> sourcebookCodes;
-
-extern const std::vector<std::string> sizeNames;
-
-extern const size_t N_SCHOOLS;
-
-extern const size_t N_CASTERS;
-
-extern const size_t N_SUBCLASSES;
-
-extern const size_t N_SOURCES;
-
-extern const size_t N_SIZES;
+// General-purpose methods
 
 bool yn_to_bool(const std::string& yn);
 
 std::string bool_to_yn(const bool& yn);
+
+std::string capitalized(std::string s);
+
+int int_if_member(const Json::Value& root, const std::string& field, const int& defaultValue=0);
+
+std::string string_if_member(const Json::Value& root, const std::string& field, const std::string& defaultValue="");
+
+std::pair<int,Die> dice_from_string(const std::string& s);
+
+DamageInfo identify_damage_info(const std::string& s, const std::map<DamageType,std::string>& damageTypes=damageTypeNames);
+
+std::vector<DamageInfo> damage_modifiers_from_string(std::string s, const std::string& sep);
+
+// Spellbook-specific methods
 
 std::array<bool,3> components(const Json::Value& comps);
 
@@ -45,11 +40,13 @@ Spell parse_spell(const Json::Value& root);
 
 std::vector<Spell> read_spellfile(QFile* qspellfile);
 
-/*template <class T>
-int get_index(const std::vector<T>& v, const T& x);
+// Monster manual methods
 
-template <class Enum>
-Enum enum_from_name(const std::vector<std::string> allNames, const std::string& name);*/
+//Size size_from_text(const std::string& s);
+
+Monster parse_monster(const Json::Value& root);
+
+std::vector<Monster> read_monsterfile(QFile* qmonsterfile);
 
 // Template implementations
 #include "Parse.tpp"

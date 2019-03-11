@@ -109,6 +109,9 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
    <property name="gridStyle">
     <enum>Qt::NoPen</enum>
    </property>
+   <property name="sortingEnabled">
+    <bool>false</bool>
+   </property>
    <attribute name="horizontalHeaderVisible">
     <bool>false</bool>
    </attribute>

@@ -25,7 +25,11 @@ SOURCES += main.cpp \
     spellbook.cpp \
     Spell.cpp \
     monstermanual.cpp \
-    alignment.cpp
+    alignment.cpp \
+    fraction.cpp \
+    ability.cpp \
+    action.cpp \
+    enummaps.cpp
 
 HEADERS  += spellbook.h \
     dmcompanion.h \
@@ -41,7 +45,10 @@ HEADERS  += spellbook.h \
     action.h \
     ability.h \
     monstermanual.h \
-    alignment.h
+    alignment.h \
+    fraction.h \
+    enummaps.h \
+    damageinfo.h
 
 FORMS    += dmcompanion.ui \
     spellbook.ui \
@@ -54,7 +61,8 @@ DISTFILES += \
     Spells.json \
     star_filled.png \
     star_filled_2.png \
-    star_empty.png
+    star_empty.png \
+    resources/Monsters.json
 
 RESOURCES += \
     resources.qrc

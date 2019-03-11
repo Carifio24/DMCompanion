@@ -1,6 +1,8 @@
 #ifndef ABILITY_H
 #define ABILITY_H
 
+#include <jsoncpp/json/json.h>
+
 struct Ability {
 
     // Properties
@@ -8,8 +10,13 @@ struct Ability {
     std::string desc;
     int attackBonus;
 
-    // Constructor
+    // Constructors
     Ability(const std::string& nm, const std::string& dscr, const int& ab) : name(nm), desc(dscr), attackBonus(ab) {}
+    Ability(const Json::Value& root);
+
+    // Default constructor
+    Ability() : Ability("", "", 0) {}
+
 
 };
 

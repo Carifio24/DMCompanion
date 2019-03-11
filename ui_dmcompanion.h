@@ -19,6 +19,7 @@
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QWidget>
 #include <spellbook.h>
+#include "monstermanual.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -28,7 +29,7 @@ public:
     QWidget *centralWidget;
     QTabWidget *tabWidget;
     Spellbook *spellTab;
-    QWidget *monsterTab;
+    MonsterManual *monsterTab;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *DMCompanion)
@@ -44,13 +45,17 @@ public:
         tabWidget->setObjectName(QStringLiteral("tabWidget"));
         tabWidget->setEnabled(true);
         tabWidget->setGeometry(QRect(0, 0, 1421, 831));
+        tabWidget->setMaximumSize(QSize(4000, 4000));
         tabWidget->setAutoFillBackground(true);
         spellTab = new Spellbook();
         spellTab->setObjectName(QStringLiteral("spellTab"));
+        spellTab->setMaximumSize(QSize(4000, 4000));
         spellTab->setAutoFillBackground(true);
         tabWidget->addTab(spellTab, QString());
-        monsterTab = new QWidget();
+        monsterTab = new MonsterManual();
         monsterTab->setObjectName(QStringLiteral("monsterTab"));
+        monsterTab->setEnabled(true);
+        monsterTab->setMaximumSize(QSize(4000, 4000));
         monsterTab->setAutoFillBackground(true);
         tabWidget->addTab(monsterTab, QString());
         DMCompanion->setCentralWidget(centralWidget);

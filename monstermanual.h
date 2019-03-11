@@ -3,6 +3,8 @@
 
 #include <QWidget>
 
+#include "Monster.h"
+
 namespace Ui {
 class MonsterManual;
 }
@@ -16,7 +18,11 @@ public:
     ~MonsterManual();
 
 private:
+
+    void populateMonsterTable(const std::vector<Monster>& monsters);
+
     Ui::MonsterManual *ui;
+    std::vector<Monster> monsters;
 };
 
 #endif // MONSTERMANUAL_H
