@@ -4,32 +4,45 @@
 #include <string>
 #include <type_traits>
 
-template <typename QuantityType, typename UnitType, typename = std::enable_if_t<std::is_enum_v<QuantityType> > >
+// The template types have the following restraints
+// QuantityType must be an enumeration
+// UnitType must be a subclass of Unit
+
+// Note that the UnitType member is a reference
+// This ensures that there is no copying of the UnitType instances
+template <typename QuantityType, typename UnitType, typename = std::enable_if_t<std::is_enum_v<QuantityType> >, typename = std::enable_if_t<std::is_base_of_v<Unit, UnitType> > >
 class Quantity {
 
     public:
 
-        Quantity(const QuantityType& type, const int& value, UnitType& unit, const std::string& str="") : _type(type), _value(value), _unit(unit), _str(str) {}
+        // Constructor
+        Quantity(const QuantityType& type, const int& value, const UnitType& unit, const std::string& str="") : _type(type), _value(value), _unit(unit), _str(str) {}
 
+        // Get member values
+        // Notice that string() is virtual
         QuantityType quantity_type() const noexcept { return _type; }
         int value() const noexcept { return _value; }
         UnitType unit_type() const noexcept { return _unit; }
-        virtual std::string string() const;
+        virtual std::string string() const = 0;
 
+        // Comparison operator
         bool operator<(const Quantity& other) const {
             if (_type == other._type) {
-                return baseValue() < other.baseValue();
+                return base_value() < other.base_value();
             }
             return _type < other._type;
         }
 
     protected:
-        int baseValue() const { return _value * _unit.value(); }
 
-        QuantityType _type;
-        int _value;
-        UnitType& _unit;
-        std::string _str;
+        // For use by subclasses
+        int base_value() const { return _value * _unit.value(); }
+
+        // Member values
+        const QuantityType _type;
+        const int _value;
+        const UnitType& _unit;
+        const std::string _str;
 
 };
 
