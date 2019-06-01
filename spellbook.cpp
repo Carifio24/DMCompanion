@@ -380,7 +380,7 @@ void Spellbook::display_spelldata(const int& ind) {
     QString ritualText = "<b>Ritual: </b>" + QString::fromStdString(bool_to_yn((spell.ritual)));
     QString concentrationText = "<b>Concentration: </b>" + QString::fromStdString(bool_to_yn(spell.concentration));
     QString levelText = "<b>Level: </b>" + QString::fromStdString(std::to_string(spell.level));
-    QString rangeText = "<b>Range: </b>" + QString::fromStdString(spell.range);
+    QString rangeText = "<b>Distance: </b>" + QString::fromStdString(spell.range);
     QString descTitleText = "<b>Description:</b>";
     QString descriptionText = QString::fromStdString(spell.description + "\n\n" + spell.higherLevel);
     QString durationText = "<b>Duration: </b>" + QString::fromStdString(spell.duration);

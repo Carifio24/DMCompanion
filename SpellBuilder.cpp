@@ -6,7 +6,7 @@ SpellBuilder& SpellBuilder::set_name(const std::string& name) { this->name = nam
 SpellBuilder& SpellBuilder::set_description(const std::string& description) { this->description = description; return this; }
 SpellBuilder& SpellBuilder::set_higher_level(const std::string& higher_level) { this->higher_level = higher_level; return this; }
 SpellBuilder& SpellBuilder::set_page(const int& page) { this->page = page; return this; }
-SpellBuilder& SpellBuilder::set_range(const Range& range) { this->range = range; return this; }
+SpellBuilder& SpellBuilder::set_range(const Distance& range) { this->range = range; return this; }
 SpellBuilder& SpellBuilder::set_components(const std::array<bool,3>& components) { this->components = components; return this; }
 SpellBuilder& SpellBuilder::set_material(const std::string& material) { this->material = material; return this; }
 SpellBuilder& SpellBuilder::set_ritual(const bool& ritual) { this->ritual = ritual; return this; }
@@ -28,7 +28,7 @@ void SpellBuilder::reset() {
     description.clear();
     higher_level.clear();
     page = 0;
-    range = Range();
+    range = Distance();
     components = { false, false, false };
     material.clear();
     ritual = false;

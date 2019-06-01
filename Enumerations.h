@@ -34,7 +34,7 @@ enum class School: int {
 };
 
 enum class CasterClass: int {
-	Bard=0, Cleric, Druid, Paladin, Ranger, Sorcerer, Warlock, Wizard, ArcaneTrickster, EldritchKnight
+	Bard=0, Cleric, Druid, Paladin, Distancer, Sorcerer, Warlock, Wizard, ArcaneTrickster, EldritchKnight
 };
 
 enum class Subclass: int {

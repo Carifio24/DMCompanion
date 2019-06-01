@@ -16,7 +16,7 @@ const std::map<CasterClass,std::string> casterNames = {
     {CasterClass::Cleric, "Cleric"},
     {CasterClass::Druid, "Druid"},
     {CasterClass::Paladin, "Paladin"},
-    {CasterClass::Ranger, "Ranger"},
+    {CasterClass::Distancer, "Distancer"},
     {CasterClass::Sorcerer, "Sorcerer"},
     {CasterClass::Warlock, "Warlock"},
     {CasterClass::Wizard, "Wizard"}

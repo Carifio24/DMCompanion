@@ -1,10 +1,10 @@
 #include "LengthUnit.h"
-#include "Range.h"
+#include "Distance.h"
 
 #include <iostream>
 
 using namespace DnD;
 
 int main() {
-    Range r(DnD::RangeType::Self, 0, LengthUnits::Foot, "Self");
+    Distance r(DnD::DistanceType::Self, 0, LengthUnits::Foot, "Self");
 }

@@ -1,4 +1,4 @@
-#include "Range.h"
+#include "Distance.h"
 #include "StringHelpers.h"
 #include "EnumHelpers.hpp"
 
@@ -6,9 +6,9 @@
 
 namespace DnD {
 
-const std::vector<std::string> Range::typeNames = { "Special", "Self", "Touch", "Sight", "Ranged", "Unlimited" };
+const std::vector<std::string> Distance::typeNames = { "Special", "Self", "Touch", "Sight", "Distanced", "Unlimited" };
 
-std::string Range::string() const {
+std::string Distance::string() const {
     if (!_str.empty()) {
         return _str;
     }
@@ -17,7 +17,7 @@ std::string Range::string() const {
             return "Touch";
         case Special:
             return "Special";
-        case RangeType::Unlimited:
+        case DistanceType::Unlimited:
             return "Unlimited";
         case Sight:
             return "Sight";
@@ -28,7 +28,7 @@ std::string Range::string() const {
                 return "Self";
             }
         }
-        case Ranged: {
+        case Distanced: {
             std::string ft = (_value == 1) ? std::string(LengthUnits::Foot.name()) : std::string(LengthUnits::Foot.plural_name());
             return _value + " " + ft;
         }
@@ -37,19 +37,19 @@ std::string Range::string() const {
     }
 }
 
-Range Range::fromString(const std::string& s) {
+Distance Distance::fromString(const std::string& s) {
     if (starts_with(s, typeNames[*Touch])) {
-        return Range(Touch, 0, LengthUnits::Foot, s);
+        return Distance(Touch, 0, LengthUnits::Foot, s);
     } else if (starts_with(s, typeNames[*Special])) {
-        return Range(Special, 0, LengthUnits::Foot, s);
+        return Distance(Special, 0, LengthUnits::Foot, s);
     } else if (starts_with(s, typeNames[*Sight])) {
-        return Range(Sight, 0, LengthUnits::Foot, s);
+        return Distance(Sight, 0, LengthUnits::Foot, s);
     } else if (starts_with(s, typeNames[*Unlimited])) {
-        return Range(Unlimited, 0, LengthUnits::Foot, s);
+        return Distance(Unlimited, 0, LengthUnits::Foot, s);
     } else if (starts_with(s, typeNames[*Self])) {
         std::vector<std::string> s_split = split(s, " ", 2);
         if (s_split.size() == 1) {
-            return Range(Self, 0, LengthUnits::Foot, s);
+            return Distance(Self, 0, LengthUnits::Foot, s);
         } else {
             std::string dist_str = s_split[1];
             if (!starts_with(dist_str, "(") && !ends_with(s, ")")) {
@@ -58,12 +58,12 @@ Range Range::fromString(const std::string& s) {
             dist_str = dist_str.substr(1, dist_str.size() - 2);
             std::vector<std::string> dist_split = split(dist_str, " ");
             int length = std::stoi(dist_split[0]);
-            return Range(Self, length, LengthUnit::fromString(dist_split[1]), s);
+            return Distance(Self, length, LengthUnit::fromString(dist_split[1]), s);
         }
     } else {
         std::vector<std::string> s_split = split(s, " ");
         int length = std::stoi(s_split[0]);
-        return Range(Ranged, length, LengthUnit::fromString(s_split[1]), s);
+        return Distance(Distanced, length, LengthUnit::fromString(s_split[1]), s);
     }
 }
 
