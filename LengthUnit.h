@@ -17,15 +17,13 @@ class LengthUnit : public Unit {
         static const LengthUnit& fromString(const std::string& s);   
 
     private:
-        constexpr LengthUnit(const int& ft, const char* nm, const char* pnm, const char* ab) : Unit(ft, nm, pnm, ab) { }
+        constexpr LengthUnit(const int& ft, const std::string_view& nm, const std::string_view& pnm, const std::string_view& ab) : Unit(ft, nm, pnm, ab) { }
 
 };
 
-struct LengthUnit::Instances {
-    static inline constexpr const LengthUnit Foot{1, "foot", "feet", "ft"};
-    static inline constexpr const LengthUnit Mile{5280, "mile", "miles", "mi"};
-    static const std::vector<const LengthUnit*> instances;
-
+struct LengthUnit::Instances : public Unit::Instances {
+    static inline constexpr const LengthUnit Foot{1, "foot"sv, "feet"sv, "ft"sv};
+    static inline constexpr const LengthUnit Mile{5280, "mile"sv, "miles"sv, "mi"sv};
 };
 
 using LengthUnits = LengthUnit::Instances;
