@@ -1,5 +1,5 @@
-#ifndef RANGE_H
-#define RANGE_H
+#ifndef DISTANCE_H
+#define DISTANCE_H
 
 #include "LengthUnit.h"
 #include "Quantity.hpp"

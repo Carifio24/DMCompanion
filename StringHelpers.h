@@ -9,6 +9,8 @@ namespace DnD {
 bool starts_with(const std::string& test, const std::string& prefix);
 bool ends_with(const std::string& test, const std::string& prefix);
 std::vector<std::string> split(std::string s, const std::string& dlm, int n_pieces=-1);
+void to_lowercase(std::string& s);
+std::string lowercase(const std::string& s);
 
 } // end namespace DnD
 

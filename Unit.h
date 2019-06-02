@@ -15,7 +15,7 @@ class Unit : public NamedEnum<Unit> {
 
     protected:
 
-        constexpr Unit(const int& value, const std::string_view& name, const std::string_view& pl_name, const std::string_view& abbr) : NamedEnum(value, name), _pl_name(pl_name), _abbr(abbr) {}
+        constexpr Unit(const int& value, const std::string_view& name, const std::string_view& pl_name, const std::string_view& abbr) : NamedEnum<Unit>(value, name), _pl_name(pl_name), _abbr(abbr) {}
 
         const std::string_view _pl_name;
         const std::string_view _abbr;

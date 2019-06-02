@@ -34,15 +34,11 @@ enum class School: int {
 };
 
 enum class CasterClass: int {
-	Bard=0, Cleric, Druid, Paladin, Distancer, Sorcerer, Warlock, Wizard, ArcaneTrickster, EldritchKnight
+	Bard=0, Cleric, Druid, Paladin, Ranger, Sorcerer, Warlock, Wizard, ArcaneTrickster, EldritchKnight
 };
 
 enum class Subclass: int {
 	Land=0, Lore, Draconic, Hunter, Life, Devotion, Berserker, Evocation, Fiend, Thief, OpenHand
-};
-
-enum class Sourcebook: int {
-    PlayersHandbook=0, XanatharsGTE, SwordCoastAG
 };
 
 /***** For characters and monsters *****/
@@ -53,10 +49,6 @@ enum class Size: int {
 
 enum class CreatureType: int {
     Aberration=0, Beast, Celestial, Construct, Dragon, Elemental, Fey, Fiend, Giant, Humanoid, Monstrosity, Ooze, Plant, Undead
-};
-
-enum class SpeedType: int {
-    Walking=0, Burrow, Climb, Fly, Swim
 };
 
 enum class Sense: int {

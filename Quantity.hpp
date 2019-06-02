@@ -10,7 +10,7 @@
 
 // Note that the UnitType member is a reference
 // This ensures that there is no copying of the UnitType instances
-template <typename QuantityType, typename UnitType, typename = std::enable_if_t<std::is_enum_v<QuantityType> >, typename = std::enable_if_t<std::is_base_of_v<Unit, UnitType> > >
+template <typename QuantityType, typename UnitType>
 class Quantity {
 
     public:

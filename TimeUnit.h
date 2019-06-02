@@ -1,24 +1,30 @@
 #ifndef TIME_UNIT_H
 #define TIME_UNIT_H
 
-#include "Unit.h"
+#include "NamedEnum.h"
 
 #include <vector>
 
 namespace DnD {
 
-class TimeUnit : public Unit {
+class TimeUnit : public NamedEnum<TimeUnit> {
 
     public:
 
         // The class instances
         struct Instances;
 
-        // Get an instance from a string
-        static const TimeUnit& fromString(const std::string& s);
+        // Get member values
+        inline constexpr int in_seconds() const noexcept { return _value; }
+        inline constexpr std::string_view plural_name() const noexcept { return _pl_name; }
+        inline constexpr std::string_view abbreviation() const noexcept { return _abbr; }
 
     private:
-        constexpr TimeUnit(const int& sec, const char* nm, const char* pnm, const char* ab) : Unit(sec, nm, pnm, ab) { }
+       constexpr TimeUnit(const int& t, const std::string_view& name, const std::string_view& pl_name, const std::string_view& abbr) : NamedEnum<TimeUnit>(name), _value(t), _pl_name(pl_name), _abbr(abbr) {}
+
+        const int _value;
+        const std::string_view _pl_name;
+        const std::string_view _abbr;
 };
 
 struct TimeUnit::Instances {
@@ -28,7 +34,7 @@ struct TimeUnit::Instances {
     static inline constexpr const TimeUnit Hour{60*60, "hour"sv, "hours"sv, "hr"sv};
     static inline constexpr const TimeUnit Day{24*60*60, "day"sv, "days"sv, "dy"sv};
     static inline constexpr const TimeUnit Year{365*24*60*60, "year"sv, "years"sv, "yr"sv};
-    static const std::vector<const TimeUnit*> instances;
+    static inline constexpr const TimeUnit* instances[] = { &Second, &Round, &Minute, &Hour, &Day, &Year};
 };
 
 using TimeUnits = TimeUnit::Instances;

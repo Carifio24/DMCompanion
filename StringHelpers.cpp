@@ -53,4 +53,20 @@ std::vector<std::string> split(std::string s, const std::string& dlm, int n_piec
 
 }
 
+void to_lowercase(std::string& s) {
+    std::transform(s.begin(), s.end(), s.begin(), ::tolower);
+}
+
+std::string lowercase(const std::string& s) {
+    std::string t;
+    t.reserve(s.size());
+    std::transform(s.begin(), s.end(), t.begin(), ::tolower);
+}
+
+std::string capitalized(std::string s) {
+    char firstLetter = s[0];
+    s[0] = std::toupper(firstLetter);
+    return s;
+}
+
 } // end namespace DnD

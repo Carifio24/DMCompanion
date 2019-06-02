@@ -16,6 +16,9 @@ class SpellBuilder {
 
     public:
 
+        // Constructor
+        SpellBuilder() {}
+
         // Setter methods
         SpellBuilder& set_name(const std::string& name);
         SpellBuilder& set_description(const std::string& description);

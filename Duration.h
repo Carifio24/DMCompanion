@@ -4,6 +4,8 @@
 #include "TimeUnit.h"
 #include "Quantity.hpp"
 
+#include <vector>
+
 namespace DnD {
 
 enum DurationType { Special=0, Instantaneous, Spanning, UntilDispelled };

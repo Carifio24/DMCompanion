@@ -14,15 +14,14 @@ class Speed {
 
         // Get member values
         Distance distance_per_round() const noexcept { return _dist; }
-        SpeedType type() const noexcept { return _type; }
-
-        static Speed fromString(const std::string& s);
+        SpeedType& type() const noexcept { return _type; }
 
     private:
 
         // Member values
+        // As speeds are always given as distance / round, a Speed consists of a distance and a speed type
         Distance _dist;
-        SpeedType _type;
+        SpeedType& _type;
 };
 
 } // end namespace DnD
