@@ -6,15 +6,13 @@
 
 namespace DnD {
 
-const std::vector<std::string> Distance::typeNames = { "Special", "Self", "Touch", "Sight", "Distanced", "Unlimited" };
-
 std::string Distance::string() const {
     if (!_str.empty()) {
         return _str;
     }
     switch (_type) {
         case Touch:
-            return "Touch";
+            return Touch.name();
         case Special:
             return "Special";
         case DistanceType::Unlimited:
@@ -37,7 +35,7 @@ std::string Distance::string() const {
     }
 }
 
-Distance Distance::fromString(const std::string& s) {
+Distance Distance::from_string(const std::string& s) {
     if (starts_with(s, typeNames[*Touch])) {
         return Distance(Touch, 0, LengthUnits::Foot, s);
     } else if (starts_with(s, typeNames[*Special])) {

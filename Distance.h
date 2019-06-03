@@ -8,8 +8,6 @@
 
 namespace DnD {
 
-enum DistanceType { Special=0, Self, Touch, Sight, Distanced, Unlimited };
-
 class Distance : public Quantity<DistanceType, LengthUnit> {
 
     public:
@@ -21,10 +19,8 @@ class Distance : public Quantity<DistanceType, LengthUnit> {
         // Methods
         int length_in_feet() const noexcept { return base_value(); }
         std::string string() const;
-        static Distance fromString(const std::string& s);
+        static Distance from_string(const std::string& s);
 
-        // Constant vector of names
-        static const std::vector<std::string> typeNames;
 
 };
 

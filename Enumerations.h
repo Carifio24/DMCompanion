@@ -29,14 +29,6 @@ enum class Condition: int {
 
 /***** For spells *****/
 
-enum class School: int {
-	Abjuration=0, Conjuration, Divination, Enchantment, Evocation, Illusion, Necromancy, Transmutation
-};
-
-enum class CasterClass: int {
-	Bard=0, Cleric, Druid, Paladin, Ranger, Sorcerer, Warlock, Wizard, ArcaneTrickster, EldritchKnight
-};
-
 enum class Subclass: int {
 	Land=0, Lore, Draconic, Hunter, Life, Devotion, Berserker, Evocation, Fiend, Thief, OpenHand
 };

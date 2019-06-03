@@ -15,8 +15,8 @@ SpellBuilder& SpellBuilder::set_concentration(const bool& concentration) { this-
 SpellBuilder& SpellBuilder::set_casting_time(const std::string& casting_time) { this->casting_time = casting_time; return this; }
 SpellBuilder& SpellBuilder::set_level(const int& level) { this->level = level; return this; }
 SpellBuilder& SpellBuilder::set_school(const School& school) { this->school = school; return this; }
-SpellBuilder& SpellBuilder::set_classes(const std::vector<std::string>& classes) { this->classes = classes; return this; }
-SpellBuilder& SpellBuilder::set_subclasses(const std::vector<std::string>& subclasses) { this->subclasses = subclasses; return this; }
+SpellBuilder& SpellBuilder::set_classes(const std::vector<CasterClass* const>& classes) { this->classes = classes; return this; }
+SpellBuilder& SpellBuilder::set_subclasses(const std::vector<Subclass>& subclasses) { this->subclasses = subclasses; return this; }
 SpellBuilder& SpellBuilder::set_sourcebook(const Sourcebook& sourcebook) { this->sourcebook = sourcebook; return this; }
 
 Spell SpellBuilder::build() const {
@@ -36,10 +36,10 @@ void SpellBuilder::reset() {
     concentration = false;
     casting_time.clear();
     level = 0;
-    school = School::Abjuration;
+    school = &Schools::Abjuration;
     classes.clear();
     subclasses.clear();
-    sourcebook = Sourcebook::PlayersHandbook;
+    sourcebook = &Sourcebooks::PlayersHandbook;
 }
 
 Spell SpellBuilder::build_and_reset() {

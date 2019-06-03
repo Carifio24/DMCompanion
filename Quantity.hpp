@@ -4,8 +4,8 @@
 #include <string>
 #include <type_traits>
 
-// Note that the UnitType member is a reference
-// This ensures that there is no copying of the UnitType instances
+// Note that the UnitType and QuantityType members are references
+// This ensures that there is no copying of these instances
 template <typename QuantityType, typename UnitType>
 class Quantity {
 
@@ -35,7 +35,7 @@ class Quantity {
         int base_value() const noexcept { return _value * _unit.value(); }
 
         // Member values
-        const QuantityType _type;
+        const QuantityType& _type;
         const int _value;
         const UnitType& _unit;
         const std::string _str;

@@ -34,7 +34,7 @@ struct TimeUnit::Instances {
     static inline constexpr const TimeUnit Hour{60*60, "hour"sv, "hours"sv, "hr"sv};
     static inline constexpr const TimeUnit Day{24*60*60, "day"sv, "days"sv, "dy"sv};
     static inline constexpr const TimeUnit Year{365*24*60*60, "year"sv, "years"sv, "yr"sv};
-    static inline constexpr const TimeUnit* instances[] = { &Second, &Round, &Minute, &Hour, &Day, &Year};
+    static inline constexpr const TimeUnit* const instances[] = { &Second, &Round, &Minute, &Hour, &Day, &Year};
 };
 
 using TimeUnits = TimeUnit::Instances;

@@ -33,8 +33,8 @@ class SpellBuilder {
         SpellBuilder& set_casting_time(const std::string& casting_time);
         SpellBuilder& set_level(const int& level);
         SpellBuilder& set_school(const School& school);
-        SpellBuilder& set_classes(const std::vector<std::string>& classes);
-        SpellBuilder& set_subclasses(const std::vector<std::string>& subclasses);
+        SpellBuilder& set_classes(const std::vector<CasterClass* const>& classes);
+        SpellBuilder& set_subclasses(const std::vector<Subclass>& subclasses);
         SpellBuilder& set_sourcebook(const Sourcebook& sourcebook);
 
         // Building methods
@@ -57,10 +57,10 @@ class SpellBuilder {
         bool concentration;
         std::string casting_time;
         int level;
-        School school = School::Abjuration;
-        std::vector<CasterClass> classes;
+        School& school = &Schools::Abjuration;
+        std::vector<CasterClass* const> classes;
         std::vector<Subclass> subclasses;
-        Sourcebook& sourcebook = Sourcebook::PlayersHandbook;
+        Sourcebook& sourcebook = &Sourcebooks::PlayersHandbook;
 };
 
 } // end namespace DnD

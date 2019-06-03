@@ -29,7 +29,7 @@ class LengthUnit : public NamedEnum<LengthUnit> {
 struct LengthUnit::Instances {
     static inline constexpr const LengthUnit Foot{1, "foot"sv, "feet"sv, "ft"sv};
     static inline constexpr const LengthUnit Mile{5280, "mile"sv, "miles"sv, "mi"sv};
-    static inline constexpr const LengthUnit* instances[] = { &Foot, & Mile };
+    static inline constexpr const LengthUnit* const instances[] = { &Foot, & Mile };
 };
 
 using LengthUnits = LengthUnit::Instances;

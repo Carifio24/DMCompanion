@@ -11,15 +11,21 @@ class DurationType : public NamedEnum<DurationType> {
         // The class instances
         struct Instances;
 
-        // Get an instance from a string
-        static const DurationType& fromString(const std::string& s);
-
     private:
         // Constructor
-        constexpr DurationType(const int& secs, const std::string_view& name) : NamedEnum(secs, name);
+        constexpr DurationType(const std::string_view& name) : NamedEnum(name);
 
 };
 
+struct DurationType::Instances {
+    static inline constexpr const DurationType Special{"Special"};
+    static inline constexpr const DurationType Instantaneous{"Instantaneous"};
+    static inline constexpr const DurationType Spanning{"Spanning"};
+    static inline constexpr const DurationType UntilDispelled{"Until dispelled"};
+    static inline constexpr const DurationType* const instances[] = { &Special, &Instantaneous, &Spanning, &UntilDispelled };
+};
+
+using DurationTypes = DurationType::Instances;
 
 } // end namespace DnD
 

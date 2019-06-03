@@ -14,9 +14,9 @@ class Sourcebook : public NamedEnum<Sourcebook> {
 
         inline constexpr std::string_view abbreviation() const noexcept { return _abbr; }
 
-        inline static const Sourcebook& fromAbbreviation(std::string s) { 
+        static const Sourcebook& from_abbreviation(std::string s) { 
             const std::function<void(std::string& s)> make_upper = [](std::string& s) { std::transform(s.begin(), s.end(), s.begin(), ::toupper); };
-            return fromMember(s, &Sourcebook::_abbr, make_upper);
+            return from_member(s, &Sourcebook::abbreviation, make_upper);
         }
 
     private:
@@ -28,7 +28,7 @@ struct Sourcebook::Instances {
     static inline constexpr const Sourcebook PlayersHandbook{"Player's Handbook"sv, "PHB"sv};
     static inline constexpr const Sourcebook XanatharsGTE{"Xanathar's Guide to Everything"sv, "XGE"sv};
     static inline constexpr const Sourcebook SwordCoastAG{"Sword Coast Adventurer's Guide"sv, "SCAG"sv};
-    static inline constexpr const Sourcebook* instances[] = { &PlayersHandbook, &XanatharsGTE, &SwordCoastAG };
+    static inline constexpr const Sourcebook* const instances[] = { &PlayersHandbook, &XanatharsGTE, &SwordCoastAG };
 };
 
 using Sourcebooks = Sourcebook::Instances;
