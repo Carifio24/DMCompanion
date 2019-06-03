@@ -60,7 +60,7 @@ class SpellBuilder {
         School school = School::Abjuration;
         std::vector<CasterClass> classes;
         std::vector<Subclass> subclasses;
-        Sourcebook sourcebook = Sourcebook::PlayersHandbook;
+        Sourcebook& sourcebook = Sourcebook::PlayersHandbook;
 };
 
 } // end namespace DnD

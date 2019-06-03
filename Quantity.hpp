@@ -4,10 +4,6 @@
 #include <string>
 #include <type_traits>
 
-// The template types have the following restraints
-// QuantityType must be an enumeration
-// UnitType must be a subclass of Unit
-
 // Note that the UnitType member is a reference
 // This ensures that there is no copying of the UnitType instances
 template <typename QuantityType, typename UnitType>
@@ -36,7 +32,7 @@ class Quantity {
     protected:
 
         // For use by subclasses
-        int base_value() const { return _value * _unit.value(); }
+        int base_value() const noexcept { return _value * _unit.value(); }
 
         // Member values
         const QuantityType _type;

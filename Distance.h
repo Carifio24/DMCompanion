@@ -19,7 +19,7 @@ class Distance : public Quantity<DistanceType, LengthUnit> {
         Distance() : Distance(Self, 0, LengthUnits::Foot) {}
 
         // Methods
-        int length_in_feet() const { return base_value(); }
+        int length_in_feet() const noexcept { return base_value(); }
         std::string string() const;
         static Distance fromString(const std::string& s);
 

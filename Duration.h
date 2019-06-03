@@ -19,7 +19,7 @@ class Duration : public Quantity<DurationType, TimeUnit> {
         Duration() : Duration(Instantaneous, 0, TimeUnits::Second) {}
 
         // Methods
-        int time_in_seconds() const { return base_value(); }
+        int time_in_seconds() const noexcept { return base_value(); }
         std::string string() const;
         static Duration fromString(const std::string& s);
 

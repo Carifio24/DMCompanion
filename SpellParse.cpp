@@ -31,23 +31,26 @@ Spell parse_spell(const Json::Value& root, const SpellBuilder& b) {
     std::vector<std::string> pdata = split(root["page"].asString(), " ", 2);
     b.set_page(std::stoi(pdata[1]));
     std::string bookCode = pdata[0];
-    boost::to_upper(bookCode);
-    spell.sourcebook = enum_from_name<Sourcebook>(sourcebookCodes, bookCode);
-    spell.range = root["range"].asString();
-    spell.castingTime = root["casting_time"].asString();
-    spell.level = root["level"].asInt();
-    spell.duration = root["duration"].asString();
-    if (boost::starts_with(spell.duration, "Up to")) {
-        spell.concentration = true;
+    auto sourcebook = Sourcebook::fromAbbreviation(bookCode);
+    b.set_sourcebook(sourcebook);
+    Distance range = Distance::fromString(root["range"].asString())
+    b.set_range(range);
+    b.set_casting_time(root["casting_time"].asString());
+    b.set_level(root["level"].asInt());
+    std::string durationStr = root["duration"].asString();
+    Duration duration = Duration::fromString(durationStr);
+    b.set_duration(duration);
+    if (boost::starts_with(sdurationStr, "Up to")) {
+        b.set_concentration(true);
     } else if (root.isMember("concentration")) {
-        spell.concentration = yn_to_bool(root["concentration"].asString());
+        b.set_concentration(yn_to_bool(root["concentration"].asString()));
     } else {
-        spell.concentration = false;
+        b.set_concentration(false);
     }
     if (root.isMember("ritual")) {
-        spell.ritual = yn_to_bool(root["ritual"].asString());
+        b.set_ritual(yn_to_bool(root["ritual"].asString()));
     } else {
-        spell.ritual = false;
+        b.set_ritual(false);
     }
 
 	// Get the spell's description
@@ -68,18 +71,18 @@ Spell parse_spell(const Json::Value& root, const SpellBuilder& b) {
     //boost::replace_all(desc, "â€“", "—");
     //boost::replace_all(desc, "â€œ", "\"");
     //boost::replace_all(desc, "â€�", "\"");
-	spell.description = desc;
+	b.set_description(desc);
 
 	// Get the spell components
-	spell.components = components(root["components"]);
+	b.set_componentss(components(root["components"]));
 
 	// Get the material component description, if required
 	if (spell.components[2]) {
 		std::string mat = root["material"].asString();
         //boost::replace_all(mat, "â€™", "\'");
-		spell.material = mat;
+		b.set_material(mat);
 	} else {
-		spell.material = "";
+		b.set_material("");
 	}
 
 	// Get the school
