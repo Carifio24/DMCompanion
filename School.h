@@ -44,7 +44,7 @@ struct School::Instances {
     static inline constexpr const School* const instances[] = { &Abjuration, &Conjuration, &Divination, &Enchantment, &Evocation, &Illusion, &Necromancy, &Transmutation };
 };
 
-using Schools = Schools::Instances;
+using Schools = School::Instances;
 
 } // end namespace DnD
 

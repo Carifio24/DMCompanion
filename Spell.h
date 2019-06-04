@@ -2,6 +2,11 @@
 #define SPELL_H
 
 #include "Enumerations.h"
+#include "Duration.h"
+#include "Sourcebook.h"
+#include "School.h"
+#include "Distance.h"
+#include "CasterClass.h"
 
 #include <string>
 #include <array>
@@ -26,9 +31,9 @@ class Spell {
         bool concentration() const noexcept { return _concentration; }
         std::string casting_time() const noexcept { return _casting_time; }
         int level() const noexcept { return _level; }
-        School school() const noexcept { return _school; }
-        Sourcebook sourcebook() const noexcept { return _sourcebook; }
-        std::vector<CasterClass> classes() const noexcept { return _classes; }
+        const School& school() const noexcept { return _school; }
+        const Sourcebook& sourcebook() const noexcept { return _sourcebook; }
+        std::vector<CasterClass* const> classes() const noexcept { return _classes; }
 
         // Other methods
         std::string components_string() const;
@@ -55,12 +60,11 @@ class Spell {
         const bool _favorite;
         const School& _school;
         const Sourcebook& _sourcebook;
-        const std::vector<CasterClass&> _classes;
-        const std::vector<Subclass> _subclasses;
+        const std::vector<CasterClass* const> _classes;
 
         // Constructor
-        Spell(const std::string& name, const std::string& description, const std::string& higher_level, const int& page, const Distance& range, const std::array<bool,3>& components, const std::string& material, const bool& ritual, const Duration& duration, const bool& concentration, const std::string& casting_time, const int& level, const School& school, const std::vector<CasterClass&>& classes, const std::vector<Subclass>& subclasses, const Sourcebook& sourcebook)
-        : _name(name), _description(description), _higher_level(higher_level), _page(page), _range(range), _components(components), _material(material), _ritual(ritual), _duration(duration), _concentration(concentration), _casting_time(casting_time), _level(level), _school(school), _classes(classes), _subclasses(subclasses), _sourcebook(sourcebook) {}
+        Spell(const std::string& name, const std::string& description, const std::string& higher_level, const int& page, const Distance& range, const std::array<bool,3>& components, const std::string& material, const bool& ritual, const Duration& duration, const bool& concentration, const std::string& casting_time, const int& level, const School& school, const std::vector<CasterClass&>& classes, const Sourcebook& sourcebook)
+        : _name(name), _description(description), _higher_level(higher_level), _page(page), _range(range), _components(components), _material(material), _ritual(ritual), _duration(duration), _concentration(concentration), _casting_time(casting_time), _level(level), _school(school), _classes(classes), _sourcebook(sourcebook) {}
 
         friend class SpellBuilder;
 };

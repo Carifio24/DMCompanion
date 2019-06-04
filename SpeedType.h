@@ -1,6 +1,8 @@
 #ifndef SPEED_TYPE_H
 #define SPEED_TYPE_H
 
+#include "NamedEnum.h"
+
 class SpeedType : public NamedEnum<SpeedType> {
 
     public:

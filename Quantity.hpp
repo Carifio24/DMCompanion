@@ -21,12 +21,16 @@ class Quantity {
         UnitType unit_type() const noexcept { return _unit; }
         virtual std::string string() const = 0;
 
-        // Comparison operator
+        // Comparison operators
         bool operator<(const Quantity& other) const {
             if (_type == other._type) {
                 return base_value() < other.base_value();
             }
             return _type < other._type;
+        }
+
+        bool operator=(const Quantity& other) const {
+            return (_type == other._type) && (base_value() == other.base_value());
         }
 
     protected:

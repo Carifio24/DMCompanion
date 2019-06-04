@@ -9,6 +9,7 @@
 #include "SpellParse.h"
 #include "CasterClass.h"
 #include "StringHelpers.h"
+#include "Converters.h"
 
 namespace DnD {
 
@@ -101,10 +102,11 @@ Spell parse_spell(const Json::Value& root, SpellBuilder& b) {
     b.set_higher_level(hl_desc);
 
 	// Get the spell components
-	b.set_components(components(root[components_k]));
+    auto comps = components(root[components_k]);
+	b.set_components(comps);
 
 	// Get the material component description, if required
-	if (spell.components[2]) {
+	if (comps[2]) {
 		std::string mat = root[material_k].asString();
         //boost::replace_all(mat, "â€™", "\'");
 		b.set_material(mat);
@@ -129,18 +131,9 @@ Spell parse_spell(const Json::Value& root, SpellBuilder& b) {
         catch (Json::LogicError) {
             class_str = v.asString();
         }
-        classes.push_back(CasterClass::from_name(class_str));
+        classes.push_back(&CasterClass::from_name(class_str));
 	}
 	b.set_classes(classes);
-
-	// Get the subclasses
-	std::vector<Subclass> subclasses;
-    Json::Value subclassesJSON = root[subclasses_k];
-    subclasses.reserve(subclassesJSON.size());
-	for (const auto& v : subclassesJSON) {
-		subclasses.push_back(enum_from_name<Subclass>(subclassNames, v[name_k].asString()));
-	}
-	b.set_subclasses(subclasses);
 
 	Spell spell = b.build_and_reset();
     return spell;

@@ -1,5 +1,9 @@
 #include "StringHelpers.h"
 
+#include <cctype>
+#include <sstream>
+#include <algorithm>
+
 namespace DnD {
 
 bool starts_with(const std::string& test, const std::string& prefix) {
@@ -53,14 +57,24 @@ std::vector<std::string> split(std::string s, const std::string& dlm, int n_piec
 
 }
 
+std::string join(const std::vector<std::string>& pieces, const std::string& dlm) {
+    std::stringstream ss;
+    ss << pieces[0];
+    for (size_t i = 1; i < pieces.size(); ++i) {
+        ss << dlm << pieces[i];
+    }
+    std::string s = ss.str();
+    return s;
+}
+
 void to_lowercase(std::string& s) {
-    std::transform(s.begin(), s.end(), s.begin(), ::tolower);
+    std::transform(s.begin(), s.end(), s.begin(), std::tolower);
 }
 
 std::string lowercase(const std::string& s) {
     std::string t;
     t.reserve(s.size());
-    std::transform(s.begin(), s.end(), t.begin(), ::tolower);
+    std::transform(s.begin(), s.end(), t.begin(), std::tolower);
 }
 
 std::string capitalized(std::string s) {

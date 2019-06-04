@@ -5,7 +5,7 @@ namespace DnD {
 SpellBuilder& SpellBuilder::set_name(const std::string& name) { this->name = name; return this; }
 SpellBuilder& SpellBuilder::set_description(const std::string& description) { this->description = description; return this; }
 SpellBuilder& SpellBuilder::set_higher_level(const std::string& higher_level) { this->higher_level = higher_level; return this; }
-SpellBuilder& SpellBuilder::set_page(const int& page) { this->page = page; return this; }
+SpellBuilder& SpellBuilder::set_page(const int page) { this->page = page; return this; }
 SpellBuilder& SpellBuilder::set_range(const Distance& range) { this->range = range; return this; }
 SpellBuilder& SpellBuilder::set_components(const std::array<bool,3>& components) { this->components = components; return this; }
 SpellBuilder& SpellBuilder::set_material(const std::string& material) { this->material = material; return this; }
@@ -13,7 +13,7 @@ SpellBuilder& SpellBuilder::set_ritual(const bool& ritual) { this->ritual = ritu
 SpellBuilder& SpellBuilder::set_duration(const Duration& duration) { this->duration = duration; return this; }
 SpellBuilder& SpellBuilder::set_concentration(const bool& concentration) { this->concentration = concentration; return this; }
 SpellBuilder& SpellBuilder::set_casting_time(const std::string& casting_time) { this->casting_time = casting_time; return this; }
-SpellBuilder& SpellBuilder::set_level(const int& level) { this->level = level; return this; }
+SpellBuilder& SpellBuilder::set_level(const int level) { this->level = level; return this; }
 SpellBuilder& SpellBuilder::set_school(const School& school) { this->school = school; return this; }
 SpellBuilder& SpellBuilder::set_classes(const std::vector<CasterClass* const>& classes) { this->classes = classes; return this; }
 SpellBuilder& SpellBuilder::set_subclasses(const std::vector<Subclass>& subclasses) { this->subclasses = subclasses; return this; }

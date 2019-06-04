@@ -26,26 +26,6 @@
 
 // General-purpose methods
 
-bool yn_to_bool(const std::string& yn) {
-	if (yn == "no") {
-		return false;
-	}
-	else if (yn == "yes") {
-		return true;
-	}
-	else {
-		throw std::runtime_error("Invalid yes/no entry");
-	}
-}
-
-std::string bool_to_yn(const bool& yn) {
-	if (yn) {
-		return "yes";
-	} else {
-		return "no";
-	}
-}
-
 std::pair<int,Die> dice_from_string(const std::string& s) {
     std::vector<std::string> dice_vals = jstring::split(s, "d");
     int n_dice = std::stoi(dice_vals[0]);

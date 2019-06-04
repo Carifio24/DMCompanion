@@ -2,32 +2,35 @@
 #define ACTION_H
 
 #include "Enumerations.h"
+#include "DiceSet.h"
 
-#include <jsoncpp/json/json.h>
+namespace DnD {
 
 struct Action {
 
-    // Properties
-    std::string name;
-    std::string desc;
-    int attackBonus;
-    std::vector<std::pair<int, Die>> damageDice;
-    int damageBonus;
+    public:
 
-    // Constructors
-    Action(const std::string& name, const std::string& desc, const int& attackBonus, const std::vector<std::pair<int, Die>> damageDice, const int& damageBonus)
-        : name(name), desc(desc), attackBonus(attackBonus), damageDice(damageDice), damageBonus(damageBonus) {}
+        // Constructor
+        Action(const std::string& name, const std::string& desc, const int& atk_bonus, const DiceSet& dset, const int* dmg_bonus) :
+            _name(name), _desc(desc), _atk_bonus(atk_bonus), _dset(dset), _dmg_bonus(dmg_bonus) {}
 
-    // Default values for damageDice and damageBonus
-    Action(const std::string& name, const std::string& desc, const int& attackBonus) : Action(name, desc, attackBonus, {{0,Die::d4}}, 0) {}
-
-    // JSON constructor
-    Action(const Json::Value& root);
-
-    // Default constructor
-    Action() : Action("", "", 0) {}
-
+        // Get member values
+        std::string name() const noexcept { _name; }
+        std::string description() const noexcept { _desc; }
+        int attack_bonus() const noexcept { return _atk_bonus; }
+        DiceSet dice() const noexcept { return _dset; }
+        int damage_bonus() const noexcept { return _dmg_bonus; }
+        
+    private:
+        // Member values
+        const std::string _name;
+        const std::string _desc;
+        const int _atk_bonus;
+        const DiceSet _dset;
+        const int _dmg_bonus;
 
 };
+
+} // end namespace DnD
 
 #endif // ACTION_H

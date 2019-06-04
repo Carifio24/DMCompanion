@@ -4,7 +4,17 @@
 //#include <variant>
 #include <type_traits>
 
-#include "EnumHelpers.hpp"
+namespace DnD {
+
+/***  Get underlying value with operator*  ***/
+// For convenience, and to keep the code cleaner, we overload the dereferencing operator to get the value of an enum
+// So when you see something like *Tiny in the code, it's just getting the value of Tiny (i.e., 0)
+// This is mostly useful for enums where the value is actually meaningful (i.e. Die), but it's a nice option to have regardless
+// This is accomplished by casting the enum to its underlying type (note that the underlying type is declared for all of our enums)
+template <typename T, typename = std::enable_if_t<std::is_enum_v<T>> >
+constexpr decltype(auto) operator*(T e) noexcept {
+    return static_cast<std::underlying_type_t<T>>(e);
+}
 
 /***** Dice *****/
 
@@ -22,11 +32,6 @@ enum class MagicType: int {
     Any=0, Magical, Nonmagical
 };
 
-enum class Condition: int {
-    Blinded=0, Charmed, Deafened, Exhaustion, Fatigued, Frightened, Grappled, Incapacitated, Invisible, Paralyzed, Petrified, Poisoned, Prone, Restrained, Stunned, Unconscious
-};
-
-
 /***** For spells *****/
 
 enum class Subclass: int {
@@ -35,16 +40,8 @@ enum class Subclass: int {
 
 /***** For characters and monsters *****/
 
-enum class Size: int {
-    Tiny=0, Small, Medium, Large, Huge, Gargantuan
-};
-
 enum class CreatureType: int {
     Aberration=0, Beast, Celestial, Construct, Dragon, Elemental, Fey, Fiend, Giant, Humanoid, Monstrosity, Ooze, Plant, Undead
-};
-
-enum class Sense: int {
-    Blindsight=0, Darkvision, Tremorsense, Truesight
 };
 
 /***** For languages *****/
@@ -67,5 +64,6 @@ enum class ExoticLanguage: int {
 //const int EXOTIC_LANG_INDEX = 1;
 
 
+} // end namespace DnD
 
 #endif
