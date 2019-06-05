@@ -1,0 +1,23 @@
+[33mf2f69fe[m HEAD@{0}: commit: Renamed files to lowercase. Working on replacing references and pointers with reference_wrappers
+[33me17372d[m HEAD@{1}: reset: moving to HEAD~1
+[33mad8ff59[m HEAD@{2}: commit: Renamed files to lowercase. Working on replacing references and pointers with reference_wrappers
+[33me17372d[m HEAD@{3}: reset: moving to HEAD~1
+[33m832b0bd[m HEAD@{4}: commit: Renamed files to lowercase. Working on replacing references and pointers with reference_wrappers
+[33me17372d[m HEAD@{5}: reset: moving to HEAD~1
+[33ma0f7999[m HEAD@{6}: commit: Renamed files to lowercase. Working on replacing references and pointers with reference_wrappers
+[33me17372d[m HEAD@{7}: commit: More progress on classes
+[33m683cd07[m HEAD@{8}: commit: Still working on class setup
+[33m135a4ae[m HEAD@{9}: Fast forward branch master to branch master
+[33mdbb905b[m HEAD@{10}: commit: NamedEnum is now functional using a CRTP setup
+[33m28095e7[m HEAD@{11}: reset: moving to 28095e7f34c41955e0ae1a125e07c42842fe9322 [ae0f4e6b7660199d7b3b95cb22f60ce24d335037] [8848b227a3b97b9ec38d091afa791ef6f668e0a7]
+[33m688fe41[m HEAD@{12}: reset: moving to HEAD@{1}
+[33m7686240[m HEAD@{13}: reset: moving to HEAD~2
+[33m688fe41[m HEAD@{14}: commit: Removed .vscode
+[33mfa2c02b[m HEAD@{15}: commit: More progress on new classes
+[33m7686240[m HEAD@{16}: Fast forward branch master to branch master [6e14c426fa7f54d0941264dc2d0a7932b52a6c9f]
+[33m9609b60[m HEAD@{17}: Fast forward branch master to branch master
+[33mfd36094[m HEAD@{18}: commit: Starting work on Monster Manual section
+[33m2983366[m HEAD@{19}: Fast forward branch master to branch master [e8a36084f1a0d83510495f8b2aef73b76d639fc3]
+[33mab65763[m HEAD@{20}: commit: Working on filtering by sourcebook
+[33m15a0a33[m HEAD@{21}: commit: Changed Classes.h to Enumerations.h in files
+[33me1492e1[m HEAD@{22}: commit (initial): Initial commit
