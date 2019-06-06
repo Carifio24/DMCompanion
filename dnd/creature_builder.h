@@ -23,7 +23,7 @@ class CreatureBuilder {
         CreatureBuilder& set_challenge_rating(const Fraction& cr);
         CreatureBuilder& set_hit_points(const int hp);
         CreatureBuilder& set_speeds(const std::vector<Speed>& speeds);
-        CreatureBuilder& set_alternate_speeds(const std::vector<Speed>& alt_speeds);
+        CreatureBuilder& set_alternate_speeds(const std::vector<std::pair<Speed,std::string>>& alt_speeds);
 
         CreatureBuilder& set_strength(const int str);
         CreatureBuilder& set_dexterity(const int dex);
@@ -44,8 +44,8 @@ class CreatureBuilder {
         CreatureBuilder& set_damage_vulnerabilities(const std::vector<DamageInfo>& dmg_vuls);
         CreatureBuilder& set_damage_resistances(const std::vector<DamageInfo>& dmg_rsts);
         CreatureBuilder& set_damage_immunities(const std::vector<DamageInfo>& dmg_imns);
-        CreatureBuilder& set_condition_immunities(const std::vector<const Condition*>& cond_imns);
-        CreatureBuilder& set_senses(const std::vector<const Sense*>& senses);
+        CreatureBuilder& set_condition_immunities(const std::vector<std::reference_wrapper<const Condition>>& cond_imns);
+        CreatureBuilder& set_senses(const std::vector<Sense>& senses);
         CreatureBuilder& set_languages(const std::string& languages);
         CreatureBuilder& set_special_abilities(const std::vector<Ability>& spcl_abls);
         CreatureBuilder& set_actions(const std::vector<Action>& actions);
@@ -61,7 +61,7 @@ class CreatureBuilder {
 
         // General properties
         std::string name;
-        const Size* size = &Sizes::Medium;
+        std::reference_wrapper<const Size> size = std::cref(Sizes::Medium);
         std::string type;
         std::string subtype;
         std::string alignment;
@@ -94,8 +94,8 @@ class CreatureBuilder {
         std::vector<DamageInfo> dmg_vuls;
         std::vector<DamageInfo> dmg_rsts;
         std::vector<DamageInfo> dmg_imns;
-        std::vector<const Condition*> cond_imns;
-        std::vector<const Sense*> senses;
+        std::vector<std::reference_wrapper<const Condition>> cond_imns;
+        std::vector<Sense> senses;
         int pass_prcp;
         std::string languages; // For now
         std::vector<Ability> spcl_abls;

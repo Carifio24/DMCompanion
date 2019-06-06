@@ -17,7 +17,7 @@ class Speed {
 
         // Get member values
         Distance distance_per_round() const noexcept { return _dist; }
-        const SpeedType& type() const noexcept { return _type; }
+        const SpeedType& type() const noexcept { return _type.get(); }
 
         // Compare two speeds
         bool operator<(const Speed& other) const { return _dist < other._dist; }
@@ -29,7 +29,7 @@ class Speed {
         // Member values
         // As speeds are always given as distance / round, a Speed consists of a distance and a speed type
         Distance _dist;
-        std::reference_wrapper<SpeedType> _type;
+        std::reference_wrapper<const SpeedType> _type;
 };
 
 } // end namespace DnD

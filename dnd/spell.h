@@ -31,9 +31,9 @@ class Spell {
         bool concentration() const noexcept { return _concentration; }
         std::string casting_time() const noexcept { return _casting_time; }
         int level() const noexcept { return _level; }
-        const School& school() const noexcept { return _school; }
-        const Sourcebook& sourcebook() const noexcept { return _sourcebook; }
-        std::vector<CasterClass* const> classes() const noexcept { return _classes; }
+        const School& school() const noexcept { return _school.get(); }
+        const Sourcebook& sourcebook() const noexcept { return _sourcebook.get(); }
+        std::vector<std::reference_wrapper<CasterClass>> classes() const noexcept { return _classes; }
 
         // Other methods
         std::string components_string() const;
@@ -44,26 +44,26 @@ class Spell {
     private:
 
         // Member values
-        const int _index;
-        const std::string _name;
-        const std::string _description;
-        const std::string _higher_level;
-        const int _page;
-        const Distance _range;
-        const std::array<bool,3> _components;
-        const std::string _material;
-        const bool _ritual;
-        const Duration _duration;
-        const bool _concentration;
-        const std::string _casting_time;
-        const int _level;
-        const bool _favorite;
-        const School& _school;
-        const Sourcebook& _sourcebook;
-        const std::vector<CasterClass* const> _classes;
+        int _index;
+        std::string _name;
+        std::string _description;
+        std::string _higher_level;
+        int _page;
+        Distance _range;
+        std::array<bool,3> _components;
+        std::string _material;
+        bool _ritual;
+        Duration _duration;
+        bool _concentration;
+        std::string _casting_time;
+        int _level;
+        bool _favorite;
+        std::reference_wrapper<const School> _school;
+        std::reference_wrapper<const Sourcebook> _sourcebook;
+        std::vector<std::reference_wrapper<const CasterClass>> _classes;
 
         // Constructor
-        Spell(const std::string& name, const std::string& description, const std::string& higher_level, const int& page, const Distance& range, const std::array<bool,3>& components, const std::string& material, const bool& ritual, const Duration& duration, const bool& concentration, const std::string& casting_time, const int& level, const School& school, const std::vector<CasterClass&>& classes, const Sourcebook& sourcebook)
+        Spell(const std::string& name, const std::string& description, const std::string& higher_level, const int& page, const Distance& range, const std::array<bool,3>& components, const std::string& material, const bool& ritual, const Duration& duration, const bool& concentration, const std::string& casting_time, const int& level, const School& school, const std::vector<std::reference_wrapper<const CasterClass>>& classes, const Sourcebook& sourcebook)
         : _name(name), _description(description), _higher_level(higher_level), _page(page), _range(range), _components(components), _material(material), _ritual(ritual), _duration(duration), _concentration(concentration), _casting_time(casting_time), _level(level), _school(school), _classes(classes), _sourcebook(sourcebook) {}
 
         friend class SpellBuilder;

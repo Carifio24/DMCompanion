@@ -14,13 +14,14 @@ SpellBuilder& SpellBuilder::set_duration(const Duration& duration) { this->durat
 SpellBuilder& SpellBuilder::set_concentration(const bool& concentration) { this->concentration = concentration; return *this; }
 SpellBuilder& SpellBuilder::set_casting_time(const std::string& casting_time) { this->casting_time = casting_time; return *this; }
 SpellBuilder& SpellBuilder::set_level(const int level) { this->level = level; return *this; }
-SpellBuilder& SpellBuilder::set_school(const School& school) { this->school = &school; return *this; }
-SpellBuilder& SpellBuilder::set_classes(const std::vector<CasterClass* const>& classes) { this->classes = classes; return *this; }
-SpellBuilder& SpellBuilder::set_subclasses(const std::vector<Subclass>& subclasses) { this->subclasses = subclasses; return *this; }
-SpellBuilder& SpellBuilder::set_sourcebook(const Sourcebook& sourcebook) { this->sourcebook = &sourcebook; return *this; }
+SpellBuilder& SpellBuilder::set_school(const School& school) { this->school = std::cref(school); return *this; }
+SpellBuilder& SpellBuilder::set_classes(const std::vector<std::reference_wrapper<const CasterClass>>& classes) { this->classes = classes; return *this; }
+SpellBuilder& SpellBuilder::set_sourcebook(const Sourcebook& sourcebook) { this->sourcebook = std::cref(sourcebook); return *this; }
+
+SpellBuilder& SpellBuilder::add_class(const CasterClass& cc) { classes.push_back(std::cref(cc)); }
 
 Spell SpellBuilder::build() const {
-    return Spell(name, description, higher_level, page, range, components, material, ritual, duration, concentration, casting_time, level, *school, classes, subclasses, *sourcebook);
+    return Spell(name, description, higher_level, page, range, components, material, ritual, duration, concentration, casting_time, level, school, classes, sourcebook);
 }
 
 void SpellBuilder::reset() {
@@ -36,10 +37,9 @@ void SpellBuilder::reset() {
     concentration = false;
     casting_time.clear();
     level = 0;
-    school = &Schools::Abjuration;
+    school = std::cref(Schools::Abjuration);
     classes.clear();
-    subclasses.clear();
-    sourcebook = &Sourcebooks::PlayersHandbook;
+    sourcebook = std::cref(Sourcebooks::PlayersHandbook);
 }
 
 Spell SpellBuilder::build_and_reset() {

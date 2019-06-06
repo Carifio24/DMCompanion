@@ -39,10 +39,10 @@ class NamedEnum {
         constexpr bool operator<(const NamedEnum& other) const noexcept;
     
         // Create a value from a string
+        static const NEType& from_name(const std::string& s, const std::function<void(std::string&)>& transform);
         static const NEType& from_name(const std::string& s);
-        static const NEType& from_name(std::string s, const std::function<void(std::string&)>& transform);
-        static const NEType& from_lc_name(std::string s);
-        static const NEType& from_uc_name(std::string s);
+        static const NEType& from_lc_name(const std::string& s);
+        static const NEType& from_uc_name(const std::string& s);
 
         // Create a value from an arbitrary member
         // The first function allows an arbitrary transformation to be defined
@@ -80,8 +80,21 @@ constexpr bool NamedEnum<NEType>::operator<(const NamedEnum<NEType>& other) cons
 // Functions for returning a reference to a value from its name
 
 template <typename NEType>
-const NEType& NamedEnum<NEType>::from_name(const std::string& s) {
+const NEType& NamedEnum<NEType>::from_name(const std::string& s, const std::function<void(std::string&)>& transform) {
 
+    // Check whether the name agrees with any of the cases
+    std::string nm;
+    for (auto inst : NEType::Instances::instances) {
+        nm = inst->_name;
+        if ( s == transform(nm) ) {
+            return *inst;
+        }
+    }
+    throw std::runtime_error("Not a valid string");
+}
+
+template <typename NEType>
+const NEType& NamedEnum<NEType>::from_name(const std::string& s) {
     // Check whether the name agrees with any of the cases
     for (auto inst : NEType::Instances::instances) {
         if ( s == inst->_name ) {
@@ -92,21 +105,13 @@ const NEType& NamedEnum<NEType>::from_name(const std::string& s) {
 }
 
 template <typename NEType>
-const NEType& NamedEnum<NEType>::from_name(std::string s, const std::function<void(std::string&)>& transform) {
-
-    // Apply the transformation and call the default from_name
-    transform(s);
-    return from_name(s);
-}
-
-template <typename NEType>
-const NEType& NamedEnum<NEType>::from_lc_name(std::string s) {
+const NEType& NamedEnum<NEType>::from_lc_name(const std::string& s) {
     std::function<void(std::string&)> make_lc = [](std::string& s) { std::transform(s.begin(), s.end(), s.begin(), std::tolower); };
     return from_name(s, make_lc);
 }
 
 template <typename NEType>
-const NEType& NamedEnum<NEType>::from_uc_name(std::string s) {
+const NEType& NamedEnum<NEType>::from_uc_name(const std::string& s) {
     std::function<void(std::string&)> make_uc = [](std::string& s) { std::transform(s.begin(), s.end(), s.begin(), std::toupper); };
     return from_name(s, make_uc);
 }

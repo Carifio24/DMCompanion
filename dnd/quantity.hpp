@@ -5,8 +5,6 @@
 #include <functional>
 #include <type_traits>
 
-// Note that the UnitType and QuantityType members are references
-// This ensures that there is no copying of these instances
 template <typename QuantityType, typename UnitType>
 class Quantity {
 
@@ -17,9 +15,9 @@ class Quantity {
 
         // Get member values
         // Notice that string() is virtual
-        QuantityType quantity_type() const noexcept { return _type; }
+        QuantityType quantity_type() const noexcept { return _type.get(); }
         int value() const noexcept { return _value; }
-        UnitType unit_type() const noexcept { return _unit; }
+        UnitType unit_type() const noexcept { return _unit.get(); }
         virtual std::string string() const = 0;
 
         // Comparison operators
@@ -27,7 +25,7 @@ class Quantity {
             if (_type == other._type) {
                 return base_value() < other.base_value();
             }
-            return _type < other._type;
+            return _type .get()< other._type.get();
         }
 
         bool operator=(const Quantity& other) const {

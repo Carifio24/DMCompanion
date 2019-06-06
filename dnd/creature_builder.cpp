@@ -11,7 +11,7 @@ CreatureBuilder& CreatureBuilder::set_armor_class(const int ac) { this->ac = ac;
 CreatureBuilder& CreatureBuilder::set_challenge_rating(const Fraction& cr) { this->cr = cr; return *this; }
 CreatureBuilder& CreatureBuilder::set_hit_points(const int hp) { this->hp = hp; return *this; }
 CreatureBuilder& CreatureBuilder::set_speeds(const std::vector<Speed>& speeds) { this->speeds = speeds; return *this; }
-CreatureBuilder& CreatureBuilder::set_alternate_speeds(const std::vector<Speed>& alt_speeds) { this->alt_speeds = alt_speeds; return *this; }
+CreatureBuilder& CreatureBuilder::set_alternate_speeds(const std::vector<std::pair<Speed,std::string>>& alt_speeds) { this->alt_speeds = alt_speeds; return *this; }
 
 CreatureBuilder& CreatureBuilder::set_strength(const int str) { this->str = str; return *this; }
 CreatureBuilder& CreatureBuilder::set_dexterity(const int dex) { this->dex = dex; return *this; }
@@ -32,8 +32,8 @@ CreatureBuilder& CreatureBuilder::set_passive_perception(const int pass_prcp) { 
 CreatureBuilder& CreatureBuilder::set_damage_vulnerabilities(const std::vector<DamageInfo>& dmg_vuls) { this->dmg_vuls = dmg_vuls; return *this; }
 CreatureBuilder& CreatureBuilder::set_damage_resistances(const std::vector<DamageInfo>& dmg_rsts) { this->dmg_rsts = dmg_rsts; return *this; }
 CreatureBuilder& CreatureBuilder::set_damage_immunities(const std::vector<DamageInfo>& dmg_imns) { this->dmg_imns = dmg_imns; return *this; }
-CreatureBuilder& CreatureBuilder::set_condition_immunities(const std::vector<const Condition*>& cond_imns) { this->cond_imns = cond_imns; return *this; }
-CreatureBuilder& CreatureBuilder::set_senses(const std::vector<const Sense*>& senses) { this->senses = senses; return *this; }
+CreatureBuilder& CreatureBuilder::set_condition_immunities(const std::vector<std::reference_wrapper<const Condition>>& cond_imns) { this->cond_imns = cond_imns; return *this; }
+CreatureBuilder& CreatureBuilder::set_senses(const std::vector<Sense>& senses) { this->senses = senses; return *this; }
 CreatureBuilder& CreatureBuilder::set_languages(const std::string& languages) { this->languages = languages; return *this; }
 CreatureBuilder& CreatureBuilder::set_special_abilities(const std::vector<Ability>& spcl_abls) { this->spcl_abls = spcl_abls; return *this; }
 CreatureBuilder& CreatureBuilder::set_actions(const std::vector<Action>& actions) { this->actions = actions; return *this; }
@@ -41,12 +41,12 @@ CreatureBuilder& CreatureBuilder::set_legendary_actions(const std::vector<Action
 
 
 Creature CreatureBuilder::build() const {
-    return Creature(name, *size, type, subtype, alignment, cr, ac, hp, speeds, alt_speeds, str, dex, con, intl, wis, chr, str_sv, dex_sv, con_sv, int_sv, wis_sv, chr_sv, prcp, dmg_vuls, dmg_rsts, dmg_imns, cond_imns, senses, pass_prcp, languages, spcl_abls, actions, leg_actions);
+    return Creature(name, size, type, subtype, alignment, cr, ac, hp, speeds, alt_speeds, str, dex, con, intl, wis, chr, str_sv, dex_sv, con_sv, int_sv, wis_sv, chr_sv, prcp, dmg_vuls, dmg_rsts, dmg_imns, cond_imns, senses, pass_prcp, languages, spcl_abls, actions, leg_actions);
 }
 
 void CreatureBuilder::reset() {
     name.clear();
-    size = &Sizes::Medium;
+    size = std::cref(Sizes::Medium);
     type.clear();
     subtype.clear();
     alignment.clear();
