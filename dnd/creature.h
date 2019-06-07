@@ -6,6 +6,7 @@
 
 #include "size.h"
 #include "action.h"
+#include "legendary_action.h"
 #include "ability.h"
 #include "sense.h"
 #include "damage_info.h"
@@ -57,7 +58,7 @@ class Creature {
         std::vector<Sense> senses() const noexcept { return _senses; }
         std::vector<Ability> special_abilities() const noexcept { return _spcl_abls; }
         std::vector<Action> actions() const noexcept { return _actions; }
-        std::vector<Action> legendary_actions() const noexcept { return _leg_actions; }
+        std::vector<LegendaryAction> legendary_actions() const noexcept { return _leg_actions; }
 
 
         // Properties
@@ -79,6 +80,7 @@ class Creature {
         std::string _subtype;
         std::string _alignment;
         Fraction _cr;
+        DiceSet _hit_dice;
 
         // Combat statistics
         int _ac;
@@ -113,18 +115,18 @@ class Creature {
         std::string _languages; // For now
         std::vector<Ability> _spcl_abls;
         std::vector<Action> _actions;
-        std::vector<Action> _leg_actions;
+        std::vector<LegendaryAction> _leg_actions;
 
         // To be added
         // bool speaks(const Language& language);
         // bool possible_alignment(const Alignment& alignment);
 
         // Constructor
-        Creature(const std::string& name, const Size& size, const std::string& type, const std::string& subtype, const std::string& alignment, const Fraction& cr, const int ac, const int hp,
+        Creature(const std::string& name, const Size& size, const std::string& type, const std::string& subtype, const std::string& alignment, const Fraction& cr, const DiceSet& hit_dice, const int ac, const int hp,
         const std::vector<Speed>& speeds, const std::vector<std::pair<Speed,std::string>>& alt_speeds, const int str, const int dex, const int con, const int intl, const int wis, const int chr, 
         const int str_sv, const int dex_sv, const int con_sv, const int int_sv, const int wis_sv, const int chr_sv, const int prcp, const std::vector<DamageInfo>& dmg_vuls, const std::vector<DamageInfo> dmg_rsts,
         const std::vector<DamageInfo>& dmg_imns, const std::vector<std::reference_wrapper<const Condition>>& cond_imns, const std::vector<Sense>& senses, const int pass_prcp, const std::string& languages, const std::vector<Ability>& spcl_abls,
-        const std::vector<Action>& actions, const std::vector<Action>& leg_actions) : _name(name), _size(size), _type(type), _subtype(subtype), _alignment(alignment), _cr(cr), _ac(ac), _hp(hp),
+        const std::vector<Action>& actions, const std::vector<LegendaryAction>& leg_actions) : _name(name), _size(size), _type(type), _subtype(subtype), _alignment(alignment), _cr(cr), _hit_dice(hit_dice), _ac(ac), _hp(hp),
         _speeds(speeds), _alt_speeds(alt_speeds), _str(str), _dex(dex), _con(con), _int(intl), _wis(wis), _chr(chr), _str_sv(str_sv), _dex_sv(dex_sv), _con_sv(con_sv), _int_sv(int_sv), _wis_sv(wis_sv), _chr_sv(chr_sv),
         _prcp(prcp), _dmg_vuls(dmg_vuls), _dmg_rsts(dmg_rsts), _dmg_imns(dmg_imns), _cond_imns(cond_imns), _senses(senses), _pass_prcp(pass_prcp), _languages(languages), _spcl_abls(_spcl_abls),
         _actions(actions), _leg_actions(leg_actions) {}

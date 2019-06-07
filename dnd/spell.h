@@ -33,7 +33,7 @@ class Spell {
         int level() const noexcept { return _level; }
         const School& school() const noexcept { return _school.get(); }
         const Sourcebook& sourcebook() const noexcept { return _sourcebook.get(); }
-        std::vector<std::reference_wrapper<CasterClass>> classes() const noexcept { return _classes; }
+        std::vector<std::reference_wrapper<const CasterClass>> classes() const noexcept { return _classes; }
 
         // Other methods
         std::string components_string() const;

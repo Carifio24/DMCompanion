@@ -3,6 +3,8 @@
 
 #include <string>
 
+namespace DnD {
+
 class Fraction {
 
 public:
@@ -30,6 +32,8 @@ private:
 
     int gcd(const int& a, const int& b) const;
 };
+
+} // end namespace DnD
 
 #endif // FRACTION_H
 

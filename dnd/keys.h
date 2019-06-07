@@ -17,7 +17,6 @@ namespace keys {
     inline const std::string components_k = "components";
     inline const std::string material_k = "material";
     inline const std::string school_k = "school";
-    inline const std::string page_k = "page";
     inline const std::string classes_k = "classes";
     inline const std::string subclasses_k = "subclasses";
     inline const std::string duration_k = "duration";
@@ -44,6 +43,7 @@ namespace keys {
     inline const std::string int_sv_k = "intelligence_save";
     inline const std::string wis_sv_k = "wisdom_save";
     inline const std::string chr_sv_k = "charisma_save";
+    inline const std::string languages_k = "languages";
     inline const std::string history_k = "history";
     inline const std::string perception_k = "perception";
     inline const std::string dmg_vuls_k = "damage_vulnerabilities";
@@ -52,6 +52,9 @@ namespace keys {
     inline const std::string cond_imns_k = "condition_immunities";
     inline const std::string senses_k = "senses";
     inline const std::string spcl_abls_k = "special_abilities";
+    inline const std::string atk_bonus_k = "attack_bonus";
+    inline const std::string dmg_bonus_k = "damage_bonus";
+    inline const std::string dmg_dice_k = "damage_dice";
     inline const std::string actions_k = "actions";
     inline const std::string leg_actions_k = "legendary_actions";
 } // end namespace keys

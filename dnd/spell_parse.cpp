@@ -3,13 +3,13 @@
 #include <sstream>
 #include <algorithm>
 
-#include "School.h"
-#include "Duration.h"
-#include "Sourcebook.h"
-#include "SpellParse.h"
-#include "CasterClass.h"
+#include "school.h"
+#include "duration.h"
+#include "sourcebook.h"
+#include "spell_parse.h"
+#include "caster_class.h"
 #include "string_helpers.h"
-#include "Converters.h"
+#include "converters.h"
 
 namespace DnD {
 
@@ -19,7 +19,7 @@ std::array<bool,3> components(const Json::Value& comps) {
 	std::array<bool,3> spellComps = {false, false, false};
 	for (auto v : comps) {
         std::string vup = v.asString();
-        std::transform(vup.begin(), vup.end(), vup.begin(), std::toupper);
+        std::transform(vup.begin(), vup.end(), vup.begin(), ::toupper);
         if (vup == "V") {
 			spellComps[0] = true;
 		}
@@ -49,7 +49,7 @@ Spell parse_spell(const Json::Value& root, SpellBuilder& b) {
     b.set_casting_time(root[casting_time_k].asString());
     b.set_level(root[level_k].asInt());
     std::string durationStr = root[duration_k].asString();
-    Duration duration = Duration::fromString(durationStr);
+    Duration duration = Duration::from_string(durationStr);
     b.set_duration(duration);
     if (starts_with(durationStr, "Up to")) {
         b.set_concentration(true);
@@ -120,7 +120,7 @@ Spell parse_spell(const Json::Value& root, SpellBuilder& b) {
     b.set_school(school);
 
 	// Get the caster classes
-	std::vector<CasterClass* const> classes;
+	std::vector<std::reference_wrapper<const CasterClass>> classes;
     Json::Value classesJSON = root[classes_k];
     classes.reserve(classesJSON.size());
 	for (const auto& v : classesJSON) {
@@ -131,7 +131,7 @@ Spell parse_spell(const Json::Value& root, SpellBuilder& b) {
         catch (Json::LogicError) {
             class_str = v.asString();
         }
-        classes.push_back(&CasterClass::from_name(class_str));
+        classes.push_back(std::cref(CasterClass::from_name(class_str)));
 	}
 	b.set_classes(classes);
 

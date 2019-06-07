@@ -6,7 +6,7 @@
 namespace DnD {
 
 bool Distance::operator==(const Distance& other) const noexcept {
-    return this->length_in_feet() == other.length_in_feet();
+    return length_in_feet() == other.length_in_feet();
 }
 
 std::string Distance::string() const {
@@ -14,21 +14,22 @@ std::string Distance::string() const {
     if (!_str.empty()) {
         return _str;
     }
-    if (_type == DistanceTypes::Self) {
+    if (quantity_type() == DistanceTypes::Self) {
         if (_value > 0) {
             return "Self (" + std::to_string(_value) + " foot radius";
         } else {
             return "Self";
         }
     }
-    if (_type == DistanceTypes::Distanced) {
+    if (quantity_type() == DistanceTypes::Distanced) {
         std::string ft = (_value == 1) ? std::string(LengthUnits::Foot.name()) : std::string(LengthUnits::Foot.plural_name());
         return _value + " " + ft;
     }
-    return std::string(_type.name());
+    return std::string(quantity_type().name());
 }
 
 Distance Distance::from_string(const std::string& s) {
+
     if (starts_with(s, DistanceTypes::Touch.name())) {
         return Distance(DistanceTypes::Touch, 0, LengthUnits::Foot, s);
     } else if (starts_with(s, DistanceTypes::Special.name())) {

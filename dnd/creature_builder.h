@@ -22,6 +22,7 @@ class CreatureBuilder {
         CreatureBuilder& set_armor_class(const int ac);
         CreatureBuilder& set_challenge_rating(const Fraction& cr);
         CreatureBuilder& set_hit_points(const int hp);
+        CreatureBuilder& set_hit_dice(const DiceSet& hit_dice);
         CreatureBuilder& set_speeds(const std::vector<Speed>& speeds);
         CreatureBuilder& set_alternate_speeds(const std::vector<std::pair<Speed,std::string>>& alt_speeds);
 
@@ -49,7 +50,7 @@ class CreatureBuilder {
         CreatureBuilder& set_languages(const std::string& languages);
         CreatureBuilder& set_special_abilities(const std::vector<Ability>& spcl_abls);
         CreatureBuilder& set_actions(const std::vector<Action>& actions);
-        CreatureBuilder& set_legendary_actions(const std::vector<Action>& leg_actions);
+        CreatureBuilder& set_legendary_actions(const std::vector<LegendaryAction>& leg_actions);
 
         // Building
         Creature build() const;
@@ -66,6 +67,7 @@ class CreatureBuilder {
         std::string subtype;
         std::string alignment;
         Fraction cr;
+        DiceSet hit_dice;
 
         // Combat statistics
         int ac;
@@ -100,7 +102,7 @@ class CreatureBuilder {
         std::string languages; // For now
         std::vector<Ability> spcl_abls;
         std::vector<Action> actions;
-        std::vector<Action> leg_actions;
+        std::vector<LegendaryAction> leg_actions;
 
 
 };

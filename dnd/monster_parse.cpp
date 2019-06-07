@@ -4,21 +4,24 @@
 #include "speed_type.h"
 #include "json_helpers.h"
 #include "damage_info.h"
+#include "enummaps.h"
 
 #include <iostream>
 #include <boost/algorithm/string/predicate.hpp>
+#include <boost/algorithm/string/replace.hpp>
 
 namespace DnD {
 
-DamageInfo identify_damage_info(const std::string& s, const std::map<DamageType,std::string>& damageTypes) {
+DamageInfo identify_damage_info(const std::string& s) {
 
     // Make the string all lowercase
     std::string s_lower = lowercase(s);
 
     // Get the damage type
-    for (const auto& elt : damageTypes) {
+    DamageType dmg_type;
+    for (const auto& elt : damageTypeNames) {
         if (boost::contains(s_lower, elt.second)) {
-            dInf.damage_type = elt.first;
+            dmg_type = elt.first;
             break;
         }
     }
@@ -26,16 +29,18 @@ DamageInfo identify_damage_info(const std::string& s, const std::map<DamageType,
     // Whether the damage type is magical, nonmagical, or neither
     std::string mag = "magical";
     std::string nonmag = "nonmagical";
+    MagicType mag_type;
     if (boost::contains(s_lower, nonmag)) {
-        dInf.magic_type = MagicType::Nonmagical;
+        mag_type = MagicType::Nonmagical;
     } else if (boost::contains(s_lower, mag)) {
-        dInf._mag_type = MagicType::Magical;
+        mag_type = MagicType::Magical;
     } else {
-        dInf._mag_type = MagicType::Any;
+        mag_type = MagicType::Any;
     }
 
-    // Return
-    return dInf;
+    // Create and return
+    DamageInfo d_info(dmg_type, mag_type, s);
+    return d_info;
 
 }
 
@@ -47,7 +52,7 @@ std::vector<DamageInfo> damage_modifiers_from_string(std::string s, const std::s
     // Only need to do anything if the string isn't empty
     if (!s.empty()) {
         boost::replace_all(s, "and ", "");
-        std::vector<std::string> split_data = jstring::split(s, sep);
+        std::vector<std::string> split_data = split(s, sep);
         dmods.reserve(split_data.size());
 
         std::cout << "s is: " << s << std::endl;
@@ -75,7 +80,7 @@ Monster parse_monster(const Json::Value& root, MonsterBuilder& b) {
     b.set_alignment(root[alignment_k].asString());
     b.set_armor_class(root[armor_class_k].asInt());
     b.set_hit_points(root[hit_points_k].asInt());
-    m.hitDice = dice_from_string(root[hit_dice_k].asString());
+    b.set_hit_dice(DiceSet::from_string(root[hit_dice_k].asString()));
     b.set_challenge_rating(Fraction::from_string(root[challenge_rating_k].asString()));
 
     // Get the various speeds
@@ -88,18 +93,19 @@ Monster parse_monster(const Json::Value& root, MonsterBuilder& b) {
         std::cout << "Split speed string size: " << split_data.size() << std::endl;
         if (split_data.size() == 2) { // Walking speed
             Distance dist = Distance::from_string(s);
-            speeds.push_back(std::make_pair(SpeedTypes::Walking, speed_value));
+            const SpeedType& speed_type = std::cref(SpeedTypes::Walk);
+            speeds.emplace_back(speed_type, dist);
         } else { // Other speed type
             split_data = split(s, " ", 2);
             Distance dist = Distance::from_string(split_data[1]);
             const SpeedType& speed_type = SpeedType::from_name(split_data[0]);
-            speeds.push_back(std::make_pair(speed_type, dist));
+            speeds.emplace_back(speed_type, dist); 
         }
     }
     b.set_speeds(speeds);
 
     // Get any speeds in alternate forms
-    std::vector<std::string> alt_speeds;
+    std::vector<std::pair<Speed,std::string>> alt_speeds;
     if (root.isMember(alt_speeds_k)) {
         
         Json::Value alt_speeds_json = root[alt_speeds_k];
@@ -115,12 +121,12 @@ Monster parse_monster(const Json::Value& root, MonsterBuilder& b) {
                 Speed speed;
                 if (split_data.size() == 2) { // Walking speed
                     dist = Distance::from_string(s);
-                    speed = Speed(SpeedTypes::Walking, dist);
+                    speed = Speed(SpeedTypes::Walk, dist);
                 } else { // Other speed type
                     split_data = split(s, " ", 2);
                     const SpeedType& speed_type = SpeedType::from_name(split_data[0]);
                     dist = Distance::from_string(split_data[1]);
-                    speed = Speed(SpeedTypes::Walking, dist);
+                    speed = Speed(SpeedTypes::Walk, dist);
                 }
                 std::pair<Speed,std::string> speed_info{speed, condition};
                 alt_speeds.push_back(speed_info);
@@ -142,8 +148,8 @@ Monster parse_monster(const Json::Value& root, MonsterBuilder& b) {
     b.set_dexterity_save(int_if_member(root, dex_sv_k));
     b.set_constitution(int_if_member(root, con_sv_k));
     b.set_intelligence_save(int_if_member(root, int_sv_k));
-    b.set_wisdom_save(int_if_member(root, wis_sv_k))
-    b.set_charisma_save(int_if_member(root, chr_sv_l));
+    b.set_wisdom_save(int_if_member(root, wis_sv_k));
+    b.set_charisma_save(int_if_member(root, chr_sv_k));
 
     // Other statistics
     b.set_history(int_if_member(root, history_k));
@@ -158,48 +164,84 @@ Monster parse_monster(const Json::Value& root, MonsterBuilder& b) {
     b.set_damage_immunities(damage_modifiers_from_string(string_if_member(root, dmg_imns_k), list_sep));
     std::cout << "About to parse condition immunities" << std::endl;
     std::string data;
-    std::vector<Condition* const> cond_imns;
+    std::vector<std::reference_wrapper<const Condition>> cond_imns;
     if ( !(data = root[cond_imns_k].asString()).empty() ) {
         std::vector<std::string> cond_strs = split(data, list_sep);
-        conds.reserve(cond_strs.size());
+        cond_imns.reserve(cond_strs.size());
         for (const std::string& s : cond_strs) {
-            cond_imns.push_back(Condition::from_name(s));
+            cond_imns.emplace_back(Condition::from_name(s));
         }
     }
     b.set_condition_immunities(cond_imns);
 
     // Senses and passive perception
+    std::vector<Sense> senses;
     std::vector<std::string> senses_and_perception = split(root[senses_k].asString(), ", ");
     for (const std::string& s : senses_and_perception) {
 
         // If it's the passive perception
         std::vector<std::string> split_data = split(s, " ");
-        if (boost::starts_with(s, "passive Perception")) {
-            m.passivePerception = std::stoi(split_data[2]);
+        if (starts_with(s, "passive Perception")) {
+            b.set_passive_perception(std::stoi(split_data[2]));
         // Otherwise
         } else {
-            int sense_range = std::stoi(split_data[1]);
-            Sense sense_type = enum_from_name<Sense>(senseNames, split_data[0]);
-            m.senses.push_back(std::make_pair(sense_type, sense_range));
+            split_data = split(s, " ", 2);
+            Distance sense_range = Distance::from_string(split_data[1]);
+            const SenseType& sense_type = SenseType::from_name(split_data[0]);
+            senses.emplace_back(sense_type, sense_range);
         }
     }
 
     // Languages (just a string for now, need to work on this)
-    m.languages = root[languages_k].asString();
+    b.set_languages(root[languages_k].asString());
 
     // Special abilities
+    std::vector<Ability> spcl_abls;
     if (root.isMember(spcl_abls_k)) {
-        m.specialAbilities = json_array_to_vector<Ability>(root[spcl_abls_k]);
-    }
+        Json::Value spcl_abls_json = root[spcl_abls_k];
+        spcl_abls.reserve(spcl_abls_json.size());
 
-    // Actions and legendary actions
+        for (const Json::Value& abl : spcl_abls_json) {
+            std::string name = abl[name_k].asString();
+            std::string desc = abl[description_k].asString();
+            int atk_bonus = abl[atk_bonus_k].asInt();
+            spcl_abls.emplace_back(name, desc, atk_bonus);
+        }
+    }
+    b.set_special_abilities(spcl_abls);
+
+    // Actions
+    std::vector<Action> actions;
     if (root.isMember(actions_k)) {
-        m.actions = json_array_to_vector<Action>(root[actions_k]);
+        Json::Value actions_json = root[actions_k];
+        actions.reserve(actions_json.size());
+        for (const Json::Value& act : actions_json) {
+            std::string name = act[name_k].asString();
+            std::string desc = act[description_k].asString();
+            int atk_bonus = act[atk_bonus_k].asInt();
+            int dmg_bonus = act[dmg_bonus_k].asInt();
+            DiceSet dset = DiceSet::from_string(act[dmg_dice_k].asString());
+            actions.emplace_back(name, desc, atk_bonus, dset, dmg_bonus);
+        }
     }
-    if (root.isMember(leg_actions_k)) {
-        m.legendaryActions = json_array_to_vector<Action>(root[leg_actions_k]);
-    }
+    b.set_actions(actions);
 
+    // Legendary actions
+    std::vector<LegendaryAction> leg_actions;
+    if (root.isMember(leg_actions_k)) {
+        Json::Value leg_acts_json = root[leg_actions_k];
+        leg_actions.reserve(leg_acts_json.size());
+        for (const Json::Value& lact : leg_acts_json) {
+            std::string name = lact[name_k].asString();
+            std::string desc = lact[description_k].asString();
+            int atk_bonus = lact[atk_bonus_k].asInt();
+            leg_actions.emplace_back(name, desc, atk_bonus);
+        }
+    }
+    b.set_legendary_actions(leg_actions);
+
+    // Build and return
+    Monster m = b.build_and_reset();
     return m;
 
 }

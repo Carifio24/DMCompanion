@@ -19,6 +19,7 @@ struct SenseType::Instances {
     static inline constexpr const SenseType Darkvision{"Darkvision"};
     static inline constexpr const SenseType Tremorsense{"Tremorsense"};
     static inline constexpr const SenseType Truesight{"Truesight"};
+    static inline constexpr const SenseType* const instances[] = { &Blindsight, &Darkvision, &Tremorsense, &Truesight };
 };
 
 } // end namespace DnD

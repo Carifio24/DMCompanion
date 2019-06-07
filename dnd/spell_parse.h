@@ -5,7 +5,7 @@
 
 #include <json/json.h>
 
-#include "Keys.h"
+#include "keys.h"
 #include "spell_builder.h"
 
 namespace DnD {

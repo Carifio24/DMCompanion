@@ -15,32 +15,32 @@ class Quantity {
 
         // Get member values
         // Notice that string() is virtual
-        QuantityType quantity_type() const noexcept { return _type.get(); }
+        const QuantityType& quantity_type() const noexcept { return _type.get(); }
         int value() const noexcept { return _value; }
-        UnitType unit_type() const noexcept { return _unit.get(); }
+        const UnitType& unit_type() const noexcept { return _unit.get(); }
         virtual std::string string() const = 0;
 
         // Comparison operators
         bool operator<(const Quantity& other) const {
-            if (_type == other._type) {
+            if (_type.get() == other._type.get()) {
                 return base_value() < other.base_value();
             }
-            return _type .get()< other._type.get();
+            return _type .get() < other._type.get();
         }
 
         bool operator=(const Quantity& other) const {
-            return (_type == other._type) && (base_value() == other.base_value());
+            return (_type.get() == other._type.get()) && (base_value() == other.base_value());
         }
 
     protected:
 
         // For use by subclasses
-        int base_value() const noexcept { return _value * _unit.value(); }
+        int base_value() const noexcept { return _value * _unit.get().value(); }
 
         // Member values
-        std::reference_wrapper<QuantityType> _type;
+        std::reference_wrapper<const QuantityType> _type;
         int _value;
-        std::reference_wrapper<UnitType> _unit;
+        std::reference_wrapper<const UnitType> _unit;
         std::string _str;
 
 };

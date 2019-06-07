@@ -20,7 +20,7 @@ CXXFLAGS = -fPIC -std=c++17 -O3
 AR = ar
 
 # Sources, headers, etc.
-SOURCES = converters.cpp creature_builder.cpp dice_set.cpp die_helpers.cpp distance.cpp fraction.cpp json_helpers.cpp length_unit.cpp monster_builder.cpp monster_parse.cpp spell_builder.cpp spell.cpp spell_parse.cpp string_helpers.cpp test.cpp
+SOURCES = converters.cpp creature_builder.cpp dice_set.cpp die_helpers.cpp distance.cpp duration.cpp fraction.cpp json_helpers.cpp length_unit.cpp monster_builder.cpp monster_parse.cpp spell_builder.cpp spell.cpp spell_parse.cpp string_helpers.cpp test.cpp
 TEMPLATES = named_enum.hpp quantity.hpp string_helpers.tpp sfinae.hpp vector_helpers.hpp
 HEADERS = $(SOURCES:.cpp=.h) ability.h action.h alignment.h caster_class.h condition.h creature.h damage_info.h distance_type.h duration.h duration_type.h enumerations.h keys.h school.h sense.h sense_type.h size.h sourcebook.h speed.h speed_type.h subclass.h time_unit.h unit.h
 OBJECTS = $(SOURCES:%.cpp=$(BUILD_DIR)/%.o)

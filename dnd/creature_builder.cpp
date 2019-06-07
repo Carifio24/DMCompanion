@@ -3,13 +3,14 @@
 namespace DnD {
 
 CreatureBuilder& CreatureBuilder::set_name(const std::string& name) { this->name = name; return *this; }
-CreatureBuilder& CreatureBuilder::set_size(const Size& size) { this->size = &size; return *this; }
+CreatureBuilder& CreatureBuilder::set_size(const Size& size) { this->size = size; return *this; }
 CreatureBuilder& CreatureBuilder::set_type(const std::string& type) { this->type = type; return *this; }
 CreatureBuilder& CreatureBuilder::set_subtype(const std::string& subtype) { this->subtype = subtype; return *this; }
 CreatureBuilder& CreatureBuilder::set_alignment(const std::string& alignment) { this->alignment = alignment; return *this; }
 CreatureBuilder& CreatureBuilder::set_armor_class(const int ac) { this->ac = ac; return *this; }
 CreatureBuilder& CreatureBuilder::set_challenge_rating(const Fraction& cr) { this->cr = cr; return *this; }
 CreatureBuilder& CreatureBuilder::set_hit_points(const int hp) { this->hp = hp; return *this; }
+CreatureBuilder& CreatureBuilder::set_hit_dice(const DiceSet& hit_dice) { this->hit_dice = hit_dice; return *this; }
 CreatureBuilder& CreatureBuilder::set_speeds(const std::vector<Speed>& speeds) { this->speeds = speeds; return *this; }
 CreatureBuilder& CreatureBuilder::set_alternate_speeds(const std::vector<std::pair<Speed,std::string>>& alt_speeds) { this->alt_speeds = alt_speeds; return *this; }
 
@@ -37,11 +38,11 @@ CreatureBuilder& CreatureBuilder::set_senses(const std::vector<Sense>& senses) {
 CreatureBuilder& CreatureBuilder::set_languages(const std::string& languages) { this->languages = languages; return *this; }
 CreatureBuilder& CreatureBuilder::set_special_abilities(const std::vector<Ability>& spcl_abls) { this->spcl_abls = spcl_abls; return *this; }
 CreatureBuilder& CreatureBuilder::set_actions(const std::vector<Action>& actions) { this->actions = actions; return *this; }
-CreatureBuilder& CreatureBuilder::set_legendary_actions(const std::vector<Action>& leg_actions) { this->leg_actions = leg_actions; return *this; }
+CreatureBuilder& CreatureBuilder::set_legendary_actions(const std::vector<LegendaryAction>& leg_actions) { this->leg_actions = leg_actions; return *this; }
 
 
 Creature CreatureBuilder::build() const {
-    return Creature(name, size, type, subtype, alignment, cr, ac, hp, speeds, alt_speeds, str, dex, con, intl, wis, chr, str_sv, dex_sv, con_sv, int_sv, wis_sv, chr_sv, prcp, dmg_vuls, dmg_rsts, dmg_imns, cond_imns, senses, pass_prcp, languages, spcl_abls, actions, leg_actions);
+    return Creature(name, size, type, subtype, alignment, cr, hit_dice, ac, hp, speeds, alt_speeds, str, dex, con, intl, wis, chr, str_sv, dex_sv, con_sv, int_sv, wis_sv, chr_sv, prcp, dmg_vuls, dmg_rsts, dmg_imns, cond_imns, senses, pass_prcp, languages, spcl_abls, actions, leg_actions);
 }
 
 void CreatureBuilder::reset() {

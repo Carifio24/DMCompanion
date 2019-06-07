@@ -13,7 +13,9 @@ class Speed {
     public:
 
         // Constructor
-        Speed(const Distance& dist, SpeedType& type) : _dist(dist), _type(type) {}
+        Speed(const SpeedType& type, const Distance& dist) : _type(type), _dist(dist) {}
+        Speed(const Distance& dist) : Speed(SpeedTypes::Walk, dist) {}
+        Speed() : Speed(SpeedTypes::Walk, Distance()) {}
 
         // Get member values
         Distance distance_per_round() const noexcept { return _dist; }

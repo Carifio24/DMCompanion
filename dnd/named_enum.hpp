@@ -64,7 +64,7 @@ class NamedEnum {
 template <typename NEType>
 constexpr int NamedEnum<NEType>::index() const noexcept {
     for (size_t i = 0; i < n_values(); ++i) {
-        if constexpr (*this == x) {
+        if (static_cast<const NEType*>(this) == NEType::Instances::instances[i]) {
             return i;
         }
     }
@@ -78,15 +78,15 @@ constexpr bool NamedEnum<NEType>::operator<(const NamedEnum<NEType>& other) cons
 }
 
 // Functions for returning a reference to a value from its name
-
 template <typename NEType>
 const NEType& NamedEnum<NEType>::from_name(const std::string& s, const std::function<void(std::string&)>& transform) {
 
     // Check whether the name agrees with any of the cases
     std::string nm;
     for (auto inst : NEType::Instances::instances) {
-        nm = inst->_name;
-        if ( s == transform(nm) ) {
+        nm = std::string(inst->_name);
+        transform(nm);
+        if ( s == nm ) {
             return *inst;
         }
     }
@@ -106,13 +106,13 @@ const NEType& NamedEnum<NEType>::from_name(const std::string& s) {
 
 template <typename NEType>
 const NEType& NamedEnum<NEType>::from_lc_name(const std::string& s) {
-    std::function<void(std::string&)> make_lc = [](std::string& s) { std::transform(s.begin(), s.end(), s.begin(), std::tolower); };
+    std::function<void(std::string&)> make_lc = [](std::string& s) { std::transform(s.begin(), s.end(), s.begin(), [](unsigned char c) -> unsigned char { return std::tolower(c); }); };
     return from_name(s, make_lc);
 }
 
 template <typename NEType>
 const NEType& NamedEnum<NEType>::from_uc_name(const std::string& s) {
-    std::function<void(std::string&)> make_uc = [](std::string& s) { std::transform(s.begin(), s.end(), s.begin(), std::toupper); };
+    std::function<void(std::string&)> make_uc = [](std::string& s) { std::transform(s.begin(), s.end(), s.begin(), [](unsigned char c) -> unsigned char { return std::toupper(c); }); };
     return from_name(s, make_uc);
 }
 

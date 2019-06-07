@@ -16,13 +16,13 @@ class DamageInfo {
         // Get member values
         DamageType damage_type() const noexcept { return _dmg_tp; }
         MagicType magic() const noexcept { return _mag_tp; }
-        std::string_view text() const noexcept { return _text; }
+        std::string text() const noexcept { return _text; }
 
     private:
         // Member values
-        const DamageType _dmg_tp;
-        const MagicType _mag_tp;
-        const std::string _text;
+        DamageType _dmg_tp;
+        MagicType _mag_tp;
+        std::string _text;
 };
 
 } // end namespace DnD

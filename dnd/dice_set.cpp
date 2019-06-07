@@ -7,7 +7,7 @@ namespace DnD {
 
 int DiceSet::roll() const noexcept {
     int sum = 0;
-    for (auto it = _dice.begin(); it != _dice.end(); ++it) {
+    for (auto it = _dmap.begin(); it != _dmap.end(); ++it) {
         Die d = it->first;
         int n = it->second;
         std::vector<int> v = roll_die(d, n);
@@ -16,6 +16,10 @@ int DiceSet::roll() const noexcept {
         }
     }
     return sum;
+}
+
+DiceSet from_string(std::string s) {
+    
 }
 
 } // end namespace DnD

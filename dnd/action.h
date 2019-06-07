@@ -6,7 +6,7 @@
 
 namespace DnD {
 
-struct Action {
+class Action {
 
     public:
 
@@ -25,11 +25,11 @@ struct Action {
         
     private:
         // Member values
-        const std::string _name;
-        const std::string _desc;
-        const int _atk_bonus;
-        const DiceSet _dset;
-        const int _dmg_bonus;
+        std::string _name;
+        std::string _desc;
+        int _atk_bonus;
+        DiceSet _dset;
+        int _dmg_bonus;
 
 };
 

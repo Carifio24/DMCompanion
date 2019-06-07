@@ -15,6 +15,8 @@ class DiceSet {
         int roll() const noexcept;
         std::map<Die,int> dice() const noexcept { return _dmap; }
 
+        static DiceSet from_string(std::string s);
+
     private:
         std::map<Die,int> _dmap;
 

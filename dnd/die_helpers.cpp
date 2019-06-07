@@ -16,7 +16,7 @@ std::vector<int> roll_die(const Die& d, const int& n) {
 }
 
 int roll_die(const Die& d) {
-    return roll(d, 1)[0];
+    return roll_die(d, 1)[0];
 }
 
 std::string name(const Die& d) {

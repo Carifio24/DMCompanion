@@ -3,7 +3,7 @@
 
 namespace DnD {
 
-class CasterClass : public NamedEnum<School> {
+class CasterClass : public NamedEnum<CasterClass> {
 
     public:
         // The class instances
@@ -16,7 +16,7 @@ class CasterClass : public NamedEnum<School> {
         }
 
     private:
-        constexpr CasterClass(const std::string_view& name, const std::string_view& abbr) : NamedEnum<School>(name), _abbr(abbr) {}
+        constexpr CasterClass(const std::string_view& name, const std::string_view& abbr) : NamedEnum<CasterClass>(name), _abbr(abbr) {}
         const std::string_view _abbr;
 };
 
@@ -29,7 +29,7 @@ struct CasterClass::Instances {
     static inline constexpr const CasterClass Sorcerer{"Sorcerer"sv, "Src"sv};
     static inline constexpr const CasterClass Warlock{"Warlock"sv, "Wlk"sv};
     static inline constexpr const CasterClass Wizard{"Wizard"sv, "Wiz"sv};
-    static inline constexpr const CasterClass* const instances = { &Bard, &Cleric, &Druid, &Paladin, &Ranger, &Sorcerer, &Warlock, &Wizard };
+    static inline constexpr const CasterClass* const instances[] = { &Bard, &Cleric, &Druid, &Paladin, &Ranger, &Sorcerer, &Warlock, &Wizard };
 };
 
 using CasterClasses = CasterClass::Instances;

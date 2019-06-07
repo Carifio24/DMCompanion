@@ -2,6 +2,7 @@
 #define SENSE_H
 
 #include "sense_type.h"
+#include "distance.h"
 
 namespace DnD {
 
@@ -9,14 +10,14 @@ class Sense {
 
     public:
 
-        Sense(const int& dist, const SenseType& type) : _dist(dist), _type(type) {}
+        Sense(const SenseType& type, const DnD::Distance& dist) : _type(type), _dist(dist) {}
 
-        int distance() const noexcept { return _dist; }
+        DnD::Distance distance() const noexcept { return _dist; }
         const SenseType& type() const noexcept { return _type; }
     
     private:
-        const SenseType& _type;
-        const int _dist;
+        std::reference_wrapper<const SenseType> _type;
+        DnD::Distance _dist;
 };
 
 } // end namespace DnD

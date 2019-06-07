@@ -3,6 +3,8 @@
 
 #include <string>
 
+namespace DnD {
+
 std::string Spell::components_string() const {
     std::string s;
     if (_components[0]) { s += "V"; }
@@ -15,7 +17,7 @@ std::string Spell::classes_string() const {
     std::vector<std::string> class_names;
     class_names.reserve(_classes.size());
     for (auto x : _classes) {
-        class_names.emplace_back(x->name());
+        class_names.emplace_back(x.get().name());
     }
     std::string class_s = join(class_names, ", ");
     return class_s;
@@ -23,9 +25,11 @@ std::string Spell::classes_string() const {
 
 bool Spell::usable_by(const CasterClass& cc) const {
     for (auto x : _classes) {
-        if (x == cc) {
+        if (x.get() == cc) {
             return true;
         }
     }
     return false;
 }
+
+} // end namespace DnD

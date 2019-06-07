@@ -6,6 +6,8 @@
 #include <exception>
 #include <assert.h>
 
+namespace DnD {
+
 // Constructors
 Fraction::Fraction(const int& n, const int& d) {
 
@@ -63,3 +65,5 @@ std::string Fraction::as_string() const {
 int Fraction::gcd(const int& a, const int& b) const {
     return (b == 0) ? a : gcd(b, a % b);
 }
+
+} // end namespace DnD

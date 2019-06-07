@@ -3,6 +3,7 @@
 
 #include "enumerations.h"
 #include <string>
+#include <vector>
 
 namespace DnD {
 

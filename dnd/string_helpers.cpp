@@ -1,10 +1,35 @@
 #include "string_helpers.h"
 
 #include <cctype>
+#include <cstring>
 #include <sstream>
 #include <algorithm>
 
 namespace DnD {
+
+bool starts_with(const std::string& test, const char* prefix) {
+    int pflen = strlen(prefix);
+    if (test.length() < pflen) { return false; }
+
+    for (size_t i = 0; i < pflen; ++i) {
+        if (prefix[i] != test[i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool ends_with(const std::string& test, const char* prefix) {
+    int pflen = strlen(prefix);
+    if (test.length() < pflen) { return false; }
+
+    for (size_t i = test.size() - pflen; i < test.size(); ++i) {
+        if (prefix[i] != test[i]) {
+            return false;
+        }
+    }
+    return true;
+}
 
 std::vector<std::string> split(std::string s, const std::string& dlm, int n_pieces) {
     // This function splits the given string using the given delimiter
@@ -46,13 +71,13 @@ std::string join(const std::vector<std::string>& pieces, const std::string& dlm)
 }
 
 void to_lowercase(std::string& s) {
-    std::transform(s.begin(), s.end(), s.begin(), std::tolower);
+    std::transform(s.begin(), s.end(), s.begin(), [](unsigned char c) -> unsigned char { return std::tolower(c); });
 }
 
 std::string lowercase(const std::string& s) {
     std::string t;
     t.reserve(s.size());
-    std::transform(s.begin(), s.end(), t.begin(), std::tolower);
+    std::transform(s.begin(), s.end(), t.begin(), [](unsigned char c) -> unsigned char { return std::toupper(c); });
 }
 
 std::string capitalized(std::string s) {
