@@ -20,6 +20,8 @@ class TimeUnit : public NamedEnum<TimeUnit> {
         inline constexpr std::string_view plural_name() const noexcept { return _pl_name; }
         inline constexpr std::string_view abbreviation() const noexcept { return _abbr; }
 
+        static const TimeUnit& from_string(const std::string& s);
+
     private:
        constexpr TimeUnit(const int& t, const std::string_view& name, const std::string_view& pl_name, const std::string_view& abbr) : NamedEnum<TimeUnit>(name), _value(t), _pl_name(pl_name), _abbr(abbr) {}
 

@@ -13,6 +13,8 @@ class LegendaryAction {
         LegendaryAction(const std::string& name, const std::string& desc, const int atk_bonus) :
             _name(name), _desc(desc), _atk_bonus(atk_bonus) {}
 
+        LegendaryAction() : LegendaryAction("", "", 0) {}
+
         // Get member values
         std::string name() const noexcept { _name; }
         std::string description() const noexcept { _desc; }

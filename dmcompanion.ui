@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Spellbook</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <property name="minimumSize">
     <size>
@@ -21,7 +24,7 @@
     </size>
    </property>
    <property name="autoFillBackground">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <widget class="QTabWidget" name="tabWidget">
     <property name="enabled">
@@ -42,10 +45,13 @@
      </size>
     </property>
     <property name="autoFillBackground">
-     <bool>true</bool>
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="Spellbook" name="spellTab">
      <property name="maximumSize">
@@ -55,7 +61,10 @@
       </size>
      </property>
      <property name="autoFillBackground">
-      <bool>true</bool>
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
      </property>
      <attribute name="title">
       <string>Spellbook</string>
@@ -72,7 +81,10 @@
       </size>
      </property>
      <property name="autoFillBackground">
-      <bool>true</bool>
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
      </property>
      <attribute name="title">
       <string>Monster Manual</string>

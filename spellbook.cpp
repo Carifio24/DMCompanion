@@ -1,32 +1,42 @@
 #include "spellbook.h"
 #include "ui_spellbook.h"
-#include "Parse.h"
-#include "Sort.h"
-#include "Filter.h"
-#include "enummaps.h"
+#include "spell_parse.h"
+#include "sort.h"
 #include "jsoncpp/json/json.h"
 #include <boost/algorithm/string/predicate.hpp>
 #include <boost/algorithm/string/case_conv.hpp>
 #include <QFile>
 #include <QCheckBox>
+#include <QStringView>
 #include <QStandardItemModel>
 
+#include <fstream>
 #include <iostream>
+
+#include <DnD/caster_class.h>
+#include <DnD/spell.h>
+#include <DnD/converters.h>
+#include <DnD/duration.h>
+#include <DnD/converters.h>
+
+using namespace DnD;
 
 Spellbook::Spellbook(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Spellbook)
 {
+    using namespace DnD;
+
     ui->setupUi(this);
 
     // Set the title
     setWindowTitle(QString::fromStdString("D&D 5th edition spellbook"));
 
     // Set items to be transparent
-    setStyleSheet("background-color:transparent");
-    ui->descScrollArea->setStyleSheet("background-color:transparent");
-    ui->spellList->setStyleSheet("background-color:transparent");
-    ui->favButton->setStyleSheet("background-color:transparent");
+//    setStyleSheet("background-color:transparent");
+//    ui->descScrollArea->setStyleSheet("background-color:transparent");
+//    ui->spellList->setStyleSheet("background-color:transparent");
+//    ui->favButton->setStyleSheet("background-color:transparent");
     //ui->searchBar->setStyleSheet("background-color:rgb(231,208,166);");
 
 
@@ -46,29 +56,42 @@ Spellbook::Spellbook(QWidget *parent) :
     //std::string filename = "5e-SRD-Spells.json";
     QFile qspellfile(":/resources/Spells.json");
     qspellfile.open(QIODevice::ReadOnly);
-    spells = read_spellfile(&qspellfile);
+    spells = read_spell_file(&qspellfile);
     qspellfile.close();
 
+    std::cout << "Read spell file" << std::endl;
+
     // Add the spells to the QTableWidget and display them
-    populateSpellTable(spells);
+    populate_spell_table();
+
+    std::cout << "Populated spell table" << std::endl;
 
     // Add the "None" option for the second sort ComboBox
     ui->sort2Box->addItem(QString::fromStdString("None"));
 
     // Add the options to the sort ComboBoxes
-    for (int i = 0; i < N_SORTABLE; i++) {
-        ui->sort1Box->addItem(QString::fromStdString(sortablePropertyNames[i]));
-        ui->sort2Box->addItem(QString::fromStdString(sortablePropertyNames[i]));
+    std::cout << "n_sortable is " << n_sortable << std::endl;
+    for (size_t i = 0; i < n_sortable; i++) {
+        std::cout << i << std::endl;
+        std::cout << spell_sort_fields[i] << std::endl;
+        ui->sort1Box->addItem(QString::fromStdString(spell_sort_fields[i]));
+        std::cout << "Here" << std::endl;
+        ui->sort2Box->addItem(QString::fromStdString(spell_sort_fields[i]));
     }
+
+    std::cout << "Added combo box options" << std::endl;
 
     // Set the Name option on the second sort box to be red, as this is the starting selection for the first sort box
     ui->sort2Box->setItemData(1, QBrush(Qt::red), Qt::TextColorRole);
 
     // Add the class and subclass names to the filter ComboBox
     ui->filterBox->addItem(QString::fromStdString("None"));
-    for (const auto& elt : casterNames) {
-        ui->filterBox->addItem(QString::fromStdString(elt.second));
+    for (const auto& elt : CasterClasses::instances) {
+        std::string_view name = elt->name();
+        ui->filterBox->addItem(QLatin1String(name.data(), name.size()));
     }
+
+    std::cout << "Finished combo boxes" << std::endl;
 
     /*
     for (const std::string& sname : subclassNames) {
@@ -94,9 +117,6 @@ Spellbook::Spellbook(QWidget *parent) :
 //    }
 //    std::cout << sourcebookModel.rowCount() << std::endl;
 //    ui->sourcebookSelector->setModel(&sourcebookModel);
-
-    // The checkboxes for the sourcebooks
-    sourcebookCheckboxes = { ui->phbCheckbox, ui->xgeCheckbox, ui->scagCheckbox };
 
     // Font settings
     QString fontstyle = QString::fromStdString("font-weight: 750");
@@ -129,8 +149,17 @@ Spellbook::Spellbook(QWidget *parent) :
     fav_icon = QIcon(star_filled);
     not_fav_icon = QIcon(star_empty);
 
+    // The checkboxes for the sourcebooks
+    sourcebookCheckboxes = {
+        {Sourcebooks::PlayersHandbook, ui->phbCheckbox},
+        {Sourcebooks::XanatharsGTE, ui->xgeCheckbox},
+        {Sourcebooks::SwordCoastAG, ui->scagCheckbox}
+    };
+
     // Load favorites
     load_favorites();
+
+    std::cout << "Finished spellbook setup" << std::endl;
 }
 
 Spellbook::~Spellbook()
@@ -143,50 +172,19 @@ Spellbook::~Spellbook()
 
 void Spellbook::on_spellList_clicked(const QModelIndex &index)
 {
-    display_spelldata(index.row());
+    display_spelldata(spells[index.row()]);
 }
 
 
-void Spellbook::on_sort1Box_currentIndexChanged(const QString &arg1)
+void Spellbook::on_sort1Box_currentIndexChanged(const QString&)
 {
-
-    // Set the appropriate second sort to be greyed out, make all others black
-    int index = ui->sort1Box->currentIndex();
-    for (int i = 0; i < ui->sort2Box->count(); i++) {
-        if (i != index+1) {
-            ui->sort2Box->setItemData(i, QBrush(Qt::black), Qt::TextColorRole);
-        } else {
-            ui->sort2Box->setItemData(i, QBrush(Qt::red), Qt::TextColorRole);
-        }
-    }
-
-    // Get the sort fields
-    std::string sort_field1 = arg1.toStdString();
-    std::string sort_field2 = ui->sort2Box->currentText().toStdString();
-
-    // Sort
-    sort(sort_field1, sort_field2);
-
+    sort();
 }
 
 
-void Spellbook::on_sort2Box_currentIndexChanged(const QString &arg1)
+void Spellbook::on_sort2Box_currentIndexChanged(const QString&)
 {
-
-    // If this entry is greyed out, do nothing
-    int index1 = ui->sort1Box->currentIndex();
-    int index2 = ui->sort2Box->currentIndex();
-    if (index2 == index1 + 1) {return;}
-
-    // If the entry is set to None, do nothing
-    if (arg1.toStdString() == "None") {return;}
-
-    // Get the sort fields
-    std::string sort_field1 = ui->sort1Box->currentText().toStdString();
-    std::string sort_field2 = arg1.toStdString();
-
-    // Sort
-    sort(sort_field1, sort_field2);
+    sort();
 }
 
 
@@ -198,7 +196,7 @@ void Spellbook::on_filterBox_currentIndexChanged(int) // Unnamed: index
 
 void Spellbook::on_spellList_currentCellChanged(int currentRow, int, int, int) // Unnamed: currentColumn, previousRow, previousColumn
 {
-    display_spelldata(currentRow);
+    display_spelldata(spells[currentRow]);
 }
 
 void Spellbook::on_favoritesButton_clicked()
@@ -214,7 +212,9 @@ void Spellbook::on_favoritesButton_released()
 void Spellbook::on_favButton_clicked()
 {
     int index = ui->spellList->currentRow();
-    spells[index].favorite = !spells[index].favorite;
+    if (index < 0) { return; }
+
+    profile.toggle_favorite(spells[index]);
     update_button();
     save_favorites();
 
@@ -228,30 +228,48 @@ void Spellbook::on_searchBar_textEdited(const QString&) // Unnamed: The QString 
     filter();
 }
 
+void Spellbook::on_phbCheckbox_toggled(bool) // Unnamed: checked
+{
+    sort();
+    filter();
+}
+
+void Spellbook::on_xgeCheckbox_toggled(bool) // Unnamed: checked
+{
+    sort();
+    filter();
+}
+
+void Spellbook::on_scagCheckbox_toggled(bool) // Unnamed: checked
+{
+    sort();
+    filter();
+}
+
 
 ////// Other methods //////
 
-void Spellbook::populateSpellTable(const std::vector<Spell>& spells) {
+void Spellbook::populate_spell_table() {
     ui->spellList->setRowCount(spells.size());
     ui->spellList->setColumnCount(3);
-    for (size_t i = 0; i < spells.size(); i++) {
-        ui->spellList->setItem(i,0,new QTableWidgetItem(QString::fromStdString(spells[i].name)));
-        ui->spellList->setItem(i,1,new QTableWidgetItem(QString::fromStdString(schoolNames.find(spells[i].school)->second)));
-        ui->spellList->setItem(i,2,new QTableWidgetItem(QString::number(spells[i].level)));
+    for (int i = 0; i < spells.size(); ++i) {
+        ui->spellList->setItem(i,0,new QTableWidgetItem(QString::fromStdString(spells[i].name())));
+        ui->spellList->setItem(i,1,new QTableWidgetItem(QLatin1String(spells[i].school().name().data())));
+        ui->spellList->setItem(i,2,new QTableWidgetItem(QString::number(spells[i].level())));
     }
 }
 
 void Spellbook::unfilter() {
-    for (size_t i = 0; i < spells.size(); i++) {
+    for (int i = 0; i < spells.size(); ++i) {
         ui->spellList->setRowHidden(i, false);
     }
 }
 
 void Spellbook::save_favorites() {
     std::ofstream ofs{favorites_file};
-    for (size_t i = 0; i < spells.size(); i++) {
-        if (spells[i].favorite) {
-            ofs << spells[i].name << std::endl;
+    for (int i = 0; i < spells.size(); i++) {
+        if (profile.is_favorite(spells[i])) {
+            ofs << spells[i].name() << std::endl;
         }
     }
 }
@@ -261,9 +279,10 @@ void Spellbook::load_favorites() {
     std::ifstream ifs{favorites_file};
     while (std::getline(ifs, line)) {
         bool inSpellbook = false;
-        for (size_t i = 0; i < spells.size(); i++) {
-            if (line == spells[i].name) {
-                spells[i].favorite = true;
+        for (int i = 0; i < spells.size(); ++i) {
+            Spell s = spells[i];
+            if (line == s.name()) {
+                profile.set_favorite(s);
                 inSpellbook = true;
                 break;
             }
@@ -277,27 +296,26 @@ void Spellbook::load_favorites() {
 
 bool Spellbook::filter_item(const bool& isClass, const bool& isFav, const bool& isText, const Spell& s, const CasterClass& cc, const std::string& text) {
    if (sourcebookCheckboxes.size() == 0) {
-       sourcebookCheckboxes = { ui->phbCheckbox, ui->xgeCheckbox, ui->scagCheckbox };
+       sourcebookCheckboxes = {
+           {Sourcebooks::PlayersHandbook, ui->phbCheckbox},
+           {Sourcebooks::XanatharsGTE, ui->xgeCheckbox},
+           {Sourcebooks::SwordCoastAG, ui->scagCheckbox}
+       };
    }
     bool toHide = false;
-    std::string spname = s.name;
+    std::string spname = s.name();
     boost::to_lower(spname);
-    toHide = toHide || (isClass && !usableByClass(s, cc));
-    toHide = toHide || (isFav && !s.favorite);
+    toHide = toHide || (isClass && !s.usable_by(cc));
+    toHide = toHide || (isFav && !profile.is_favorite(s));
     toHide = toHide || (isText && !boost::contains(spname, text));
-    toHide = toHide || ( !sourcebookCheckboxes[*s.sourcebook]->isChecked() );
+    toHide = toHide || ( !sourcebookCheckboxes.at(s.sourcebook())->isChecked() );
     return toHide;
 }
 
 void Spellbook::filter() {
-    int classIndex = ui->filterBox->currentIndex();
-    bool isClass = (classIndex != 0);
-    CasterClass cc;
-    if (isClass) {
-        cc = static_cast<CasterClass>(classIndex-1);
-    } else {
-        cc = static_cast<CasterClass>(0);
-    }
+    std::string class_text = ui->filterBox->currentText().toStdString();
+    bool isClass = !( (class_text == none_field) || class_text.empty() );
+    const DnD::CasterClass& cc = isClass ? DnD::CasterClass::from_name(class_text) : DnD::CasterClasses::Wizard;
     bool favorites = ui->favoritesButton->isChecked();
     std::string searchText = ui->searchBar->text().toStdString();
     boost::to_lower(searchText);
@@ -305,63 +323,51 @@ void Spellbook::filter() {
 //    if (!(isText || favorites || isClass) ) {
 //        unfilter();
 //    } else {
-        for (size_t i = 0; i < spells.size(); i++) {
+        for (int i = 0; i < spells.size(); ++i) {
+            std::cout << spells[i].name() << std::endl;
             ui->spellList->setRowHidden(i, filter_item(isClass, favorites, isText, spells[i], cc, searchText));
         }
     //}
 
 }
 
-void Spellbook::sort(const std::string& sort_field1, const std::string& sort_field2) {
+void Spellbook::sort() {
 
-    // Do the appropriate sorting
-    // No two spells have the same name, so we don't need the double sort in that case
-    if ( (sort_field2 == "None") || (sort_field1 == "Name") || (sort_field1 == sort_field2) ) {
-        if (sort_field1 == "Name") {
-            auto mvc = MemValComp<std::string>(&Spell::name);
-            mvc.doSort(spells);
-        }
-        if (sort_field1 == "Level") {
-            auto mvc = MemValComp<int>(&Spell::level);
-            mvc.doSort(spells);
-        }
-        if(sort_field1 == "School") {
-            auto mvc = MemValComp<School>(&Spell::school);
-            mvc.doSort(spells);
-        }
+    using DnD::Spell;
+
+    // If this entry is greyed out, do nothing
+    int index1 = ui->sort1Box->currentIndex();
+    int index2 = ui->sort2Box->currentIndex();
+    if (index2 == index1 + 1) {return;}
+
+    // Get the strings
+    QString qstr1 = ui->sort1Box->currentText();
+    QString qstr2 = ui->sort2Box->currentText();
+
+    // If the entry is set to None, do nothing
+    if (qstr1.toStdString() == "None") {return;}
+
+    // Get the sort fields
+    std::string sort_field1 = qstr1.toStdString();
+    std::string sort_field2 = qstr2.toStdString();
+
+    // We have a map of the form string -> -1,0,1 comparison function
+    // So we choose the correct comparison functions for the sort fields, then create the comparator from the comparison functions
+    // Use this comparator to sort the list
+    std::function<bool(const Spell&, const Spell&)> lt_comp;
+    if ( (sort_field2 == none_field) || (sort_field1 == default_spell_field) || (sort_field1 == sort_field2) ) {
+        lt_comp = [&sort_field1](const Spell& s1, const Spell& s2) { return less_than(s1, s2, spell_sort_fns.at(sort_field1), spell_sort_fns.at(default_spell_field)); };
     } else {
-        if (sort_field1 == "Name" && sort_field2 == "Level") {
-            auto mvc = MemValTwoComp<std::string, int>(&Spell::name, &Spell::level);
-            mvc.doSort(spells);
-        }
-        if (sort_field1 == "Name" && sort_field2 == "School") {
-            auto mvc = MemValTwoComp<std::string, School>(&Spell::name, &Spell::school);
-            mvc.doSort(spells);
-        }
-        if (sort_field1 == "Level" && sort_field2 == "School") {
-            auto mvc = MemValTwoComp<int, School>(&Spell::level, &Spell::school);
-            mvc.doSort(spells);
-        }
-        if (sort_field1 == "Level" && sort_field2 == "Name") {
-            auto mvc = MemValTwoComp<int, std::string>(&Spell::level, &Spell::name);
-            mvc.doSort(spells);
-        }
-        if (sort_field1 == "School" && sort_field2 == "Name") {
-            auto mvc = MemValTwoComp<School, std::string>(&Spell::school, &Spell::name);
-            mvc.doSort(spells);
-        }
-        if (sort_field1 == "School" && sort_field2 == "Level") {
-            auto mvc = MemValTwoComp<School, int>(&Spell::school, &Spell::level);
-            mvc.doSort(spells);
-        }
+         lt_comp = [&sort_field1, &sort_field2](const Spell& s1, const Spell& s2) { return less_than(s1, s2, spell_sort_fns.at(sort_field1), spell_sort_fns.at(sort_field2), spell_sort_fns.at(default_spell_field)); };
     }
+    std::sort(spells.begin(), spells.end(), lt_comp);
 
     // Clear the QListWidget and repopulate with the sorted list
-    for (size_t i = 0; i < spells.size(); i++) {
+    for (int i = 0; i < spells.size(); i++) {
         //std::cout << i << std::endl;
-        ui->spellList->setItem(i,0,new QTableWidgetItem(QString::fromStdString(spells[i].name)));
-        ui->spellList->setItem(i,1,new QTableWidgetItem(QString::fromStdString(schoolNames.find(spells[i].school)->second)));
-        ui->spellList->setItem(i,2,new QTableWidgetItem(QString::number(spells[i].level)));
+        ui->spellList->setItem(i,0,new QTableWidgetItem(QString::fromStdString(spells[i].name())));
+        ui->spellList->setItem(i,1,new QTableWidgetItem(QLatin1String(spells[i].school().name().data())));
+        ui->spellList->setItem(i,2,new QTableWidgetItem(QString::number(spells[i].level())));
     }
 
     // Redo hiding, if necessary
@@ -369,40 +375,43 @@ void Spellbook::sort(const std::string& sort_field1, const std::string& sort_fie
     on_filterBox_currentIndexChanged(index);
 }
 
+void Spellbook::show_current_spell() {
+    int current_index = ui->spellList->currentRow();
+    display_spelldata(spells[current_index]);
+}
 
-void Spellbook::display_spelldata(const int& ind) {
 
-    // Get the spell
-    Spell spell = spellsList()[ind];
+void Spellbook::display_spelldata(const Spell& spell) {
+
     // Create the display text
-    QString nameText = QString::fromStdString(spell.name);
-    QString schoolText = "<b>School: </b>" + QString::fromStdString(schoolNames.find(spell.school)->second);
-    QString ritualText = "<b>Ritual: </b>" + QString::fromStdString(bool_to_yn((spell.ritual)));
-    QString concentrationText = "<b>Concentration: </b>" + QString::fromStdString(bool_to_yn(spell.concentration));
-    QString levelText = "<b>Level: </b>" + QString::fromStdString(std::to_string(spell.level));
-    QString rangeText = "<b>Distance: </b>" + QString::fromStdString(spell.range);
+    QString nameText = QString::fromStdString(spell.name());
+    QString schoolText = "<b>School: </b>" + QLatin1String(spell.school().name().data());
+    QString ritualText = "<b>Ritual: </b>" + QString::fromStdString(bool_to_yn(spell.ritual()));
+    QString concentrationText = "<b>Concentration: </b>" + QString::fromStdString(bool_to_yn(spell.concentration()));
+    QString levelText = "<b>Level: </b>" + QString::fromStdString(std::to_string(spell.level()));
+    QString rangeText = "<b>Distance: </b>" + QString::fromStdString(spell.range().string());
     QString descTitleText = "<b>Description:</b>";
-    QString descriptionText = QString::fromStdString(spell.description + "\n\n" + spell.higherLevel);
-    QString durationText = "<b>Duration: </b>" + QString::fromStdString(spell.duration);
-    QString castingTimeText = "<b>Casting Time: </b>" + QString::fromStdString(spell.castingTime);
-    std::string locationText = sourcebookCodes.find(spell.sourcebook)->second + " " + std::to_string(spell.page);
+    QString descriptionText = QString::fromStdString(spell.description() + "\n\n" + spell.higher_level());
+    QString durationText = "<b>Duration: </b>" + QString::fromStdString(spell.duration().string());
+    QString castingTimeText = "<b>Casting Time: </b>" + QString::fromStdString(spell.casting_time());
+    std::string locationText = std::string(spell.sourcebook().abbreviation()) + " " + std::to_string(spell.page());
     QString pageText = "<b>Location: </b> " + QString::fromStdString(locationText);
-    std::string compStr = spell.componentsString();
+    std::string compStr = spell.components_string();
     QString compText = "<b>Components: </b>" + QString::fromStdString(compStr);
     QString materialText;
-    if (spell.components[2]) {
-        materialText = "<b>Materials:\n</b>" + QString::fromStdString(spell.material);
+    if (spell.components()[2]) {
+        materialText = "<b>Materials:\n</b>" + QString::fromStdString(spell.material());
     } else {
         materialText = "";
     }
 
     std::string classesString;
     QString classesText;
-    for (const CasterClass& cclass : spell.classes) {
-        classesString += casterNames.find(cclass)->second;
+    for (const CasterClass& cclass : spell.classes()) {
+        classesString += cclass.name();
         classesString += ", ";
     }
-    if (spell.classes.size() > 0) {
+    if (spell.classes().size() > 0) {
         classesString.erase(classesString.end()-2,classesString.end());
         classesText = "<b>Classes: </b>" + QString::fromStdString(classesString);
     } else {
@@ -448,25 +457,10 @@ void Spellbook::display_spelldata(const int& ind) {
 void Spellbook::update_button() {
     int index = ui->spellList->currentRow();
     Spell s = spells[index];
-    if (s.favorite) {
+    if (profile.is_favorite(s)) {
         ui->favButton->setIcon(fav_icon);
     } else {
         ui->favButton->setIcon(not_fav_icon);
     }
     ui->favButton->setIconSize(QSize(iconSize,iconSize));
-}
-
-void Spellbook::on_phbCheckbox_toggled(bool) // Unnamed: checked
-{
-    filter();
-}
-
-void Spellbook::on_xgeCheckbox_toggled(bool) // Unnamed: checked
-{
-    filter();
-}
-
-void Spellbook::on_scagCheckbox_toggled(bool) // Unnamed: checked
-{
-    filter();
 }

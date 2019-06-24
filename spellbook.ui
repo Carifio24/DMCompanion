@@ -13,6 +13,12 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: transparent</string>
+  </property>
   <widget class="QLabel" name="nameLabel">
    <property name="geometry">
     <rect>
@@ -293,7 +299,7 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
     <enum>Qt::ClickFocus</enum>
    </property>
    <property name="autoFillBackground">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="text">
     <string/>
@@ -355,6 +361,9 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
    </property>
    <property name="focusPolicy">
     <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
    </property>
    <property name="text">
     <string/>

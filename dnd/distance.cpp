@@ -1,6 +1,7 @@
 #include "distance.h"
 #include "string_helpers.h"
 
+#include <iostream>
 #include <stdexcept>
 
 namespace DnD {
@@ -14,6 +15,7 @@ std::string Distance::string() const {
     if (!_str.empty()) {
         return _str;
     }
+    
     if (quantity_type() == DistanceTypes::Self) {
         if (_value > 0) {
             return "Self (" + std::to_string(_value) + " foot radius";
@@ -22,7 +24,7 @@ std::string Distance::string() const {
         }
     }
     if (quantity_type() == DistanceTypes::Distanced) {
-        std::string ft = (_value == 1) ? std::string(LengthUnits::Foot.name()) : std::string(LengthUnits::Foot.plural_name());
+        std::string ft = (_value == 1) ? std::string(unit_type().name()) : std::string(unit_type().plural_name());
         return _value + " " + ft;
     }
     return std::string(quantity_type().name());
@@ -43,6 +45,7 @@ Distance Distance::from_string(const std::string& s) {
         if (s_split.size() == 1) {
             return Distance(DistanceTypes::Self, 0, LengthUnits::Foot, s);
         } else {
+            for (const auto& x : s_split) { std::cout << x << "\t";}; std::cout << std::endl;
             std::string dist_str = s_split[1];
             if (!starts_with(dist_str, "(") && !ends_with(s, ")")) {
                 throw std::runtime_error("Error parsing radius of Self spell");

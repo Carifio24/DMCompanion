@@ -11,7 +11,7 @@ class CreatureBuilder {
     public:
 
         // Constructor
-        CreatureBuilder();
+        CreatureBuilder() {}
 
         // Setter methods
         CreatureBuilder& set_name(const std::string& name);
@@ -23,8 +23,8 @@ class CreatureBuilder {
         CreatureBuilder& set_challenge_rating(const Fraction& cr);
         CreatureBuilder& set_hit_points(const int hp);
         CreatureBuilder& set_hit_dice(const DiceSet& hit_dice);
-        CreatureBuilder& set_speeds(const std::vector<Speed>& speeds);
-        CreatureBuilder& set_alternate_speeds(const std::vector<std::pair<Speed,std::string>>& alt_speeds);
+        CreatureBuilder& set_speeds(const std::map<std::reference_wrapper<const SpeedType>,Distance,ref_wrap_comp>& speeds);
+        CreatureBuilder& set_alternate_speeds(const std::map<std::reference_wrapper<const SpeedType>,std::pair<Distance,std::string>,ref_wrap_comp>& alt_speeds);
 
         CreatureBuilder& set_strength(const int str);
         CreatureBuilder& set_dexterity(const int dex);
@@ -72,8 +72,8 @@ class CreatureBuilder {
         // Combat statistics
         int ac;
         int hp;
-        std::vector<Speed> speeds;
-        std::vector<std::pair<Speed,std::string>> alt_speeds;
+        std::map<std::reference_wrapper<const SpeedType>,Distance,ref_wrap_comp> speeds;
+        std::map<std::reference_wrapper<const SpeedType>,std::pair<Distance,std::string>,ref_wrap_comp> alt_speeds;
 
         // Ability scores
         int str;

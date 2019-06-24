@@ -1,5 +1,7 @@
 #include "creature_builder.h"
 
+#include <iostream>
+
 namespace DnD {
 
 CreatureBuilder& CreatureBuilder::set_name(const std::string& name) { this->name = name; return *this; }
@@ -11,8 +13,8 @@ CreatureBuilder& CreatureBuilder::set_armor_class(const int ac) { this->ac = ac;
 CreatureBuilder& CreatureBuilder::set_challenge_rating(const Fraction& cr) { this->cr = cr; return *this; }
 CreatureBuilder& CreatureBuilder::set_hit_points(const int hp) { this->hp = hp; return *this; }
 CreatureBuilder& CreatureBuilder::set_hit_dice(const DiceSet& hit_dice) { this->hit_dice = hit_dice; return *this; }
-CreatureBuilder& CreatureBuilder::set_speeds(const std::vector<Speed>& speeds) { this->speeds = speeds; return *this; }
-CreatureBuilder& CreatureBuilder::set_alternate_speeds(const std::vector<std::pair<Speed,std::string>>& alt_speeds) { this->alt_speeds = alt_speeds; return *this; }
+CreatureBuilder& CreatureBuilder::set_speeds(const std::map<std::reference_wrapper<const SpeedType>,Distance,ref_wrap_comp>& speeds) { this->speeds = speeds; return *this; }
+CreatureBuilder& CreatureBuilder::set_alternate_speeds(const std::map<std::reference_wrapper<const SpeedType>,std::pair<Distance,std::string>,ref_wrap_comp>& alt_speeds) { this->alt_speeds = alt_speeds; return *this; }
 
 CreatureBuilder& CreatureBuilder::set_strength(const int str) { this->str = str; return *this; }
 CreatureBuilder& CreatureBuilder::set_dexterity(const int dex) { this->dex = dex; return *this; }
@@ -42,6 +44,11 @@ CreatureBuilder& CreatureBuilder::set_legendary_actions(const std::vector<Legend
 
 
 Creature CreatureBuilder::build() const {
+    const std::string newline = "\n";
+    std::cout << "Creating a creature with:\n";
+    std::cout << "name: " << name << newline;
+    std::cout << "size: " << size.get().name() << newline;
+    std::cout << "type: " << type << newline << "subtype: " << subtype << newline << "alignment: " << alignment << newline << "languages: " << languages << newline;
     return Creature(name, size, type, subtype, alignment, cr, hit_dice, ac, hp, speeds, alt_speeds, str, dex, con, intl, wis, chr, str_sv, dex_sv, con_sv, int_sv, wis_sv, chr_sv, prcp, dmg_vuls, dmg_rsts, dmg_imns, cond_imns, senses, pass_prcp, languages, spcl_abls, actions, leg_actions);
 }
 
@@ -52,6 +59,7 @@ void CreatureBuilder::reset() {
     subtype.clear();
     alignment.clear();
     cr = Fraction();
+    hit_dice = DiceSet();
 
     ac = 0;
     hp = 0;

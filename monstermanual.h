@@ -3,7 +3,7 @@
 
 #include <QWidget>
 
-#include "Monster.h"
+#include <DnD/monster.h>
 
 namespace Ui {
 class MonsterManual;
@@ -17,12 +17,18 @@ public:
     explicit MonsterManual(QWidget *parent = 0);
     ~MonsterManual();
 
+private slots:
+    void on_monsterTable_clicked(const QModelIndex &index);
+
+    void on_monsterTable_currentCellChanged(int currentRow, int currentColumn, int previousRow, int previousColumn);
+
 private:
 
-    void populateMonsterTable(const std::vector<Monster>& monsters);
+    void populate_monster_table();
+    void display_monster_data(const DnD::Monster& m);
 
     Ui::MonsterManual *ui;
-    std::vector<Monster> monsters;
+    QVector<DnD::Monster> monsters;
 };
 
 #endif // MONSTERMANUAL_H

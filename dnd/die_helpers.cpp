@@ -1,4 +1,5 @@
 #include "die_helpers.h"
+#include "string_helpers.h"
 #include <random>
 
 namespace DnD {
@@ -19,9 +20,31 @@ int roll_die(const Die& d) {
     return roll_die(d, 1)[0];
 }
 
+float average(const Die& d) {
+	return (*d + 1) / 2;
+}
+
 std::string name(const Die& d) {
     std::string s = "d" + std::to_string(*d);
     return s;
+}
+
+Die d(const int n) {
+	switch(n) {
+		case 4:
+			return Die::d4;
+		case 6:
+			return Die::d6;
+		case 8:
+			return Die::d8;
+		case 10:
+			return Die::d10;
+		case 12:
+			return Die::d12;
+		case 20:
+			return Die::d20;
+
+	}
 }
 
 } // end namespace DnD

@@ -11,54 +11,51 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = DMCompanion
 TEMPLATE = app
 
-QMAKE_CXXFLAGS += -O3
+QMAKE_CXXFLAGS += -O3 -std=c++17
 
 SOURCES += main.cpp \
     dmcompanion.cpp \
-    Parse.cpp \
-    Filter.cpp \
-    Sort.cpp \
-    Parse.tpp \
-    Sort.tpp \
-    jstring.cpp \
     jsoncpp/jsoncpp.cpp \
+    monster_display.cpp \
+    profile.cpp \
+    qhelpers.cpp \
     spellbook.cpp \
-    Spell.cpp \
     monstermanual.cpp \
-    alignment.cpp \
-    fraction.cpp \
-    ability.cpp \
-    action.cpp \
-    enummaps.cpp
+    qparse.cpp \
+    monster_parse.cpp \
+    json_helpers.cpp \
+    spell_parse.cpp \
+    sort.tpp \
+    sort.cpp \
+    spellmodel.cpp
 
 HEADERS  += spellbook.h \
     dmcompanion.h \
-    Sort.h \
-    Parse.h \
-    Filter.h \
     jsoncpp/json/json.h \
     jsoncpp/json/json-forwards.h \
-    jstring.h \
-    Enumerations.h \
-    Spell.h \
-    Monster.h \
-    action.h \
-    ability.h \
+    monster_display.h \
     monstermanual.h \
-    alignment.h \
-    fraction.h \
-    enummaps.h \
-    damageinfo.h
+    profile.h \
+    qhelpers.h \
+    qparse.h \
+    json_helpers.h \
+    monster_parse.h \
+    spell_parse.h \
+    sort.h \
+    spellmodel.h
 
 FORMS    += dmcompanion.ui \
     spellbook.ui \
     monstermanual.ui
 
-CONFIG    += c++14
+UI_DIR = $$PWD
+
+CONFIG    += c++17
 
 DISTFILES += \
     BookBackground.jpeg \
     Spells.json \
+    resources/bookbackground_2.jpg \
     star_filled.png \
     star_filled_2.png \
     star_empty.png \
@@ -66,3 +63,16 @@ DISTFILES += \
 
 RESOURCES += \
     resources.qrc
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../usr/local/lib/release/ -ldnd
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../usr/local/lib/debug/ -ldnd
+else:unix: LIBS += -L$$PWD/../../../../usr/local/lib/ -ldnd
+
+INCLUDEPATH += $$PWD/../../../../usr/local/include
+DEPENDPATH += $$PWD/../../../../usr/local/include
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../../../usr/local/lib/release/libdnd.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../../../usr/local/lib/debug/libdnd.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../../../usr/local/lib/release/dnd.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../../../usr/local/lib/debug/dnd.lib
+else:unix: PRE_TARGETDEPS += $$PWD/../../../../usr/local/lib/libdnd.a

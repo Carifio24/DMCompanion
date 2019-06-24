@@ -4,65 +4,90 @@
 #include <algorithm>
 #include <string>
 #include <QList>
-#include "enumerations.h"
-#include "Spell.h"
+#include <functional>
+
+
+
+template <typename T, typename M>
+std::function<int(const T&,const T&)> test_less_equal(M (T::* mem_fn)(void) const) {
+    return [mem_fn](const T& t1, const T& t2) {
+        const M v1 = (t1.*mem_fn)();
+        const M v2 = (t2.*mem_fn)();
+        if ( v1 < v2 ) { return 1; }
+        else if ( v1 == v2 ) { return 0; }
+        return -1;
+    };
+}
+
+template <typename T, typename M>
+std::function<int(const T&,const T&)> test_less_equal(const M& (T::* mem_fn)(void) const) {
+    return [mem_fn](const T& t1, const T& t2) {
+        const M& v1 = (t1.*mem_fn)();
+        const M& v2 = (t2.*mem_fn)();
+        if ( v1 < v2 ) { return 1; }
+        else if ( v1 == v2 ) { return 0; }
+        return -1;
+    };
+}
+
+template <typename T>
+std::vector<int> sorted_indices(const std::vector<T>& v, const std::function<bool(const T&, const T&)>& fcomp) {
+    std::vector<int> idx(v.size());
+    std::iota(idx.begin(), idx.end(), 0);
+    std::sort(idx.begin(), idx.end(), [&v, &fcomp](int i1, int i2) { return fcomp(v[i1], v[i2]); } );
+    return idx;
+}
+
+template <typename T>
+bool less_than(const T& t1, const T& t2, const std::function<int(const T&,const T&)>& comp) {
+    return comp(t1, t2) > 0;
+}
+
+template <typename T, typename... Args>
+bool less_than(const T& t1, const T& t2, const std::function<int(const T&,const T&)>& comp, Args&&... args) {
+    int r = comp(t1, t2);
+    if (r != 0) {
+        return r > 0;
+    }
+    return less_than(t1, t2, std::forward<Args>(args)...);
+}
+
 
 
 // This class provides a template function that sorts based on a member value of the user's choice
-// MemberType is a pointer to the specified member value, i.e. &Spell::name
+// MemberType is a pointer to the specified member value, i.e. &DnD::Spell::name
 // Note that the sorting is done via std::sort with an appropriate lambda function
-template <typename MemberType>
-class MemValComp {
+//template <typename T, auto (T::*mem_ptr)(void)>
+//class MemValComp {
 
-	public:
-		MemValComp(MemberType Spell::* mem_name) {
-			member_name = mem_name;
-		}
-		bool doCompare(const Spell& s1, const Spell& s2) {
-            if (s1.*member_name != s2.*member_name) {
-                return s1.*member_name < s2.*member_name;
-            } else {
-                return s1.name < s2.name;
-            }
-		}
+//	public:
+//        static bool doCompare(const T& s1, const T& s2) {
+//            return (s1.*mem_ptr)() < (s1.*mem_ptr)();
+//		}
 
-		void doSort(std::vector<Spell>& slist) {
-			std::sort(slist.begin(), slist.end(), [this](Spell s1, Spell s2) {return doCompare(s1, s2);});
-		}
+//        static void doSort(auto& slist) {
+//            std::sort(slist.begin(), slist.end(), [](const T& s1, const T& s2) {return doCompare(s1, s2);});
+//		}
+//};
 
-	private:
-		MemberType Spell::* member_name;
-};
+//// This class does the same thing for two-level sorting
+//// MemberType1 corresponds to the first-level sort
+//template <typename T, auto (T::*mem_ptr)(void), auto... vs>
+//class MemValComp {
 
-// This class does the same thing for two-level sorting
-// MemberType1 corresponds to the first-level sort
-template <typename MemberType1, typename MemberType2>
-class MemValTwoComp {
+//    public:
+//        static bool doCompare(const T& s1, const T& s2) {
+//            if ( (s1.*mem_ptr)() != (s2.*mem_ptr)() ) {
+//                return (s1.*mem_ptr)() < (s1.*mem_ptr)();
+//            } else {
+//                return MemValComp<T, vs...>::doCompare(s1, s2);
+//            }
+//        }
 
-    public:
-        MemValTwoComp(MemberType1 Spell::* mem_name1, MemberType2 Spell::* mem_name2) {
-            member_name1 = mem_name1;
-            member_name2 = mem_name2;
-        }
-
-        bool doCompare(const Spell& s1, const Spell& s2) {
-            if (s1.*member_name1 != s2.*member_name1) {
-                return s1.*member_name1 < s2.*member_name1;
-            } else if (s1.*member_name2 != s2.*member_name2) {
-                return s1.*member_name2 < s2.*member_name2;
-            } else {
-                return s1.name < s2.name;
-            }
-        }
-
-        void doSort(std::vector<Spell>& slist) {
-            std::sort(slist.begin(), slist.end(), [this](Spell s1, Spell s2) {return doCompare(s1, s2);});
-        }
-
-    private:
-        MemberType1 Spell::* member_name1;
-        MemberType2 Spell::* member_name2;
-};
+//        static void doSort(auto& slist) {
+//            std::sort(slist.begin(), slist.end(), [](const T& s1, const T& s2) {return doCompare(s1, s2);});
+//        }
+//};
 
 
 #endif

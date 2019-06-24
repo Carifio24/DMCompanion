@@ -44,12 +44,12 @@ std::vector<std::string> split(std::string s, const std::string& dlm, int n_piec
     std::vector<std::string> pieces;
 
     // Length of the delimiter
-    int dlm_len = dlm.length();
+    const int dlm_len = dlm.length();
 
     // While the delimiter still exists in the string, keep splitting off pieces
     size_t pos = 0;
     std::string piece;
-    while ( ((pos=s.find(dlm)) != std::string::npos) && (pieces.size() < n_pieces) ) {
+    while ( ((pos=s.find(dlm)) != std::string::npos) && (pieces.size() < n_pieces - 1) ) {
         piece = s.substr(0, pos);
         pieces.push_back(piece);
         s.erase(0, pos + dlm_len);
@@ -61,6 +61,7 @@ std::vector<std::string> split(std::string s, const std::string& dlm, int n_piec
 }
 
 std::string join(const std::vector<std::string>& pieces, const std::string& dlm) {
+    if (pieces.size() == 0) { return ""; }
     std::stringstream ss;
     ss << pieces[0];
     for (size_t i = 1; i < pieces.size(); ++i) {
@@ -74,10 +75,9 @@ void to_lowercase(std::string& s) {
     std::transform(s.begin(), s.end(), s.begin(), [](unsigned char c) -> unsigned char { return std::tolower(c); });
 }
 
-std::string lowercase(const std::string& s) {
-    std::string t;
-    t.reserve(s.size());
-    std::transform(s.begin(), s.end(), t.begin(), [](unsigned char c) -> unsigned char { return std::toupper(c); });
+std::string lowercase(std::string s) {
+    std::transform(s.begin(), s.end(), s.begin(), [](unsigned char c) -> unsigned char { return std::tolower(c); });
+    return s;
 }
 
 std::string capitalized(std::string s) {

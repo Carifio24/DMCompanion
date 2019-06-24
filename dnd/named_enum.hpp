@@ -90,7 +90,7 @@ const NEType& NamedEnum<NEType>::from_name(const std::string& s, const std::func
             return *inst;
         }
     }
-    throw std::runtime_error("Not a valid string");
+    throw std::runtime_error("Not a valid string -- " + s);
 }
 
 template <typename NEType>
@@ -101,7 +101,7 @@ const NEType& NamedEnum<NEType>::from_name(const std::string& s) {
             return *inst;
         }
     }
-    throw std::runtime_error("Not a valid string");
+    throw std::runtime_error("Not a valid string -- " + s);
 }
 
 template <typename NEType>
@@ -131,7 +131,7 @@ const NEType& NamedEnum<NEType>::from_member(const T& t, U (NEType::* mem_ptr)(v
             return *inst;
         }
     }
-    throw std::runtime_error("Not a valid string");
+    throw std::runtime_error("Not a valid member value -- " + t);
 }
 
 template <typename NEType>

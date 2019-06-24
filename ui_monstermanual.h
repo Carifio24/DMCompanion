@@ -13,9 +13,12 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QScrollArea>
 #include <QtWidgets/QTableWidget>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -24,17 +27,34 @@ class Ui_MonsterManual
 {
 public:
     QTableWidget *monsterTable;
-    QLabel *minCRlabel;
-    QLabel *maxCRlabel;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *dataLayout;
+    QLabel *nameLabel;
+    QLabel *basicStatsLabel;
+    QHBoxLayout *abilityScoresLayout;
+    QLabel *strLabel;
+    QLabel *dexLabel;
+    QLabel *conLabel;
+    QLabel *intLabel;
+    QLabel *wisLabel;
+    QLabel *chaLabel;
+    QLabel *extraStatsLabel;
+    QScrollArea *abilitiesActionsScrollArea;
+    QWidget *scrollAreaWidgetContents;
+    QVBoxLayout *verticalLayout;
+    QLabel *specialAbilitiesLabel;
+    QLabel *actionsLabel;
+    QLabel *legendaryActionsLabel;
 
     void setupUi(QWidget *MonsterManual)
     {
         if (MonsterManual->objectName().isEmpty())
             MonsterManual->setObjectName(QStringLiteral("MonsterManual"));
         MonsterManual->resize(1005, 925);
+        MonsterManual->setStyleSheet(QStringLiteral("background-color: transparent"));
         monsterTable = new QTableWidget(MonsterManual);
         monsterTable->setObjectName(QStringLiteral("monsterTable"));
-        monsterTable->setGeometry(QRect(40, 90, 551, 751));
+        monsterTable->setGeometry(QRect(40, 60, 451, 841));
         monsterTable->setShowGrid(false);
         monsterTable->setGridStyle(Qt::NoPen);
         monsterTable->setSortingEnabled(false);
@@ -43,12 +63,90 @@ public:
         monsterTable->horizontalHeader()->setStretchLastSection(true);
         monsterTable->verticalHeader()->setVisible(false);
         monsterTable->verticalHeader()->setHighlightSections(false);
-        minCRlabel = new QLabel(MonsterManual);
-        minCRlabel->setObjectName(QStringLiteral("minCRlabel"));
-        minCRlabel->setGeometry(QRect(50, 50, 81, 16));
-        maxCRlabel = new QLabel(MonsterManual);
-        maxCRlabel->setObjectName(QStringLiteral("maxCRlabel"));
-        maxCRlabel->setGeometry(QRect(150, 50, 81, 16));
+        verticalLayoutWidget = new QWidget(MonsterManual);
+        verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(550, 50, 431, 851));
+        dataLayout = new QVBoxLayout(verticalLayoutWidget);
+        dataLayout->setObjectName(QStringLiteral("dataLayout"));
+        dataLayout->setContentsMargins(0, 0, 0, 0);
+        nameLabel = new QLabel(verticalLayoutWidget);
+        nameLabel->setObjectName(QStringLiteral("nameLabel"));
+
+        dataLayout->addWidget(nameLabel);
+
+        basicStatsLabel = new QLabel(verticalLayoutWidget);
+        basicStatsLabel->setObjectName(QStringLiteral("basicStatsLabel"));
+
+        dataLayout->addWidget(basicStatsLabel);
+
+        abilityScoresLayout = new QHBoxLayout();
+        abilityScoresLayout->setObjectName(QStringLiteral("abilityScoresLayout"));
+        strLabel = new QLabel(verticalLayoutWidget);
+        strLabel->setObjectName(QStringLiteral("strLabel"));
+
+        abilityScoresLayout->addWidget(strLabel);
+
+        dexLabel = new QLabel(verticalLayoutWidget);
+        dexLabel->setObjectName(QStringLiteral("dexLabel"));
+
+        abilityScoresLayout->addWidget(dexLabel);
+
+        conLabel = new QLabel(verticalLayoutWidget);
+        conLabel->setObjectName(QStringLiteral("conLabel"));
+
+        abilityScoresLayout->addWidget(conLabel);
+
+        intLabel = new QLabel(verticalLayoutWidget);
+        intLabel->setObjectName(QStringLiteral("intLabel"));
+
+        abilityScoresLayout->addWidget(intLabel);
+
+        wisLabel = new QLabel(verticalLayoutWidget);
+        wisLabel->setObjectName(QStringLiteral("wisLabel"));
+
+        abilityScoresLayout->addWidget(wisLabel);
+
+        chaLabel = new QLabel(verticalLayoutWidget);
+        chaLabel->setObjectName(QStringLiteral("chaLabel"));
+
+        abilityScoresLayout->addWidget(chaLabel);
+
+
+        dataLayout->addLayout(abilityScoresLayout);
+
+        extraStatsLabel = new QLabel(verticalLayoutWidget);
+        extraStatsLabel->setObjectName(QStringLiteral("extraStatsLabel"));
+
+        dataLayout->addWidget(extraStatsLabel);
+
+        abilitiesActionsScrollArea = new QScrollArea(verticalLayoutWidget);
+        abilitiesActionsScrollArea->setObjectName(QStringLiteral("abilitiesActionsScrollArea"));
+        abilitiesActionsScrollArea->setLayoutDirection(Qt::LeftToRight);
+        abilitiesActionsScrollArea->setWidgetResizable(true);
+        scrollAreaWidgetContents = new QWidget();
+        scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 427, 765));
+        verticalLayout = new QVBoxLayout(scrollAreaWidgetContents);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        specialAbilitiesLabel = new QLabel(scrollAreaWidgetContents);
+        specialAbilitiesLabel->setObjectName(QStringLiteral("specialAbilitiesLabel"));
+
+        verticalLayout->addWidget(specialAbilitiesLabel);
+
+        actionsLabel = new QLabel(scrollAreaWidgetContents);
+        actionsLabel->setObjectName(QStringLiteral("actionsLabel"));
+
+        verticalLayout->addWidget(actionsLabel);
+
+        legendaryActionsLabel = new QLabel(scrollAreaWidgetContents);
+        legendaryActionsLabel->setObjectName(QStringLiteral("legendaryActionsLabel"));
+
+        verticalLayout->addWidget(legendaryActionsLabel);
+
+        abilitiesActionsScrollArea->setWidget(scrollAreaWidgetContents);
+
+        dataLayout->addWidget(abilitiesActionsScrollArea);
+
 
         retranslateUi(MonsterManual);
 
@@ -58,8 +156,18 @@ public:
     void retranslateUi(QWidget *MonsterManual)
     {
         MonsterManual->setWindowTitle(QApplication::translate("MonsterManual", "Form", 0));
-        minCRlabel->setText(QApplication::translate("MonsterManual", "Minimum CR", 0));
-        maxCRlabel->setText(QApplication::translate("MonsterManual", "Maximum CR", 0));
+        nameLabel->setText(QString());
+        basicStatsLabel->setText(QString());
+        strLabel->setText(QString());
+        dexLabel->setText(QString());
+        conLabel->setText(QString());
+        intLabel->setText(QString());
+        wisLabel->setText(QString());
+        chaLabel->setText(QString());
+        extraStatsLabel->setText(QString());
+        specialAbilitiesLabel->setText(QString());
+        actionsLabel->setText(QString());
+        legendaryActionsLabel->setText(QString());
     } // retranslateUi
 
 };

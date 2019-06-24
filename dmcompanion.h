@@ -5,7 +5,6 @@
 #include <QModelIndex>
 #include <QPixmap>
 #include <QIcon>
-#include "Enumerations.h"
 
 namespace Ui {
 class DMCompanion;

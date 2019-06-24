@@ -40,11 +40,17 @@ class Spell {
         std::string classes_string() const;
         bool usable_by(const CasterClass& cc) const;
 
+        // Constructor
+        Spell(const std::string& name, const std::string& description, const std::string& higher_level, const int page, const Distance& range, const std::array<bool,3>& components, const std::string& material, const bool ritual, const Duration& duration, const bool concentration, const std::string& casting_time, const int level, const School& school, const std::vector<std::reference_wrapper<const CasterClass>>& classes, const Sourcebook& sourcebook)
+        : _name(name), _description(description), _higher_level(higher_level), _page(page), _range(range), _components(components), _material(material), _ritual(ritual), _duration(duration), _concentration(concentration), _casting_time(casting_time), _level(level), _school(school), _classes(classes), _sourcebook(sourcebook) {}
+
+        // Default constructor
+        Spell() : Spell("", "", "", 0, Distance(), std::array<bool,3>(), "", false, Duration(), false, "", 0, std::cref(Schools::Abjuration), std::vector<std::reference_wrapper<const CasterClass>>(), std::cref(Sourcebooks::PlayersHandbook)) {}
+
 
     private:
 
         // Member values
-        int _index;
         std::string _name;
         std::string _description;
         std::string _higher_level;
@@ -57,16 +63,10 @@ class Spell {
         bool _concentration;
         std::string _casting_time;
         int _level;
-        bool _favorite;
         std::reference_wrapper<const School> _school;
-        std::reference_wrapper<const Sourcebook> _sourcebook;
         std::vector<std::reference_wrapper<const CasterClass>> _classes;
+        std::reference_wrapper<const Sourcebook> _sourcebook;
 
-        // Constructor
-        Spell(const std::string& name, const std::string& description, const std::string& higher_level, const int& page, const Distance& range, const std::array<bool,3>& components, const std::string& material, const bool& ritual, const Duration& duration, const bool& concentration, const std::string& casting_time, const int& level, const School& school, const std::vector<std::reference_wrapper<const CasterClass>>& classes, const Sourcebook& sourcebook)
-        : _name(name), _description(description), _higher_level(higher_level), _page(page), _range(range), _components(components), _material(material), _ritual(ritual), _duration(duration), _concentration(concentration), _casting_time(casting_time), _level(level), _school(school), _classes(classes), _sourcebook(sourcebook) {}
-
-        friend class SpellBuilder;
 };
 
 } // end namespace DnD

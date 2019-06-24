@@ -65,6 +65,8 @@ public:
         if (Spellbook->objectName().isEmpty())
             Spellbook->setObjectName(QStringLiteral("Spellbook"));
         Spellbook->resize(1343, 829);
+        Spellbook->setAutoFillBackground(false);
+        Spellbook->setStyleSheet(QStringLiteral("background-color: transparent"));
         nameLabel = new QLabel(Spellbook);
         nameLabel->setObjectName(QStringLiteral("nameLabel"));
         nameLabel->setGeometry(QRect(529, 49, 591, 71));
@@ -144,7 +146,7 @@ public:
         searchBar->setObjectName(QStringLiteral("searchBar"));
         searchBar->setGeometry(QRect(140, 79, 311, 25));
         searchBar->setFocusPolicy(Qt::ClickFocus);
-        searchBar->setAutoFillBackground(true);
+        searchBar->setAutoFillBackground(false);
         ritualLabel = new QLabel(Spellbook);
         ritualLabel->setObjectName(QStringLiteral("ritualLabel"));
         ritualLabel->setGeometry(QRect(790, 227, 171, 20));
@@ -162,6 +164,7 @@ public:
         favButton->setObjectName(QStringLiteral("favButton"));
         favButton->setGeometry(QRect(1130, 49, 71, 71));
         favButton->setFocusPolicy(Qt::NoFocus);
+        favButton->setAutoFillBackground(false);
         rangeLabel = new QLabel(Spellbook);
         rangeLabel->setObjectName(QStringLiteral("rangeLabel"));
         rangeLabel->setGeometry(QRect(550, 200, 211, 17));

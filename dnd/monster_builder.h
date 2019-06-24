@@ -9,6 +9,9 @@ namespace DnD {
 class MonsterBuilder : public CreatureBuilder {
 
     public:
+
+        MonsterBuilder() : CreatureBuilder() {}
+
         MonsterBuilder& set_history(const int history);
         MonsterBuilder& set_image_filename(const std::string& image_filename);
 

@@ -22,10 +22,7 @@ class Duration : public Quantity<DurationType, TimeUnit> {
         // Methods
         int time_in_seconds() const noexcept { return base_value(); }
         std::string string() const;
-        static Duration& from_string(const std::string& s);
-
-        // Constant vector of names
-        static const std::vector<std::string> typeNames;
+        static Duration from_string(std::string s);
 
 };
 

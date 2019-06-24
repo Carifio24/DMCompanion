@@ -1,16 +1,12 @@
-#include "keys.h"
-#include "monster_parse.h"
-#include "string_helpers.h"
-#include "speed_type.h"
+#include <string>
+#include "dnd/monster.h"
+#include "dnd/damage_info.h"
+#include "dnd/enumerations.h"
 #include "json_helpers.h"
-#include "damage_info.h"
-#include "enummaps.h"
 
-#include <iostream>
-#include <boost/algorithm/string/predicate.hpp>
-#include <boost/algorithm/string/replace.hpp>
+#include "jsoncpp/json/json.h"
 
-namespace DnD {
+using namespace DnD;
 
 DamageInfo identify_damage_info(const std::string& s) {
 
@@ -72,6 +68,7 @@ Monster parse_monster(const Json::Value& root, MonsterBuilder& b) {
     using namespace keys;
 
     // Get the basic info
+    std::cout << "Monster name: " << root[name_k].asString() << std::endl;
     b.set_name(root[name_k].asString());
     b.set_size(Size::from_name(root[size_k].asString()));
     
@@ -175,22 +172,26 @@ Monster parse_monster(const Json::Value& root, MonsterBuilder& b) {
     b.set_condition_immunities(cond_imns);
 
     // Senses and passive perception
+    std::cout << "About to parse senses and passive perception" << std::endl;
     std::vector<Sense> senses;
+    int prcp;
     std::vector<std::string> senses_and_perception = split(root[senses_k].asString(), ", ");
     for (const std::string& s : senses_and_perception) {
 
         // If it's the passive perception
         std::vector<std::string> split_data = split(s, " ");
         if (starts_with(s, "passive Perception")) {
-            b.set_passive_perception(std::stoi(split_data[2]));
+            prcp = std::stoi(split_data[2]);
         // Otherwise
         } else {
             split_data = split(s, " ", 2);
             Distance sense_range = Distance::from_string(split_data[1]);
-            const SenseType& sense_type = SenseType::from_name(split_data[0]);
+            const SenseType& sense_type = SenseType::from_lc_name(split_data[0]);
             senses.emplace_back(sense_type, sense_range);
         }
     }
+    b.set_passive_perception(prcp);
+    b.set_senses(senses);
 
     // Languages (just a string for now, need to work on this)
     b.set_languages(root[languages_k].asString());
@@ -219,8 +220,13 @@ Monster parse_monster(const Json::Value& root, MonsterBuilder& b) {
             std::string name = act[name_k].asString();
             std::string desc = act[description_k].asString();
             int atk_bonus = act[atk_bonus_k].asInt();
-            int dmg_bonus = act[dmg_bonus_k].asInt();
-            DiceSet dset = DiceSet::from_string(act[dmg_dice_k].asString());
+            int dmg_bonus = int_if_member(act,dmg_bonus_k,0);
+            std::string dmg_dice_str = act[dmg_dice_k].asString();
+            DiceSet dset;
+            std::cout << dmg_dice_str << std::endl;
+            if (!dmg_dice_str.empty()) {
+                dset = DiceSet::from_string(act[dmg_dice_k].asString());
+            }
             actions.emplace_back(name, desc, atk_bonus, dset, dmg_bonus);
         }
     }
@@ -245,5 +251,3 @@ Monster parse_monster(const Json::Value& root, MonsterBuilder& b) {
     return m;
 
 }
-
-} // end namespace DnD

@@ -2,6 +2,8 @@
 
 #include <stdexcept>
 
+namespace DnD {
+
 bool yn_to_bool(const std::string& yn) {
 	if (yn == "no") {
 		return false;
@@ -21,3 +23,5 @@ std::string bool_to_yn(const bool& yn) {
 		return "no";
 	}
 }
+
+} // end namespace DnD

@@ -13,7 +13,10 @@ class DiceSet {
         DiceSet() : DiceSet(std::map<Die,int>()) {}
 
         int roll() const noexcept;
+        float average_value() const noexcept;
         std::map<Die,int> dice() const noexcept { return _dmap; }
+
+        std::string as_string() const noexcept;
 
         static DiceSet from_string(std::string s);
 

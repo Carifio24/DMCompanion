@@ -1,1 +1,1 @@
-build/converters.o: converters.cpp converters.h
+build/converters.o: converters.cpp converters.h enumerations.h

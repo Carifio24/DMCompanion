@@ -1,14 +1,17 @@
 #ifndef SPELLBOOK_H
 #define SPELLBOOK_H
 
+#include "sort.h"
+#include "profile.h"
+
 #include <string>
 #include <vector>
 #include <QWidget>
 #include <QCheckBox>
 #include <QIcon>
 #include <QPixmap>
-#include "Enumerations.h"
-#include "Spell.h"
+#include <DnD/spell.h>
+#include <DnD/sourcebook.h>
 
 namespace Ui {
 class Spellbook;
@@ -21,7 +24,7 @@ class Spellbook : public QWidget
 public:
     explicit Spellbook(QWidget *parent = 0);
     ~Spellbook();
-    std::vector<Spell> spellsList() {return spells;}
+    QVector<DnD::Spell> spellsList() {return spells;}
 
 private slots:
     void on_spellList_clicked(const QModelIndex &index);
@@ -50,11 +53,11 @@ private slots:
 
 private:
 
-    void filter_by_class(const CasterClass& cc);
+    void filter_by_class(const DnD::CasterClass& cc);
 
     void filter_favorites();
 
-    void filter_with_favorites(const CasterClass& cc);
+    void filter_with_favorites(const DnD::CasterClass& cc);
 
     void filter();
 
@@ -66,21 +69,26 @@ private:
 
     void update_button();
 
-    bool filter_item(const bool& isClass, const bool& isFav, const bool& isText, const Spell& s, const CasterClass& cc, const std::string& text);
+    bool filter_item(const bool& isClass, const bool& isFav, const bool& isText, const DnD::Spell& s, const DnD::CasterClass& cc, const std::string& text);
 
-    void populateSpellTable(const std::vector<Spell>& spells);
+    void populate_spell_table();
 
     Ui::Spellbook *ui;
-    std::vector<Spell> spells;
-    void sort(const std::string& sort_field1, const std::string& sort_field2);
-    void display_spelldata(const int& ind);
+    QVector<DnD::Spell> spells;
+    void sort();
+    void display_spelldata(const DnD::Spell& spell);
+    void show_current_spell();
     std::string favorites_file = "Favorites.txt";
-    std::vector<QCheckBox*> sourcebookCheckboxes;
+
     QPixmap star_empty;
     QPixmap star_filled;
     QIcon fav_icon;
     QIcon not_fav_icon;
     int iconSize = 40;
+    Profile profile;
+
+    std::map<std::reference_wrapper<const DnD::Sourcebook>,QCheckBox*, ref_wrap_comp<DnD::Sourcebook> > sourcebookCheckboxes;
+
 };
 
 #endif // SPELLBOOK_H
