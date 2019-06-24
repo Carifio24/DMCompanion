@@ -1,8 +1,6 @@
 #include <DnD/keys.h>
-#include <DnD/monster_parse.h>
 #include <DnD/string_helpers.h>
 #include <DnD/speed_type.h>
-#include <DnD/json_helpers.h>
 #include <DnD/damage_info.h>
 #include <DnD/enummaps.h>
 #include <DnD/dice_set.h>
@@ -15,6 +13,9 @@
 #include <boost/algorithm/string/replace.hpp>
 
 #include <DnD/enummaps.h>
+
+#include "monster_parse.h"
+#include "json_helpers.h"
 
 using namespace DnD;
 
@@ -92,7 +93,7 @@ Monster parse_monster(const Json::Value& root, MonsterBuilder& b) {
 
     // Get the various speeds
     std::vector<std::string> speed_strs = split(root[speed_k].asString(), ", ");
-    std::map<std::reference_wrapper<const SpeedType>,Distance> speeds;
+    std::map<std::reference_wrapper<const SpeedType>,Distance, ref_wrap_comp> speeds;
     for (const std::string& s : speed_strs) {
         std::cout << "Speed string: " << s << std::endl;
         std::vector<std::string> split_data = split(s, " ");
@@ -111,7 +112,7 @@ Monster parse_monster(const Json::Value& root, MonsterBuilder& b) {
     b.set_speeds(speeds);
 
     // Get any speeds in alternate forms
-    std::map<std::reference_wrapper<const SpeedType>,std::pair<Distance,std::string>> alt_speeds;
+    std::map<std::string,std::map<std::reference_wrapper<const SpeedType>,Distance,ref_wrap_comp>> alt_speeds;
     if (root.isMember(alt_speeds_k)) {
         
         Json::Value alt_speeds_json = root[alt_speeds_k];
@@ -120,22 +121,22 @@ Monster parse_monster(const Json::Value& root, MonsterBuilder& b) {
             std::string condition = alt_speed[condition_k].asString();
             std::vector<std::string> alt_speed_strs = split(alt_speed[speed_k].asString(), ", ");
 
+            std::map<std::reference_wrapper<const SpeedType>,Distance,ref_wrap_comp> cond_speeds;
             for (const std::string& s : alt_speed_strs) {
                 std::vector<std::string> split_data = split(s, " ");
                 Distance dist;
                 if (split_data.size() == 2) { // Walking speed
                     dist = Distance::from_string(s);
                     std::reference_wrapper<const SpeedType> speed_type {SpeedTypes::Walk};
-                    std::pair<Distance,std::string> dist_cond {dist, condition};
-                    alt_speeds.insert(std::make_pair(speed_type, dist_cond));
+                    cond_speeds.insert(std::make_pair(speed_type, dist));
                 } else { // Other speed type
                     split_data = split(s, " ", 2);
                     std::reference_wrapper<const SpeedType> speed_type = SpeedType::from_name(split_data[0]);
                     dist = Distance::from_string(split_data[1]);
-                    std::pair<Distance,std::string> dist_cond {dist, condition};
-                    alt_speeds.insert(std::make_pair(speed_type, dist_cond));
+                    cond_speeds.insert(std::make_pair(speed_type, dist));
                 }
             }
+            alt_speeds.insert(std::make_pair(condition, cond_speeds));
         }
     }
     b.set_alternate_speeds(alt_speeds);
@@ -273,15 +274,16 @@ QVector<Monster> read_monster_file(QFile* qmonsterfile) {
     reader->parse(data.c_str(), data.c_str() + data.size(), &root, &errors);
 
     QVector<Monster> monsters;
-    monsters.reserve(root.size());
+    monsters.resize(root.size());
     MonsterBuilder b;
+    int idx = 0;
     for (const Json::Value& w : root) {
 
         // Skip the license
         if (w.isMember("license")) { continue; }
         Monster m = parse_monster(w, b);
         std::cout << "Created monster with name " << m.name() << std::endl;
-        monsters.push_back(m);
+        monsters[idx++] = m;
     }
 
     for (const Monster& m : monsters) {

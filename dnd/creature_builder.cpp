@@ -14,7 +14,7 @@ CreatureBuilder& CreatureBuilder::set_challenge_rating(const Fraction& cr) { thi
 CreatureBuilder& CreatureBuilder::set_hit_points(const int hp) { this->hp = hp; return *this; }
 CreatureBuilder& CreatureBuilder::set_hit_dice(const DiceSet& hit_dice) { this->hit_dice = hit_dice; return *this; }
 CreatureBuilder& CreatureBuilder::set_speeds(const std::map<std::reference_wrapper<const SpeedType>,Distance,ref_wrap_comp>& speeds) { this->speeds = speeds; return *this; }
-CreatureBuilder& CreatureBuilder::set_alternate_speeds(const std::map<std::reference_wrapper<const SpeedType>,std::pair<Distance,std::string>,ref_wrap_comp>& alt_speeds) { this->alt_speeds = alt_speeds; return *this; }
+CreatureBuilder& CreatureBuilder::set_alternate_speeds(const std::map<std::string,std::map<std::reference_wrapper<const SpeedType>,Distance,ref_wrap_comp>>& alt_speeds) { this->alt_speeds = alt_speeds; return *this; }
 
 CreatureBuilder& CreatureBuilder::set_strength(const int str) { this->str = str; return *this; }
 CreatureBuilder& CreatureBuilder::set_dexterity(const int dex) { this->dex = dex; return *this; }

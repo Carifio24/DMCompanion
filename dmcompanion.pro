@@ -64,15 +64,15 @@ DISTFILES += \
 RESOURCES += \
     resources.qrc
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../usr/local/lib/release/ -ldnd
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../usr/local/lib/debug/ -ldnd
-else:unix: LIBS += -L$$PWD/../../../../usr/local/lib/ -ldnd
+win32:CONFIG(release, debug|release): LIBS += /usr/local/lib/release/ -ldnd
+else:win32:CONFIG(debug, debug|release): LIBS += -L/usr/local/lib/debug/ -ldnd
+else:unix: LIBS += -L/usr/local/lib/ -ldnd
 
-INCLUDEPATH += $$PWD/../../../../usr/local/include
-DEPENDPATH += $$PWD/../../../../usr/local/include
+INCLUDEPATH += /usr/local/include
+DEPENDPATH += /usr/local/include
 
-win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../../../usr/local/lib/release/libdnd.a
-else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../../../usr/local/lib/debug/libdnd.a
-else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../../../usr/local/lib/release/dnd.lib
-else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../../../usr/local/lib/debug/dnd.lib
-else:unix: PRE_TARGETDEPS += $$PWD/../../../../usr/local/lib/libdnd.a
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += /usr/local/lib/release/libdnd.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += /usr/local/lib/debug/libdnd.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += /usr/local/lib/release/dnd.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += /usr/local/lib/debug/dnd.lib
+else:unix: PRE_TARGETDEPS += /usr/local/lib/libdnd.a

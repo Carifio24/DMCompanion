@@ -73,15 +73,12 @@ class Creature {
         bool is_resistant_to(const DamageType& dtype);
         bool is_vulnerable_to(const DamageType& dtype);
         bool has_speed(const SpeedType& stype);
-        bool has_alternate_speed(const SpeedType& type);
         int speed_value(const SpeedType& stype);
-        int alternate_speed_value(const SpeedType& stype);
-        std::string alternate_speed_condition(const SpeedType& stype);
         int hp_bonus() const { return _hp - _hit_dice.average_value(); }
 
         // Constructor
         Creature(const std::string& name, const Size& size, const std::string& type, const std::string& subtype, const std::string& alignment, const Fraction& cr, const DiceSet& hit_dice, const int ac, const int hp,
-        const std::map<std::reference_wrapper<const SpeedType>,Distance,ref_wrap_comp>& speeds, const std::map<std::reference_wrapper<const SpeedType>,std::pair<Distance,std::string>,ref_wrap_comp>& alt_speeds, const int str, const int dex, const int con, const int intl, const int wis, const int chr, 
+        const std::map<std::reference_wrapper<const SpeedType>,Distance,ref_wrap_comp>& speeds, const std::map<std::string,std::map<std::reference_wrapper<const SpeedType>,Distance,ref_wrap_comp>>& alt_speeds, const int str, const int dex, const int con, const int intl, const int wis, const int chr, 
         const int str_sv, const int dex_sv, const int con_sv, const int int_sv, const int wis_sv, const int chr_sv, const int prcp, const std::vector<DamageInfo>& dmg_vuls, const std::vector<DamageInfo>& dmg_rsts,
         const std::vector<DamageInfo>& dmg_imns, const std::vector<std::reference_wrapper<const Condition>>& cond_imns, const std::vector<Sense>& senses, const int pass_prcp, const std::string& languages, const std::vector<Ability>& spcl_abls,
         const std::vector<Action>& actions, const std::vector<LegendaryAction>& leg_actions) : _name(name), _size(size), _type(type), _subtype(subtype), _alignment(alignment), _cr(cr), _hit_dice(hit_dice), _ac(ac), _hp(hp),
@@ -90,7 +87,7 @@ class Creature {
         _actions(actions), _leg_actions(leg_actions) {}
 
         // Default constructor
-        Creature() : Creature(""s, std::cref(Sizes::Medium), ""s, ""s, ""s, Fraction(), DiceSet(), 0, 0, std::map<std::reference_wrapper<const SpeedType>,Distance,ref_wrap_comp>(), std::map<std::reference_wrapper<const SpeedType>,std::pair<Distance,std::string>,ref_wrap_comp>(),
+        Creature() : Creature(""s, std::cref(Sizes::Medium), ""s, ""s, ""s, Fraction(), DiceSet(), 0, 0, std::map<std::reference_wrapper<const SpeedType>,Distance,ref_wrap_comp>(), std::map<std::string,std::map<std::reference_wrapper<const SpeedType>,Distance,ref_wrap_comp>>(),
         10, 10, 10, 10, 10, 10, 0, 0, 0, 0, 0, 0, 10, std::vector<DamageInfo>(), std::vector<DamageInfo>(), std::vector<DamageInfo>(),
         std::vector<std::reference_wrapper<const Condition>>(), std::vector<Sense>(), 10, ""s, std::vector<Ability>(),
         std::vector<Action>(), std::vector<LegendaryAction>()) {}
@@ -118,7 +115,7 @@ class Creature {
         int _ac;
         int _hp;
         std::map<std::reference_wrapper<const SpeedType>,Distance, ref_wrap_comp> _speeds;
-        std::map<std::reference_wrapper<const SpeedType>,std::pair<Distance,std::string>, ref_wrap_comp> _alt_speeds;
+        std::map<std::string,std::map<std::reference_wrapper<const SpeedType>,Distance,ref_wrap_comp>> _alt_speeds;
 
         // Ability scores
         int _str;

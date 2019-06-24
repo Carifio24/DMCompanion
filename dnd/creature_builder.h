@@ -24,7 +24,7 @@ class CreatureBuilder {
         CreatureBuilder& set_hit_points(const int hp);
         CreatureBuilder& set_hit_dice(const DiceSet& hit_dice);
         CreatureBuilder& set_speeds(const std::map<std::reference_wrapper<const SpeedType>,Distance,ref_wrap_comp>& speeds);
-        CreatureBuilder& set_alternate_speeds(const std::map<std::reference_wrapper<const SpeedType>,std::pair<Distance,std::string>,ref_wrap_comp>& alt_speeds);
+        CreatureBuilder& set_alternate_speeds(const std::map<std::string,std::map<std::reference_wrapper<const SpeedType>,Distance,ref_wrap_comp>>& alt_speeds);
 
         CreatureBuilder& set_strength(const int str);
         CreatureBuilder& set_dexterity(const int dex);
@@ -73,7 +73,7 @@ class CreatureBuilder {
         int ac;
         int hp;
         std::map<std::reference_wrapper<const SpeedType>,Distance,ref_wrap_comp> speeds;
-        std::map<std::reference_wrapper<const SpeedType>,std::pair<Distance,std::string>,ref_wrap_comp> alt_speeds;
+        std::map<std::string,std::map<std::reference_wrapper<const SpeedType>,Distance,ref_wrap_comp>> alt_speeds;
 
         // Ability scores
         int str;
