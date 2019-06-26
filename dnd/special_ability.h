@@ -5,19 +5,26 @@
 
 namespace DnD {
 
-struct SpecialAbility {
+class SpecialAbility {
 
-    // Properties
-    std::string name;
-    std::string desc;
-    int attack_bonus;
+    public:
+        // Constructors
+        SpecialAbility(const std::string& nm, const std::string& dscr, const int ab) : _name(nm), _desc(dscr), _atk_bonus(ab) {}
 
-    // Constructors
-    SpecialAbility(const std::string& nm, const std::string& dscr, const int ab) : name(nm), desc(dscr), attack_bonus(ab) {}
+        // Default constructor
+        SpecialAbility() : SpecialAbility("", "", 0) {}
 
-    // Default constructor
-    SpecialAbility() : SpecialAbility("", "", 0) {}
+        // Get member values
+        std::string name() const noexcept { return _name; }
+        std::string description() const noexcept { return _desc; }
+        int attack_bonus() const noexcept { return _atk_bonus; }
 
+
+    private:
+        // Properties
+        std::string _name;
+        std::string _desc;
+        int _atk_bonus;
 
 };
 

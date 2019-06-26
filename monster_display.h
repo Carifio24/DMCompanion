@@ -20,7 +20,7 @@ QString condition_immunities_string(const DnD::Monster& m);
 QString ability_score_string(int x);
 QString as_qstring(const DnD::DamageInfo& dinf);
 QString as_qstring(const DnD::Action& act);
-QString as_qstring(const DnD::Ability& abl);
+QString as_qstring(const DnD::SpecialAbility& abl);
 QString as_qstring(const DnD::LegendaryAction& lact);
 
 

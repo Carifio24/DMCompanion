@@ -2,6 +2,8 @@
 #include "sort.h"
 #include "qdisplay.h"
 
+#include <DnD/string_helpers.h>
+
 #include <QStringList>
 #include <QStringBuilder>
 
@@ -88,4 +90,27 @@ QString skills_string(const Monster& m) {
 
 QString ability_score_string(int x) {
     return sign_str(x) % QString::number(x);
+}
+
+QString as_string(const DamageInfo& dinf) {
+    if (!dinf.text().empty()) {
+        return QString::fromStdString(dinf.text());
+    } else {
+        std::string mag_str;
+        if (dinf.magic() != MagicTypes::Any) {
+            std::string s(dinf.magic().name());
+            mag_str = lowercase(s);
+        }
+        QLatin1String dmg_str(dinf.damage_type().name().data());
+        return QString::fromStdString(mag_str) % " " % dmg_str;
+    }
+}
+
+QString as_string(const Action& act) {
+    return "<b><i>" % QString::fromStdString(act.name()) % ": </i></b>" % QString::fromStdString(act.description());
+}
+
+QString as_string(const SpecialAbility& abl) {
+
+
 }
