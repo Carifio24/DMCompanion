@@ -4,6 +4,8 @@
 #include <DnD/damage_info.h>
 #include <DnD/enummaps.h>
 #include <DnD/dice_set.h>
+#include <DnD/special_ability.h>
+#include <DnD/damage_type.h>
 
 #include <QFile>
 #include <QVector>
@@ -25,28 +27,31 @@ DamageInfo identify_damage_info(std::string s) {
     std::string s_lower = lowercase(s);
 
     // Get the damage type
-    DamageType dmg_type;
-    for (const auto& elt : damageTypeNames) {
-        if (boost::contains(s_lower, elt.second)) {
-            dmg_type = elt.first;
+    const DamageType* dmg_type = &DamageTypes::Damage;
+    for (auto x : DamageTypes::instances) {
+        if (*x == DamageTypes::Damage) { continue; }
+        std::string t(x->name());
+        to_lowercase(t);
+        if (boost::contains(s_lower, t)) {
+            dmg_type = x;
             break;
         }
     }
 
     // Whether the damage type is magical, nonmagical, or neither
-    std::string mag = "magical";
-    std::string nonmag = "nonmagical";
-    MagicType mag_type;
-    if (boost::contains(s_lower, nonmag)) {
-        mag_type = MagicType::Nonmagical;
-    } else if (boost::contains(s_lower, mag)) {
-        mag_type = MagicType::Magical;
-    } else {
-        mag_type = MagicType::Any;
+    const MagicType* mag_type = &MagicTypes::Any;
+    for (auto x : MagicTypes::instances) {
+        if (*x == MagicTypes::Any) { continue; }
+        std::string t(x->name());
+        to_lowercase(t);
+        if (boost::contains(s_lower, t)) {
+            mag_type = x;
+            break;
+        }
     }
 
     // Create and return
-    DamageInfo d_info(dmg_type, mag_type, s);
+    DamageInfo d_info(*dmg_type, *mag_type, s);
     return d_info;
 
 }
@@ -157,8 +162,20 @@ Monster parse_monster(const Json::Value& root, MonsterBuilder& b) {
     b.set_wisdom_save(int_if_member(root, wis_sv_k));
     b.set_charisma_save(int_if_member(root, chr_sv_k));
 
+    // Skill bonuses
+    std::map<std::reference_wrapper<const Skill>,int,ref_wrap_comp> skill_bonuses;
+    for (auto skl : Skills::instances) {
+        std::string lc_name(skl->name());
+        to_lowercase(lc_name);
+        if (root.isMember(lc_name)) {
+            std::reference_wrapper sk_w(*skl);
+            int bonus = root[lc_name].asInt();
+            skill_bonuses.insert(std::make_pair(sk_w, bonus));
+        }
+    }
+    b.set_skill_bonuses(skill_bonuses);
+
     // Other statistics
-    b.set_history(int_if_member(root, history_k));
     b.set_perception(int_if_member(root, perception_k));
 
     // Vulnerabilities, resistances, immunities
@@ -182,8 +199,8 @@ Monster parse_monster(const Json::Value& root, MonsterBuilder& b) {
 
     // Senses and passive perception
     std::cout << "About to parse senses and passive perception" << std::endl;
-    std::vector<Sense> senses;
-    int prcp;
+    std::map<std::reference_wrapper<const SenseType>, Distance, ref_wrap_comp> senses;
+    int prcp  = 10;
     std::vector<std::string> senses_and_perception = split(root[senses_k].asString(), ", ");
     for (const std::string& s : senses_and_perception) {
 
@@ -195,8 +212,8 @@ Monster parse_monster(const Json::Value& root, MonsterBuilder& b) {
         } else {
             split_data = split(s, " ", 2);
             Distance sense_range = Distance::from_string(split_data[1]);
-            const SenseType& sense_type = SenseType::from_lc_name(split_data[0]);
-            senses.emplace_back(sense_type, sense_range);
+            std::reference_wrapper<const SenseType> sense_type = SenseType::from_lc_name(split_data[0]);
+            senses.insert(std::make_pair(sense_type, sense_range));
         }
     }
     b.set_passive_perception(prcp);
@@ -206,7 +223,7 @@ Monster parse_monster(const Json::Value& root, MonsterBuilder& b) {
     b.set_languages(root[languages_k].asString());
 
     // Special abilities
-    std::vector<Ability> spcl_abls;
+    std::vector<SpecialAbility> spcl_abls;
     if (root.isMember(spcl_abls_k)) {
         Json::Value spcl_abls_json = root[spcl_abls_k];
         spcl_abls.reserve(spcl_abls_json.size());

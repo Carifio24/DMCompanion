@@ -24,14 +24,6 @@ enum class Die: int {
 
 /***** For damage and statuses *****/
 
-enum class DamageType: int {
-    Damage=0, Acid, Bludgeoning, Cold, Fire, Force, Lightning, Necrotic, Piercing, Poison, Psychic, Radiant, Slashing, Thunder
-};
-
-enum class MagicType: int {
-    Any=0, Magical, Nonmagical
-};
-
 /***** For spells *****/
 
 enum class Subclass: int {

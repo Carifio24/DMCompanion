@@ -2,13 +2,14 @@
 #define CREATURE_H
 
 #include <map>
+#include <array>
 #include <string>
 #include <vector>
 
 #include "size.h"
 #include "action.h"
 #include "legendary_action.h"
-#include "ability.h"
+#include "special_ability.h"
 #include "sense.h"
 #include "speed_type.h"
 #include "damage_info.h"
@@ -16,6 +17,7 @@
 #include "condition.h"
 #include "enumerations.h"
 #include "ref_wrap_comp.h"
+#include "skill.h"
 
 namespace DnD {
 
@@ -53,6 +55,9 @@ class Creature {
         int wisdom_save() const noexcept { return _wis_sv; }
         int charisma_save() const noexcept { return _chr_sv; }
 
+        // Skill bonuses
+        std::map<std::reference_wrapper<const Skill>,int,ref_wrap_comp> skill_bonuses() const noexcept { return _skl_bns; }
+
         // Other attributes
         int perception() const noexcept { return _prcp; }
         int passive_perception() const noexcept { return _pass_prcp; }
@@ -60,36 +65,38 @@ class Creature {
         std::vector<DamageInfo> damage_resistances() const noexcept { return _dmg_rsts; }
         std::vector<DamageInfo> damage_immunities() const noexcept { return _dmg_imns; }
         std::vector<std::reference_wrapper<const Condition>> condition_immunities() const noexcept { return _cond_imns; }
-        std::vector<Sense> senses() const noexcept { return _senses; }
-        std::vector<Ability> special_abilities() const noexcept { return _spcl_abls; }
+        std::map<std::reference_wrapper<const SenseType>, Distance, ref_wrap_comp> senses() const noexcept { return _senses; }
+        std::string languages() const noexcept { return _languages; }
+        std::vector<SpecialAbility> special_abilities() const noexcept { return _spcl_abls; }
         std::vector<Action> actions() const noexcept { return _actions; }
         std::vector<LegendaryAction> legendary_actions() const noexcept { return _leg_actions; }
         auto speeds() const noexcept { return _speeds; }
         auto alternate_speeds() const noexcept { return _alt_speeds; }
+        std::array<int,6> saving_throws() const noexcept { return {_str_sv, _dex_sv, _con_sv, _int_sv, _wis_sv, _chr_sv} ;}
 
         // Properties
-        bool is_immune_to(const DamageType& dtype);
-        bool is_immune_to(const Condition& condition);
-        bool is_resistant_to(const DamageType& dtype);
-        bool is_vulnerable_to(const DamageType& dtype);
-        bool has_speed(const SpeedType& stype);
-        int speed_value(const SpeedType& stype);
-        int hp_bonus() const { return _hp - _hit_dice.average_value(); }
+        bool is_immune_to(const DamageType& dtype) const noexcept;
+        bool is_immune_to(const Condition& condition) const noexcept;
+        bool is_resistant_to(const DamageType& dtype) const noexcept;
+        bool is_vulnerable_to(const DamageType& dtype) const noexcept;
+        bool has_speed(const SpeedType& stype) const noexcept;
+        int speed_value(const SpeedType& stype) const noexcept;
+        int hp_bonus() const noexcept { return _hp - _hit_dice.average_value(); }
 
         // Constructor
         Creature(const std::string& name, const Size& size, const std::string& type, const std::string& subtype, const std::string& alignment, const Fraction& cr, const DiceSet& hit_dice, const int ac, const int hp,
         const std::map<std::reference_wrapper<const SpeedType>,Distance,ref_wrap_comp>& speeds, const std::map<std::string,std::map<std::reference_wrapper<const SpeedType>,Distance,ref_wrap_comp>>& alt_speeds, const int str, const int dex, const int con, const int intl, const int wis, const int chr, 
-        const int str_sv, const int dex_sv, const int con_sv, const int int_sv, const int wis_sv, const int chr_sv, const int prcp, const std::vector<DamageInfo>& dmg_vuls, const std::vector<DamageInfo>& dmg_rsts,
-        const std::vector<DamageInfo>& dmg_imns, const std::vector<std::reference_wrapper<const Condition>>& cond_imns, const std::vector<Sense>& senses, const int pass_prcp, const std::string& languages, const std::vector<Ability>& spcl_abls,
+        const int str_sv, const int dex_sv, const int con_sv, const int int_sv, const int wis_sv, const int chr_sv, const std::map<std::reference_wrapper<const Skill>,int,ref_wrap_comp>& skl_bns, const int prcp, const std::vector<DamageInfo>& dmg_vuls, const std::vector<DamageInfo>& dmg_rsts,
+        const std::vector<DamageInfo>& dmg_imns, const std::vector<std::reference_wrapper<const Condition>>& cond_imns, const std::map<std::reference_wrapper<const SenseType>, Distance, ref_wrap_comp>& senses, const int pass_prcp, const std::string& languages, const std::vector<SpecialAbility>& spcl_abls,
         const std::vector<Action>& actions, const std::vector<LegendaryAction>& leg_actions) : _name(name), _size(size), _type(type), _subtype(subtype), _alignment(alignment), _cr(cr), _hit_dice(hit_dice), _ac(ac), _hp(hp),
-        _speeds(speeds), _alt_speeds(alt_speeds), _str(str), _dex(dex), _con(con), _int(intl), _wis(wis), _chr(chr), _str_sv(str_sv), _dex_sv(dex_sv), _con_sv(con_sv), _int_sv(int_sv), _wis_sv(wis_sv), _chr_sv(chr_sv),
+        _speeds(speeds), _alt_speeds(alt_speeds), _str(str), _dex(dex), _con(con), _int(intl), _wis(wis), _chr(chr), _str_sv(str_sv), _dex_sv(dex_sv), _con_sv(con_sv), _int_sv(int_sv), _wis_sv(wis_sv), _chr_sv(chr_sv), _skl_bns(skl_bns),
         _prcp(prcp), _dmg_vuls(dmg_vuls), _dmg_rsts(dmg_rsts), _dmg_imns(dmg_imns), _cond_imns(cond_imns), _senses(senses), _pass_prcp(pass_prcp), _languages(languages), _spcl_abls(spcl_abls),
         _actions(actions), _leg_actions(leg_actions) {}
 
         // Default constructor
         Creature() : Creature(""s, std::cref(Sizes::Medium), ""s, ""s, ""s, Fraction(), DiceSet(), 0, 0, std::map<std::reference_wrapper<const SpeedType>,Distance,ref_wrap_comp>(), std::map<std::string,std::map<std::reference_wrapper<const SpeedType>,Distance,ref_wrap_comp>>(),
-        10, 10, 10, 10, 10, 10, 0, 0, 0, 0, 0, 0, 10, std::vector<DamageInfo>(), std::vector<DamageInfo>(), std::vector<DamageInfo>(),
-        std::vector<std::reference_wrapper<const Condition>>(), std::vector<Sense>(), 10, ""s, std::vector<Ability>(),
+        10, 10, 10, 10, 10, 10, 0, 0, 0, 0, 0, 0, std::map<std::reference_wrapper<const Skill>,int,ref_wrap_comp>(), 10, std::vector<DamageInfo>(), std::vector<DamageInfo>(), std::vector<DamageInfo>(),
+        std::vector<std::reference_wrapper<const Condition>>(), std::map<std::reference_wrapper<const SenseType>, Distance, ref_wrap_comp>(), 10, ""s, std::vector<SpecialAbility>(),
         std::vector<Action>(), std::vector<LegendaryAction>()) {}
 
         // Copy constructor
@@ -133,16 +140,19 @@ class Creature {
         int _wis_sv;
         int _chr_sv;
 
+        // Skill bonuses
+        std::map<std::reference_wrapper<const Skill>,int,ref_wrap_comp> _skl_bns;
+
         // Other attributes
         int _prcp;
         std::vector<DamageInfo> _dmg_vuls;
         std::vector<DamageInfo> _dmg_rsts;
         std::vector<DamageInfo> _dmg_imns;
         std::vector<std::reference_wrapper<const Condition>> _cond_imns;
-        std::vector<Sense> _senses;
+        std::map<std::reference_wrapper<const SenseType>, Distance, ref_wrap_comp> _senses;
         int _pass_prcp;
         std::string _languages; // For now
-        std::vector<Ability> _spcl_abls;
+        std::vector<SpecialAbility> _spcl_abls;
         std::vector<Action> _actions;
         std::vector<LegendaryAction> _leg_actions;
 

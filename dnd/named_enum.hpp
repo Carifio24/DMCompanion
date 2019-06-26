@@ -52,7 +52,6 @@ class NamedEnum {
         template <typename T, typename U>
         static const NEType& from_member(T t, U (NEType::* mem_ptr)(void) const, const std::function<void(T&)>& transform);
 
-
     protected:
 
         constexpr NamedEnum(const std::string_view& name) : _name(name) {}

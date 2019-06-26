@@ -14,6 +14,7 @@ TEMPLATE = app
 QMAKE_CXXFLAGS += -O3 -std=c++17
 
 SOURCES += main.cpp \
+    qdisplay.cpp \
     dmcompanion.cpp \
     jsoncpp/jsoncpp.cpp \
     monster_display.cpp \
@@ -30,6 +31,7 @@ SOURCES += main.cpp \
     spellmodel.cpp
 
 HEADERS  += spellbook.h \
+    qdisplay.h \
     dmcompanion.h \
     jsoncpp/json/json.h \
     jsoncpp/json/json-forwards.h \

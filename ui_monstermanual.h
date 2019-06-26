@@ -30,7 +30,7 @@ public:
     QWidget *verticalLayoutWidget;
     QVBoxLayout *dataLayout;
     QLabel *nameLabel;
-    QLabel *basicStatsLabel;
+    QLabel *imageLabel;
     QHBoxLayout *abilityScoresLayout;
     QLabel *strLabel;
     QLabel *dexLabel;
@@ -38,7 +38,20 @@ public:
     QLabel *intLabel;
     QLabel *wisLabel;
     QLabel *chaLabel;
-    QLabel *extraStatsLabel;
+    QVBoxLayout *basicStatsLayout;
+    QLabel *acLabel;
+    QLabel *hpLabel;
+    QLabel *speedLabel;
+    QVBoxLayout *extraStatsLayout;
+    QLabel *savingThrowsLabel;
+    QLabel *sensesLabel;
+    QLabel *damageImmunitiesLabel;
+    QLabel *languagesLabel;
+    QLabel *conditionImmunitiesLabel;
+    QLabel *challengeRatingLabel;
+    QLabel *damageResistancesLabel;
+    QLabel *damageVulnerabilitiesLabel;
+    QLabel *skillsLabel;
     QScrollArea *abilitiesActionsScrollArea;
     QWidget *scrollAreaWidgetContents;
     QVBoxLayout *verticalLayout;
@@ -71,13 +84,18 @@ public:
         dataLayout->setContentsMargins(0, 0, 0, 0);
         nameLabel = new QLabel(verticalLayoutWidget);
         nameLabel->setObjectName(QStringLiteral("nameLabel"));
+        QFont font;
+        font.setFamily(QStringLiteral("URW Chancery L"));
+        font.setPointSize(30);
+        font.setItalic(true);
+        nameLabel->setFont(font);
 
         dataLayout->addWidget(nameLabel);
 
-        basicStatsLabel = new QLabel(verticalLayoutWidget);
-        basicStatsLabel->setObjectName(QStringLiteral("basicStatsLabel"));
+        imageLabel = new QLabel(verticalLayoutWidget);
+        imageLabel->setObjectName(QStringLiteral("imageLabel"));
 
-        dataLayout->addWidget(basicStatsLabel);
+        dataLayout->addWidget(imageLabel);
 
         abilityScoresLayout = new QHBoxLayout();
         abilityScoresLayout->setObjectName(QStringLiteral("abilityScoresLayout"));
@@ -114,10 +132,75 @@ public:
 
         dataLayout->addLayout(abilityScoresLayout);
 
-        extraStatsLabel = new QLabel(verticalLayoutWidget);
-        extraStatsLabel->setObjectName(QStringLiteral("extraStatsLabel"));
+        basicStatsLayout = new QVBoxLayout();
+        basicStatsLayout->setObjectName(QStringLiteral("basicStatsLayout"));
+        acLabel = new QLabel(verticalLayoutWidget);
+        acLabel->setObjectName(QStringLiteral("acLabel"));
 
-        dataLayout->addWidget(extraStatsLabel);
+        basicStatsLayout->addWidget(acLabel);
+
+        hpLabel = new QLabel(verticalLayoutWidget);
+        hpLabel->setObjectName(QStringLiteral("hpLabel"));
+
+        basicStatsLayout->addWidget(hpLabel);
+
+        speedLabel = new QLabel(verticalLayoutWidget);
+        speedLabel->setObjectName(QStringLiteral("speedLabel"));
+
+        basicStatsLayout->addWidget(speedLabel);
+
+
+        dataLayout->addLayout(basicStatsLayout);
+
+        extraStatsLayout = new QVBoxLayout();
+        extraStatsLayout->setObjectName(QStringLiteral("extraStatsLayout"));
+        savingThrowsLabel = new QLabel(verticalLayoutWidget);
+        savingThrowsLabel->setObjectName(QStringLiteral("savingThrowsLabel"));
+
+        extraStatsLayout->addWidget(savingThrowsLabel);
+
+        sensesLabel = new QLabel(verticalLayoutWidget);
+        sensesLabel->setObjectName(QStringLiteral("sensesLabel"));
+
+        extraStatsLayout->addWidget(sensesLabel);
+
+        damageImmunitiesLabel = new QLabel(verticalLayoutWidget);
+        damageImmunitiesLabel->setObjectName(QStringLiteral("damageImmunitiesLabel"));
+
+        extraStatsLayout->addWidget(damageImmunitiesLabel);
+
+        languagesLabel = new QLabel(verticalLayoutWidget);
+        languagesLabel->setObjectName(QStringLiteral("languagesLabel"));
+
+        extraStatsLayout->addWidget(languagesLabel);
+
+        conditionImmunitiesLabel = new QLabel(verticalLayoutWidget);
+        conditionImmunitiesLabel->setObjectName(QStringLiteral("conditionImmunitiesLabel"));
+
+        extraStatsLayout->addWidget(conditionImmunitiesLabel);
+
+        challengeRatingLabel = new QLabel(verticalLayoutWidget);
+        challengeRatingLabel->setObjectName(QStringLiteral("challengeRatingLabel"));
+
+        extraStatsLayout->addWidget(challengeRatingLabel);
+
+        damageResistancesLabel = new QLabel(verticalLayoutWidget);
+        damageResistancesLabel->setObjectName(QStringLiteral("damageResistancesLabel"));
+
+        extraStatsLayout->addWidget(damageResistancesLabel);
+
+        damageVulnerabilitiesLabel = new QLabel(verticalLayoutWidget);
+        damageVulnerabilitiesLabel->setObjectName(QStringLiteral("damageVulnerabilitiesLabel"));
+
+        extraStatsLayout->addWidget(damageVulnerabilitiesLabel);
+
+        skillsLabel = new QLabel(verticalLayoutWidget);
+        skillsLabel->setObjectName(QStringLiteral("skillsLabel"));
+
+        extraStatsLayout->addWidget(skillsLabel);
+
+
+        dataLayout->addLayout(extraStatsLayout);
 
         abilitiesActionsScrollArea = new QScrollArea(verticalLayoutWidget);
         abilitiesActionsScrollArea->setObjectName(QStringLiteral("abilitiesActionsScrollArea"));
@@ -125,7 +208,7 @@ public:
         abilitiesActionsScrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 427, 765));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 427, 504));
         verticalLayout = new QVBoxLayout(scrollAreaWidgetContents);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         specialAbilitiesLabel = new QLabel(scrollAreaWidgetContents);
@@ -157,14 +240,25 @@ public:
     {
         MonsterManual->setWindowTitle(QApplication::translate("MonsterManual", "Form", 0));
         nameLabel->setText(QString());
-        basicStatsLabel->setText(QString());
+        imageLabel->setText(QString());
         strLabel->setText(QString());
         dexLabel->setText(QString());
         conLabel->setText(QString());
         intLabel->setText(QString());
         wisLabel->setText(QString());
         chaLabel->setText(QString());
-        extraStatsLabel->setText(QString());
+        acLabel->setText(QString());
+        hpLabel->setText(QString());
+        speedLabel->setText(QString());
+        savingThrowsLabel->setText(QString());
+        sensesLabel->setText(QString());
+        damageImmunitiesLabel->setText(QString());
+        languagesLabel->setText(QString());
+        conditionImmunitiesLabel->setText(QString());
+        challengeRatingLabel->setText(QString());
+        damageResistancesLabel->setText(QString());
+        damageVulnerabilitiesLabel->setText(QString());
+        skillsLabel->setText(QString());
         specialAbilitiesLabel->setText(QString());
         actionsLabel->setText(QString());
         legendaryActionsLabel->setText(QString());

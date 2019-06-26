@@ -33,6 +33,8 @@ class CreatureBuilder {
         CreatureBuilder& set_wisdom(const int wis);
         CreatureBuilder& set_charisma(const int chr);
 
+        CreatureBuilder& set_skill_bonuses(const std::map<std::reference_wrapper<const Skill>,int,ref_wrap_comp>& skl_bns);
+
         CreatureBuilder& set_strength_save(const int str_sv);
         CreatureBuilder& set_dexterity_save(const int dex_sv);
         CreatureBuilder& set_constitution_save(const int con_sv);
@@ -46,9 +48,9 @@ class CreatureBuilder {
         CreatureBuilder& set_damage_resistances(const std::vector<DamageInfo>& dmg_rsts);
         CreatureBuilder& set_damage_immunities(const std::vector<DamageInfo>& dmg_imns);
         CreatureBuilder& set_condition_immunities(const std::vector<std::reference_wrapper<const Condition>>& cond_imns);
-        CreatureBuilder& set_senses(const std::vector<Sense>& senses);
+        CreatureBuilder& set_senses(const std::map<std::reference_wrapper<const SenseType>, Distance, ref_wrap_comp>& senses);
         CreatureBuilder& set_languages(const std::string& languages);
-        CreatureBuilder& set_special_abilities(const std::vector<Ability>& spcl_abls);
+        CreatureBuilder& set_special_abilities(const std::vector<SpecialAbility>& spcl_abls);
         CreatureBuilder& set_actions(const std::vector<Action>& actions);
         CreatureBuilder& set_legendary_actions(const std::vector<LegendaryAction>& leg_actions);
 
@@ -91,16 +93,19 @@ class CreatureBuilder {
         int wis_sv;
         int chr_sv;
 
+        // Skill bonuses
+        std::map<std::reference_wrapper<const Skill>,int,ref_wrap_comp> skl_bns;
+
         // Other attributes
         int prcp;
         std::vector<DamageInfo> dmg_vuls;
         std::vector<DamageInfo> dmg_rsts;
         std::vector<DamageInfo> dmg_imns;
         std::vector<std::reference_wrapper<const Condition>> cond_imns;
-        std::vector<Sense> senses;
+        std::map<std::reference_wrapper<const SenseType>, Distance, ref_wrap_comp> senses;
         int pass_prcp;
         std::string languages; // For now
-        std::vector<Ability> spcl_abls;
+        std::vector<SpecialAbility> spcl_abls;
         std::vector<Action> actions;
         std::vector<LegendaryAction> leg_actions;
 

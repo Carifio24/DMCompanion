@@ -2,7 +2,7 @@
 #include "ui_monstermanual.h"
 #include "monster_parse.h"
 #include "monster_display.h"
-#include "qhelpers.h"
+#include "qdisplay.h"
 #include <iostream>
 
 #include <QFile>
@@ -66,13 +66,26 @@ void MonsterManual::populate_monster_table() {
 }
 
 void MonsterManual::display_monster_data(const Monster& m) {
-    ui->nameLabel->setText(QLatin1String(m.name().data()));
 
+    // Name
+    std::cout << "About to display monster data" << std::endl;
+    ui->nameLabel->setText(QLatin1String(m.name().data()));
+    std::cout << "Displayed name: " << m.name() << std::endl;
+
+    // Basic stats
     QString ac_str = prompt_text("Armor class", m.armor_class());
     QString hp_str = prompt_text("Hit Points", hp_string(m));
     QString speed_str = prompt_text("Speed", speed_string(m));
-    QString basic_stats_str = QStringList({ ac_str, hp_str, speed_str }).join("\n");
-    ui->basicStatsLabel->setText(basic_stats_str);
+    ui->acLabel->setText(ac_str);
+    ui->hpLabel->setText(hp_str);
+    ui->speedLabel->setText(speed_str);
+
+    // Extra stats
+    set_text_if_nonempty(ui->savingThrowsLabel, "Saving Throws", saving_throws_string(m));
+    set_text_if_nonempty(ui->sensesLabel, "Senses", senses_string(m));
+    set_text_if_nonempty(ui->skillsLabel, "Skills", skills_string(m));
+    set_text_if_nonempty(ui->languagesLabel, "Languages", QString::fromStdString(m.languages()));
+
 
 }
 

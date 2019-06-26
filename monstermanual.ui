@@ -62,13 +62,20 @@
    <layout class="QVBoxLayout" name="dataLayout">
     <item>
      <widget class="QLabel" name="nameLabel">
+      <property name="font">
+       <font>
+        <family>URW Chancery L</family>
+        <pointsize>30</pointsize>
+        <italic>true</italic>
+       </font>
+      </property>
       <property name="text">
        <string/>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QLabel" name="basicStatsLabel">
+     <widget class="QLabel" name="imageLabel">
       <property name="text">
        <string/>
       </property>
@@ -121,11 +128,96 @@
      </layout>
     </item>
     <item>
-     <widget class="QLabel" name="extraStatsLabel">
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
+     <layout class="QVBoxLayout" name="basicStatsLayout">
+      <item>
+       <widget class="QLabel" name="acLabel">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="hpLabel">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="speedLabel">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="extraStatsLayout">
+      <item>
+       <widget class="QLabel" name="savingThrowsLabel">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="sensesLabel">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="damageImmunitiesLabel">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="languagesLabel">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="conditionImmunitiesLabel">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="challengeRatingLabel">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="damageResistancesLabel">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="damageVulnerabilitiesLabel">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="skillsLabel">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
     <item>
      <widget class="QScrollArea" name="abilitiesActionsScrollArea">
@@ -141,7 +233,7 @@
          <x>0</x>
          <y>0</y>
          <width>427</width>
-         <height>765</height>
+         <height>504</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">

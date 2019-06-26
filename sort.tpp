@@ -1,6 +1,8 @@
 #ifndef SORT_T
 #define SORT_T
 
+#include <array>
+#include <vector>
 #include <algorithm>
 #include <string>
 #include <QList>
@@ -31,12 +33,35 @@ std::function<int(const T&,const T&)> test_less_equal(const M& (T::* mem_fn)(voi
 }
 
 template <typename T>
-std::vector<int> sorted_indices(const std::vector<T>& v, const std::function<bool(const T&, const T&)>& fcomp) {
+std::vector<int> sorted_indices(const std::vector<T>& v, const std::function<bool(const T&, const T&)>& fcomp=[](const T& x, const T& y){return x < y;}) {
     std::vector<int> idx(v.size());
     std::iota(idx.begin(), idx.end(), 0);
     std::sort(idx.begin(), idx.end(), [&v, &fcomp](int i1, int i2) { return fcomp(v[i1], v[i2]); } );
     return idx;
 }
+
+template <typename T, size_t N>
+std::vector<int> sorted_indices(const std::array<T,N>& v, const std::function<bool(const T&, const T&)>& fcomp=[](const T& x, const T& y){return x < y;}) {
+    std::vector<int> idx(N);
+    std::iota(idx.begin(), idx.end(), 0);
+    std::sort(idx.begin(), idx.end(), [&v, &fcomp](int i1, int i2) { return fcomp(v[i1], v[i2]); } );
+    return idx;
+}
+
+template <typename Map>
+auto value_sort(const Map& m) {
+    using K = typename Map::key_type;
+    using V = typename Map::mapped_type;
+    using KVP = std::pair<K,V>;
+    std::vector<KVP> v;
+    v.reserve(m.size());
+    for (auto it = m.begin(); it != m.end(); ++it) {
+        v.push_back(*it);
+    }
+    std::sort(v.begin(), v.end(), [](const KVP& p1, const KVP& p2) { return p1.second < p2.second; });
+    return v;
+}
+
 
 template <typename T>
 bool less_than(const T& t1, const T& t2, const std::function<int(const T&,const T&)>& comp) {
