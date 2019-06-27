@@ -51,7 +51,7 @@ QString saving_throws_string(const Monster& m) {
     QStringList save_strs;
     auto saves = m.saving_throws();
     std::vector<int> sorted_inds = sorted_indices(saves);
-    int sv;
+    int sv = 0;
     for (auto x : sorted_inds) {
         if ((sv = saves[x]) == 0) { continue; }
         QString sgn = sign_str(sv);
@@ -135,4 +135,13 @@ QString as_qstring(const DamageInfo& dinf) {
         QLatin1String dmg_str(dinf.damage_type().name().data());
         return QString::fromStdString(mag_str) % " " % dmg_str;
     }
+}
+
+QString title_qstring(const QString& qs, int size) {
+    return "<font size=" % QString::number(size) % "><b>" % qs % "</b></font>";
+}
+
+QString ability_score_text(const QString& abbr, int score, int size) {
+    static const QString separator = QStringLiteral("<br><font size=1><br></font>");
+    return title_qstring(abbr, size) % separator % ability_score_string(score);
 }

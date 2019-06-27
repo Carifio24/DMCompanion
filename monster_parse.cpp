@@ -67,9 +67,9 @@ std::vector<DamageInfo> damage_modifiers_from_string(std::string s, const std::s
         std::vector<std::string> split_data = split(s, sep);
         dmods.reserve(split_data.size());
 
-        std::cout << "s is: " << s << std::endl;
-        std::cout << "split_data.size() is " << split_data.size() << std::endl;
-        std::cout << "dmods.size() is " << dmods.size() << std::endl;
+        //std::cout << "s is: " << s << std::endl;
+        //std::cout << "split_data.size() is " << split_data.size() << std::endl;
+        //std::cout << "dmods.size() is " << dmods.size() << std::endl;
 
         for (size_t i = 0; i < split_data.size(); i++) {
             dmods.push_back(identify_damage_info(split_data[i]));
@@ -100,9 +100,9 @@ Monster parse_monster(const Json::Value& root, MonsterBuilder& b) {
     std::vector<std::string> speed_strs = split(root[speed_k].asString(), ", ");
     std::map<std::reference_wrapper<const SpeedType>,Distance, ref_wrap_comp> speeds;
     for (const std::string& s : speed_strs) {
-        std::cout << "Speed string: " << s << std::endl;
+        //std::cout << "Speed string: " << s << std::endl;
         std::vector<std::string> split_data = split(s, " ");
-        std::cout << "Split speed string size: " << split_data.size() << std::endl;
+        //std::cout << "Split speed string size: " << split_data.size() << std::endl;
         if (split_data.size() == 2) { // Walking speed
             Distance dist = Distance::from_string(s);
             std::reference_wrapper<const SpeedType> speed_type {SpeedTypes::Walk};
@@ -180,12 +180,12 @@ Monster parse_monster(const Json::Value& root, MonsterBuilder& b) {
 
     // Vulnerabilities, resistances, immunities
     const std::string list_sep = ", ";
-    std::cout << "About to parse damage conditions" << std::endl;
-    std::cout << string_if_member(root, dmg_vuls_k) << std::endl;
+    //std::cout << "About to parse damage conditions" << std::endl;
+    //std::cout << string_if_member(root, dmg_vuls_k) << std::endl;
     b.set_damage_vulnerabilities(damage_modifiers_from_string(string_if_member(root, dmg_vuls_k), list_sep));
     b.set_damage_resistances(damage_modifiers_from_string(string_if_member(root, dmg_rsts_k), list_sep));
     b.set_damage_immunities(damage_modifiers_from_string(string_if_member(root, dmg_imns_k), list_sep));
-    std::cout << "About to parse condition immunities" << std::endl;
+    //std::cout << "About to parse condition immunities" << std::endl;
     std::string data;
     std::vector<std::reference_wrapper<const Condition>> cond_imns;
     if ( !(data = root[cond_imns_k].asString()).empty() ) {
@@ -198,7 +198,7 @@ Monster parse_monster(const Json::Value& root, MonsterBuilder& b) {
     b.set_condition_immunities(cond_imns);
 
     // Senses and passive perception
-    std::cout << "About to parse senses and passive perception" << std::endl;
+    //std::cout << "About to parse senses and passive perception" << std::endl;
     std::map<std::reference_wrapper<const SenseType>, Distance, ref_wrap_comp> senses;
     int prcp  = 10;
     std::vector<std::string> senses_and_perception = split(root[senses_k].asString(), ", ");

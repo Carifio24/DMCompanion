@@ -14,5 +14,4 @@ std::vector<DnD::DamageInfo> damage_modifiers_from_string(std::string s, const s
 DnD::Monster parse_monster(const Json::Value& root, const DnD::MonsterBuilder& b);
 QVector<DnD::Monster> read_monster_file(QFile* qmonsterfile);
 
-
 #endif

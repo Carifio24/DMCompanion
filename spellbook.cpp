@@ -245,6 +245,9 @@ void Spellbook::on_scagCheckbox_toggled(bool) // Unnamed: checked
 /// \brief Spellbook::populate_spell_table
 ///
 
+// What to do when the window resizes
+// The layouts will handle the sizes of the windows themselves
+// But we need to adjust the column widths within the QTableWidget
 void Spellbook::resizeEvent(QResizeEvent* event) {
     int width = ui->spellList->size().width();
     ui->spellList->setColumnWidth(0, static_cast<int>(std::floor(width * .5)));
@@ -395,9 +398,7 @@ void Spellbook::display_spelldata(const Spell& spell) {
     QString rangeText = prompt_text("Distance", spell.range().string());
     QString descTitleText = QStringLiteral("<b>Description:</b>");
     QString descriptionText = QString::fromStdString(spell.description());
-    if (!spell.higher_level().empty()) {
-        descriptionText += QStringLiteral("\n\n<b>Higher level:</b>\n") + QString::fromStdString(spell.higher_level());
-    }
+    QString higherLevelText = QString::fromStdString(spell.higher_level());
     QString durationText = prompt_text("Duration", spell.duration().string());
     QString castingTimeText = prompt_text("Casting time", spell.casting_time());
     std::string locationText = std::string(spell.sourcebook().abbreviation()) + " " + std::to_string(spell.page());
@@ -440,14 +441,25 @@ void Spellbook::display_spelldata(const Spell& spell) {
     ui->concentrationLabel->setText(concentrationText);
     ui->levelLabel->setText(levelText);
     ui->rangeLabel->setText(rangeText);
-    ui->descriptionTitle->setText(descTitleText);
-    ui->descriptionLabel->setText(descriptionText);
     ui->durationLabel->setText(durationText);
     ui->componentsLabel->setText(compText);
     ui->castingTimeLabel->setText(castingTimeText);
     ui->pageLabel->setText(pageText);
     ui->classesLabel->setText(classesText);
+    ui->descriptionTitle->setText(descTitleText);
+    ui->descriptionLabel->setText(descriptionText);
     set_text_hide_empty(ui->materialLabel, "Materials", materialText);
+    if (!spell.higher_level().empty()) {
+        ui->higherLevelTitle->setText("<b>Higher level:</b>");
+        ui->higherLevelLabel->setText(higherLevelText);
+        ui->higherLevelTitle->show();
+        ui->higherLevelLabel->show();
+    } else {
+        ui->higherLevelTitle->clear();
+        ui->higherLevelLabel->clear();
+        ui->higherLevelTitle->hide();
+        ui->higherLevelLabel->hide();
+    }
     //ui->subclassesLabel->setText(subclassesText);
 
     // Show the favorite button image

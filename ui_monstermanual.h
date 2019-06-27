@@ -29,19 +29,11 @@ public:
     QTableWidget *monsterTable;
     QVBoxLayout *dataLayout;
     QLabel *nameLabel;
-    QLabel *imageLabel;
-    QHBoxLayout *abilityScoresLayout;
-    QLabel *strLabel;
-    QLabel *dexLabel;
-    QLabel *conLabel;
-    QLabel *intLabel;
-    QLabel *wisLabel;
-    QLabel *chaLabel;
-    QVBoxLayout *basicStatsLayout;
+    QHBoxLayout *statsImageLayout;
+    QVBoxLayout *statsLayout;
     QLabel *acLabel;
-    QLabel *hpLabel;
     QLabel *speedLabel;
-    QVBoxLayout *extraStatsLayout;
+    QLabel *hpLabel;
     QLabel *savingThrowsLabel;
     QLabel *sensesLabel;
     QLabel *damageImmunitiesLabel;
@@ -51,12 +43,18 @@ public:
     QLabel *damageResistancesLabel;
     QLabel *damageVulnerabilitiesLabel;
     QLabel *skillsLabel;
-    QScrollArea *abilitiesActionsScrollArea;
-    QWidget *scrollAreaWidgetContents;
+    QLabel *imageLabel;
+    QHBoxLayout *abilityScoresLayout;
+    QLabel *strLabel;
+    QLabel *dexLabel;
+    QLabel *conLabel;
+    QLabel *intLabel;
+    QLabel *wisLabel;
+    QLabel *chaLabel;
+    QScrollArea *abilitiesScrollArea;
+    QWidget *abilitiesContents;
     QVBoxLayout *verticalLayout;
-    QLabel *specialAbilitiesLabel;
-    QLabel *actionsLabel;
-    QLabel *legendaryActionsLabel;
+    QLabel *abilitiesLabel;
 
     void setupUi(QWidget *MonsterManual)
     {
@@ -106,69 +104,25 @@ public:
 
         dataLayout->addWidget(nameLabel);
 
-        imageLabel = new QLabel(MonsterManual);
-        imageLabel->setObjectName(QString::fromUtf8("imageLabel"));
-        imageLabel->setAlignment(Qt::AlignCenter);
-
-        dataLayout->addWidget(imageLabel);
-
-        abilityScoresLayout = new QHBoxLayout();
-        abilityScoresLayout->setObjectName(QString::fromUtf8("abilityScoresLayout"));
-        strLabel = new QLabel(MonsterManual);
-        strLabel->setObjectName(QString::fromUtf8("strLabel"));
-
-        abilityScoresLayout->addWidget(strLabel);
-
-        dexLabel = new QLabel(MonsterManual);
-        dexLabel->setObjectName(QString::fromUtf8("dexLabel"));
-
-        abilityScoresLayout->addWidget(dexLabel);
-
-        conLabel = new QLabel(MonsterManual);
-        conLabel->setObjectName(QString::fromUtf8("conLabel"));
-
-        abilityScoresLayout->addWidget(conLabel);
-
-        intLabel = new QLabel(MonsterManual);
-        intLabel->setObjectName(QString::fromUtf8("intLabel"));
-
-        abilityScoresLayout->addWidget(intLabel);
-
-        wisLabel = new QLabel(MonsterManual);
-        wisLabel->setObjectName(QString::fromUtf8("wisLabel"));
-
-        abilityScoresLayout->addWidget(wisLabel);
-
-        chaLabel = new QLabel(MonsterManual);
-        chaLabel->setObjectName(QString::fromUtf8("chaLabel"));
-
-        abilityScoresLayout->addWidget(chaLabel);
-
-
-        dataLayout->addLayout(abilityScoresLayout);
-
-        basicStatsLayout = new QVBoxLayout();
-        basicStatsLayout->setObjectName(QString::fromUtf8("basicStatsLayout"));
+        statsImageLayout = new QHBoxLayout();
+        statsImageLayout->setObjectName(QString::fromUtf8("statsImageLayout"));
+        statsLayout = new QVBoxLayout();
+        statsLayout->setObjectName(QString::fromUtf8("statsLayout"));
         acLabel = new QLabel(MonsterManual);
         acLabel->setObjectName(QString::fromUtf8("acLabel"));
 
-        basicStatsLayout->addWidget(acLabel);
-
-        hpLabel = new QLabel(MonsterManual);
-        hpLabel->setObjectName(QString::fromUtf8("hpLabel"));
-
-        basicStatsLayout->addWidget(hpLabel);
+        statsLayout->addWidget(acLabel);
 
         speedLabel = new QLabel(MonsterManual);
         speedLabel->setObjectName(QString::fromUtf8("speedLabel"));
 
-        basicStatsLayout->addWidget(speedLabel);
+        statsLayout->addWidget(speedLabel);
 
+        hpLabel = new QLabel(MonsterManual);
+        hpLabel->setObjectName(QString::fromUtf8("hpLabel"));
 
-        dataLayout->addLayout(basicStatsLayout);
+        statsLayout->addWidget(hpLabel);
 
-        extraStatsLayout = new QVBoxLayout();
-        extraStatsLayout->setObjectName(QString::fromUtf8("extraStatsLayout"));
         savingThrowsLabel = new QLabel(MonsterManual);
         savingThrowsLabel->setObjectName(QString::fromUtf8("savingThrowsLabel"));
         QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Minimum);
@@ -178,7 +132,7 @@ public:
         savingThrowsLabel->setSizePolicy(sizePolicy1);
         savingThrowsLabel->setWordWrap(true);
 
-        extraStatsLayout->addWidget(savingThrowsLabel);
+        statsLayout->addWidget(savingThrowsLabel);
 
         sensesLabel = new QLabel(MonsterManual);
         sensesLabel->setObjectName(QString::fromUtf8("sensesLabel"));
@@ -186,7 +140,7 @@ public:
         sensesLabel->setSizePolicy(sizePolicy1);
         sensesLabel->setWordWrap(true);
 
-        extraStatsLayout->addWidget(sensesLabel);
+        statsLayout->addWidget(sensesLabel);
 
         damageImmunitiesLabel = new QLabel(MonsterManual);
         damageImmunitiesLabel->setObjectName(QString::fromUtf8("damageImmunitiesLabel"));
@@ -194,7 +148,7 @@ public:
         damageImmunitiesLabel->setSizePolicy(sizePolicy1);
         damageImmunitiesLabel->setWordWrap(true);
 
-        extraStatsLayout->addWidget(damageImmunitiesLabel);
+        statsLayout->addWidget(damageImmunitiesLabel);
 
         languagesLabel = new QLabel(MonsterManual);
         languagesLabel->setObjectName(QString::fromUtf8("languagesLabel"));
@@ -202,7 +156,7 @@ public:
         languagesLabel->setSizePolicy(sizePolicy1);
         languagesLabel->setWordWrap(true);
 
-        extraStatsLayout->addWidget(languagesLabel);
+        statsLayout->addWidget(languagesLabel);
 
         conditionImmunitiesLabel = new QLabel(MonsterManual);
         conditionImmunitiesLabel->setObjectName(QString::fromUtf8("conditionImmunitiesLabel"));
@@ -210,7 +164,7 @@ public:
         conditionImmunitiesLabel->setSizePolicy(sizePolicy1);
         conditionImmunitiesLabel->setWordWrap(true);
 
-        extraStatsLayout->addWidget(conditionImmunitiesLabel);
+        statsLayout->addWidget(conditionImmunitiesLabel);
 
         challengeRatingLabel = new QLabel(MonsterManual);
         challengeRatingLabel->setObjectName(QString::fromUtf8("challengeRatingLabel"));
@@ -218,7 +172,7 @@ public:
         challengeRatingLabel->setSizePolicy(sizePolicy1);
         challengeRatingLabel->setWordWrap(true);
 
-        extraStatsLayout->addWidget(challengeRatingLabel);
+        statsLayout->addWidget(challengeRatingLabel);
 
         damageResistancesLabel = new QLabel(MonsterManual);
         damageResistancesLabel->setObjectName(QString::fromUtf8("damageResistancesLabel"));
@@ -226,7 +180,7 @@ public:
         damageResistancesLabel->setSizePolicy(sizePolicy1);
         damageResistancesLabel->setWordWrap(true);
 
-        extraStatsLayout->addWidget(damageResistancesLabel);
+        statsLayout->addWidget(damageResistancesLabel);
 
         damageVulnerabilitiesLabel = new QLabel(MonsterManual);
         damageVulnerabilitiesLabel->setObjectName(QString::fromUtf8("damageVulnerabilitiesLabel"));
@@ -234,7 +188,7 @@ public:
         damageVulnerabilitiesLabel->setSizePolicy(sizePolicy1);
         damageVulnerabilitiesLabel->setWordWrap(true);
 
-        extraStatsLayout->addWidget(damageVulnerabilitiesLabel);
+        statsLayout->addWidget(damageVulnerabilitiesLabel);
 
         skillsLabel = new QLabel(MonsterManual);
         skillsLabel->setObjectName(QString::fromUtf8("skillsLabel"));
@@ -242,40 +196,102 @@ public:
         skillsLabel->setSizePolicy(sizePolicy1);
         skillsLabel->setWordWrap(true);
 
-        extraStatsLayout->addWidget(skillsLabel);
+        statsLayout->addWidget(skillsLabel);
 
 
-        dataLayout->addLayout(extraStatsLayout);
+        statsImageLayout->addLayout(statsLayout);
 
-        abilitiesActionsScrollArea = new QScrollArea(MonsterManual);
-        abilitiesActionsScrollArea->setObjectName(QString::fromUtf8("abilitiesActionsScrollArea"));
-        abilitiesActionsScrollArea->setLayoutDirection(Qt::LeftToRight);
-        abilitiesActionsScrollArea->setWidgetResizable(true);
-        scrollAreaWidgetContents = new QWidget();
-        scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 697, 560));
-        verticalLayout = new QVBoxLayout(scrollAreaWidgetContents);
+        imageLabel = new QLabel(MonsterManual);
+        imageLabel->setObjectName(QString::fromUtf8("imageLabel"));
+        imageLabel->setAlignment(Qt::AlignCenter);
+
+        statsImageLayout->addWidget(imageLabel);
+
+
+        dataLayout->addLayout(statsImageLayout);
+
+        abilityScoresLayout = new QHBoxLayout();
+        abilityScoresLayout->setObjectName(QString::fromUtf8("abilityScoresLayout"));
+        strLabel = new QLabel(MonsterManual);
+        strLabel->setObjectName(QString::fromUtf8("strLabel"));
+        strLabel->setAlignment(Qt::AlignCenter);
+
+        abilityScoresLayout->addWidget(strLabel);
+
+        dexLabel = new QLabel(MonsterManual);
+        dexLabel->setObjectName(QString::fromUtf8("dexLabel"));
+        dexLabel->setAlignment(Qt::AlignCenter);
+
+        abilityScoresLayout->addWidget(dexLabel);
+
+        conLabel = new QLabel(MonsterManual);
+        conLabel->setObjectName(QString::fromUtf8("conLabel"));
+        conLabel->setAlignment(Qt::AlignCenter);
+
+        abilityScoresLayout->addWidget(conLabel);
+
+        intLabel = new QLabel(MonsterManual);
+        intLabel->setObjectName(QString::fromUtf8("intLabel"));
+        intLabel->setAlignment(Qt::AlignCenter);
+
+        abilityScoresLayout->addWidget(intLabel);
+
+        wisLabel = new QLabel(MonsterManual);
+        wisLabel->setObjectName(QString::fromUtf8("wisLabel"));
+        wisLabel->setAlignment(Qt::AlignCenter);
+
+        abilityScoresLayout->addWidget(wisLabel);
+
+        chaLabel = new QLabel(MonsterManual);
+        chaLabel->setObjectName(QString::fromUtf8("chaLabel"));
+        chaLabel->setAlignment(Qt::AlignCenter);
+
+        abilityScoresLayout->addWidget(chaLabel);
+
+
+        dataLayout->addLayout(abilityScoresLayout);
+
+        abilitiesScrollArea = new QScrollArea(MonsterManual);
+        abilitiesScrollArea->setObjectName(QString::fromUtf8("abilitiesScrollArea"));
+        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::MinimumExpanding);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(abilitiesScrollArea->sizePolicy().hasHeightForWidth());
+        abilitiesScrollArea->setSizePolicy(sizePolicy2);
+        abilitiesScrollArea->setLayoutDirection(Qt::LeftToRight);
+        abilitiesScrollArea->setStyleSheet(QString::fromUtf8("background-color: transparent"));
+        abilitiesScrollArea->setFrameShape(QFrame::NoFrame);
+        abilitiesScrollArea->setFrameShadow(QFrame::Plain);
+        abilitiesScrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+        abilitiesScrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+        abilitiesScrollArea->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContents);
+        abilitiesScrollArea->setWidgetResizable(true);
+        abilitiesScrollArea->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
+        abilitiesContents = new QWidget();
+        abilitiesContents->setObjectName(QString::fromUtf8("abilitiesContents"));
+        abilitiesContents->setGeometry(QRect(0, 0, 699, 444));
+        QSizePolicy sizePolicy3(QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(abilitiesContents->sizePolicy().hasHeightForWidth());
+        abilitiesContents->setSizePolicy(sizePolicy3);
+        verticalLayout = new QVBoxLayout(abilitiesContents);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        specialAbilitiesLabel = new QLabel(scrollAreaWidgetContents);
-        specialAbilitiesLabel->setObjectName(QString::fromUtf8("specialAbilitiesLabel"));
-        specialAbilitiesLabel->setTextFormat(Qt::RichText);
+        abilitiesLabel = new QLabel(abilitiesContents);
+        abilitiesLabel->setObjectName(QString::fromUtf8("abilitiesLabel"));
+        abilitiesLabel->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
+        abilitiesLabel->setWordWrap(true);
 
-        verticalLayout->addWidget(specialAbilitiesLabel);
+        verticalLayout->addWidget(abilitiesLabel);
 
-        actionsLabel = new QLabel(scrollAreaWidgetContents);
-        actionsLabel->setObjectName(QString::fromUtf8("actionsLabel"));
+        abilitiesScrollArea->setWidget(abilitiesContents);
 
-        verticalLayout->addWidget(actionsLabel);
+        dataLayout->addWidget(abilitiesScrollArea);
 
-        legendaryActionsLabel = new QLabel(scrollAreaWidgetContents);
-        legendaryActionsLabel->setObjectName(QString::fromUtf8("legendaryActionsLabel"));
-
-        verticalLayout->addWidget(legendaryActionsLabel);
-
-        abilitiesActionsScrollArea->setWidget(scrollAreaWidgetContents);
-
-        dataLayout->addWidget(abilitiesActionsScrollArea);
-
+        dataLayout->setStretch(0, 1);
+        dataLayout->setStretch(1, 3);
+        dataLayout->setStretch(2, 1);
+        dataLayout->setStretch(3, 5);
 
         horizontalLayout->addLayout(dataLayout);
 
@@ -291,16 +307,9 @@ public:
     {
         MonsterManual->setWindowTitle(QApplication::translate("MonsterManual", "Form", nullptr));
         nameLabel->setText(QString());
-        imageLabel->setText(QString());
-        strLabel->setText(QString());
-        dexLabel->setText(QString());
-        conLabel->setText(QString());
-        intLabel->setText(QString());
-        wisLabel->setText(QString());
-        chaLabel->setText(QString());
         acLabel->setText(QString());
-        hpLabel->setText(QString());
         speedLabel->setText(QString());
+        hpLabel->setText(QString());
         savingThrowsLabel->setText(QString());
         sensesLabel->setText(QString());
         damageImmunitiesLabel->setText(QString());
@@ -310,9 +319,14 @@ public:
         damageResistancesLabel->setText(QString());
         damageVulnerabilitiesLabel->setText(QString());
         skillsLabel->setText(QString());
-        specialAbilitiesLabel->setText(QString());
-        actionsLabel->setText(QString());
-        legendaryActionsLabel->setText(QString());
+        imageLabel->setText(QString());
+        strLabel->setText(QString());
+        dexLabel->setText(QString());
+        conLabel->setText(QString());
+        intLabel->setText(QString());
+        wisLabel->setText(QString());
+        chaLabel->setText(QString());
+        abilitiesLabel->setText(QString());
     } // retranslateUi
 
 };

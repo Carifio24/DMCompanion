@@ -6,6 +6,7 @@
 #include <DnD/ability.h>
 #include <DnD/damage_info.h>
 #include <QString>
+#include <QLabel>
 
 QString hp_string(const DnD::Monster& m);
 QString speed_string(const std::map<std::reference_wrapper<const DnD::SpeedType>, DnD::Distance, ref_wrap_comp>& speeds);
@@ -21,6 +22,8 @@ QString condition_immunities_string(const DnD::Monster& m);
 
 QString ability_score_string(int x);
 QString as_qstring(const DnD::DamageInfo& dinf);
+QString title_qstring(const QString& qs, int size=16);
+QString ability_score_text(const QString& abbr, int score, int size=8);
 
 // Contains as_qstring(const T&) template used for T = Action, SpecialAbility, and LegendaryAction
 #include "monster_display.tpp"

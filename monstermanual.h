@@ -1,6 +1,7 @@
 #ifndef MONSTERMANUAL_H
 #define MONSTERMANUAL_H
 
+#include <QLabel>
 #include <QWidget>
 
 #include <DnD/monster.h>

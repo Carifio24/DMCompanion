@@ -4,8 +4,10 @@
 #include "monster_display.h"
 #include "qdisplay.h"
 #include <iostream>
+#include <functional>
 
 #include <QFile>
+#include <QScrollBar>
 #include <QStringBuilder>
 
 using namespace DnD;
@@ -68,10 +70,11 @@ void MonsterManual::populate_monster_table() {
 
 void MonsterManual::display_monster_data(const Monster& m) {
 
+    // Reset scrollbar
+    ui->abilitiesScrollArea->verticalScrollBar()->setValue(0);
+
     // Name
-    std::cout << "About to display monster data" << std::endl;
     ui->nameLabel->setText(QLatin1String(m.name().data()));
-    std::cout << "Displayed name: " << m.name() << std::endl;
 
     // Image
     QString image_resource = ":monster_images/resources/" % QString::fromStdString(m.image_filename());
@@ -99,15 +102,48 @@ void MonsterManual::display_monster_data(const Monster& m) {
     set_text_none_empty(ui->challengeRatingLabel, "Challenge Rating", QString::fromStdString(m.challenge_rating().as_string()));
 
     // For multi-line QStrings
-    static const QString double_newline = QStringLiteral("\n\n");
+    static const QString separator = QStringLiteral("<br><font size=1><br></font>");
+    static const QString newline = QStringLiteral("<br>");
+    static const QString double_newline = QStringLiteral("<br><br>");
+
+    // Ability scores
+    ui->strLabel->setText(ability_score_text("STR", m.strength()));
+    ui->dexLabel->setText(ability_score_text("DEX", m.dexterity()));
+    ui->conLabel->setText(ability_score_text("CON", m.constitution()));
+    ui->intLabel->setText(ability_score_text("INT", m.intelligence()));
+    ui->wisLabel->setText(ability_score_text("WIS", m.wisdom()));
+    ui->chaLabel->setText(ability_score_text("CHA", m.charisma()));
+
+    // Special abilities, actions, and legendary actions
+    QStringList qsl;
 
     // Special abilities
-    QStringList qsl;
     std::vector<SpecialAbility> spcl_abls = m.special_abilities();
-    for (const SpecialAbility& abl : spcl_abls) { qsl << as_qstring(abl); }
-    QString spcl_abls_str = qsl.join(double_newline);
-    ui->specialAbilitiesLabel->setText(spcl_abls_str);
+    if (spcl_abls.size() > 0) {
+        qsl << title_qstring("Special Abilities");
+        for (const SpecialAbility& abl : spcl_abls) {
+            qsl << as_qstring(abl);
+        }
+    }
+
+    // Actions
+    std::vector<Action> actions = m.actions();
+    if (actions.size() > 0) {
+        qsl << title_qstring("Actions");
+        for (const Action& act : actions) {
+            qsl << as_qstring(act);
+        }
+    }
+
+    // Legendary actions
+    std::vector<LegendaryAction> leg_acts = m.legendary_actions();
+    if (leg_acts.size() > 0) {
+        qsl <<title_qstring("Legendary Actions:");
+        for (const LegendaryAction& lact : leg_acts) {
+            qsl << as_qstring(lact);
+        }
+    }
+
+    ui->abilitiesLabel->setText(qsl.join(separator));
 
 }
-
-

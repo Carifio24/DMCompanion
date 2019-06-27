@@ -16,8 +16,8 @@ class LegendaryAction {
         LegendaryAction() : LegendaryAction("", "", 0) {}
 
         // Get member values
-        std::string name() const noexcept { _name; }
-        std::string description() const noexcept { _desc; }
+        std::string name() const noexcept { return _name; }
+        std::string description() const noexcept { return _desc; }
         int attack_bonus() const noexcept { return _atk_bonus; }
         
     private:
