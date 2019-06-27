@@ -272,6 +272,9 @@ Monster parse_monster(const Json::Value& root, MonsterBuilder& b) {
     }
     b.set_legendary_actions(leg_actions);
 
+    // Image filename
+    b.set_image_filename(string_if_member(root, "image_file", ""));
+
     // Build and return
     Monster m = b.build_and_reset();
     return m;

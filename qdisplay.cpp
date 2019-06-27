@@ -25,10 +25,26 @@ QString sign_str(int x) {
     }
 }
 
-void set_text_if_nonempty(QLabel* label, const QString& prompt, const QString& text) {
+QString yn_qstring(bool b) {
+    QString bqs = b ? QStringLiteral("yes") : QStringLiteral("no");
+    return bqs;
+}
+
+void set_text_none_empty(QLabel* label, const QString& prompt, const QString& text) {
     if (!text.isEmpty()) {
+        if (label->isHidden()) { label->show(); }
+        label->setText(prompt_text(prompt, text));
+    } else {
+        label->setText(prompt_text(prompt, QStringLiteral("None")));
+    }
+}
+
+void set_text_hide_empty(QLabel* label, const QString& prompt, const QString& text) {
+    if (!text.isEmpty()) {
+        if (label->isHidden()) { label->show(); }
         label->setText(prompt_text(prompt, text));
     } else {
         label->clear();
+        label->hide();
     }
 }

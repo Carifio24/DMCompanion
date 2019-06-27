@@ -26,6 +26,8 @@ private:
 
     void populate_monster_table();
     void display_monster_data(const DnD::Monster& m);
+    static const int image_width = 300;
+    static const int image_height = 300;
 
     Ui::MonsterManual *ui;
     QVector<DnD::Monster> monsters;

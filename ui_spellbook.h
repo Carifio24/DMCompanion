@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'spellbook.ui'
 **
-** Created by: Qt User Interface Compiler version 5.5.1
+** Created by: Qt User Interface Compiler version 5.12.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,11 +10,11 @@
 #define UI_SPELLBOOK_H
 
 #include <QtCore/QVariant>
-#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -22,6 +22,7 @@
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QScrollArea>
 #include <QtWidgets/QTableWidget>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -29,168 +30,293 @@ QT_BEGIN_NAMESPACE
 class Ui_Spellbook
 {
 public:
-    QLabel *nameLabel;
-    QLabel *descriptionTitle;
-    QLabel *subclassesLabel;
+    QHBoxLayout *horizontalLayout;
+    QVBoxLayout *leftLayout;
+    QGridLayout *sortFilterLayout;
+    QLabel *sort2Label;
     QComboBox *sort1Box;
-    QLabel *classesLabel;
-    QTableWidget *spellList;
-    QLabel *componentsLabel;
-    QRadioButton *favoritesButton;
-    QLabel *descriptionLabel;
-    QLabel *castingTimeLabel;
-    QLabel *materialLabel;
+    QLabel *filterLabel;
+    QLabel *sort1Label;
     QComboBox *sort2Box;
+    QComboBox *filterBox;
+    QHBoxLayout *favoritesSearchLayout;
+    QRadioButton *favoritesButton;
+    QLineEdit *searchBar;
+    QHBoxLayout *sourcebooksLayout;
+    QCheckBox *phbCheckbox;
+    QCheckBox *scagCheckbox;
+    QCheckBox *xgeCheckbox;
+    QTableWidget *spellList;
+    QVBoxLayout *rightLayout;
+    QHBoxLayout *nameFavoritesLayout;
+    QLabel *nameLabel;
+    QPushButton *favButton;
+    QLabel *levelLabel;
+    QLabel *rangeLabel;
     QLabel *concentrationLabel;
     QLabel *schoolLabel;
-    QLabel *sort1Label;
-    QComboBox *filterBox;
-    QLabel *levelLabel;
-    QLineEdit *searchBar;
     QLabel *ritualLabel;
+    QLabel *durationLabel;
+    QLabel *castingTimeLabel;
+    QLabel *componentsLabel;
+    QLabel *pageLabel;
+    QLabel *materialLabel;
+    QLabel *classesLabel;
+    QLabel *descriptionTitle;
     QScrollArea *descScrollArea;
     QWidget *scrollAreaWidgetContents;
-    QPushButton *favButton;
-    QLabel *rangeLabel;
-    QLabel *filterLabel;
-    QLabel *pageLabel;
-    QLabel *durationLabel;
-    QLabel *sort2Label;
-    QCheckBox *phbCheckbox;
-    QCheckBox *xgeCheckbox;
-    QCheckBox *scagCheckbox;
+    QLabel *descriptionLabel;
 
     void setupUi(QWidget *Spellbook)
     {
         if (Spellbook->objectName().isEmpty())
-            Spellbook->setObjectName(QStringLiteral("Spellbook"));
+            Spellbook->setObjectName(QString::fromUtf8("Spellbook"));
         Spellbook->resize(1343, 829);
         Spellbook->setAutoFillBackground(false);
-        Spellbook->setStyleSheet(QStringLiteral("background-color: transparent"));
-        nameLabel = new QLabel(Spellbook);
-        nameLabel->setObjectName(QStringLiteral("nameLabel"));
-        nameLabel->setGeometry(QRect(529, 49, 591, 71));
-        QFont font;
-        font.setFamily(QStringLiteral("URW Chancery L"));
-        font.setPointSize(30);
-        font.setBold(false);
-        font.setItalic(true);
-        font.setWeight(7);
-        nameLabel->setFont(font);
-        nameLabel->setStyleSheet(QLatin1String("font: 30pt \"Vivaldi\";\n"
-"font: 57 italic 30pt \"URW Chancery L\";"));
-        nameLabel->setAlignment(Qt::AlignCenter);
-        descriptionTitle = new QLabel(Spellbook);
-        descriptionTitle->setObjectName(QStringLiteral("descriptionTitle"));
-        descriptionTitle->setGeometry(QRect(550, 440, 111, 20));
-        subclassesLabel = new QLabel(Spellbook);
-        subclassesLabel->setObjectName(QStringLiteral("subclassesLabel"));
-        subclassesLabel->setGeometry(QRect(550, 410, 451, 17));
+        Spellbook->setStyleSheet(QString::fromUtf8("background-color: transparent"));
+        horizontalLayout = new QHBoxLayout(Spellbook);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        leftLayout = new QVBoxLayout();
+        leftLayout->setObjectName(QString::fromUtf8("leftLayout"));
+        sortFilterLayout = new QGridLayout();
+        sortFilterLayout->setObjectName(QString::fromUtf8("sortFilterLayout"));
+        sort2Label = new QLabel(Spellbook);
+        sort2Label->setObjectName(QString::fromUtf8("sort2Label"));
+
+        sortFilterLayout->addWidget(sort2Label, 0, 1, 1, 1);
+
         sort1Box = new QComboBox(Spellbook);
-        sort1Box->setObjectName(QStringLiteral("sort1Box"));
-        sort1Box->setGeometry(QRect(30, 49, 111, 25));
-        classesLabel = new QLabel(Spellbook);
-        classesLabel->setObjectName(QStringLiteral("classesLabel"));
-        classesLabel->setGeometry(QRect(550, 380, 451, 17));
+        sort1Box->setObjectName(QString::fromUtf8("sort1Box"));
+        sort1Box->setStyleSheet(QString::fromUtf8(""));
+
+        sortFilterLayout->addWidget(sort1Box, 1, 0, 1, 1);
+
+        filterLabel = new QLabel(Spellbook);
+        filterLabel->setObjectName(QString::fromUtf8("filterLabel"));
+
+        sortFilterLayout->addWidget(filterLabel, 0, 2, 1, 1);
+
+        sort1Label = new QLabel(Spellbook);
+        sort1Label->setObjectName(QString::fromUtf8("sort1Label"));
+
+        sortFilterLayout->addWidget(sort1Label, 0, 0, 1, 1);
+
+        sort2Box = new QComboBox(Spellbook);
+        sort2Box->setObjectName(QString::fromUtf8("sort2Box"));
+        sort2Box->setStyleSheet(QString::fromUtf8(""));
+
+        sortFilterLayout->addWidget(sort2Box, 1, 1, 1, 1);
+
+        filterBox = new QComboBox(Spellbook);
+        filterBox->setObjectName(QString::fromUtf8("filterBox"));
+        filterBox->setStyleSheet(QString::fromUtf8(""));
+
+        sortFilterLayout->addWidget(filterBox, 1, 2, 1, 1);
+
+
+        leftLayout->addLayout(sortFilterLayout);
+
+        favoritesSearchLayout = new QHBoxLayout();
+        favoritesSearchLayout->setObjectName(QString::fromUtf8("favoritesSearchLayout"));
+        favoritesButton = new QRadioButton(Spellbook);
+        favoritesButton->setObjectName(QString::fromUtf8("favoritesButton"));
+
+        favoritesSearchLayout->addWidget(favoritesButton);
+
+        searchBar = new QLineEdit(Spellbook);
+        searchBar->setObjectName(QString::fromUtf8("searchBar"));
+        searchBar->setFocusPolicy(Qt::ClickFocus);
+        searchBar->setAutoFillBackground(false);
+
+        favoritesSearchLayout->addWidget(searchBar);
+
+
+        leftLayout->addLayout(favoritesSearchLayout);
+
+        sourcebooksLayout = new QHBoxLayout();
+        sourcebooksLayout->setObjectName(QString::fromUtf8("sourcebooksLayout"));
+        sourcebooksLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
+        sourcebooksLayout->setContentsMargins(0, 0, 0, -1);
+        phbCheckbox = new QCheckBox(Spellbook);
+        phbCheckbox->setObjectName(QString::fromUtf8("phbCheckbox"));
+        phbCheckbox->setChecked(true);
+
+        sourcebooksLayout->addWidget(phbCheckbox);
+
+        scagCheckbox = new QCheckBox(Spellbook);
+        scagCheckbox->setObjectName(QString::fromUtf8("scagCheckbox"));
+
+        sourcebooksLayout->addWidget(scagCheckbox);
+
+        xgeCheckbox = new QCheckBox(Spellbook);
+        xgeCheckbox->setObjectName(QString::fromUtf8("xgeCheckbox"));
+
+        sourcebooksLayout->addWidget(xgeCheckbox);
+
+        sourcebooksLayout->setStretch(0, 1);
+        sourcebooksLayout->setStretch(1, 1);
+        sourcebooksLayout->setStretch(2, 1);
+
+        leftLayout->addLayout(sourcebooksLayout);
+
         spellList = new QTableWidget(Spellbook);
-        spellList->setObjectName(QStringLiteral("spellList"));
-        spellList->setGeometry(QRect(20, 140, 431, 671));
+        if (spellList->columnCount() < 3)
+            spellList->setColumnCount(3);
+        if (spellList->rowCount() < 6)
+            spellList->setRowCount(6);
+        spellList->setObjectName(QString::fromUtf8("spellList"));
         spellList->setLineWidth(1);
         spellList->setShowGrid(false);
         spellList->setGridStyle(Qt::NoPen);
         spellList->setSortingEnabled(false);
+        spellList->setRowCount(6);
+        spellList->setColumnCount(3);
         spellList->horizontalHeader()->setVisible(false);
         spellList->horizontalHeader()->setDefaultSectionSize(175);
         spellList->horizontalHeader()->setHighlightSections(false);
         spellList->horizontalHeader()->setStretchLastSection(true);
         spellList->verticalHeader()->setVisible(false);
         spellList->verticalHeader()->setHighlightSections(false);
-        componentsLabel = new QLabel(Spellbook);
-        componentsLabel->setObjectName(QStringLiteral("componentsLabel"));
-        componentsLabel->setGeometry(QRect(550, 290, 181, 16));
-        favoritesButton = new QRadioButton(Spellbook);
-        favoritesButton->setObjectName(QStringLiteral("favoritesButton"));
-        favoritesButton->setGeometry(QRect(30, 79, 112, 23));
-        descriptionLabel = new QLabel(Spellbook);
-        descriptionLabel->setObjectName(QStringLiteral("descriptionLabel"));
-        descriptionLabel->setGeometry(QRect(550, 470, 591, 301));
-        descriptionLabel->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
-        descriptionLabel->setWordWrap(true);
-        castingTimeLabel = new QLabel(Spellbook);
-        castingTimeLabel->setObjectName(QStringLiteral("castingTimeLabel"));
-        castingTimeLabel->setGeometry(QRect(550, 169, 241, 21));
-        materialLabel = new QLabel(Spellbook);
-        materialLabel->setObjectName(QStringLiteral("materialLabel"));
-        materialLabel->setGeometry(QRect(550, 320, 641, 51));
-        materialLabel->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
-        materialLabel->setWordWrap(true);
-        sort2Box = new QComboBox(Spellbook);
-        sort2Box->setObjectName(QStringLiteral("sort2Box"));
-        sort2Box->setGeometry(QRect(180, 49, 111, 25));
-        concentrationLabel = new QLabel(Spellbook);
-        concentrationLabel->setObjectName(QStringLiteral("concentrationLabel"));
-        concentrationLabel->setGeometry(QRect(550, 230, 141, 17));
-        schoolLabel = new QLabel(Spellbook);
-        schoolLabel->setObjectName(QStringLiteral("schoolLabel"));
-        schoolLabel->setGeometry(QRect(550, 135, 201, 21));
-        sort1Label = new QLabel(Spellbook);
-        sort1Label->setObjectName(QStringLiteral("sort1Label"));
-        sort1Label->setGeometry(QRect(30, 19, 81, 17));
-        filterBox = new QComboBox(Spellbook);
-        filterBox->setObjectName(QStringLiteral("filterBox"));
-        filterBox->setGeometry(QRect(340, 49, 101, 25));
-        levelLabel = new QLabel(Spellbook);
-        levelLabel->setObjectName(QStringLiteral("levelLabel"));
-        levelLabel->setGeometry(QRect(780, 136, 121, 20));
-        searchBar = new QLineEdit(Spellbook);
-        searchBar->setObjectName(QStringLiteral("searchBar"));
-        searchBar->setGeometry(QRect(140, 79, 311, 25));
-        searchBar->setFocusPolicy(Qt::ClickFocus);
-        searchBar->setAutoFillBackground(false);
-        ritualLabel = new QLabel(Spellbook);
-        ritualLabel->setObjectName(QStringLiteral("ritualLabel"));
-        ritualLabel->setGeometry(QRect(790, 227, 171, 20));
-        descScrollArea = new QScrollArea(Spellbook);
-        descScrollArea->setObjectName(QStringLiteral("descScrollArea"));
-        descScrollArea->setGeometry(QRect(550, 470, 591, 321));
-        descScrollArea->setFrameShape(QFrame::NoFrame);
-        descScrollArea->setLineWidth(0);
-        descScrollArea->setWidgetResizable(true);
-        scrollAreaWidgetContents = new QWidget();
-        scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 591, 321));
-        descScrollArea->setWidget(scrollAreaWidgetContents);
+
+        leftLayout->addWidget(spellList);
+
+
+        horizontalLayout->addLayout(leftLayout);
+
+        rightLayout = new QVBoxLayout();
+        rightLayout->setSpacing(5);
+        rightLayout->setObjectName(QString::fromUtf8("rightLayout"));
+        rightLayout->setContentsMargins(25, -1, -1, -1);
+        nameFavoritesLayout = new QHBoxLayout();
+        nameFavoritesLayout->setObjectName(QString::fromUtf8("nameFavoritesLayout"));
+        nameLabel = new QLabel(Spellbook);
+        nameLabel->setObjectName(QString::fromUtf8("nameLabel"));
+        QFont font;
+        font.setFamily(QString::fromUtf8("URW Chancery L"));
+        font.setPointSize(30);
+        font.setItalic(true);
+        nameLabel->setFont(font);
+        nameLabel->setAlignment(Qt::AlignCenter);
+
+        nameFavoritesLayout->addWidget(nameLabel);
+
         favButton = new QPushButton(Spellbook);
-        favButton->setObjectName(QStringLiteral("favButton"));
-        favButton->setGeometry(QRect(1130, 49, 71, 71));
+        favButton->setObjectName(QString::fromUtf8("favButton"));
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(favButton->sizePolicy().hasHeightForWidth());
+        favButton->setSizePolicy(sizePolicy);
         favButton->setFocusPolicy(Qt::NoFocus);
         favButton->setAutoFillBackground(false);
+        favButton->setStyleSheet(QString::fromUtf8(""));
+        favButton->setCheckable(false);
+
+        nameFavoritesLayout->addWidget(favButton);
+
+
+        rightLayout->addLayout(nameFavoritesLayout);
+
+        levelLabel = new QLabel(Spellbook);
+        levelLabel->setObjectName(QString::fromUtf8("levelLabel"));
+
+        rightLayout->addWidget(levelLabel);
+
         rangeLabel = new QLabel(Spellbook);
-        rangeLabel->setObjectName(QStringLiteral("rangeLabel"));
-        rangeLabel->setGeometry(QRect(550, 200, 211, 17));
+        rangeLabel->setObjectName(QString::fromUtf8("rangeLabel"));
         rangeLabel->setTextFormat(Qt::AutoText);
-        filterLabel = new QLabel(Spellbook);
-        filterLabel->setObjectName(QStringLiteral("filterLabel"));
-        filterLabel->setGeometry(QRect(340, 19, 101, 17));
-        pageLabel = new QLabel(Spellbook);
-        pageLabel->setObjectName(QStringLiteral("pageLabel"));
-        pageLabel->setGeometry(QRect(980, 139, 171, 17));
+
+        rightLayout->addWidget(rangeLabel);
+
+        concentrationLabel = new QLabel(Spellbook);
+        concentrationLabel->setObjectName(QString::fromUtf8("concentrationLabel"));
+
+        rightLayout->addWidget(concentrationLabel);
+
+        schoolLabel = new QLabel(Spellbook);
+        schoolLabel->setObjectName(QString::fromUtf8("schoolLabel"));
+
+        rightLayout->addWidget(schoolLabel);
+
+        ritualLabel = new QLabel(Spellbook);
+        ritualLabel->setObjectName(QString::fromUtf8("ritualLabel"));
+
+        rightLayout->addWidget(ritualLabel);
+
         durationLabel = new QLabel(Spellbook);
-        durationLabel->setObjectName(QStringLiteral("durationLabel"));
-        durationLabel->setGeometry(QRect(550, 260, 281, 17));
-        sort2Label = new QLabel(Spellbook);
-        sort2Label->setObjectName(QStringLiteral("sort2Label"));
-        sort2Label->setGeometry(QRect(190, 19, 81, 17));
-        phbCheckbox = new QCheckBox(Spellbook);
-        phbCheckbox->setObjectName(QStringLiteral("phbCheckbox"));
-        phbCheckbox->setGeometry(QRect(20, 110, 141, 20));
-        phbCheckbox->setChecked(true);
-        xgeCheckbox = new QCheckBox(Spellbook);
-        xgeCheckbox->setObjectName(QStringLiteral("xgeCheckbox"));
-        xgeCheckbox->setGeometry(QRect(180, 110, 121, 20));
-        scagCheckbox = new QCheckBox(Spellbook);
-        scagCheckbox->setObjectName(QStringLiteral("scagCheckbox"));
-        scagCheckbox->setGeometry(QRect(320, 110, 161, 20));
+        durationLabel->setObjectName(QString::fromUtf8("durationLabel"));
+
+        rightLayout->addWidget(durationLabel);
+
+        castingTimeLabel = new QLabel(Spellbook);
+        castingTimeLabel->setObjectName(QString::fromUtf8("castingTimeLabel"));
+
+        rightLayout->addWidget(castingTimeLabel);
+
+        componentsLabel = new QLabel(Spellbook);
+        componentsLabel->setObjectName(QString::fromUtf8("componentsLabel"));
+
+        rightLayout->addWidget(componentsLabel);
+
+        pageLabel = new QLabel(Spellbook);
+        pageLabel->setObjectName(QString::fromUtf8("pageLabel"));
+
+        rightLayout->addWidget(pageLabel);
+
+        materialLabel = new QLabel(Spellbook);
+        materialLabel->setObjectName(QString::fromUtf8("materialLabel"));
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Minimum);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(materialLabel->sizePolicy().hasHeightForWidth());
+        materialLabel->setSizePolicy(sizePolicy1);
+        materialLabel->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
+        materialLabel->setWordWrap(true);
+
+        rightLayout->addWidget(materialLabel);
+
+        classesLabel = new QLabel(Spellbook);
+        classesLabel->setObjectName(QString::fromUtf8("classesLabel"));
+
+        rightLayout->addWidget(classesLabel);
+
+        descriptionTitle = new QLabel(Spellbook);
+        descriptionTitle->setObjectName(QString::fromUtf8("descriptionTitle"));
+
+        rightLayout->addWidget(descriptionTitle);
+
+        descScrollArea = new QScrollArea(Spellbook);
+        descScrollArea->setObjectName(QString::fromUtf8("descScrollArea"));
+        descScrollArea->setAutoFillBackground(true);
+        descScrollArea->setFrameShape(QFrame::NoFrame);
+        descScrollArea->setFrameShadow(QFrame::Plain);
+        descScrollArea->setLineWidth(0);
+        descScrollArea->setWidgetResizable(true);
+        descScrollArea->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
+        scrollAreaWidgetContents = new QWidget();
+        scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 798, 523));
+        descriptionLabel = new QLabel(scrollAreaWidgetContents);
+        descriptionLabel->setObjectName(QString::fromUtf8("descriptionLabel"));
+        descriptionLabel->setGeometry(QRect(9, 9, 780, 471));
+        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(descriptionLabel->sizePolicy().hasHeightForWidth());
+        descriptionLabel->setSizePolicy(sizePolicy2);
+        descriptionLabel->setTextFormat(Qt::RichText);
+        descriptionLabel->setScaledContents(false);
+        descriptionLabel->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
+        descriptionLabel->setWordWrap(true);
+        descScrollArea->setWidget(scrollAreaWidgetContents);
+
+        rightLayout->addWidget(descScrollArea);
+
+
+        horizontalLayout->addLayout(rightLayout);
+
+        horizontalLayout->setStretch(0, 3);
+        horizontalLayout->setStretch(1, 5);
 
         retranslateUi(Spellbook);
 
@@ -199,32 +325,31 @@ public:
 
     void retranslateUi(QWidget *Spellbook)
     {
-        Spellbook->setWindowTitle(QApplication::translate("Spellbook", "Form", 0));
+        Spellbook->setWindowTitle(QApplication::translate("Spellbook", "Form", nullptr));
+        sort2Label->setText(QApplication::translate("Spellbook", "Sort field 2", nullptr));
+        filterLabel->setText(QApplication::translate("Spellbook", "Filter by class", nullptr));
+        sort1Label->setText(QApplication::translate("Spellbook", "Sort field 1", nullptr));
+        favoritesButton->setText(QApplication::translate("Spellbook", "Favorites", nullptr));
+        searchBar->setText(QString());
+        searchBar->setPlaceholderText(QApplication::translate("Spellbook", "Search", nullptr));
+        phbCheckbox->setText(QApplication::translate("Spellbook", "Player's Handbook", nullptr));
+        scagCheckbox->setText(QApplication::translate("Spellbook", "Sword Coast AG", nullptr));
+        xgeCheckbox->setText(QApplication::translate("Spellbook", "Xanathar's GTE", nullptr));
         nameLabel->setText(QString());
-        descriptionTitle->setText(QString());
-        subclassesLabel->setText(QString());
-        classesLabel->setText(QString());
-        componentsLabel->setText(QString());
-        favoritesButton->setText(QApplication::translate("Spellbook", "Favorites", 0));
-        descriptionLabel->setText(QString());
-        castingTimeLabel->setText(QString());
-        materialLabel->setText(QString());
+        favButton->setText(QString());
+        levelLabel->setText(QString());
+        rangeLabel->setText(QString());
         concentrationLabel->setText(QString());
         schoolLabel->setText(QString());
-        sort1Label->setText(QApplication::translate("Spellbook", "Sort field 1", 0));
-        levelLabel->setText(QString());
-        searchBar->setText(QString());
-        searchBar->setPlaceholderText(QApplication::translate("Spellbook", "Search", 0));
         ritualLabel->setText(QString());
-        favButton->setText(QString());
-        rangeLabel->setText(QString());
-        filterLabel->setText(QApplication::translate("Spellbook", "Filter by class", 0));
-        pageLabel->setText(QString());
         durationLabel->setText(QString());
-        sort2Label->setText(QApplication::translate("Spellbook", "Sort field 2", 0));
-        phbCheckbox->setText(QApplication::translate("Spellbook", "Player's Handbook", 0));
-        xgeCheckbox->setText(QApplication::translate("Spellbook", "Xanathar's GTE", 0));
-        scagCheckbox->setText(QApplication::translate("Spellbook", "Sword Coast AG", 0));
+        castingTimeLabel->setText(QString());
+        componentsLabel->setText(QString());
+        pageLabel->setText(QString());
+        materialLabel->setText(QString());
+        classesLabel->setText(QString());
+        descriptionTitle->setText(QString());
+        descriptionLabel->setText(QString());
     } // retranslateUi
 
 };

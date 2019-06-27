@@ -31,6 +31,7 @@ SOURCES += main.cpp \
     spellmodel.cpp
 
 HEADERS  += spellbook.h \
+    monster_display.tpp \
     qdisplay.h \
     dmcompanion.h \
     jsoncpp/json/json.h \

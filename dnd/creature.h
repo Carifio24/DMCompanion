@@ -38,6 +38,7 @@ class Creature {
         int hit_points() const noexcept { return _hp; }
         int HP() const noexcept { return _hp; }
         DiceSet hit_dice() const noexcept { return _hit_dice; }
+        Fraction challenge_rating() const noexcept { return _cr; }
 
         // Ability scores
         int strength() const noexcept { return _str; }

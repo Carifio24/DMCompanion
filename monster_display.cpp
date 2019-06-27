@@ -88,11 +88,42 @@ QString skills_string(const Monster& m) {
     return skills_str;
 }
 
+QString damage_vector_string(const std::vector<DamageInfo>& v) {
+    QStringList qsl;
+    for (const DamageInfo& d : v) {
+        qsl << as_qstring(d);
+    }
+    QString dvs = qsl.join(", ");
+    return dvs;
+}
+
+QString damage_immunities_string(const Monster& m) {
+    return damage_vector_string(m.damage_immunities());
+}
+
+QString damage_vulnerabilities_string(const Monster& m) {
+    return damage_vector_string(m.damage_vulnerabilities());
+}
+
+QString damage_resistances_string(const Monster& m) {
+    return damage_vector_string(m.damage_resistances());
+}
+
+QString condition_immunities_string(const Monster& m) {
+    QStringList qsl;
+    for (auto x : m.condition_immunities()) {
+        QString xs(x.get().name().data());
+        qsl << xs.toLower();
+    }
+    QString cis = qsl.join(", ");
+    return cis;
+}
+
 QString ability_score_string(int x) {
     return sign_str(x) % QString::number(x);
 }
 
-QString as_string(const DamageInfo& dinf) {
+QString as_qstring(const DamageInfo& dinf) {
     if (!dinf.text().empty()) {
         return QString::fromStdString(dinf.text());
     } else {
@@ -104,13 +135,4 @@ QString as_string(const DamageInfo& dinf) {
         QLatin1String dmg_str(dinf.damage_type().name().data());
         return QString::fromStdString(mag_str) % " " % dmg_str;
     }
-}
-
-QString as_string(const Action& act) {
-    return "<b><i>" % QString::fromStdString(act.name()) % ": </i></b>" % QString::fromStdString(act.description());
-}
-
-QString as_string(const SpecialAbility& abl) {
-
-
 }

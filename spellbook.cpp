@@ -2,14 +2,17 @@
 #include "ui_spellbook.h"
 #include "spell_parse.h"
 #include "sort.h"
+#include "qdisplay.h"
 #include "jsoncpp/json/json.h"
 #include <boost/algorithm/string/predicate.hpp>
 #include <boost/algorithm/string/case_conv.hpp>
 #include <QFile>
 #include <QCheckBox>
 #include <QStringView>
+#include <QStringBuilder>
 #include <QStandardItemModel>
 
+#include <cmath>
 #include <fstream>
 #include <iostream>
 
@@ -99,9 +102,6 @@ Spellbook::Spellbook(QWidget *parent) :
     }
     */
 
-    // Put the description label inside the scroll area
-    ui->descScrollArea->setWidget(ui->descriptionLabel);
-
     // Add the sourcebooks to the selector
 //    QStandardItemModel sourcebookModel(N_SOURCES, 1);
 //    for (size_t i = 0; i < N_SOURCES; i++) {
@@ -128,20 +128,14 @@ Spellbook::Spellbook(QWidget *parent) :
     ui->spellList->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
     // Make the labels selectable
-    ui->nameLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
-    ui->schoolLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
-    ui->ritualLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
-    ui->concentrationLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
-    ui->levelLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
-    ui->rangeLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
-    ui->descriptionTitle->setTextInteractionFlags(Qt::TextSelectableByMouse);
-    ui->descriptionLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
-    ui->durationLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
-    ui->componentsLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
-    ui->castingTimeLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
-    ui->pageLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
-    ui->materialLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
-    ui->classesLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    std::vector<QLabel*> labels = {
+        ui->nameLabel, ui->schoolLabel, ui->ritualLabel,ui->concentrationLabel, ui->levelLabel, ui->rangeLabel,
+        ui->descriptionTitle, ui->descriptionLabel, ui->durationLabel, ui->componentsLabel, ui->castingTimeLabel,
+        ui->pageLabel, ui->materialLabel, ui->classesLabel
+    };
+    for (QLabel* p : labels) {
+        p->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    }
 
     // Create the button pixmaps
     star_empty = QPixmap(":/resources/star_empty.png");
@@ -248,6 +242,15 @@ void Spellbook::on_scagCheckbox_toggled(bool) // Unnamed: checked
 
 
 ////// Other methods //////
+/// \brief Spellbook::populate_spell_table
+///
+
+void Spellbook::resizeEvent(QResizeEvent* event) {
+    int width = ui->spellList->size().width();
+    ui->spellList->setColumnWidth(0, static_cast<int>(std::floor(width * .5)));
+    ui->spellList->setColumnWidth(1, static_cast<int>(std::floor(width * .35)));
+    ui->spellList->setColumnWidth(2, static_cast<int>(std::floor(width * .15)));
+}
 
 void Spellbook::populate_spell_table() {
     ui->spellList->setRowCount(spells.size());
@@ -385,37 +388,34 @@ void Spellbook::display_spelldata(const Spell& spell) {
 
     // Create the display text
     QString nameText = QString::fromStdString(spell.name());
-    QString schoolText = "<b>School: </b>" + QLatin1String(spell.school().name().data());
-    QString ritualText = "<b>Ritual: </b>" + QString::fromStdString(bool_to_yn(spell.ritual()));
-    QString concentrationText = "<b>Concentration: </b>" + QString::fromStdString(bool_to_yn(spell.concentration()));
-    QString levelText = "<b>Level: </b>" + QString::fromStdString(std::to_string(spell.level()));
-    QString rangeText = "<b>Distance: </b>" + QString::fromStdString(spell.range().string());
-    QString descTitleText = "<b>Description:</b>";
-    QString descriptionText = QString::fromStdString(spell.description() + "\n\n" + spell.higher_level());
-    QString durationText = "<b>Duration: </b>" + QString::fromStdString(spell.duration().string());
-    QString castingTimeText = "<b>Casting Time: </b>" + QString::fromStdString(spell.casting_time());
-    std::string locationText = std::string(spell.sourcebook().abbreviation()) + " " + std::to_string(spell.page());
-    QString pageText = "<b>Location: </b> " + QString::fromStdString(locationText);
-    std::string compStr = spell.components_string();
-    QString compText = "<b>Components: </b>" + QString::fromStdString(compStr);
-    QString materialText;
-    if (spell.components()[2]) {
-        materialText = "<b>Materials:\n</b>" + QString::fromStdString(spell.material());
-    } else {
-        materialText = "";
+    QString schoolText = prompt_text("School", QString(spell.school().name().data()));
+    QString ritualText = prompt_text("Ritual", yn_qstring(spell.ritual()));
+    QString concentrationText = prompt_text("Concentration", yn_qstring(spell.concentration()));
+    QString levelText = prompt_text("Level", QString::number(spell.level()));
+    QString rangeText = prompt_text("Distance", spell.range().string());
+    QString descTitleText = QStringLiteral("<b>Description:</b>");
+    QString descriptionText = QString::fromStdString(spell.description());
+    if (!spell.higher_level().empty()) {
+        descriptionText += QStringLiteral("\n\n<b>Higher level:</b>\n") + QString::fromStdString(spell.higher_level());
     }
+    QString durationText = prompt_text("Duration", spell.duration().string());
+    QString castingTimeText = prompt_text("Casting time", spell.casting_time());
+    std::string locationText = std::string(spell.sourcebook().abbreviation()) + " " + std::to_string(spell.page());
+    QString pageText = prompt_text("Location", locationText);
+    QString compText = prompt_text("Components", spell.components_string());
+    QString materialText = QString::fromStdString(spell.material());
 
-    std::string classesString;
+    std::string classes_string;
     QString classesText;
     for (const CasterClass& cclass : spell.classes()) {
-        classesString += cclass.name();
-        classesString += ", ";
+        classes_string += cclass.name();
+        classes_string += ", ";
     }
     if (spell.classes().size() > 0) {
-        classesString.erase(classesString.end()-2,classesString.end());
-        classesText = "<b>Classes: </b>" + QString::fromStdString(classesString);
+        classes_string.erase(classes_string.end()-2,classes_string.end());
+        classesText = prompt_text("Classes", classes_string);
     } else {
-        classesText = "";
+        classesText = QStringLiteral("");
     }
 
     /*
@@ -446,8 +446,8 @@ void Spellbook::display_spelldata(const Spell& spell) {
     ui->componentsLabel->setText(compText);
     ui->castingTimeLabel->setText(castingTimeText);
     ui->pageLabel->setText(pageText);
-    ui->materialLabel->setText(materialText);
     ui->classesLabel->setText(classesText);
+    set_text_hide_empty(ui->materialLabel, "Materials", materialText);
     //ui->subclassesLabel->setText(subclassesText);
 
     // Show the favorite button image
