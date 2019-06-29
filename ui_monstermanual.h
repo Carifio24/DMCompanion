@@ -14,6 +14,7 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QScrollArea>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QVBoxLayout>
@@ -26,9 +27,11 @@ class Ui_MonsterManual
 public:
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *leftLayout;
+    QLineEdit *searchBar;
     QTableWidget *monsterTable;
     QVBoxLayout *dataLayout;
     QLabel *nameLabel;
+    QLabel *sizeTypeLabel;
     QHBoxLayout *statsImageLayout;
     QVBoxLayout *statsLayout;
     QLabel *acLabel;
@@ -67,6 +70,11 @@ public:
         horizontalLayout->setSizeConstraint(QLayout::SetNoConstraint);
         leftLayout = new QVBoxLayout();
         leftLayout->setObjectName(QString::fromUtf8("leftLayout"));
+        searchBar = new QLineEdit(MonsterManual);
+        searchBar->setObjectName(QString::fromUtf8("searchBar"));
+
+        leftLayout->addWidget(searchBar);
+
         monsterTable = new QTableWidget(MonsterManual);
         monsterTable->setObjectName(QString::fromUtf8("monsterTable"));
         monsterTable->setEnabled(true);
@@ -103,6 +111,13 @@ public:
         nameLabel->setAlignment(Qt::AlignCenter);
 
         dataLayout->addWidget(nameLabel);
+
+        sizeTypeLabel = new QLabel(MonsterManual);
+        sizeTypeLabel->setObjectName(QString::fromUtf8("sizeTypeLabel"));
+        sizeTypeLabel->setStyleSheet(QString::fromUtf8("font : italic"));
+        sizeTypeLabel->setAlignment(Qt::AlignHCenter|Qt::AlignTop);
+
+        dataLayout->addWidget(sizeTypeLabel);
 
         statsImageLayout = new QHBoxLayout();
         statsImageLayout->setObjectName(QString::fromUtf8("statsImageLayout"));
@@ -269,7 +284,7 @@ public:
         abilitiesScrollArea->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
         abilitiesContents = new QWidget();
         abilitiesContents->setObjectName(QString::fromUtf8("abilitiesContents"));
-        abilitiesContents->setGeometry(QRect(0, 0, 699, 444));
+        abilitiesContents->setGeometry(QRect(0, 0, 699, 434));
         QSizePolicy sizePolicy3(QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
         sizePolicy3.setHorizontalStretch(0);
         sizePolicy3.setVerticalStretch(0);
@@ -289,9 +304,9 @@ public:
         dataLayout->addWidget(abilitiesScrollArea);
 
         dataLayout->setStretch(0, 1);
-        dataLayout->setStretch(1, 3);
-        dataLayout->setStretch(2, 1);
-        dataLayout->setStretch(3, 5);
+        dataLayout->setStretch(2, 3);
+        dataLayout->setStretch(3, 1);
+        dataLayout->setStretch(4, 5);
 
         horizontalLayout->addLayout(dataLayout);
 
@@ -306,7 +321,9 @@ public:
     void retranslateUi(QWidget *MonsterManual)
     {
         MonsterManual->setWindowTitle(QApplication::translate("MonsterManual", "Form", nullptr));
+        searchBar->setPlaceholderText(QApplication::translate("MonsterManual", "Search", nullptr));
         nameLabel->setText(QString());
+        sizeTypeLabel->setText(QString());
         acLabel->setText(QString());
         speedLabel->setText(QString());
         hpLabel->setText(QString());

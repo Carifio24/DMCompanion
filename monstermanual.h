@@ -23,8 +23,11 @@ private slots:
 
     void on_monsterTable_currentCellChanged(int currentRow, int currentColumn, int previousRow, int previousColumn);
 
-private:
+    void on_searchBar_textEdited(const QString &arg1);
 
+private:
+    bool filter_item(const DnD::Monster& m, const bool filter_text, const std::string& text);
+    void filter();
     void populate_monster_table();
     void display_monster_data(const DnD::Monster& m);
     static const int image_width = 300;

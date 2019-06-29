@@ -337,5 +337,6 @@
         <file>resources/monster_images/Young_Silver_Dragon.jpeg</file>
         <file>resources/monster_images/Young_White_Dragon.jpeg</file>
         <file>resources/monster_images/Zombie.jpeg</file>
+        <file>resources/monster_images/Placeholder.jpeg</file>
     </qresource>
 </RCC>

@@ -2,8 +2,10 @@
 #include "sort.h"
 #include "qdisplay.h"
 
+#include <DnD/helpers.h>
 #include <DnD/string_helpers.h>
 
+#include <QLatin1String>
 #include <QStringList>
 #include <QStringBuilder>
 
@@ -119,8 +121,9 @@ QString condition_immunities_string(const Monster& m) {
     return cis;
 }
 
-QString ability_score_string(int x) {
-    return sign_str(x) % QString::number(x);
+QString ability_score_string(int score) {
+    int mod = modifier(score);
+    return QString::number(score) % " (" % sign_str(mod) % QString::number(mod) % ")";
 }
 
 QString as_qstring(const DamageInfo& dinf) {
@@ -143,5 +146,22 @@ QString title_qstring(const QString& qs, int size) {
 
 QString ability_score_text(const QString& abbr, int score, int size) {
     static const QString separator = QStringLiteral("<br><font size=1><br></font>");
-    return title_qstring(abbr, size) % separator % ability_score_string(score);
+    static const QString double_newline = QStringLiteral("<br><br>");
+    return title_qstring(abbr, size) % double_newline % ability_score_string(score);
+}
+
+QString size_type_string(const Monster& m) {
+    QStringList qsl;
+    qsl << QLatin1String(m.size().name().data());
+    qsl << QString::fromStdString(m.type());
+    QString subt_str;
+    if (!m.subtype().empty()) {
+        subt_str = "(" % QString::fromStdString(m.subtype()) % "),";
+    } else {
+        subt_str = ",";
+    }
+    qsl << subt_str;
+    qsl << QString::fromStdString(m.alignment());
+    QString st_str = qsl.join(" ");
+    return st_str;
 }

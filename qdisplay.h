@@ -9,6 +9,7 @@ QString prompt_text(const QString& prompt, const int info, const QString& dlm=" 
 QString prompt_text(const QString& prompt, const std::string& info, const QString& dlm=" ");
 QString sign_str(int x);
 QString yn_qstring(bool b);
+QString bold(const QString& qs);
 void set_text_none_empty(QLabel* label, const QString& prompt, const QString& text);
 void set_text_hide_empty(QLabel* label, const QString& prompt, const QString& text);
 

@@ -6,9 +6,13 @@
 #include <iostream>
 #include <functional>
 
+#include <boost/algorithm/string/predicate.hpp>
+
 #include <QFile>
 #include <QScrollBar>
 #include <QStringBuilder>
+
+#include <DnD/string_helpers.h>
 
 using namespace DnD;
 
@@ -75,6 +79,9 @@ void MonsterManual::display_monster_data(const Monster& m) {
 
     // Name
     ui->nameLabel->setText(QLatin1String(m.name().data()));
+
+    // Size and type
+    ui->sizeTypeLabel->setText(size_type_string(m));
 
     // Image
     QString image_resource = ":monster_images/resources/" % QString::fromStdString(m.image_filename());
@@ -146,4 +153,26 @@ void MonsterManual::display_monster_data(const Monster& m) {
 
     ui->abilitiesLabel->setText(qsl.join(separator));
 
+}
+
+bool MonsterManual::filter_item(const Monster& m, const bool filter_text, const std::string& text) {
+    bool hide = false;
+    std::string name = m.name();
+    to_lowercase(name);
+    hide = hide || (filter_text && !boost::contains(name, text));
+    return hide;
+}
+
+void MonsterManual::filter() {
+    std::string search_text = ui->searchBar->text().toStdString();
+    bool filter_text = !search_text.empty();
+    for (int i = 0; i < monsters.size(); ++i) {
+        ui->monsterTable->setRowHidden(i, filter_item(monsters[i], filter_text, search_text));
+    }
+
+}
+
+void MonsterManual::on_searchBar_textEdited(const QString &arg1)
+{
+    filter();
 }

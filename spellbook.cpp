@@ -5,7 +5,6 @@
 #include "qdisplay.h"
 #include "jsoncpp/json/json.h"
 #include <boost/algorithm/string/predicate.hpp>
-#include <boost/algorithm/string/case_conv.hpp>
 #include <QFile>
 #include <QCheckBox>
 #include <QStringView>
@@ -21,6 +20,7 @@
 #include <DnD/converters.h>
 #include <DnD/duration.h>
 #include <DnD/converters.h>
+#include <DnD/string_helpers.h>
 
 using namespace DnD;
 
@@ -248,7 +248,7 @@ void Spellbook::on_scagCheckbox_toggled(bool) // Unnamed: checked
 // What to do when the window resizes
 // The layouts will handle the sizes of the windows themselves
 // But we need to adjust the column widths within the QTableWidget
-void Spellbook::resizeEvent(QResizeEvent* event) {
+void Spellbook::resizeEvent(QResizeEvent*) { // event parameter unused
     int width = ui->spellList->size().width();
     ui->spellList->setColumnWidth(0, static_cast<int>(std::floor(width * .5)));
     ui->spellList->setColumnWidth(1, static_cast<int>(std::floor(width * .35)));
@@ -310,7 +310,7 @@ bool Spellbook::filter_item(const bool& isClass, const bool& isFav, const bool& 
    }
     bool toHide = false;
     std::string spname = s.name();
-    boost::to_lower(spname);
+    to_lowercase(spname);
     toHide = toHide || (isClass && !s.usable_by(cc));
     toHide = toHide || (isFav && !profile.is_favorite(s));
     toHide = toHide || (isText && !boost::contains(spname, text));
@@ -323,15 +323,15 @@ void Spellbook::filter() {
     bool isClass = !( (class_text == none_field) || class_text.empty() );
     const DnD::CasterClass& cc = isClass ? DnD::CasterClass::from_name(class_text) : DnD::CasterClasses::Wizard;
     bool favorites = ui->favoritesButton->isChecked();
-    std::string searchText = ui->searchBar->text().toStdString();
-    boost::to_lower(searchText);
-    bool isText = (searchText != "");
+    std::string search_text = ui->searchBar->text().toStdString();
+    to_lowercase(search_text);
+    bool isText = !search_text.empty();
 //    if (!(isText || favorites || isClass) ) {
 //        unfilter();
 //    } else {
         for (int i = 0; i < spells.size(); ++i) {
             std::cout << spells[i].name() << std::endl;
-            ui->spellList->setRowHidden(i, filter_item(isClass, favorites, isText, spells[i], cc, searchText));
+            ui->spellList->setRowHidden(i, filter_item(isClass, favorites, isText, spells[i], cc, search_text));
         }
     //}
 

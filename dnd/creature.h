@@ -32,6 +32,7 @@ class Creature {
         const Size& size() const noexcept { return _size; }
         std::string type() const noexcept { return _type; }
         std::string subtype() const noexcept { return _subtype; }
+        std::string alignment() const noexcept { return _alignment; }
 
         int armor_class() const noexcept { return _ac; }
         int AC() const noexcept { return _ac; }

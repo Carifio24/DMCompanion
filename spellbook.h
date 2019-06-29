@@ -54,7 +54,7 @@ private slots:
 
 private:
 
-    void resizeEvent(QResizeEvent* event);
+    void resizeEvent(QResizeEvent*);
 
     void filter_by_class(const DnD::CasterClass& cc);
 

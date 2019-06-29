@@ -231,7 +231,7 @@
           <bool>false</bool>
          </property>
          <property name="styleSheet">
-          <string notr="true"/>
+          <string notr="true">background : none; border : none</string>
          </property>
          <property name="text">
           <string/>

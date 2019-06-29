@@ -30,6 +30,10 @@ QString yn_qstring(bool b) {
     return bqs;
 }
 
+QString bold(const QString& qs) {
+    return "<b>" % qs % "</b>";
+}
+
 void set_text_none_empty(QLabel* label, const QString& prompt, const QString& text) {
     if (!text.isEmpty()) {
         if (label->isHidden()) { label->show(); }

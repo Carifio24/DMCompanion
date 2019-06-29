@@ -23,6 +23,13 @@
    <item>
     <layout class="QVBoxLayout" name="leftLayout">
      <item>
+      <widget class="QLineEdit" name="searchBar">
+       <property name="placeholderText">
+        <string>Search</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QTableWidget" name="monsterTable">
        <property name="enabled">
         <bool>true</bool>
@@ -62,7 +69,7 @@
     </layout>
    </item>
    <item>
-    <layout class="QVBoxLayout" name="dataLayout" stretch="1,3,1,5">
+    <layout class="QVBoxLayout" name="dataLayout" stretch="1,0,3,1,5">
      <property name="spacing">
       <number>6</number>
      </property>
@@ -83,6 +90,19 @@
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="sizeTypeLabel">
+       <property name="styleSheet">
+        <string notr="true">font : italic</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignHCenter|Qt::AlignTop</set>
        </property>
       </widget>
      </item>
@@ -374,7 +394,7 @@
           <x>0</x>
           <y>0</y>
           <width>699</width>
-          <height>444</height>
+          <height>434</height>
          </rect>
         </property>
         <property name="sizePolicy">
