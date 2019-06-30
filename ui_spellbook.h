@@ -90,7 +90,7 @@ public:
 
         sort1Box = new QComboBox(Spellbook);
         sort1Box->setObjectName(QString::fromUtf8("sort1Box"));
-        sort1Box->setStyleSheet(QString::fromUtf8(""));
+        sort1Box->setStyleSheet(QString::fromUtf8("background-color:transparent"));
 
         sortFilterLayout->addWidget(sort1Box, 1, 0, 1, 1);
 
@@ -106,13 +106,13 @@ public:
 
         sort2Box = new QComboBox(Spellbook);
         sort2Box->setObjectName(QString::fromUtf8("sort2Box"));
-        sort2Box->setStyleSheet(QString::fromUtf8(""));
+        sort2Box->setStyleSheet(QString::fromUtf8("background:transparent"));
 
         sortFilterLayout->addWidget(sort2Box, 1, 1, 1, 1);
 
         filterBox = new QComboBox(Spellbook);
         filterBox->setObjectName(QString::fromUtf8("filterBox"));
-        filterBox->setStyleSheet(QString::fromUtf8(""));
+        filterBox->setStyleSheet(QString::fromUtf8("background:transparent"));
 
         sortFilterLayout->addWidget(filterBox, 1, 2, 1, 1);
 
@@ -130,6 +130,7 @@ public:
         searchBar->setObjectName(QString::fromUtf8("searchBar"));
         searchBar->setFocusPolicy(Qt::ClickFocus);
         searchBar->setAutoFillBackground(false);
+        searchBar->setStyleSheet(QString::fromUtf8("background:transparent;"));
 
         favoritesSearchLayout->addWidget(searchBar);
 
@@ -168,6 +169,7 @@ public:
         if (spellList->rowCount() < 6)
             spellList->setRowCount(6);
         spellList->setObjectName(QString::fromUtf8("spellList"));
+        spellList->setStyleSheet(QString::fromUtf8("background:transparent"));
         spellList->setLineWidth(1);
         spellList->setShowGrid(false);
         spellList->setGridStyle(Qt::NoPen);

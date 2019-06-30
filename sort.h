@@ -18,7 +18,7 @@ inline static const std::map<std::string, std::function<int(const DnD::Spell&, c
 inline static const std::string default_spell_field = "Name";
 inline static const std::string none_field = "None";
 
-inline static const std::vector<std::string> spell_sort_fields = { "Name", "Leve", "School" };
+inline static const std::vector<std::string> spell_sort_fields = { "Name", "Level", "School" };
 inline static const size_t n_sortable = spell_sort_fields.size();
 
 #endif

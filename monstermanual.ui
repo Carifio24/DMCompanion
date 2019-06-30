@@ -25,7 +25,7 @@
      <item>
       <widget class="QLineEdit" name="searchBar">
        <property name="styleSheet">
-        <string notr="true"/>
+        <string notr="true">background:transparent</string>
        </property>
        <property name="placeholderText">
         <string>Search</string>
@@ -47,7 +47,7 @@
         <bool>false</bool>
        </property>
        <property name="styleSheet">
-        <string notr="true"/>
+        <string notr="true">background:transparent</string>
        </property>
        <property name="showGrid">
         <bool>false</bool>

@@ -40,7 +40,7 @@ Spellbook::Spellbook(QWidget *parent) :
 //    ui->descScrollArea->setStyleSheet("background-color:transparent");
 //    ui->spellList->setStyleSheet("background-color:transparent");
 //    ui->favButton->setStyleSheet("background-color:transparent");
-    //ui->searchBar->setStyleSheet("background-color:rgb(231,208,166);");
+//    ui->searchBar->setStyleSheet("background-color:rgb(231,208,166);");
 
 
     // Set the table widget to highlight its entire row
