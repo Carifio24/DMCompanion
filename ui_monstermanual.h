@@ -72,6 +72,7 @@ public:
         leftLayout->setObjectName(QString::fromUtf8("leftLayout"));
         searchBar = new QLineEdit(MonsterManual);
         searchBar->setObjectName(QString::fromUtf8("searchBar"));
+        searchBar->setStyleSheet(QString::fromUtf8(""));
 
         leftLayout->addWidget(searchBar);
 
@@ -83,6 +84,8 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(monsterTable->sizePolicy().hasHeightForWidth());
         monsterTable->setSizePolicy(sizePolicy);
+        monsterTable->setAutoFillBackground(false);
+        monsterTable->setStyleSheet(QString::fromUtf8(""));
         monsterTable->setShowGrid(false);
         monsterTable->setGridStyle(Qt::NoPen);
         monsterTable->setSortingEnabled(false);

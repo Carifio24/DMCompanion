@@ -30,12 +30,12 @@ DMCompanion::DMCompanion(QWidget *parent) :
     // Set the first tab to be selected
     ui->tabWidget->setCurrentIndex(0);
 
-//    // Set the background image
-//    QPixmap bkgnd(":/resources/BookBackground.jpeg");
-//    bkgnd = bkgnd.scaled(this->size());
-//    QPalette palette;
-//    palette.setBrush(QPalette::Background, bkgnd);
-//    this->setPalette(palette);
+    // Set the background image
+    QPixmap bkgnd(":/resources/bookbackground_2.jpg");
+    bkgnd = bkgnd.scaled(this->size());
+    QPalette palette;
+    palette.setBrush(QPalette::Background, bkgnd);
+    this->setPalette(palette);
 }
 
 DMCompanion::~DMCompanion()

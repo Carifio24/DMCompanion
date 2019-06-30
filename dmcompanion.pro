@@ -11,6 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = DMCompanion
 TEMPLATE = app
 
+QMAKE_CXX = gcc-7
 QMAKE_CXXFLAGS += -O3 -std=c++17
 
 SOURCES += main.cpp \

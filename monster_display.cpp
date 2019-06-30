@@ -12,7 +12,7 @@
 using namespace DnD;
 
 QString hp_string(const Monster& m) {
-    return QString::number(m.hit_points()) % "(" % QString::fromStdString(m.hit_dice().as_string()) % " + " % QString::number(m.hp_bonus()) % ")";
+    return QString::number(m.hit_points()) % " (" % QString::fromStdString(m.hit_dice().as_string()) % " + " % QString::number(m.hp_bonus()) % ")";
 }
 
 QString speed_string(const std::map<std::reference_wrapper<const SpeedType>, Distance, ref_wrap_comp>& speeds) {

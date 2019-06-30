@@ -24,6 +24,9 @@
     <layout class="QVBoxLayout" name="leftLayout">
      <item>
       <widget class="QLineEdit" name="searchBar">
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
        <property name="placeholderText">
         <string>Search</string>
        </property>
@@ -39,6 +42,12 @@
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
        </property>
        <property name="showGrid">
         <bool>false</bool>

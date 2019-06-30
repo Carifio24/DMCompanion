@@ -33,6 +33,7 @@ std::string DiceSet::as_string() const noexcept {
     std::stringstream ss;
     auto it = _dmap.cbegin();
     ss << it->second << "d" << *it->first;
+    ++it;
     for (; it != _dmap.cend(); ++it) {
         ss << " + " << it->second << "d" << *it->first;
     }
