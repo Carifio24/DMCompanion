@@ -90,7 +90,7 @@ public:
 
         sort1Box = new QComboBox(Spellbook);
         sort1Box->setObjectName(QString::fromUtf8("sort1Box"));
-        sort1Box->setStyleSheet(QString::fromUtf8("background-color:transparent"));
+        sort1Box->setStyleSheet(QString::fromUtf8("background-color : rgb(231,208,166)"));
 
         sortFilterLayout->addWidget(sort1Box, 1, 0, 1, 1);
 
@@ -106,13 +106,13 @@ public:
 
         sort2Box = new QComboBox(Spellbook);
         sort2Box->setObjectName(QString::fromUtf8("sort2Box"));
-        sort2Box->setStyleSheet(QString::fromUtf8("background:transparent"));
+        sort2Box->setStyleSheet(QString::fromUtf8("background-color : rgb(231,208,166)"));
 
         sortFilterLayout->addWidget(sort2Box, 1, 1, 1, 1);
 
         filterBox = new QComboBox(Spellbook);
         filterBox->setObjectName(QString::fromUtf8("filterBox"));
-        filterBox->setStyleSheet(QString::fromUtf8("background:transparent"));
+        filterBox->setStyleSheet(QString::fromUtf8("background-color : rgb(231,208,166)"));
 
         sortFilterLayout->addWidget(filterBox, 1, 2, 1, 1);
 

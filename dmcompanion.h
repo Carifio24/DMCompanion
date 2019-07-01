@@ -23,7 +23,9 @@ private slots:
 
 private:
 
+    QLatin1String background{":/resources/bookbackground_2.jpg"};
     Ui::DMCompanion *ui;
+    void resizeEvent(QResizeEvent* evt);
 
 };
 

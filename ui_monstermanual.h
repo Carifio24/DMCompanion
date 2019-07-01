@@ -79,7 +79,7 @@ public:
         monsterTable = new QTableWidget(MonsterManual);
         monsterTable->setObjectName(QString::fromUtf8("monsterTable"));
         monsterTable->setEnabled(true);
-        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(monsterTable->sizePolicy().hasHeightForWidth());
@@ -97,6 +97,8 @@ public:
 
         leftLayout->addWidget(monsterTable);
 
+        leftLayout->setStretch(0, 3);
+        leftLayout->setStretch(1, 7);
 
         horizontalLayout->addLayout(leftLayout);
 
@@ -128,6 +130,11 @@ public:
         statsLayout->setObjectName(QString::fromUtf8("statsLayout"));
         acLabel = new QLabel(MonsterManual);
         acLabel->setObjectName(QString::fromUtf8("acLabel"));
+        QSizePolicy sizePolicy1(QSizePolicy::MinimumExpanding, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(acLabel->sizePolicy().hasHeightForWidth());
+        acLabel->setSizePolicy(sizePolicy1);
 
         statsLayout->addWidget(acLabel);
 
@@ -143,75 +150,75 @@ public:
 
         savingThrowsLabel = new QLabel(MonsterManual);
         savingThrowsLabel->setObjectName(QString::fromUtf8("savingThrowsLabel"));
-        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Minimum);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(savingThrowsLabel->sizePolicy().hasHeightForWidth());
-        savingThrowsLabel->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Minimum);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(savingThrowsLabel->sizePolicy().hasHeightForWidth());
+        savingThrowsLabel->setSizePolicy(sizePolicy2);
         savingThrowsLabel->setWordWrap(true);
 
         statsLayout->addWidget(savingThrowsLabel);
 
         sensesLabel = new QLabel(MonsterManual);
         sensesLabel->setObjectName(QString::fromUtf8("sensesLabel"));
-        sizePolicy1.setHeightForWidth(sensesLabel->sizePolicy().hasHeightForWidth());
-        sensesLabel->setSizePolicy(sizePolicy1);
+        sizePolicy2.setHeightForWidth(sensesLabel->sizePolicy().hasHeightForWidth());
+        sensesLabel->setSizePolicy(sizePolicy2);
         sensesLabel->setWordWrap(true);
 
         statsLayout->addWidget(sensesLabel);
 
         damageImmunitiesLabel = new QLabel(MonsterManual);
         damageImmunitiesLabel->setObjectName(QString::fromUtf8("damageImmunitiesLabel"));
-        sizePolicy1.setHeightForWidth(damageImmunitiesLabel->sizePolicy().hasHeightForWidth());
-        damageImmunitiesLabel->setSizePolicy(sizePolicy1);
+        sizePolicy2.setHeightForWidth(damageImmunitiesLabel->sizePolicy().hasHeightForWidth());
+        damageImmunitiesLabel->setSizePolicy(sizePolicy2);
         damageImmunitiesLabel->setWordWrap(true);
 
         statsLayout->addWidget(damageImmunitiesLabel);
 
         languagesLabel = new QLabel(MonsterManual);
         languagesLabel->setObjectName(QString::fromUtf8("languagesLabel"));
-        sizePolicy1.setHeightForWidth(languagesLabel->sizePolicy().hasHeightForWidth());
-        languagesLabel->setSizePolicy(sizePolicy1);
+        sizePolicy2.setHeightForWidth(languagesLabel->sizePolicy().hasHeightForWidth());
+        languagesLabel->setSizePolicy(sizePolicy2);
         languagesLabel->setWordWrap(true);
 
         statsLayout->addWidget(languagesLabel);
 
         conditionImmunitiesLabel = new QLabel(MonsterManual);
         conditionImmunitiesLabel->setObjectName(QString::fromUtf8("conditionImmunitiesLabel"));
-        sizePolicy1.setHeightForWidth(conditionImmunitiesLabel->sizePolicy().hasHeightForWidth());
-        conditionImmunitiesLabel->setSizePolicy(sizePolicy1);
+        sizePolicy2.setHeightForWidth(conditionImmunitiesLabel->sizePolicy().hasHeightForWidth());
+        conditionImmunitiesLabel->setSizePolicy(sizePolicy2);
         conditionImmunitiesLabel->setWordWrap(true);
 
         statsLayout->addWidget(conditionImmunitiesLabel);
 
         challengeRatingLabel = new QLabel(MonsterManual);
         challengeRatingLabel->setObjectName(QString::fromUtf8("challengeRatingLabel"));
-        sizePolicy1.setHeightForWidth(challengeRatingLabel->sizePolicy().hasHeightForWidth());
-        challengeRatingLabel->setSizePolicy(sizePolicy1);
+        sizePolicy2.setHeightForWidth(challengeRatingLabel->sizePolicy().hasHeightForWidth());
+        challengeRatingLabel->setSizePolicy(sizePolicy2);
         challengeRatingLabel->setWordWrap(true);
 
         statsLayout->addWidget(challengeRatingLabel);
 
         damageResistancesLabel = new QLabel(MonsterManual);
         damageResistancesLabel->setObjectName(QString::fromUtf8("damageResistancesLabel"));
-        sizePolicy1.setHeightForWidth(damageResistancesLabel->sizePolicy().hasHeightForWidth());
-        damageResistancesLabel->setSizePolicy(sizePolicy1);
+        sizePolicy2.setHeightForWidth(damageResistancesLabel->sizePolicy().hasHeightForWidth());
+        damageResistancesLabel->setSizePolicy(sizePolicy2);
         damageResistancesLabel->setWordWrap(true);
 
         statsLayout->addWidget(damageResistancesLabel);
 
         damageVulnerabilitiesLabel = new QLabel(MonsterManual);
         damageVulnerabilitiesLabel->setObjectName(QString::fromUtf8("damageVulnerabilitiesLabel"));
-        sizePolicy1.setHeightForWidth(damageVulnerabilitiesLabel->sizePolicy().hasHeightForWidth());
-        damageVulnerabilitiesLabel->setSizePolicy(sizePolicy1);
+        sizePolicy2.setHeightForWidth(damageVulnerabilitiesLabel->sizePolicy().hasHeightForWidth());
+        damageVulnerabilitiesLabel->setSizePolicy(sizePolicy2);
         damageVulnerabilitiesLabel->setWordWrap(true);
 
         statsLayout->addWidget(damageVulnerabilitiesLabel);
 
         skillsLabel = new QLabel(MonsterManual);
         skillsLabel->setObjectName(QString::fromUtf8("skillsLabel"));
-        sizePolicy1.setHeightForWidth(skillsLabel->sizePolicy().hasHeightForWidth());
-        skillsLabel->setSizePolicy(sizePolicy1);
+        sizePolicy2.setHeightForWidth(skillsLabel->sizePolicy().hasHeightForWidth());
+        skillsLabel->setSizePolicy(sizePolicy2);
         skillsLabel->setWordWrap(true);
 
         statsLayout->addWidget(skillsLabel);
@@ -221,7 +228,13 @@ public:
 
         imageLabel = new QLabel(MonsterManual);
         imageLabel->setObjectName(QString::fromUtf8("imageLabel"));
-        imageLabel->setAlignment(Qt::AlignCenter);
+        QSizePolicy sizePolicy3(QSizePolicy::Minimum, QSizePolicy::Minimum);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(imageLabel->sizePolicy().hasHeightForWidth());
+        imageLabel->setSizePolicy(sizePolicy3);
+        imageLabel->setFrameShape(QFrame::Box);
+        imageLabel->setLineWidth(3);
 
         statsImageLayout->addWidget(imageLabel);
 
@@ -271,11 +284,11 @@ public:
 
         abilitiesScrollArea = new QScrollArea(MonsterManual);
         abilitiesScrollArea->setObjectName(QString::fromUtf8("abilitiesScrollArea"));
-        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::MinimumExpanding);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(abilitiesScrollArea->sizePolicy().hasHeightForWidth());
-        abilitiesScrollArea->setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy4(QSizePolicy::Expanding, QSizePolicy::MinimumExpanding);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(abilitiesScrollArea->sizePolicy().hasHeightForWidth());
+        abilitiesScrollArea->setSizePolicy(sizePolicy4);
         abilitiesScrollArea->setLayoutDirection(Qt::LeftToRight);
         abilitiesScrollArea->setStyleSheet(QString::fromUtf8("background-color: transparent"));
         abilitiesScrollArea->setFrameShape(QFrame::NoFrame);
@@ -288,11 +301,11 @@ public:
         abilitiesContents = new QWidget();
         abilitiesContents->setObjectName(QString::fromUtf8("abilitiesContents"));
         abilitiesContents->setGeometry(QRect(0, 0, 699, 434));
-        QSizePolicy sizePolicy3(QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(abilitiesContents->sizePolicy().hasHeightForWidth());
-        abilitiesContents->setSizePolicy(sizePolicy3);
+        QSizePolicy sizePolicy5(QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
+        sizePolicy5.setHorizontalStretch(0);
+        sizePolicy5.setVerticalStretch(0);
+        sizePolicy5.setHeightForWidth(abilitiesContents->sizePolicy().hasHeightForWidth());
+        abilitiesContents->setSizePolicy(sizePolicy5);
         verticalLayout = new QVBoxLayout(abilitiesContents);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         abilitiesLabel = new QLabel(abilitiesContents);

@@ -5,6 +5,7 @@
 #include <QLayout>
 
 #include <QIcon>
+#include <QFontDatabase>
 
 DMCompanion::DMCompanion(QWidget *parent) :
     QMainWindow(parent),
@@ -31,15 +32,30 @@ DMCompanion::DMCompanion(QWidget *parent) :
     ui->tabWidget->setCurrentIndex(0);
 
     // Set the background image
-    QPixmap bkgnd(":/resources/bookbackground_2.jpg");
+    QPixmap bkgnd(background);
     bkgnd = bkgnd.scaled(this->size());
     QPalette palette;
     palette.setBrush(QPalette::Background, bkgnd);
     this->setPalette(palette);
+
+    // Add the Cloister Black font
+    QFontDatabase::addApplicationFont(":/fonts/cloister_black.ttf");
 }
 
 DMCompanion::~DMCompanion()
 {
     delete ui;
+}
+
+void DMCompanion::resizeEvent(QResizeEvent* evt) {
+    // We resize the background image when the window is resized
+    QPixmap bkgnd(background);
+    bkgnd = bkgnd.scaled(size(), Qt::IgnoreAspectRatio);
+    QPalette p = palette(); //copy current, not create new
+    p.setBrush(QPalette::Background, bkgnd);
+    setPalette(p);
+
+    // Call the base implementation
+    QMainWindow::resizeEvent(evt);
 }
 

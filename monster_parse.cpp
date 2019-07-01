@@ -83,6 +83,8 @@ Monster parse_monster(const Json::Value& root, MonsterBuilder& b) {
 
     using namespace keys;
 
+    static const std::string placeholder_image = "monster_images/Placeholder.jpeg";
+
     // Get the basic info
     std::cout << "Monster name: " << root[name_k].asString() << std::endl;
     b.set_name(root[name_k].asString());
@@ -273,7 +275,7 @@ Monster parse_monster(const Json::Value& root, MonsterBuilder& b) {
     b.set_legendary_actions(leg_actions);
 
     // Image filename
-    b.set_image_filename(string_if_member(root, "image_file", "Placeholder.jpeg"));
+    b.set_image_filename(string_if_member(root, "image_file", placeholder_image));
 
     // Build and return
     Monster m = b.build_and_reset();

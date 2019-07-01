@@ -137,6 +137,10 @@ Spellbook::Spellbook(QWidget *parent) :
         p->setTextInteractionFlags(Qt::TextSelectableByMouse);
     }
 
+    // Set the spell title font
+    QFont titleFont = QFont("Cloister Black", 40, 1);
+    ui->nameLabel->setFont(titleFont);
+
     // Create the button pixmaps
     star_empty = QPixmap(":/resources/star_empty.png");
     star_filled = QPixmap(":/resources/star_filled_2.png");

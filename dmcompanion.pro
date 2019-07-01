@@ -66,6 +66,7 @@ DISTFILES += \
     resources/Monsters.json
 
 RESOURCES += \
+    fonts.qrc \
     resources.qrc
 
 win32:CONFIG(release, debug|release): LIBS += /usr/local/lib/release/ -ldnd

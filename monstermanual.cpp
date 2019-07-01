@@ -3,12 +3,14 @@
 #include "monster_parse.h"
 #include "monster_display.h"
 #include "qdisplay.h"
+#include <vector>
 #include <iostream>
 #include <functional>
 
 #include <boost/algorithm/string/predicate.hpp>
 
 #include <QFile>
+#include <QLabel>
 #include <QScrollBar>
 #include <QStringBuilder>
 
@@ -42,6 +44,20 @@ MonsterManual::MonsterManual(QWidget *parent) :
     // Set the table widget to highlight its entire row
     ui->monsterTable->setSelectionBehavior(QAbstractItemView::SelectRows);
 
+    // Make the labels selectable
+    std::vector<QLabel*> labels = {
+        ui->nameLabel, ui->acLabel, ui->hpLabel, ui->strLabel, ui->dexLabel, ui->conLabel, ui->intLabel, ui->wisLabel, ui->chaLabel,
+        ui->speedLabel, ui->sensesLabel, ui->damageImmunitiesLabel, ui->damageResistancesLabel, ui->damageVulnerabilitiesLabel, ui->conditionImmunitiesLabel,
+        ui->challengeRatingLabel, ui->skillsLabel, ui->sizeTypeLabel, ui->abilitiesLabel
+    };
+    for (QLabel* p : labels) {
+        p->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    }
+
+    // Set name label font
+    QFont titleFont = QFont("Cloister Black", 40, 1);
+    ui->nameLabel->setFont(titleFont);
+
 }
 
 MonsterManual::~MonsterManual()
@@ -74,6 +90,8 @@ void MonsterManual::populate_monster_table() {
 
 void MonsterManual::display_monster_data(const Monster& m) {
 
+    //static constexpr int line_width = 3;
+
     // Reset scrollbar
     ui->abilitiesScrollArea->verticalScrollBar()->setValue(0);
 
@@ -84,10 +102,15 @@ void MonsterManual::display_monster_data(const Monster& m) {
     ui->sizeTypeLabel->setText(size_type_string(m));
 
     // Image
-    QString image_resource = ":monster_images/resources/" % QString::fromStdString(m.image_filename());
+    std::string image_file = m.image_filename();
+    QString image_resource = ":monster_images/resources/" % QString::fromStdString(image_file);
     QPixmap img(image_resource);
-    img = img.scaled(image_width, image_height);
+    img = img.scaled(image_width, image_height, Qt::KeepAspectRatioByExpanding);
+    //img = img.scaled(image_width, image_height);
+    ui->imageLabel->setScaledContents(true);
     ui->imageLabel->setPixmap(img);
+    //ui->imageLabel->setFrameStyle(QFrame::Box);
+    //ui->imageLabel->setLineWidth(line_width);
 
     // Basic stats
     QString ac_str = prompt_text("Armor class", m.armor_class());
@@ -172,7 +195,7 @@ void MonsterManual::filter() {
 
 }
 
-void MonsterManual::on_searchBar_textEdited(const QString &arg1)
+void MonsterManual::on_searchBar_textEdited(const QString&)
 {
     filter();
 }

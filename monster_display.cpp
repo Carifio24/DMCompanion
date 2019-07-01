@@ -20,10 +20,11 @@ QString speed_string(const std::map<std::reference_wrapper<const SpeedType>, Dis
     QStringList sl;
     for (auto it = speeds.cbegin(); it != speeds.cend(); ++it) {
         const auto& speed_type = it->first.get();
+        QString ss = QString::fromStdString(it->second.string());
         if (speed_type != SpeedTypes::Walk) {
-            sl << QString(speed_type.name().data()).toLower() << " ";
+            ss = (QString(speed_type.name().data()).toLower() % " ") + ss;
         }
-        sl << QString::fromStdString(it->second.string());
+        sl << ss;
     }
     QString sp_str = sl.join(", ");
     return sp_str;
@@ -42,7 +43,12 @@ QString speed_string(const Monster& m) {
         QString sp_cond = sp % " " % cond;
         asl << sp_cond;
     }
-    QString all_speeds = sp_str % " (" % asl.join(", ") % ")";
+    QString all_speeds;
+    if (asl.size() > 0) {
+        all_speeds = sp_str % " (" % asl.join(", ") % ")";
+    } else {
+        all_speeds = sp_str;
+    }
     return all_speeds;
 }
 

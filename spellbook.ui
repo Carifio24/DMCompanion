@@ -34,7 +34,7 @@
        <item row="1" column="0">
         <widget class="QComboBox" name="sort1Box">
          <property name="styleSheet">
-          <string notr="true"/>
+          <string notr="true">background-color : rgb(231,208,166)</string>
          </property>
         </widget>
        </item>
@@ -55,14 +55,14 @@
        <item row="1" column="1">
         <widget class="QComboBox" name="sort2Box">
          <property name="styleSheet">
-          <string notr="true"/>
+          <string notr="true">background-color : rgb(231,208,166)</string>
          </property>
         </widget>
        </item>
        <item row="1" column="2">
         <widget class="QComboBox" name="filterBox">
          <property name="styleSheet">
-          <string notr="true"/>
+          <string notr="true">background-color : rgb(231,208,166)</string>
          </property>
         </widget>
        </item>
