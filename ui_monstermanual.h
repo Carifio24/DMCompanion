@@ -66,9 +66,12 @@ public:
         MonsterManual->resize(1005, 925);
         MonsterManual->setStyleSheet(QString::fromUtf8("background-color: transparent"));
         horizontalLayout = new QHBoxLayout(MonsterManual);
+        horizontalLayout->setSpacing(3);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setSizeConstraint(QLayout::SetNoConstraint);
+        horizontalLayout->setContentsMargins(5, -1, 5, -1);
         leftLayout = new QVBoxLayout();
+        leftLayout->setSpacing(6);
         leftLayout->setObjectName(QString::fromUtf8("leftLayout"));
         searchBar = new QLineEdit(MonsterManual);
         searchBar->setObjectName(QString::fromUtf8("searchBar"));
@@ -79,7 +82,7 @@ public:
         monsterTable = new QTableWidget(MonsterManual);
         monsterTable->setObjectName(QString::fromUtf8("monsterTable"));
         monsterTable->setEnabled(true);
-        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
+        QSizePolicy sizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(monsterTable->sizePolicy().hasHeightForWidth());
@@ -300,7 +303,7 @@ public:
         abilitiesScrollArea->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
         abilitiesContents = new QWidget();
         abilitiesContents->setObjectName(QString::fromUtf8("abilitiesContents"));
-        abilitiesContents->setGeometry(QRect(0, 0, 699, 434));
+        abilitiesContents->setGeometry(QRect(0, 0, 732, 437));
         QSizePolicy sizePolicy5(QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
         sizePolicy5.setHorizontalStretch(0);
         sizePolicy5.setVerticalStretch(0);
@@ -320,14 +323,15 @@ public:
         dataLayout->addWidget(abilitiesScrollArea);
 
         dataLayout->setStretch(0, 1);
-        dataLayout->setStretch(2, 3);
-        dataLayout->setStretch(3, 1);
-        dataLayout->setStretch(4, 5);
+        dataLayout->setStretch(1, 1);
+        dataLayout->setStretch(2, 6);
+        dataLayout->setStretch(3, 2);
+        dataLayout->setStretch(4, 10);
 
         horizontalLayout->addLayout(dataLayout);
 
         horizontalLayout->setStretch(0, 2);
-        horizontalLayout->setStretch(1, 5);
+        horizontalLayout->setStretch(1, 7);
 
         retranslateUi(MonsterManual);
 

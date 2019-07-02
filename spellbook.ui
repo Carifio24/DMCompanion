@@ -99,7 +99,7 @@
       </layout>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="sourcebooksLayout" stretch="1,1,1">
+      <layout class="QHBoxLayout" name="sourcebooksLayout" stretch="1,1,0">
        <property name="sizeConstraint">
         <enum>QLayout::SetDefaultConstraint</enum>
        </property>
@@ -123,16 +123,16 @@
         </widget>
        </item>
        <item>
-        <widget class="QCheckBox" name="scagCheckbox">
+        <widget class="QCheckBox" name="xgeCheckbox">
          <property name="text">
-          <string>Sword Coast AG</string>
+          <string>Xanathar's GTE</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QCheckBox" name="xgeCheckbox">
+        <widget class="QCheckBox" name="scagCheckbox">
          <property name="text">
-          <string>Xanathar's GTE</string>
+          <string>Sword Coast AG</string>
          </property>
         </widget>
        </item>

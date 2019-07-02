@@ -157,17 +157,15 @@ QString ability_score_text(const QString& abbr, int score, int size) {
 }
 
 QString size_type_string(const Monster& m) {
-    QStringList qsl;
-    qsl << QLatin1String(m.size().name().data());
-    qsl << QString::fromStdString(m.type());
+    QLatin1String size_str = QLatin1String(m.size().name().data());
+    QString type_str = QString::fromStdString(m.type());
     QString subt_str;
     if (!m.subtype().empty()) {
-        subt_str = "(" % QString::fromStdString(m.subtype()) % "),";
+        subt_str = " (" % QString::fromStdString(m.subtype()) % "), ";
     } else {
-        subt_str = ",";
+        subt_str = ", ";
     }
-    qsl << subt_str;
-    qsl << QString::fromStdString(m.alignment());
-    QString st_str = qsl.join(" ");
+    QString alignment_str = QString::fromStdString(m.alignment());
+    QString st_str = size_str % " " % type_str % subt_str % alignment_str;
     return st_str;
 }

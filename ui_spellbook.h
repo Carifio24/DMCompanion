@@ -44,8 +44,8 @@ public:
     QLineEdit *searchBar;
     QHBoxLayout *sourcebooksLayout;
     QCheckBox *phbCheckbox;
-    QCheckBox *scagCheckbox;
     QCheckBox *xgeCheckbox;
+    QCheckBox *scagCheckbox;
     QTableWidget *spellList;
     QVBoxLayout *rightLayout;
     QHBoxLayout *nameFavoritesLayout;
@@ -147,19 +147,18 @@ public:
 
         sourcebooksLayout->addWidget(phbCheckbox);
 
-        scagCheckbox = new QCheckBox(Spellbook);
-        scagCheckbox->setObjectName(QString::fromUtf8("scagCheckbox"));
-
-        sourcebooksLayout->addWidget(scagCheckbox);
-
         xgeCheckbox = new QCheckBox(Spellbook);
         xgeCheckbox->setObjectName(QString::fromUtf8("xgeCheckbox"));
 
         sourcebooksLayout->addWidget(xgeCheckbox);
 
+        scagCheckbox = new QCheckBox(Spellbook);
+        scagCheckbox->setObjectName(QString::fromUtf8("scagCheckbox"));
+
+        sourcebooksLayout->addWidget(scagCheckbox);
+
         sourcebooksLayout->setStretch(0, 1);
         sourcebooksLayout->setStretch(1, 1);
-        sourcebooksLayout->setStretch(2, 1);
 
         leftLayout->addLayout(sourcebooksLayout);
 
@@ -382,8 +381,8 @@ public:
         searchBar->setText(QString());
         searchBar->setPlaceholderText(QApplication::translate("Spellbook", "Search", nullptr));
         phbCheckbox->setText(QApplication::translate("Spellbook", "Player's Handbook", nullptr));
-        scagCheckbox->setText(QApplication::translate("Spellbook", "Sword Coast AG", nullptr));
         xgeCheckbox->setText(QApplication::translate("Spellbook", "Xanathar's GTE", nullptr));
+        scagCheckbox->setText(QApplication::translate("Spellbook", "Sword Coast AG", nullptr));
         nameLabel->setText(QString());
         favButton->setText(QString());
         levelLabel->setText(QString());
