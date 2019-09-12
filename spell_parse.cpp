@@ -8,13 +8,13 @@
 #include <QVector>
 #include <QTextStream>
 
-#include <DnD/school.h>
-#include <DnD/duration.h>
-#include <DnD/sourcebook.h>
-#include <DnD/caster_class.h>
-#include <DnD/string_helpers.h>
-#include <DnD/converters.h>
-#include <DnD/dice_set.h>
+#include "dnd/school.h"
+#include "dnd/duration.h"
+#include "dnd/sourcebook.h"
+#include "dnd/caster_class.h"
+#include "dnd/string_helpers.h"
+#include "dnd/converters.h"
+#include "dnd/dice_set.h"
 
 #include "spell_parse.h"
 
@@ -51,7 +51,7 @@ DnD::Spell parse_spell(const Json::Value& root, DnD::SpellBuilder& b) {
     std::vector<std::string> pdata = split(root[page_k].asString(), " ", 2);
     b.set_page(std::stoi(pdata[1]));
     std::string bookCode = pdata[0];
-    const Sourcebook& sourcebook = Sourcebook::from_abbreviation(bookCode);
+    Sourcebook sourcebook = Sourcebook::from_abbreviation(bookCode);
     b.set_sourcebook(sourcebook);
     std::string range_str = root[range_k].asString();
     std::cout << range_str << std::endl;
@@ -141,7 +141,7 @@ DnD::Spell parse_spell(const Json::Value& root, DnD::SpellBuilder& b) {
     b.set_school(school);
 
 	// Get the caster classes
-	std::vector<std::reference_wrapper<const CasterClass>> classes;
+    std::vector<CasterClass> classes;
     Json::Value classesJSON = root[classes_k];
     classes.reserve(classesJSON.size());
 	for (const auto& v : classesJSON) {
@@ -152,7 +152,7 @@ DnD::Spell parse_spell(const Json::Value& root, DnD::SpellBuilder& b) {
         catch (Json::LogicError) {
             class_str = v.asString();
         }
-        classes.push_back(std::cref(CasterClass::from_name(class_str)));
+        classes.push_back(CasterClass::from_name(class_str));
 	}
 	b.set_classes(classes);
 

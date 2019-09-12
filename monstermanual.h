@@ -4,7 +4,7 @@
 #include <QLabel>
 #include <QWidget>
 
-#include <DnD/monster.h>
+#include "dnd/monster.h"
 
 namespace Ui {
 class MonsterManual;

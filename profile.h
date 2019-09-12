@@ -4,7 +4,7 @@
 #include <set>
 #include <string>
 
-#include <DnD/spell.h>
+#include "dnd/spell.h"
 
 
 class Profile {

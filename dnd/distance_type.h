@@ -5,28 +5,36 @@
 
 namespace DnD {
 
-class DistanceType : public NamedEnum<DistanceType> {
+class DistanceTypeImpl : public NamedEnumImpl<DistanceTypeImpl> {
 
     public:
         // The class instances
         struct Instances;
 
     private:
-        constexpr DistanceType(const std::string_view& name) : NamedEnum<DistanceType>(name) {}
+        constexpr DistanceTypeImpl(std::string_view name) : NamedEnumImpl<DistanceTypeImpl>(name) {}
 
 };
 
-struct DistanceType::Instances {
-    static inline constexpr const DistanceType Special{"Special"};
-    static inline constexpr const DistanceType Self{"Self"};
-    static inline constexpr const DistanceType Touch{"Touch"};
-    static inline constexpr const DistanceType Sight{"Sight"};
-    static inline constexpr const DistanceType Distanced{"Distanced"};
-    static inline constexpr const DistanceType Unlimited{"Unlimited"};
-    static inline constexpr const DistanceType* const instances[] = { &Special, &Self, &Touch, &Sight, &Distanced, &Unlimited };
+struct DistanceTypeImpl::Instances {
+    static inline constexpr const DistanceTypeImpl Special{"Special"};
+    static inline constexpr const DistanceTypeImpl Self{"Self"};
+    static inline constexpr const DistanceTypeImpl Touch{"Touch"};
+    static inline constexpr const DistanceTypeImpl Sight{"Sight"};
+    static inline constexpr const DistanceTypeImpl Distanced{"Distanced"};
+    static inline constexpr const DistanceTypeImpl Unlimited{"Unlimited"};
+    static inline constexpr const DistanceTypeImpl* const instances[] = { &Special, &Self, &Touch, &Sight, &Distanced, &Unlimited };
 };
 
-using DistanceTypes = DistanceType::Instances;
+using DistanceTypes = DistanceTypeImpl::Instances;
+
+
+class DistanceType : public NamedEnum<DistanceTypeImpl,DistanceType> {
+
+    public:
+        DistanceType(const DistanceTypeImpl& dti) : NamedEnum<DistanceTypeImpl,DistanceType>(dti) {}
+
+};
 
 } // end namespace DnD
 

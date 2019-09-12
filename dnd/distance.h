@@ -15,7 +15,7 @@ class Distance : public Quantity<DistanceType, LengthUnit> {
         
         // Constructors
         Distance(const DistanceType& rt, const int& value, const LengthUnit& unit, const std::string& str="") : Quantity<DistanceType, LengthUnit>(rt, value, unit, str) {}
-        Distance() : Distance(DistanceTypes::Self, 0, LengthUnits::Foot) {}
+        Distance() : Distance(DistanceType(DistanceTypes::Self), 0, LengthUnit(LengthUnits::Foot)) {}
 
         bool operator==(const Distance& other) const noexcept;
 

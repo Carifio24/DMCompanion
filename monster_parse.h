@@ -1,8 +1,8 @@
 #ifndef MONSTER_PARSE_H
 #define MONSTER_PARSE_H
 
-#include <DnD/monster.h>
-#include <DnD/monster_builder.h>
+#include "dnd/monster.h"
+#include "dnd/monster_builder.h"
 
 #include <json/json.h>
 

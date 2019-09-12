@@ -23,8 +23,8 @@ class CreatureBuilder {
         CreatureBuilder& set_challenge_rating(const Fraction& cr);
         CreatureBuilder& set_hit_points(const int hp);
         CreatureBuilder& set_hit_dice(const DiceSet& hit_dice);
-        CreatureBuilder& set_speeds(const std::map<std::reference_wrapper<const SpeedType>,Distance,ref_wrap_comp>& speeds);
-        CreatureBuilder& set_alternate_speeds(const std::map<std::string,std::map<std::reference_wrapper<const SpeedType>,Distance,ref_wrap_comp>>& alt_speeds);
+        CreatureBuilder& set_speeds(const std::map<SpeedType,Distance>& speeds);
+        CreatureBuilder& set_alternate_speeds(const std::map<std::string,std::map<SpeedType,Distance> >& alt_speeds);
 
         CreatureBuilder& set_strength(const int str);
         CreatureBuilder& set_dexterity(const int dex);
@@ -33,7 +33,7 @@ class CreatureBuilder {
         CreatureBuilder& set_wisdom(const int wis);
         CreatureBuilder& set_charisma(const int chr);
 
-        CreatureBuilder& set_skill_bonuses(const std::map<std::reference_wrapper<const Skill>,int,ref_wrap_comp>& skl_bns);
+        CreatureBuilder& set_skill_bonuses(const std::map<Skill,int>& skl_bns);
 
         CreatureBuilder& set_strength_save(const int str_sv);
         CreatureBuilder& set_dexterity_save(const int dex_sv);
@@ -47,8 +47,8 @@ class CreatureBuilder {
         CreatureBuilder& set_damage_vulnerabilities(const std::vector<DamageInfo>& dmg_vuls);
         CreatureBuilder& set_damage_resistances(const std::vector<DamageInfo>& dmg_rsts);
         CreatureBuilder& set_damage_immunities(const std::vector<DamageInfo>& dmg_imns);
-        CreatureBuilder& set_condition_immunities(const std::vector<std::reference_wrapper<const Condition>>& cond_imns);
-        CreatureBuilder& set_senses(const std::map<std::reference_wrapper<const SenseType>, Distance, ref_wrap_comp>& senses);
+        CreatureBuilder& set_condition_immunities(const std::vector<Condition>& cond_imns);
+        CreatureBuilder& set_senses(const std::map<SenseType, Distance>& senses);
         CreatureBuilder& set_languages(const std::string& languages);
         CreatureBuilder& set_special_abilities(const std::vector<SpecialAbility>& spcl_abls);
         CreatureBuilder& set_actions(const std::vector<Action>& actions);
@@ -64,7 +64,7 @@ class CreatureBuilder {
 
         // General properties
         std::string name;
-        std::reference_wrapper<const Size> size = std::cref(Sizes::Medium);
+        Size size = Size::Medium;
         std::string type;
         std::string subtype;
         std::string alignment;
@@ -74,8 +74,8 @@ class CreatureBuilder {
         // Combat statistics
         int ac;
         int hp;
-        std::map<std::reference_wrapper<const SpeedType>,Distance,ref_wrap_comp> speeds;
-        std::map<std::string,std::map<std::reference_wrapper<const SpeedType>,Distance,ref_wrap_comp>> alt_speeds;
+        std::map<SpeedType,Distance> speeds;
+        std::map<std::string,std::map<SpeedType,Distance> > alt_speeds;
 
         // Ability scores
         int str;
@@ -94,15 +94,15 @@ class CreatureBuilder {
         int chr_sv;
 
         // Skill bonuses
-        std::map<std::reference_wrapper<const Skill>,int,ref_wrap_comp> skl_bns;
+        std::map<Skill,int> skl_bns;
 
         // Other attributes
         int prcp;
         std::vector<DamageInfo> dmg_vuls;
         std::vector<DamageInfo> dmg_rsts;
         std::vector<DamageInfo> dmg_imns;
-        std::vector<std::reference_wrapper<const Condition>> cond_imns;
-        std::map<std::reference_wrapper<const SenseType>, Distance, ref_wrap_comp> senses;
+        std::vector<Condition> cond_imns;
+        std::map<SenseType, Distance> senses;
         int pass_prcp;
         std::string languages; // For now
         std::vector<SpecialAbility> spcl_abls;

@@ -14,7 +14,7 @@
 #include <QScrollBar>
 #include <QStringBuilder>
 
-#include <DnD/string_helpers.h>
+#include "dnd/string_helpers.h"
 
 using namespace DnD;
 

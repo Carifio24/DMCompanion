@@ -16,7 +16,7 @@ class Sense {
         const SenseType& type() const noexcept { return _type; }
     
     private:
-        std::reference_wrapper<const SenseType> _type;
+        SenseType _type;
         DnD::Distance _dist;
 };
 

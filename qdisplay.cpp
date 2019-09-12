@@ -18,8 +18,8 @@ QString prompt_text(const QString& prompt, const int info, const QString& dlm) {
 QString sign_str(int x) {
     if (x > 0) {
         return "+";
-    } else if (x < 0) {
-        return "-";
+//    } else if (x < 0) {
+//        return "-";
     } else {
         return "";
     }

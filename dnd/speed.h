@@ -31,7 +31,7 @@ class Speed {
         // Member values
         // As speeds are always given as distance / round, a Speed consists of a distance and a speed type
         Distance _dist;
-        std::reference_wrapper<const SpeedType> _type;
+        SpeedType _type;
 };
 
 } // end namespace DnD

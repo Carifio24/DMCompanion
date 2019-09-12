@@ -6,7 +6,7 @@
 
 namespace DnD {
 
-int int_if_member(const Json::Value& root, const std::string& field, const int& defaultValue=0);
+int int_if_member(const Json::Value& root, const std::string& field, int defaultValue=0);
 
 std::string string_if_member(const Json::Value& root, const std::string& field, const std::string& defaultValue="");
 

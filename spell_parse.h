@@ -7,8 +7,8 @@
 
 #include <json/json.h>
 
-#include <DnD/keys.h>
-#include <DnD/spell_builder.h>
+#include "dnd/keys.h"
+#include "dnd/spell_builder.h"
 
 std::array<bool,3> components(const Json::Value& comps);
 DnD::Spell parse_spell(const Json::Value& root, DnD::SpellBuilder& b);

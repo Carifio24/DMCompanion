@@ -1,0 +1,45 @@
+Name
+Size
+Type
+Subtype
+Alignment
+Armor Class
+Hit Points
+Hit Dice
+Speed
+
+Image file (optional)
+
+Ability scores
+
+Damage Vulnerabilities
+Damage Resistances
+Damage Immunities
+Condition Immunities
+
+Skills (optional)
+
+Senses
+Languages
+Challenge Rating
+
+Saving throw modifiers (optional)
+
+Special Abilities
+    Attack Bonus
+    Name
+    Description
+
+
+Actions
+    Attack Bonus
+    Name
+    Description
+    Damage Dice (optional)
+    Damage Bonus (optional)
+Legendary Actions
+    Attack Bonus
+    Name
+    Description
+
+Any other stats (optional)

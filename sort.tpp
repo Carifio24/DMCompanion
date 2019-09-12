@@ -33,7 +33,7 @@ std::function<int(const T&,const T&)> test_less_equal(const M& (T::* mem_fn)(voi
 }
 
 template <typename T>
-std::vector<int> sorted_indices(const std::vector<T>& v, const std::function<bool(const T&, const T&)>& fcomp=[](const T& x, const T& y){return x < y;}) {
+std::vector<int> sorted_indices(const std::vector<T>& v, const std::function<bool(const T&, const T&)>& fcomp=std::less<T>()) {
     std::vector<int> idx(v.size());
     std::iota(idx.begin(), idx.end(), 0);
     std::sort(idx.begin(), idx.end(), [&v, &fcomp](int i1, int i2) { return fcomp(v[i1], v[i2]); } );
@@ -41,7 +41,7 @@ std::vector<int> sorted_indices(const std::vector<T>& v, const std::function<boo
 }
 
 template <typename T, size_t N>
-std::vector<int> sorted_indices(const std::array<T,N>& v, const std::function<bool(const T&, const T&)>& fcomp=[](const T& x, const T& y){return x < y;}) {
+std::vector<int> sorted_indices(const std::array<T,N>& v, const std::function<bool(const T&, const T&)>& fcomp=std::less<T>()) {
     std::vector<int> idx(N);
     std::iota(idx.begin(), idx.end(), 0);
     std::sort(idx.begin(), idx.end(), [&v, &fcomp](int i1, int i2) { return fcomp(v[i1], v[i2]); } );

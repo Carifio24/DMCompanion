@@ -1,5 +1,3 @@
-Aarakocra
-Banshee
 Beholder
 Death Tyrant
 Spectator
@@ -9,20 +7,14 @@ Needle Blight
 Bugbear Chief
 Bullywug
 Cambion
-Crawling Claw
-Cyclops
 Death Knight
 Demilich
 Barlgura
 Chasme
 Goristro
-Manes
 Shadow Demon
 Yochlol
 Spined Devil
-Allosaurus
-Ankylosaurus
-Pteranodon
 Displacer Beast
 Young Red Shadow Dragon
 Drow Elite Warrior
@@ -35,7 +27,6 @@ Flumph
 Fomorian
 Gas Spore
 Galeb Duhr
-Dao
 Marid
 Githyanki Warrior
 Githyanki Knight
@@ -44,15 +35,12 @@ Githzerai Zerth
 Gnoll Pack Lord
 Gnoll Fang of Yeenoghu
 Goblin Boss
-Grell
-Grick Alpha
 Helmed Horror
 Hobgoblin Captain
 Hobgoblin Warlord
 Hook Horror
 Intellect Devourer
 Jackalwere
-Kenku
 Winged Kobold
 Kuo-Toa
 Kuo-Toa Archpriest
@@ -62,32 +50,19 @@ Lizard King/Queen
 Mud Mephit
 Smoke Mephit
 Mind Flayer
-Monodrone
-Duodrone
-Tridrone
-Quadrone
-Pentadrone
-Myconid Sprout
-Quaggoth Spore Servant
 Myconid Adult
 Myconid Sovereign
 Bone Naga
 Nothic
 Half-Ogre
-Orc War Chief
 Orc Eye of Gruumsh
 Orog
-Peryton
-Piercer
-Pixie
 Quaggoth
 Young Remorhaz
 Revenant
 Sahuagin Priestess
 Sahuagin Baron
-Fire Snake
 Scarecrow
-Slaad Tadpole
 Red Slaad
 Blue Slaad
 Green Slaad

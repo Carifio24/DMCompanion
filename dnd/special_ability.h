@@ -9,7 +9,7 @@ class SpecialAbility {
 
     public:
         // Constructors
-        SpecialAbility(const std::string& nm, const std::string& dscr, const int ab) : _name(nm), _desc(dscr), _atk_bonus(ab) {}
+        SpecialAbility(const std::string& nm, const std::string& dscr, int ab) : _name(nm), _desc(dscr), _atk_bonus(ab) {}
 
         // Default constructor
         SpecialAbility() : SpecialAbility("", "", 0) {}

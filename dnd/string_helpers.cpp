@@ -7,8 +7,17 @@
 
 namespace DnD {
 
+bool string_match(const std::string& s1, const std::string& s2, const int start, const int finish) {
+    for (int i = start; i < finish; ++i) {
+        if (s1[i] != s2[i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
 bool starts_with(const std::string& test, const char* prefix) {
-    int pflen = strlen(prefix);
+    size_t pflen = strlen(prefix);
     if (test.length() < pflen) { return false; }
 
     for (size_t i = 0; i < pflen; ++i) {
@@ -19,24 +28,25 @@ bool starts_with(const std::string& test, const char* prefix) {
     return true;
 }
 
-bool ends_with(const std::string& test, const char* prefix) {
-    int pflen = strlen(prefix);
+bool ends_with(const std::string& test, const char* suffix) {
+    size_t pflen = strlen(suffix);
     if (test.length() < pflen) { return false; }
 
+    int idx = 0;
     for (size_t i = test.size() - pflen; i < test.size(); ++i) {
-        if (prefix[i] != test[i]) {
+        if (suffix[idx++] != test[i]) {
             return false;
         }
     }
     return true;
 }
 
-std::vector<std::string> split(std::string s, const std::string& dlm, int n_pieces) {
+std::vector<std::string> split(std::string s, const std::string& dlm, size_t n_pieces) {
     // This function splits the given string using the given delimiter
     // Returns a vector containing the pieces of the split string
 
     // If a max size wasn't explicitly set, then we can have at max s.size() pieces
-    if (n_pieces < 0) {
+    if (n_pieces == 0) {
         n_pieces = s.size();
     }
 
@@ -44,7 +54,7 @@ std::vector<std::string> split(std::string s, const std::string& dlm, int n_piec
     std::vector<std::string> pieces;
 
     // Length of the delimiter
-    const int dlm_len = dlm.length();
+    const size_t dlm_len = dlm.length();
 
     // While the delimiter still exists in the string, keep splitting off pieces
     size_t pos = 0;

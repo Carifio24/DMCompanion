@@ -1,0 +1,40 @@
+mkdir -p build
+g++ -fPIC -std=c++17 -Wall -MMD -c converters.cpp -o build/converters.o
+mkdir -p build
+g++ -fPIC -std=c++17 -Wall -MMD -c creature.cpp -o build/creature.o
+mkdir -p build
+g++ -fPIC -std=c++17 -Wall -MMD -c creature_builder.cpp -o build/creature_builder.o
+mkdir -p build
+g++ -fPIC -std=c++17 -Wall -MMD -c dice_set.cpp -o build/dice_set.o
+mkdir -p build
+g++ -fPIC -std=c++17 -Wall -MMD -c die_helpers.cpp -o build/die_helpers.o
+mkdir -p build
+g++ -fPIC -std=c++17 -Wall -MMD -c distance.cpp -o build/distance.o
+mkdir -p build
+g++ -fPIC -std=c++17 -Wall -MMD -c duration.cpp -o build/duration.o
+mkdir -p build
+g++ -fPIC -std=c++17 -Wall -MMD -c enummaps.cpp -o build/enummaps.o
+mkdir -p build
+g++ -fPIC -std=c++17 -Wall -MMD -c fraction.cpp -o build/fraction.o
+mkdir -p build
+g++ -fPIC -std=c++17 -Wall -MMD -c helpers.cpp -o build/helpers.o
+mkdir -p build
+g++ -fPIC -std=c++17 -Wall -MMD -c length_unit.cpp -o build/length_unit.o
+mkdir -p build
+g++ -fPIC -std=c++17 -Wall -MMD -c monster_builder.cpp -o build/monster_builder.o
+mkdir -p build
+g++ -fPIC -std=c++17 -Wall -MMD -c spell_builder.cpp -o build/spell_builder.o
+mkdir -p build
+g++ -fPIC -std=c++17 -Wall -MMD -c spell.cpp -o build/spell.o
+mkdir -p build
+g++ -fPIC -std=c++17 -Wall -MMD -c string_helpers.cpp -o build/string_helpers.o
+mkdir -p build
+g++ -fPIC -std=c++17 -Wall -MMD -c test.cpp -o build/test.o
+test.cpp: In function ‘int main()’:
+test.cpp:12:9: warning: unused variable ‘i’ [-Wunused-variable]
+     int i = 0;
+         ^
+mkdir -p build
+g++ -fPIC -std=c++17 -Wall -MMD -c time_unit.cpp -o build/time_unit.o
+ar rcs ./build/libdnd.a ./build/converters.o ./build/creature.o ./build/creature_builder.o ./build/dice_set.o ./build/die_helpers.o ./build/distance.o ./build/duration.o ./build/enummaps.o ./build/fraction.o ./build/helpers.o ./build/length_unit.o ./build/monster_builder.o ./build/spell_builder.o ./build/spell.o ./build/string_helpers.o ./build/test.o ./build/time_unit.o
+g++ -shared -fPIC -o ./build/libdnd.o ./build/converters.o ./build/creature.o ./build/creature_builder.o ./build/dice_set.o ./build/die_helpers.o ./build/distance.o ./build/duration.o ./build/enummaps.o ./build/fraction.o ./build/helpers.o ./build/length_unit.o ./build/monster_builder.o ./build/spell_builder.o ./build/spell.o ./build/string_helpers.o ./build/test.o ./build/time_unit.o	

@@ -1,5 +1,52 @@
 [
     {
+        "name": "Aarakocra",
+        "size": "Medium",
+        "armor_class": 12,
+        "type": "humanoid",
+        "subtype": "aarakocra",
+        "hit_points": 13,
+        "hit_dice": "3d8",
+        "speed": "20 ft., fly 50 ft.",
+        "strength": 10,
+        "dexterity": 14,
+        "constitution": 10,
+        "intelligence": 11,
+        "wisdom": 12,
+        "charisma": 11,
+        "perception": 5,
+        "senses": "passive Perception 15",
+        "languages": "Auran",
+        "challenge_rating": "1/4",
+        "damage_vulnerabilities": "",
+        "damage_resistances": "",
+        "damage_immunities": "",
+        "condition_immunities": "",
+        "special_abilities": [
+            {
+                "attack_bonus": 0,
+                "name": "Dive Attack",
+                "desc": "If the aarakocra is flying and dives at least 30 feet straight toward a target and then hits it with a melee weapon attack, the attack deals an extra 3 (1d6) damage to the target."
+            }
+        ],
+        "actions": [
+            {
+                "attack_bonus": 4,
+                "name": "Talon",
+                "damage_dice": "1d4",
+                "damage_bonus": 2,
+                "desc": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) slashing damage"
+            },
+            {
+                "attack_bonus": 4,
+                "name": "Javelin",
+                "damage_dice": "1d6",
+                "damage_bonus": 2,
+                "desc": "Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 5 (1d6 + 2) piercing damage"
+            }
+        ]
+    },
+    {
         "speed": "10 ft., swim 40 ft.",
         "image_file": "monster_images/Aboleth.jpeg",
         "type": "aberration",
@@ -799,7 +846,7 @@
         "dexterity": 12,
         "insight": 7,
         "damage_vulnerabilities": "",
-        "special_abilities": [
+        "": [
             {
                 "attack_bonus": 0,
                 "name": "Amphibious",
@@ -2999,6 +3046,65 @@
         "subtype": "any race"
     },
     {
+        "name": "Banshee",
+        "size": "Medium",
+        "armor_class": 12,
+        "hit_points": 58,
+        "hit_dice": "13d8",
+        "type": "undead",
+        "subtype": "",
+        "alignment": "chaotic evil",
+        "speed": "0 ft., fly 40 ft. (hover)",
+        "strength": 1,
+        "dexterity": 14,
+        "constitution": 10,
+        "intelligence": 12,
+        "wisdom": 11,
+        "charisma": 17,
+        "senses": "darkvision 60 ft., passive Perception 10",
+        "languages": "Common, Elvish",
+        "challenge_rating": 4,
+        "damage_vulnerabilities": "",
+        "damage_resistances": "acid, fire, lightning, thunder; bludgeoning, piercing, and slashing from nonmagical weapons",
+        "damage_immunities": "cold, necrotic, poison",
+        "condition_immunities": "charmed, exhaustion, frightened, grappled, paralyzed, petrified, poisoned, prone, restrained",
+        "wisdom_save": 2,
+        "charisma_save": 4,
+        "special_abilities": [
+            {
+                "name": "Detect Life",
+                "attack_bonus": 0,
+                "desc": "The banshee can magically sense the presence of living creatures up to 5 miles away. She knows the general direction they're in but not their exact locations."
+            },
+            {
+                "name": "Incorporeal Movement",
+                "attack_bonus": 0,
+                "desc": "The banshee can move through other creatures and objects as if they were difficult terrain. She takes 5 (1d10) force damage if she ends her turn inside an object."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Corrupting Touch",
+                "damage_dice": "3d6",
+                "damage_bonus": 2,
+                "attack_bonus": 4,
+                "desc": "Melee Spell Attack: +4 to hit, reach 5 ft., one target. Hit: 12 (3d6 + 2) necrotic damage."
+            },
+            {
+                "name": "Horrifying Visage",
+                "attack_bonus": 0,
+                "desc": "Each non-undead creature within 60 feet of the banshee that can see her must succeed on a DC 13 Wisdom saving throw or be frightened for 1 minute. A frightened target can repeat the saving throw at the end of each of its turns, with disadvantage if the banshee is within line of sight, ending the effect on itself on a success. If a target's saving throw is successful or the effect ends for it, the target is immune to the banshee's Horrifying Visage for the next 24 hours."
+            },
+            {
+                "name": "Wail (1/Day)",
+                "attack_bonus": 0,
+                "damage_dice": "3d6",
+                "damage_bonus": 0,
+                "desc": "The banshee releases a mournful wail, provided that she isn't in sunlight. This wail has no effect on constructs and undead. All other creatures within 30 feet of her that can hear her must make a DC 13 Constitution saving throw. On a failure, a creature drops to 0 hit points. On a success, a creature takes 10 (3d6) psychic damage."
+            }
+        ]
+    },
+    {
         "speed": "30 ft.",
         "image_file": "monster_images/Barbed_Devil.jpeg",
         "type": "fiend",
@@ -4878,6 +4984,92 @@
         "subtype": ""
     },
     {
+        "name": "Crawling Claw",
+        "size": "Tiny",
+        "type": "undead",
+        "subtype": "",
+        "alignment": "neutral evil",
+        "armor_class": 12,
+        "hit_points": 2,
+        "hit_dice": "1d4",
+        "speed": "20 ft., climb 20 ft.",
+        "strength": 13,
+        "dexterity": 14,
+        "constitution": 11,
+        "intelligence": 5,
+        "wisdom": 10,
+        "charisma": 4,
+        "senses": "blindsight 30 ft. (blind beyond this radius), passive Perception 10",
+        "languages": "understands Common but can't speak",
+        "challenge_rating": 0,
+        "damage_immunities": "poison",
+        "condition_immunities": "charmed, exhaustion, poisoned",
+        "special_abilities": [
+            {
+                "name": "Turn Immunity",
+                "attack_bonus": 0,
+                "desc": "The claw is immune to effects that turn undead"
+            }
+        ],
+        "actions": [
+            {
+                "name": "Claw",
+                "attack_bonus": 3,
+                "damage_dice": "1d4",
+                "damage_bonus": 1,
+                "desc": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 3 (1d4 + 1) bludgeoning or slashing damage (claw's choice)."
+            }
+        ]
+    },
+    {
+        "name": "Cyclops",
+        "size": "Huge",
+        "type": "giant",
+        "subtype": "",
+        "alignment": "chaotic neutral",
+        "armor_class": 14,
+        "hit_points": 138,
+        "hit_dice": "12d12",
+        "speed": "30 ft.",
+        "strength": 22,
+        "dexterity": 11,
+        "constitution": 20,
+        "intelligence": 8,
+        "wisdom": 6,
+        "charisma": 10,
+        "senses": "passive Perception 8",
+        "languages": "Giant",
+        "challenge_rating": 6,
+        "special_abilities": [
+            {
+                "name": "Poor Depth Perception",
+                "attack_bonus": 0,
+                "desc": "The cyclops has disadvantage on any attack roll against a target more than 30 feet away."
+            }
+       ],
+        "actions": [
+            {
+                "name": "Multiattack",
+                "attack_bonus": 0,
+                "desc": "The cyclops makes two greatclub attacks."
+            },
+            {
+                "name": "Greatclub",
+                "attack_bonus": 9,
+                "damage_dice": "3d8",
+                "damage_bonus": 6,
+                "desc": "Melee Weapon Attack: +9 to hit, reach 10 ft., one target. Hit: 19 (3d8 + 6) bludgeoning damage."
+            },
+            {
+                "name": "Rock",
+                "attack_bonus": 9,
+                "damage_dice": "4d10",
+                "damage_bonus": 6,
+                "desc": "Ranged Weapon Attack: +9 to hit, range 30/120 ft., one target. Hit: 28 (4d10 + 6) bludgeoning damage."
+            }
+        ]
+    },
+    {
         "speed": "20 ft., swim 20 ft.",
         "image_file": "monster_images/Crab.jpg",
         "type": "beast",
@@ -5056,6 +5248,76 @@
         "intelligence": 10,
         "senses": "passive Perception 10",
         "subtype": "any race"
+    },
+    {
+        "name": "Dao",
+        "size": "Large",
+        "armor_class": 18,
+        "hit_points": 187,
+        "hit_dice": "15d10",
+        "type": "elemental",
+        "subtype": "",
+        "alignment": "neutral evil",
+        "speed": "30 ft., burrow 30 ft., fly 30 ft.",
+        "strength": 23,
+        "dexterity": 12,
+        "constitution": 24,
+        "intelligence": 12,
+        "wisdom": 13,
+        "charisma": 14,
+        "senses": "darkvision 120 ft., passive Perception 11",
+        "languages": "Terran",
+        "challenge_rating": 11,
+        "damage_vulnerabilities": "",
+        "damage_resistances": "",
+        "damage_immunities": "",
+        "condition_immunities": "petrified",
+        "intelligence_save": 5,
+        "wisdom_save": 5,
+        "charisma_save": 6,
+        "special_abilities": [
+            {
+                "name": "Earth Glide",
+                "attack_bonus": 0,
+                "desc": "The dao can burrow through nonmagical, unworked earth and stone. While doing so, the dao doesn't disturb the material it moves through."
+            },
+            {
+                "name": "Elemental Demise",
+                "attack_bonus": 0,
+                "desc": "If the dao dies, its body disintegrates into crystalline powder, leaving behind only equipment the dao was wearing or carrying."
+            },
+            {
+                "name": "Innate Spellcasting",
+                "attack_bonus": 0,
+                "desc": "The dao's innate spellcasting ability is Charisma (spell save DC 14, +6 to hit with spell attacks). It can innately cast the following spells, requiring no material components:\n\nAt will: detect evil and good, detect magic, stone shape\n3/day each: passwall, move earth, tongues\n1/day each: conjure elemental (earth elemental only), gaseous form, invisibility, phantasmal killer, plane shift, wall of stone"
+            },
+            {
+                "name": "Sure-Footed",
+                "attack_bonus": 0,
+                "desc": "The dao has advantage on Strength or Dexterity saving throws made against effects that would knock it prone."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Multiattack",
+                "attack_bonus": 0,
+                "desc": "The dao makes two fist attacks or two maul attacks."
+            },
+            {
+                "name": "Fist",
+                "attack_bonus": 10,
+                "damage_dice": "2d8",
+                "damage_bonus": 6,
+                "desc": "Melee Weapon Attack: +10 to hit, reach 5 ft., one target. Hit: 15 (2d8 + 6) bludgeoning damage."
+            },
+            {
+                "name": "Maul",
+                "attack_bonus": 10,
+                "damage_dice": "4d6",
+                "damage_bonus": 6,
+                "desc": "Melee Weapon Attack: +10 to hit, reach 5 ft., one target. Hit: 20 (4d6 + 6) bludgeoning damage. If the target is a Huge or smaller creature, it must succeed on a DC 18 Strength check or be knocked prone."
+            }
+        ]
     },
     {
         "speed": "10 ft., fly 30 ft.",
@@ -9083,6 +9345,51 @@
         "damage_immunities": ""
     },
     {
+        "name": "Grell",
+        "size": "Medium",
+        "armor_class": 12,
+        "hit_points": 55,
+        "hit_dice": "10d8",
+        "type": "aberration",
+        "subtype": "",
+        "alignment": "neutral evil",
+        "speed": "10 ft., fly 30 ft. (hover)",
+        "strength": 15,
+        "dexterity": 14,
+        "constitution": 13,
+        "intelligence": 12,
+        "wisdom": 11,
+        "charisma": 9,
+        "senses": "blindsight 60 ft. (blind beyond this radius), passive Perception 14",
+        "languages": "Grell",
+        "challenge_rating": 3,
+        "damage_vulnerabilities": "",
+        "damage_resistances": "",
+        "damage_immunities": "lightning",
+        "condition_immunities": "blinded, prone",
+        "actions": [
+            {
+                "name": "Multiattack",
+                "attack_bonus": 0,
+                "desc": "The grell makes two attacks: one with its tentacles and one with its beak."
+            },
+            {
+                "name": "Tentacles",
+                "attack_bonus": 4,
+                "damage_dice": "1d10",
+                "damage_bonus": 2,
+                "desc": "Melee Weapon Attack: +4 to hit, reach 10 ft., one creature. Hit: 7 (1d10 + 2) piercing damage, and the target mus succeed on a DC 11 Constitution saving throw or be poisoned for 1 minute. The poisoned target is paralyzed, and it can repeat the saving throw at the end of each of its turns, ending the effect on a success.\nThe target is also grappled (escape DC 15). If the target is Medium or smaller, it is also restrained until this grapple ends. While grappling the target, the grell has advantage on attack rolls against it and can't use this attack against other targets. When the grell moves, any Medium or smaller target it is grappling moves with it."
+            },
+            {
+                "name": "Beak",
+                "attack_bonus": 4,
+                "damage_dice": "2d4",
+                "damage_bonus": 2,
+                "desc": "Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 7 (2d4 + 2) piercing damage."
+            }
+        ]
+    },
+    {
         "speed": "30 ft., climb 30 ft.",
         "image_file": "monster_images/Grick.jpeg",
         "type": "monstrosity",
@@ -9134,6 +9441,66 @@
         "intelligence": 3,
         "senses": "darkvision 60 ft., passive Perception 12",
         "subtype": ""
+    },
+    {
+        "name": "Grick Alpha",
+        "size": "Large",
+        "armor_class": 18,
+        "hit_points": 75,
+        "hit_dice": "10d10",
+        "type": "monstrosity",
+        "subtype": "",
+        "alignment": "neutral",
+        "speed": "30 ft., climb 30 ft.",
+        "image_file": "monster_images/Grick.jpeg",
+        "strength": 18,
+        "dexterity": 16,
+        "constitution": 15,
+        "intelligence": 4,
+        "wisdom": 14,
+        "charisma": 9,
+        "senses": "darkvision 60 ft., passive Perception 12",
+        "languages": "",
+        "challenge_rating": 7,
+        "damage_vulnerabilities": "",
+        "damage_resistances": "bludgeoning, piercing, and slashing damage from nonmagical weapons",
+        "damage_immunities": "",
+        "condition_immunities": "",
+        "special_abilities": [
+            {
+                "name": "Stone Camouflage",
+                "attack_bonus": 0,
+                "desc": "The grick has advantage on Dexterity (Stealth) checks made to hide in rocky terrain."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Multiattack",
+                "attack_bonus": 0,
+                "desc": "The grick makes two attacks: one with its tail and one with its tentacles. If it hits with its tentacles, the grick can make one beak attack against the same target."
+            },
+            {
+                "name": "Tail",
+                "attack_bonus": 7,
+                "damage_dice": "2d6",
+                "damage_bonus": 4,
+                "desc": "Melee Weapon Attack: +7 to hit, reach 10 ft., one target. Hit: 11 (2d6 + 4) bludgeoning damage."
+            },
+            {
+                "name": "Tentacles",
+                "attack_bonus": 7,
+                "damage_dice": "4d8",
+                "damage_bonuds": 4,
+                "desc": "Melee Weapon Attack: +7 to hit, reach 10 ft., one target. Hit: 22 (4d8 + 4) slashing damage."
+            },
+            {
+                "name": "Beak",
+                "attack_bonus": 7,
+                "damage_dice": "2d8",
+                "damage_bonus": 4,
+                "desc": "Melee Weapon Attack: +7 to hit, reach 10 ft., one target. Hit: 13 (2d8 + 4) piercing damage."
+            }
+        ]
     },
     {
         "speed": "30 ft., fly 80 ft.",
@@ -10347,6 +10714,55 @@
         "damage_immunities": "poison"
     },
     {
+        "name": "Kenku",
+        "size": "Medium",
+        "type": "humanoid",
+        "subtype": "kenku",
+        "alignment": "chaotic neutral",
+        "armor_class": 13,
+        "hit_points": 13,
+        "hit_dice": "3d8",
+        "speed": "30 ft.",
+        "strength": 10,
+        "dexterity": 16,
+        "constitution": 10,
+        "intelligence": 11,
+        "wisdom": 10,
+        "charisma": 10,
+        "deception": 4,
+        "perception": 2,
+        "stealth": 5,
+        "senses": "passive Perception 12",
+        "languages": "understands Auran and Common but speaks only through the use of its Mimicry trait",
+        "challenge_rating": "1/4",
+        "special_abilities": [
+            {
+                "name": "Ambusher",
+                "desc": "The kenku has advantage on attack rolls against any creature it has surprised."
+            },
+            {
+                "name": "Mimicry",
+                "desc": "The kenku can mimic any sounds it has heard, including voices. A creature that hears the sounds can tell they are imitations with a successful DC 14 Wisdom (Insight) check."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Shortsword",
+                "attack_bonus": 5,
+                "damage_dice": "1d6",
+                "damage_bonus": 3,
+                "desc": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) piercing damage."
+            },
+            {
+                "name": "Shortbow",
+                "attack_bonus": 5,
+                "damage_dice": "1d6",
+                "damage_bonus": 3,
+                "desc": "Ranged Weapon Attack: +5 to hit, range 80/320 ft., one target. Hit: 6 (1d6 + 3) piercing damage."
+            }
+        ]
+    },
+    {
         "speed": "30 ft.",
         "image_file": "monster_images/Iron_Golem.jpeg",
         "type": "construct",
@@ -11354,6 +11770,38 @@
         "subtype": ""
     },
     {
+        "name": "Manes",
+        "size": "Small",
+        "type": "fiend",
+        "subtype": "demon",
+        "alignment": "chaotic evil",
+        "armor_class": 9,
+        "hit_points": 9,
+        "hit_dice": "2d6",
+        "speed": "20 ft.",
+        "strength": 10,
+        "dexterity": 9,
+        "constitution": 13,
+        "intelligence": 3,
+        "wisdom": 8,
+        "charisma": 4,
+        "senses": "darkvision 60 ft., passive Perception 9",
+        "languages": "understands Abyssal but can't speak",
+        "challenge_rating": "1/8",
+        "damage_resistances": "cold, fire, lightning",
+        "damage_immunities": "poison",
+        "condition_immunities": "charmed, frightened, poisoned",
+        "actions": [
+            {
+                "name": "Claws",
+                "attack_bonus": 2,
+                "damage_dice": "2d4",
+                "damage_bonus": 0,
+                "desc": "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 5 (2d4) slashing damage."
+            }
+        ]
+    },
+    {
         "speed": "40 ft.",
         "image_file": "monster_images/Marilith.jpeg",
         "type": "fiend",
@@ -11768,6 +12216,265 @@
         "damage_immunities": ""
     },
     {
+        "name": "Monodrone",
+        "size": "Medium",
+        "type": "construct",
+        "subtype": "",
+        "alignment": "lawful neutral",
+        "armor_class": 15,
+        "hit_points": 5,
+        "hit_dice": "1d8",
+        "speed": "30 ft., fly 30 ft.",
+        "strength": 10,
+        "dexterity": 13,
+        "constitution": 12,
+        "intelligence": 4,
+        "wisdom": 10,
+        "charisma": 5,
+        "senses": "truesight 120 ft., passive Perception 10",
+        "languages": "Modron",
+        "challenge_rating": "1/8",
+        "special_abilities": [
+            {
+                "name": "Axiomatic Mind",
+                "attack_bonus": 0,
+                "desc": "The monodrone can't be compelled to act in a manner contrary to its nature or its instructions."
+            },
+            {
+                "name": "Disintegration",
+                "attack_bonus": 0,
+                "desc": "If the monodrone dies, its body disintegrates into dust, leaving behind its weapons and anything else it was carrying."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Dagger",
+                "attack_bonus": 3,
+                "damage_dice": "1d4",
+                "damage_bonus": 1,
+                "desc": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 3 (1d4 + 1) piercing damage."
+            },
+            {
+                "name": "Javelin",
+                "attack_bonus": 3,
+                "damage_dice": "1d6",
+                "damage_bonus": 1,
+                "desc": "Melee or Ranged Weapon Attack: +3 to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 4 (1d6 + 1) piercing damage."
+            }
+        ]
+    },
+    {
+        "name": "Duodrone",
+        "size": "Medium",
+        "type": "construct",
+        "subtype": "",
+        "alignment": "lawful neutral",
+        "armor_class": 15,
+        "hit_points": 11,
+        "hit_dice": "2d8",
+        "speed": "30 ft.",
+        "strength": 11,
+        "dexterity": 13,
+        "constitution": 12,
+        "intelligence": 6,
+        "wisdom": 10,
+        "charisma": 7,
+        "senses": "truesight 120 ft., passive Perception 10",
+        "languages": "Modron",
+        "challenge_rating": "1/4",
+        "special_abilities": [
+            {
+                "name": "Axiomatic Mind",
+                "attack_bonus": 0,
+                "desc": "The duodrone can't be compelled to act in a manner contrary to its nature or its instructions."
+            },
+            {
+                "name": "Disintegration",
+                "attack_bonus": 0,
+                "desc": "If the duodrone dies, its body disintegrates into dust, leaving behind its weapons and anything else it was carrying."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Multiattack",
+                "attack_bonus": 0,
+                "desc": "The duodrone makes two fist attacks or two javelin attacks."
+            },
+            {
+                "name": "Fist",
+                "attack_bonus": 2,
+                "damage_dice": "1d4",
+                "damage_bonus": 0,
+                "desc": "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 2 (1d4) bludgeoning damage."
+            },
+            {
+                "name": "Javelin",
+                "attack_bonus": 3,
+                "damage_dice": "1d6",
+                "damage_bonus": 1,
+                "desc": "Melee or Ranged Weapon Attack: +3 to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 4 (1d6 + 1) piercing damage."
+            }
+        ]
+    },
+    {
+        "name": "Tridrone",
+        "size": "Medium",
+        "type": "construct",
+        "subtype": "",
+        "alignment": "lawful neutral",
+        "armor_class": 15,
+        "hit_points": 16,
+        "hit_dice": "3d8",
+        "speed": "30 ft.",
+        "strength": 12,
+        "dexterity": 13,
+        "constitution": 12,
+        "intelligence": 9,
+        "wisdom": 10,
+        "charisma": 9,
+        "senses": "truesight 120 ft., passive Perception 10",
+        "languages": "Modron",
+        "challenge_rating": "1/2",
+        "special_abilities": [
+            {
+                "name": "Axiomatic Mind",
+                "attack_bonus": 0,
+                "desc": "The tridrone can't be compelled to act in a manner contrary to its nature or its instructions."
+            },
+            {
+                "name": "Disintegration",
+                "attack_bonus": 0,
+                "desc": "If the tridrone dies, its body disintegrates into dust, leaving behind its weapons and anything else it was carrying."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Multiattack",
+                "attack_bonus": 0,
+                "desc": "The tridrone makes three fist attacks or three javelin attacks."
+            },
+            {
+                "name": "Fist",
+                "attack_bonus": 3,
+                "damage_dice": "1d4",
+                "damage_bonus": 0,
+                "desc": "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 3 (1d4 + 1) bludgeoning damage."
+            },
+            {
+                "name": "Javelin",
+                "attack_bonus": 3,
+                "damage_dice": "1d6",
+                "damage_bonus": 1,
+                "desc": "Melee or Ranged Weapon Attack: +3 to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 4 (1d6 + 1) piercing damage."
+            }
+        ]
+    },
+    {
+        "name": "Quadrone",
+        "size": "Medium",
+        "type": "construct",
+        "subtype": "",
+        "alignment": "lawful neutral",
+        "armor_class": 16,
+        "hit_points": 26,
+        "hit_dice": "4d8",
+        "speed": "30 ft., fly 30 ft.",
+        "strength": 12,
+        "dexterity": 14,
+        "constitution": 12,
+        "intelligence": 10,
+        "wisdom": 10,
+        "charisma": 11,
+        "senses": "truesight 120 ft., passive Perception 12",
+        "languages": "Modron",
+        "challenge_rating": 1,
+        "special_abilities": [
+            {
+                "name": "Axiomatic Mind",
+                "attack_bonus": 0,
+                "desc": "The quadrone can't be compelled to act in a manner contrary to its nature or its instructions."
+            },
+            {
+                "name": "Disintegration",
+                "attack_bonus": 0,
+                "desc": "If the quadrone dies, its body disintegrates into dust, leaving behind its weapons and anything else it was carrying."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Multiattack",
+                "attack_bonus": 0,
+                "desc": "The quadrone makes two fist attacks or four shortbow attacks."
+            },
+            {
+                "name": "Fist",
+                "attack_bonus": 3,
+                "damage_dice": "1d4",
+                "damage_bonus": 0,
+                "desc": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 3 (1d4 + 1) bludgeoning damage."
+            },
+            {
+                "name": "Shortbow",
+                "attack_bonus": 4,
+                "damage_dice": "1d6",
+                "damage_bonus": 2,
+                "desc": "Ranged Weapon Attack: +4 to hit, range 80/320 ft., one target. Hit: 5 (1d6 + 2) piercing damage."
+            }
+        ]
+    },
+    {
+        "name": "Pentadrone",
+        "size": "Large",
+        "type": "construct",
+        "subtype": "",
+        "alignment": "lawful neutral",
+        "armor_class": 16,
+        "hit_points": 32,
+        "hit_dice": "5d10",
+        "speed": "40 ft.",
+        "strength": 15,
+        "dexterity": 14,
+        "constitution": 12,
+        "intelligence": 10,
+        "wisdom": 10,
+        "charisma": 13,
+        "senses": "truesight 120 ft., passive Perception 14",
+        "languages": "Modron",
+        "challenge_rating": 2,
+        "special_abilities": [
+            {
+                "name": "Axiomatic Mind",
+                "attack_bonus": 0,
+                "desc": "The pentadrone can't be compelled to act in a manner contrary to its nature or its instructions."
+            },
+            {
+                "name": "Disintegration",
+                "attack_bonus": 0,
+                "desc": "If the pentadrone dies, its body disintegrates into dust, leaving behind its weapons and anything else it was carrying."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Multiattack",
+                "attack_bonus": 0,
+                "desc": "The pentadrone makes five arm attacks."
+            },
+            {
+                "name": "Arm",
+                "attack_bonus": 4,
+                "damage_dice": "1d6",
+                "damage_bonus": 2,
+                "desc": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6 + 2) bludgeoning damage."
+            },
+            {
+                "name": "Paralysis Gas (Recharge 5-6)",
+                "attack_bonus": 0,
+                "desc": "The pentadrone exhales a 30-foot cone of gas. Each creature in that area must succeed on a DC 11 Constitution saving throw or be paralyzed for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+            }
+        ],
+        "perception": 4
+    },
+    {
         "speed": "40 ft.",
         "image_file": "monster_images/Minotaur_Skeleton.jpeg",
         "type": "undead",
@@ -12000,6 +12707,85 @@
         "senses": "darkvision 60 ft., passive Perception 14",
         "constitution_save": 8,
         "subtype": ""
+    },
+    {
+        "name": "Myconid Sprout",
+        "size": "Small",
+        "type": "plant",
+        "subtype": "",
+        "alignment": "lawful neutral",
+        "armor_class": 10,
+        "hit_points": 7,
+        "hit_dice": "2d6",
+        "speed": "10 ft.",
+        "strength": 8,
+        "dexterity": 10,
+        "constitution": 10,
+        "intelligence": 8,
+        "wisdom": 11,
+        "charisma": 5,
+        "senses": "darkvision 120 ft., passive Perception 10",
+        "languages": "",
+        "challenge_rating": 0,
+        "special_abilities": [
+            {
+                "name": "Distress Spores",
+                "attack_bonus": 0,
+                "desc": "When the myconid takes damage, all other myconids within 240 feet of it can sense its pain."
+            },
+            {
+                "name": "Sun Sickness",
+                "attack_bonus": 0,
+                "desc": "While in sunlight, the myconid has disadvantage on ability checks, attack rolls, and saving throws. The myconid dies if it spends more than 1 hour in direct sunlight."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Fist",
+                "attack_bonus": 1,
+                "damage_dice": "2d4",
+                "damage_bonus": -1,
+                "desc": "Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 1 (1d4 - 1) bludgeoning damage plus 2 (1d4) poision damage."
+            },
+            {
+                "name": "Rapport Spores (3/Day)",
+                "desc": "A 10-foot radius of spores extends from the myconid. These spores can go around corners and affect only creatures with an Intelligence of 2 or higher that aren't undead, constructs, or elementals. Affected creatures can communicate telepathically with one another while they are within 30 feet of each other. The effect lasts for 1 hour."
+            }
+        ]
+    },
+    {
+        "name": "Quaggoth Sport Servant",
+        "size": "Medium",
+        "type": "plant",
+        "alignment": "unaligned",
+        "armor_class": 13,
+        "hit_points": 45,
+        "hit_dice": "6d8",
+        "speed": "20 ft., climb 20 ft.",
+        "strength": 17,
+        "dexterity": 12,
+        "constitution": 16,
+        "intelligence": 2,
+        "wisdom": 6,
+        "charisma": 1,
+        "damage_immunities": "poison",
+        "condition_immunities": "blinded, charmed, frightened, paralyzed, poisoned",
+        "senses": "blindsight 30 ft. (blind beyond this radius), passive Perception 8",
+        "languages": "",
+        "challenge": 1,
+        "actions": [
+            {
+                "name": "Multiattack",
+                "desc": "The spore servant makes two claw attacks."
+            },
+            {
+                "name": "Claw",
+                "attack_bonus": 5,
+                "damage_dice": "1d6",
+                "damage_bonus": 3,
+                "desc": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) slashing damage."
+            }
+        ]
     },
     {
         "speed": "20 ft., fly 30 ft.",
@@ -12571,6 +13357,69 @@
         "subtype": "orc"
     },
     {
+        "name": "Orc War Chief",
+        "size": "Medium",
+        "armor_class": 16,
+        "hit_points": 93,
+        "hit_dice": "11d8",
+        "type": "humanoid",
+        "subtype": "orc",
+        "alignment": "chaotic evil",
+        "speed": "30 ft.",
+        "image_file": "monster_images/Orc.jpeg",
+        "strength": 18,
+        "dexterity": 12,
+        "constitution": 18,
+        "intelligence": 11,
+        "wisdom": 11,
+        "charisma": 16,
+        "senses": "darkvision 60 ft., passive Perception 10",
+        "languages": "Common, Orc",
+        "challenge_rating": 4,
+        "strength_save": 6,
+        "constitution_save": 6,
+        "wisdom_save": 2,
+        "special_abilities": [
+            {
+                "name": "Aggressive",
+                "attack_bonus": 0,
+                "desc": "As a bonus action, the orc can move up to its speed toward a hostile creature that it can see."
+            },
+            {
+                "name": "Gruumsh's Fury",
+                "attack_bonus": 0,
+                "desc": "The orc deals an extra 4 (1d8) damage when it hits with a weapon attack (included in the attacks)."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Multiattack",
+                "attack_bonus": 0,
+                "desc": "The orc makes two attacks with its greataxe or its spear."
+            },
+            {
+                "name": "Greataxe",
+                "attack_bonus": 6,
+                "damage_dice": "1d12 + 1d8",
+                "damage_bonus": 4,
+                "desc": "Melee Weapon Attack: +6 to hit, reach 5 ft., one creature. Hit: 14 (1d12 + 4 plus 1d8) slashing damage."
+            },
+            {
+                "name": "Spear",
+                "attack_bonus": 6,
+                "damage_dice": "1d6 + 1d8",
+                "damage_bonus": 4,
+                "desc": "Melee or Ranged Weapon Attack: +6 t0 hit, reach 5 ft. or range 20/60 ft., one target. Hit: 12 (1d6 + 4 plus 1d8) piercing damage, or 13 (2d8 + 4) piercing damage if used with two hands to make a melee attack."
+            },
+            {
+                "name": "Battle Cry (1/Day)",
+                "attack_bonus": 0,
+                "desc": "Each creature of the war chief's choice that is within 30 feet of it, can hear it, and not already affected by Battle Cry gain advantage on attack rolls until the start of the war chief's next turn. The war chief can then make one attack as a bonus action."
+            }
+        ],
+        "intimidation": 5
+    },
+    {
         "speed": "30 ft.",
         "image_file": "monster_images/Otyugh.jpeg",
         "type": "aberration",
@@ -12824,6 +13673,137 @@
         "damage_immunities": ""
     },
     {
+        "name": "Peryton",
+        "size": "Medium",
+        "type": "monstrosity",
+        "alignment": "chaotic evil",
+        "armor_class": 13,
+        "hit_points": 33,
+        "hit_dice": "6d8",
+        "speed": "20 ft., fly 60 ft.",
+        "strength": 16,
+        "dexterity": 12,
+        "constitution": 13,
+        "intelligence": 9,
+        "wisdom": 12,
+        "charisma": 10,
+        "perception": 5,
+        "damage_resistances": "bludgeoning, piercing, and slashing from nonmagical weapons",
+        "senses": "passive Perception 15",
+        "languages": "understands Common and Elvish but can't speak",
+        "challenge_rating": 2,
+        "special_abilities": [
+            {
+                "name": "Dive Attack",
+                "desc": "If the peryton is flying and dives at least 30 feet straight toward a target and then hits it with a melee weapon attack, the attack deals an extra 9 (2d8) damage to the target."
+            },
+            {
+                "name": "Flyby",
+                "desc": "The peryton doesn't provoke an opportunity attack when it flies out of an enemy's reach."
+            },
+            {
+                "name": "Keen Sight and Smell",
+                "desc": "The peryton has advantage on Wisdom (Perception) checks that rely on sight or smell."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Multiattack",
+                "desc": "The peryton makes one gore attack and one talon attack."
+            },
+            {
+                "name": "Gore",
+                "attack_bonus": 5,
+                "damage_dice": "1d8",
+                "damage_bonus": 3,
+                "desc": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8 + 3) piercing damage."
+            },
+            {
+                "name": "Talons",
+                "attack_bonus": 5,
+                "damage_dice": "2d4",
+                "damage_bonus": 3,
+                "desc": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 8 (2d4 + 3) piercing damage."
+            }
+        ]
+    },
+    {
+        "name": "Piercer",
+        "size": "Medium",
+        "type": "monstrosity",
+        "alignment": "unaligned",
+        "armor_class": 15,
+        "hit_points": 22,
+        "hit_dice": "3d8",
+        "speed": "5 ft., climb 5 ft.",
+        "stealth": 5,
+        "strength": 10,
+        "dexterity": 13,
+        "constitution": 16,
+        "intelligence": 1,
+        "wisdom": 7,
+        "charisma": 3,
+        "senses": "blindsight 30 ft., darkvision 60 ft., passive Perception 8",
+        "languages": "",
+        "challenge_rating": "1/2",
+        "special_abilities": [
+            {
+                "name": "False Appearance",
+                "desc": "While the piercer remains motionless on the ceiling, it is indistinguishable from a normal stalactite."
+            },
+            {
+                "name": "Spider Climb",
+                "desc": "The piercer can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+            }
+        ],
+        "actions" : [
+            {
+                "name": "Drop",
+                "attack_bonus": 3,
+                "damage_dice": "6d6",
+                "damage_bonus": 0,
+                "desc": "Melee Weapon Attack: +3 to hit, one creature directly underneath the piercer. Hit: +3 (1d6) piercing damage per 10 feet fallen, up to 21 (6d6). Miss: The piercer takes half the normal falling damage for the distance fallen."
+            }
+        ]
+    },
+    {
+        "name": "Pixie",
+        "size": "Tiny",
+        "type": "fey",
+        "alignment": "neutral good",
+        "armor_class": 15,
+        "hit_points": 1,
+        "hit_dice": "1d4",
+        "speed": "10 ft., fly 30 ft.",
+        "strength": 2,
+        "dexterity": 20,
+        "constitution": 8,
+        "intelligence": 10,
+        "wisdom": 14,
+        "charisma": 15,
+        "perception": 4,
+        "stealth": 7,
+        "senses": "passive Perception 14",
+        "languages": "Sylvan",
+        "challenge_rating": "1/4",
+        "special_abilities": [
+            {
+                "name": "Magic Resistance",
+                "desc": "The pixie has advantage on saving throws against spells and other magical effects."
+            },
+            {
+                "name": "Innate Spellcasting",
+                "desc": "The pixie's innate spellcasting ability is Charisma (spell save DC 12). It can innately cast the following spells, requiring only its pixie dust as a component:\n\nAt will: druidcraft\n1/day each: confusion, dancing lights, detect evil and good, detect thoughts, dispel magic, entangle, fly, phantasmal force, polymorph, sleep"
+            }
+        ],
+        "actions": [
+            {
+                "name": "Superior Invisibility",
+                "desc": "The pixie magically turns invisible until its concentration ends (as if concentrating on a spell). Any equipment the pixie wears or carries is invisible with it."
+            }
+        ]
+    },
+    {
         "speed": "30 ft., climb 30 ft.",
         "image_file": "monster_images/Phase_Spider.jpeg",
         "type": "monstrosity",
@@ -12961,6 +13941,76 @@
         "subtype": "devil"
     },
     {
+        "name": "Allosaurus",
+        "size": "Large",
+        "type": "beast",
+        "alignment": "unaligned",
+        "armor_class": 13,
+        "hit_points": 51,
+        "hit_dice": "6d10",
+        "speed": "60 ft.",
+        "strength": 19,
+        "dexterity": 13,
+        "constitution": 17,
+        "intelligence": 2,
+        "wisdom": 12,
+        "charisma": 5,
+        "perception": 5,
+        "senses": "passive Perception 15",
+        "languages": "",
+        "challenge_rating": 2,
+        "special_abilities": [
+            {
+                "name": "Pounce",
+                "desc": "If the allosaurus moves at least 30 feet straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 13 Strength saving throw or be knocked prone. If the target is prone, the allosaurus can make one bite attack against it as a bonus action."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Bite",
+                "attack_bonus": 6,
+                "damage_dice": "2d10",
+                "damage_bonus": 4,
+                "desc": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 15 (2d10 + 4) piercing damage."
+            },
+            {
+                "name": "Claw",
+                "attack_bonus": 6,
+                "damage_dice": "1d8",
+                "damage_bonus": 4,
+                "desc": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8 + 4) slashing damage."
+            }
+        ]
+    },
+    {
+        "name": "Ankylosaurus",
+        "size": "Huge",
+        "type": "beast",
+        "alignment": "unaligned",
+        "armor_class": 15,
+        "hit_points": 68,
+        "hit_dice": "8d12",
+        "speed": "30 ft.",
+        "strength": 19,
+        "dexterity": 11,
+        "constitution": 15,
+        "intelligence": 2,
+        "wisdom": 12,
+        "charisma": 5,
+        "senses": "passive Perception 11",
+        "languages": "",
+        "challenge_rating": 3,
+        "actions": [
+            {
+                "name": "Tail",
+                "attack_bonus": 7,
+                "damage_dice": "4d6",
+                "damage_bonus": 4,
+                "desc": "Melee Weapon Attack: +7 to hit, reach 10 ft., one target. Hit: 18 (4d6 + 4) bludgeoning damage. If the target is a creature, it must succeed on a DC 14 Strength saving throw or be knocked prone."
+            }
+        ]
+    },
+    {
         "speed": "40 ft., fly 120 ft.",
         "image_file": "monster_images/Planetar.jpeg",
         "type": "celestial",
@@ -13073,6 +14123,42 @@
         "subtype": "",
         "damage_immunities": ""
     },
+    {
+        "name": "Pteranodon",
+        "size": "Medium",
+        "type": "beast",
+        "alignment": "unaligned",
+        "armor_class": 13,
+        "hit_points": 13,
+        "hit_dice": "3d8",
+        "speed": "10 ft., fly 60 ft.",
+        "strength": 12,
+        "dexterity": 15,
+        "constitution": 10,
+        "intelligence": 2,
+        "wisdom": 9,
+        "charisma": 5,
+        "perception": 1,
+        "senses": "passive Perception 11",
+        "languages": "",
+        "challenge_rating": "1/4",
+        "special_abilities": [
+            {
+                "name": "Flyby",
+                "desc": "The pteranodon doesn't provoke an opportunity attack when it flies out of an enemy's reach."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Bite",
+                "attack_bonus": 3,
+                "damage_dice": "2d4",
+                "damage_bonus": 1,
+                "desc": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 6 (2d4 + 1) piercing damage."
+            }
+        ]
+    },
+
     {
         "speed": "30 ft., swim 30 ft.",
         "image_file": "monster_images/Poisonous_Snake.jpg",
@@ -14174,6 +15260,54 @@
         "damage_immunities": ""
     },
     {
+        "name": "Fire Snake",
+        "size": "Medium",
+        "type": "Elemental",
+        "alignment": "neutral evil",
+        "armor_class": 14,
+        "hit_points": 22,
+        "hit_dice": "5d8",
+        "speed": "30 ft.",
+        "strength": 12,
+        "dexterity": 14,
+        "constitution": 11,
+        "intelligence": 7,
+        "wisdom": 10,
+        "charisma": 8,
+        "damage_vulnerabilities": "cold",
+        "damage_resistances": "bludgeoning, piercing, and slashing from nonmagical weapons",
+        "damage_immunities": "fire",
+        "senses": "darkvision 60 ft., passive Perception 10",
+        "languages": "understands Ignan but can't speak",
+        "challenge_rating": 1,
+        "special_abilities": [
+            {
+                "name": "Heated Body",
+                "desc": "A creature that touches the snake or hits it with a melee attack within 5 feet of it takes 3 (1d6) fire damage."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Multiattack",
+                "desc": "The snake makes two attacks: one with its bite and one with its tail."
+            },
+            {
+                "name": "Bite",
+                "attack_bonus": 3,
+                "damage_dice": "1d4",
+                "damage_bonus": 1,
+                "desc": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 3 (1d4 + 1) piercing damage plus 3 (1d6) fire damage."
+            },
+            {
+                "name": "Tail",
+                "attack_bonus": 3,
+                "damage_dice": "1d4 + 1d6",
+                "damage_bonus": 1,
+                "desc": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 3 (1d4 + 1) bludgeoning damage plus 3 (1d6) fire damage."
+            }
+        ]
+    },
+    {
         "speed": "30 ft.",
         "image_file": "monster_images/Salamander.jpeg",
         "type": "elemental",
@@ -14780,6 +15914,42 @@
         "intelligence": 6,
         "senses": "darkvision 60 ft., passive Perception 9",
         "subtype": ""
+    },
+    {
+        "name": "Slaad Tadpole",
+        "size": "Tiny",
+        "type": "aberration",
+        "alignment": "chaotic neutral",
+        "armor_class": 12,
+        "hit_points": 10,
+        "hit_dice": "4d4",
+        "speed": "30 ft.",
+        "strength": 7,
+        "dexterity": 15,
+        "constitution": 10,
+        "intelligence": 3,
+        "wisdom": 5,
+        "charisma": 3,
+        "stealth": 4,
+        "damage_resistances": "acid, cold, fire, lightning, thunder",
+        "senses": "darkvision 60 ft., passive Perception 7",
+        "languages": "understands Slaad but can't speak",
+        "challenge_rating": "1/8",
+        "special_abilities": [
+            {
+                "name": "Magic Resistance",
+                "desc": "The slaad has advantage on saving throws against spells and other magical effects."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Bite",
+                "attack_bonus": 4,
+                "damage_dice": "1d4",
+                "damage_bonus": 2,
+                "desc": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) piercing damage."
+            }
+        ]
     },
     {
         "speed": "50 ft., fly 150 ft.",

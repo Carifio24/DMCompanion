@@ -2,9 +2,9 @@
 
 namespace DnD {
 
-const TimeUnit& TimeUnit::from_string(const std::string& s) {
+const TimeUnitImpl& TimeUnitImpl::from_string(const std::string& s) {
     // Check whether the name agrees with any of the cases
-    for (auto inst : TimeUnit::Instances::instances) {
+    for (auto inst : TimeUnitImpl::Instances::instances) {
         if ( (s == inst->_name ) || (s == inst->plural_name()) || ( s == inst->abbreviation()) || ( s == std::string(inst->abbreviation()) + ".") ) {
             return *inst;
         }

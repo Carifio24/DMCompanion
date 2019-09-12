@@ -58,6 +58,7 @@ CONFIG    += c++17
 
 DISTFILES += \
     BookBackground.jpeg \
+    MonsterFields.txt \
     Spells.json \
     resources/bookbackground_2.jpg \
     star_filled.png \

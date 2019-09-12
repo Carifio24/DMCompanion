@@ -116,6 +116,15 @@
      </item>
      <item>
       <widget class="QLabel" name="sizeTypeLabel">
+       <property name="font">
+        <font>
+         <family>DejaVu Sans</family>
+         <pointsize>12</pointsize>
+         <weight>50</weight>
+         <italic>true</italic>
+         <bold>false</bold>
+        </font>
+       </property>
        <property name="styleSheet">
         <string notr="true">font : italic</string>
        </property>

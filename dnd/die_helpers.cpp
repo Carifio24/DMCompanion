@@ -4,13 +4,13 @@
 
 namespace DnD {
 
-std::vector<int> roll_die(const Die& d, const int& n) {
+std::vector<int> roll_die(const Die& d, const int n) {
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> dist(1, *d);
     std::vector<int> results;
     results.reserve(n);
-    for (size_t i = 0; i < n; ++i) {
+    for (int i = 0; i < n; ++i) {
         results.push_back(dist(gen));
     }
     return results;
@@ -43,6 +43,8 @@ Die d(const int n) {
 			return Die::d12;
 		case 20:
 			return Die::d20;
+		default:
+			return Die::d6; // Unreachable, switch exhausts Die enum
 
 	}
 }

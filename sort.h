@@ -5,7 +5,7 @@
 #include <vector>
 #include <string>
 
-#include <DnD/spell.h>
+#include "dnd/spell.h"
 
 // Template implementations
 #include "sort.tpp"

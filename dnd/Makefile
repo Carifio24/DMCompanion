@@ -14,13 +14,13 @@ BUILD_DIR = ./build
 
 # Compiler options
 CXX = g++
-CXXFLAGS = -fPIC -std=c++17
+CXXFLAGS = -fPIC -std=c++17 -Wall
 
 # Static library build options
 AR = ar
 
 # Sources, headers, etc.
-SOURCES = converters.cpp creature.cpp creature_builder.cpp dice_set.cpp die_helpers.cpp distance.cpp duration.cpp enummaps.cpp fraction.cpp helpers.cpp length_unit.cpp monster_builder.cpp spell_builder.cpp spell.cpp string_helpers.cpp test.cpp time_unit.cpp
+SOURCES = converters.cpp creature.cpp creature_builder.cpp dice_set.cpp die_helpers.cpp distance.cpp duration.cpp enummaps.cpp fraction.cpp helpers.cpp length_unit.cpp monster_builder.cpp spell_builder.cpp spell.cpp string_helpers.cpp time_unit.cpp
 TEMPLATES = named_enum.hpp quantity.hpp string_helpers.tpp sfinae.hpp vector_helpers.hpp
 HEADERS = $(SOURCES:.cpp=.h)  action.h alignment.h caster_class.h condition.h damage_info.h distance_type.h duration.h duration_type.h enumerations.h keys.h language.h ref_wrap_comp.h school.h sense.h sense_type.h size.h skill.h sourcebook.h special_ability.h speed.h speed_type.h subclass.h unit.h
 OBJECTS = $(SOURCES:%.cpp=$(BUILD_DIR)/%.o)

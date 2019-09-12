@@ -5,7 +5,7 @@
 
 namespace DnD {
 
-class Subclass : public NamedEnum<Subclass> {
+class SubclassImpl : public NamedEnumImpl<SubclassImpl> {
 
     public:
         // The class instances
@@ -13,13 +13,25 @@ class Subclass : public NamedEnum<Subclass> {
 
         inline constexpr std::string_view abbreviation() const noexcept { return _abbr; }
 
-        static const Subclass& from_abbreviation(const std::string& s) {
-            return from_member(s, &Subclass::abbreviation);
+        static const SubclassImpl& from_abbreviation(const std::string& s) {
+            return from_member(s, &SubclassImpl::abbreviation);
         }
 
     private:
-        constexpr Subclass(const std::string_view& name, const std::string_view& abbr) : NamedEnum<Subclass>(name), _abbr(abbr) {}
+        constexpr SubclassImpl(const std::string_view& name, const std::string_view& abbr) : NamedEnumImpl<SubclassImpl>(name), _abbr(abbr) {}
         const std::string_view _abbr;
+};
+
+using Subclasses = SubclassImpl::Instances;
+
+class Subclass : public NamedEnum<SubclassImpl,Subclass> {
+
+    public:
+ 
+        Subclass(const SubclassImpl& sci) : NamedEnum<SubclassImpl,Subclass>(sci) {}
+
+        inline std::string_view abbreviation() const noexcept { return _impl.get().abbreviation(); }
+
 };
 
 } // end namespace DnD

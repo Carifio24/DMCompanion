@@ -1,15 +1,15 @@
 #ifndef MONSTER_DISPLAY_H
 #define MONSTER_DISPLAY_H
 
-#include <DnD/monster.h>
-#include <DnD/action.h>
-#include <DnD/ability.h>
-#include <DnD/damage_info.h>
+#include "dnd/monster.h"
+#include "dnd/action.h"
+#include "dnd/ability.h"
+#include "dnd/damage_info.h"
 #include <QString>
 #include <QLabel>
 
 QString hp_string(const DnD::Monster& m);
-QString speed_string(const std::map<std::reference_wrapper<const DnD::SpeedType>, DnD::Distance, ref_wrap_comp>& speeds);
+QString speed_string(const std::map<DnD::SpeedType, DnD::Distance>& speeds);
 QString speed_string(const DnD::Monster& m);
 QString saving_throws_string(const DnD::Monster& m);
 QString senses_string(const DnD::Monster& m);

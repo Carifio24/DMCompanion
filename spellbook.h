@@ -10,9 +10,9 @@
 #include <QCheckBox>
 #include <QIcon>
 #include <QPixmap>
-#include <DnD/spell.h>
-#include <DnD/sourcebook.h>
-#include <DnD/ref_wrap_comp.h>
+#include "dnd/spell.h"
+#include "dnd/sourcebook.h"
+#include "dnd/ref_wrap_comp.h"
 
 namespace Ui {
 class Spellbook;
@@ -90,7 +90,7 @@ private:
     int iconSize = 40;
     Profile profile;
 
-    std::map<std::reference_wrapper<const DnD::Sourcebook>,QCheckBox*,ref_wrap_comp> sourcebookCheckboxes;
+    std::map<DnD::Sourcebook,QCheckBox*> sourcebookCheckboxes;
 
 };
 

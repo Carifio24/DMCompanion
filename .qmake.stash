@@ -1,0 +1,19 @@
+QMAKE_CXX.INCDIRS = \
+    /media/carifio24/E0F86EC1F86E9616/src/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ \
+    /media/carifio24/E0F86EC1F86E9616/src/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static \
+    /media/carifio24/E0F86EC1F86E9616/src/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward \
+    /media/carifio24/E0F86EC1F86E9616/src/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include \
+    /media/carifio24/E0F86EC1F86E9616/src/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed \
+    /media/carifio24/E0F86EC1F86E9616/src/mxe/usr/i686-w64-mingw32.static/include
+QMAKE_CXX.LIBDIRS = \
+    /media/carifio24/E0F86EC1F86E9616/src/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0 \
+    /media/carifio24/E0F86EC1F86E9616/src/mxe/usr/i686-w64-mingw32.static/lib
+QMAKE_CXX.QT_COMPILER_STDCXX = 199711L
+QMAKE_CXX.QMAKE_GCC_MAJOR_VERSION = 5
+QMAKE_CXX.QMAKE_GCC_MINOR_VERSION = 5
+QMAKE_CXX.QMAKE_GCC_PATCH_VERSION = 0
+QMAKE_CXX.COMPILER_MACROS = \
+    QT_COMPILER_STDCXX \
+    QMAKE_GCC_MAJOR_VERSION \
+    QMAKE_GCC_MINOR_VERSION \
+    QMAKE_GCC_PATCH_VERSION

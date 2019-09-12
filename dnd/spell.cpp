@@ -25,7 +25,7 @@ std::string Spell::classes_string() const {
 
 bool Spell::usable_by(const CasterClass& cc) const {
     for (auto x : _classes) {
-        if (x.get() == cc) {
+        if (x == cc) {
             return true;
         }
     }

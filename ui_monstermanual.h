@@ -122,6 +122,13 @@ public:
 
         sizeTypeLabel = new QLabel(MonsterManual);
         sizeTypeLabel->setObjectName(QString::fromUtf8("sizeTypeLabel"));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("DejaVu Sans"));
+        font1.setPointSize(12);
+        font1.setBold(false);
+        font1.setItalic(true);
+        font1.setWeight(50);
+        sizeTypeLabel->setFont(font1);
         sizeTypeLabel->setStyleSheet(QString::fromUtf8("font : italic"));
         sizeTypeLabel->setAlignment(Qt::AlignHCenter|Qt::AlignTop);
 

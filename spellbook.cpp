@@ -15,12 +15,12 @@
 #include <fstream>
 #include <iostream>
 
-#include <DnD/caster_class.h>
-#include <DnD/spell.h>
-#include <DnD/converters.h>
-#include <DnD/duration.h>
-#include <DnD/converters.h>
-#include <DnD/string_helpers.h>
+#include "dnd/caster_class.h"
+#include "dnd/spell.h"
+#include "dnd/converters.h"
+#include "dnd/duration.h"
+#include "dnd/converters.h"
+#include "dnd/string_helpers.h"
 
 using namespace DnD;
 
@@ -89,8 +89,8 @@ Spellbook::Spellbook(QWidget *parent) :
 
     // Add the class and subclass names to the filter ComboBox
     ui->filterBox->addItem(QString::fromStdString("None"));
-    for (const auto& elt : CasterClasses::instances) {
-        std::string_view name = elt->name();
+    for (const auto& elt : CasterClass::instances()) {
+        std::string_view name = elt.name();
         ui->filterBox->addItem(QLatin1String(name.data(), name.size()));
     }
 
@@ -399,7 +399,7 @@ void Spellbook::display_spelldata(const Spell& spell) {
     QString ritualText = prompt_text("Ritual", yn_qstring(spell.ritual()));
     QString concentrationText = prompt_text("Concentration", yn_qstring(spell.concentration()));
     QString levelText = prompt_text("Level", QString::number(spell.level()));
-    QString rangeText = prompt_text("Distance", spell.range().string());
+    QString rangeText = prompt_text("Range", spell.range().string());
     QString descTitleText = QStringLiteral("<b>Description:</b>");
     QString descriptionText = QString::fromStdString(spell.description());
     QString higherLevelText = QString::fromStdString(spell.higher_level());

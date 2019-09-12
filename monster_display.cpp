@@ -2,8 +2,8 @@
 #include "sort.h"
 #include "qdisplay.h"
 
-#include <DnD/helpers.h>
-#include <DnD/string_helpers.h>
+#include "dnd/helpers.h"
+#include "dnd/string_helpers.h"
 
 #include <QLatin1String>
 #include <QStringList>
@@ -15,11 +15,11 @@ QString hp_string(const Monster& m) {
     return QString::number(m.hit_points()) % " (" % QString::fromStdString(m.hit_dice().as_string()) % " + " % QString::number(m.hp_bonus()) % ")";
 }
 
-QString speed_string(const std::map<std::reference_wrapper<const SpeedType>, Distance, ref_wrap_comp>& speeds) {
+QString speed_string(const std::map<SpeedType,Distance>& speeds) {
     // Make the QString for the speeds
     QStringList sl;
     for (auto it = speeds.cbegin(); it != speeds.cend(); ++it) {
-        const auto& speed_type = it->first.get();
+        const auto& speed_type = it->first;
         QString ss = QString::fromStdString(it->second.string());
         if (speed_type != SpeedTypes::Walk) {
             ss = (QString(speed_type.name().data()).toLower() % " ") + ss;
@@ -53,9 +53,16 @@ QString speed_string(const Monster& m) {
 }
 
 QString saving_throws_string(const Monster& m) {
-    static QStringList abilities = {
-        "Str", "Dex", "Con", "Int", "Wis", "Cha"
-    };
+    // Initialize the QStringList of ability abbreviations using a lambda
+    // This will only be done on the first pass through the function
+    static QStringList abilities = [] {
+        QStringList al;
+        for (auto x : Ability::instances()) {
+            al << QString(x.abbreviation().data());
+        }
+        return al;
+    }();
+
     QStringList save_strs;
     auto saves = m.saving_throws();
     std::vector<int> sorted_inds = sorted_indices(saves);
@@ -137,7 +144,7 @@ QString as_qstring(const DamageInfo& dinf) {
         return QString::fromStdString(dinf.text());
     } else {
         std::string mag_str;
-        if (dinf.magic() != MagicTypes::Any) {
+        if (dinf.magic() != MagicType::Any) {
             std::string s(dinf.magic().name());
             mag_str = lowercase(s);
         }

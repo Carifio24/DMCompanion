@@ -5,35 +5,44 @@
 
 namespace DnD {
 
-class Condition : public NamedEnum<Condition> {
+class ConditionImpl : public NamedEnumImpl<ConditionImpl> {
 
     public:
         // The class instances
         struct Instances;
 
     private:
-        constexpr Condition(const std::string_view& name) : NamedEnum<Condition>(name) {}
+        constexpr ConditionImpl(const std::string_view& name) : NamedEnumImpl<ConditionImpl>(name) {}
 
 };
 
-struct Condition::Instances {
-    static inline constexpr const Condition Blinded{"Blinded"};
-    static inline constexpr const Condition Charmed{"Charmed"};
-    static inline constexpr const Condition Deafened{"Deafened"};
-    static inline constexpr const Condition Exhaustion{"Exhaustion"};
-    static inline constexpr const Condition Fatigued{"Fatigued"};
-    static inline constexpr const Condition Frightened{"Frightened"};
-    static inline constexpr const Condition Grappled{"Grappled"};
-    static inline constexpr const Condition Incapacitated{"Incapacitated"};
-    static inline constexpr const Condition Invisible{"Invisible"};
-    static inline constexpr const Condition Paralyzed{"Paralyzed"};
-    static inline constexpr const Condition Petrified{"Petrified"};
-    static inline constexpr const Condition Poisoned{"Poisoned"};
-    static inline constexpr const Condition Prone{"Prone"};
-    static inline constexpr const Condition Restrained{"Restrained"};
-    static inline constexpr const Condition Stunned{"Stunned"};
-    static inline constexpr const Condition Unconscious{"Unconscious"};
-    static inline constexpr const Condition* const instances[] = { &Blinded, &Charmed, &Deafened, &Exhaustion, &Fatigued, &Frightened, &Grappled, &Incapacitated, &Invisible, &Paralyzed, &Petrified, &Poisoned, &Prone, &Restrained, &Stunned, &Unconscious };
+struct ConditionImpl::Instances {
+    static inline constexpr const ConditionImpl Blinded{"Blinded"};
+    static inline constexpr const ConditionImpl Charmed{"Charmed"};
+    static inline constexpr const ConditionImpl Deafened{"Deafened"};
+    static inline constexpr const ConditionImpl Exhaustion{"Exhaustion"};
+    static inline constexpr const ConditionImpl Fatigued{"Fatigued"};
+    static inline constexpr const ConditionImpl Frightened{"Frightened"};
+    static inline constexpr const ConditionImpl Grappled{"Grappled"};
+    static inline constexpr const ConditionImpl Incapacitated{"Incapacitated"};
+    static inline constexpr const ConditionImpl Invisible{"Invisible"};
+    static inline constexpr const ConditionImpl Paralyzed{"Paralyzed"};
+    static inline constexpr const ConditionImpl Petrified{"Petrified"};
+    static inline constexpr const ConditionImpl Poisoned{"Poisoned"};
+    static inline constexpr const ConditionImpl Prone{"Prone"};
+    static inline constexpr const ConditionImpl Restrained{"Restrained"};
+    static inline constexpr const ConditionImpl Stunned{"Stunned"};
+    static inline constexpr const ConditionImpl Unconscious{"Unconscious"};
+    static inline constexpr const ConditionImpl* const instances[] = { &Blinded, &Charmed, &Deafened, &Exhaustion, &Fatigued, &Frightened, &Grappled, &Incapacitated, &Invisible, &Paralyzed, &Petrified, &Poisoned, &Prone, &Restrained, &Stunned, &Unconscious };
+};
+
+using Conditions = ConditionImpl::Instances;
+
+class Condition : public NamedEnum<ConditionImpl,Condition> {
+
+    public:
+        Condition(const ConditionImpl& ci) : NamedEnum<ConditionImpl,Condition>(ci) {}
+
 };
 
 };

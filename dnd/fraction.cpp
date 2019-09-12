@@ -38,13 +38,14 @@ Fraction::Fraction(const int& n, const int& d) {
 Fraction Fraction::from_string(const std::string& s) {
     std::vector<std::string> num_den = split(s, "/");
     if (num_den.size() > 2) { throw std::runtime_error("Invalid string format for Fraction: " + s);}
+    int n, d = 0;
     try {
-        int n = std::stoi(num_den[0]);
-        int d = (num_den.size() > 1) ? std::stoi(num_den[1]) : 1;
-        return Fraction(n, d);
+        n = std::stoi(num_den[0]);
+        d = (num_den.size() > 1) ? std::stoi(num_den[1]) : 1;
     } catch (std::exception& e) {
         std::cout << e.what() << std::endl;
     }
+    return Fraction(n,d); // Should never be reached
 }
 
 // Return true if the fraction is an integer, false otherwise

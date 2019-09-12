@@ -11,36 +11,36 @@ class Quantity {
     public:
 
         // Constructor
-        Quantity(const QuantityType& type, const int& value, const UnitType& unit, const std::string& str="") : _type(type), _value(value), _unit(unit), _str(str) {}
+        Quantity(QuantityType type, int value, UnitType unit, const std::string& str="") : _type(type), _value(value), _unit(unit), _str(str) {}
 
         // Get member values
         // Notice that string() is virtual
-        const QuantityType& quantity_type() const noexcept { return _type.get(); }
+        const QuantityType& quantity_type() const noexcept { return _type; }
         int value() const noexcept { return _value; }
-        const UnitType& unit_type() const noexcept { return _unit.get(); }
+        const UnitType& unit_type() const noexcept { return _unit; }
         virtual std::string string() const = 0;
 
         // Comparison operators
         bool operator<(const Quantity& other) const {
-            if (_type.get() == other._type.get()) {
+            if (_type == other._type) {
                 return base_value() < other.base_value();
             }
-            return _type .get() < other._type.get();
+            return _type < other._type;
         }
 
-        bool operator=(const Quantity& other) const {
-            return (_type.get() == other._type.get()) && (base_value() == other.base_value());
+        bool operator==(const Quantity& other) const {
+            return (_type.get() == other._type) && (base_value() == other.base_value());
         }
 
     protected:
 
         // For use by subclasses
-        int base_value() const noexcept { return _value * _unit.get().value(); }
+        int base_value() const noexcept { return _value * _unit.value(); }
 
         // Member values
-        std::reference_wrapper<const QuantityType> _type;
+        QuantityType _type;
         int _value;
-        std::reference_wrapper<const UnitType> _unit;
+        UnitType _unit;
         std::string _str;
 
 };

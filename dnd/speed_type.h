@@ -5,7 +5,7 @@
 
 namespace DnD {
 
-class SpeedType : public NamedEnum<SpeedType> {
+class SpeedTypeImpl : public NamedEnumImpl<SpeedTypeImpl> {
 
     public:
 
@@ -15,20 +15,27 @@ class SpeedType : public NamedEnum<SpeedType> {
     private:
 
         // Constructor
-        constexpr SpeedType(const std::string_view& name) : NamedEnum<SpeedType>(name) {}
+        constexpr SpeedTypeImpl(std::string_view name) : NamedEnumImpl<SpeedTypeImpl>(name) {}
 
 };
 
-struct SpeedType::Instances {
-    static inline constexpr const SpeedType Walk{"walking"sv};
-    static inline constexpr const SpeedType Burrow{"burrow"sv};
-    static inline constexpr const SpeedType Climb{"climb"sv};
-    static inline constexpr const SpeedType Fly{"fly"sv};
-    static inline constexpr const SpeedType Swim{"swim"sv};
-    static inline constexpr const SpeedType* const instances[] = { &Walk, &Burrow, &Climb, &Fly, &Swim };
+struct SpeedTypeImpl::Instances {
+    static inline constexpr const SpeedTypeImpl Walk{"walking"sv};
+    static inline constexpr const SpeedTypeImpl Burrow{"burrow"sv};
+    static inline constexpr const SpeedTypeImpl Climb{"climb"sv};
+    static inline constexpr const SpeedTypeImpl Fly{"fly"sv};
+    static inline constexpr const SpeedTypeImpl Swim{"swim"sv};
+    static inline constexpr const SpeedTypeImpl* const instances[] = { &Walk, &Burrow, &Climb, &Fly, &Swim };
 };
 
-using SpeedTypes = SpeedType::Instances;
+using SpeedTypes = SpeedTypeImpl::Instances;
+
+class SpeedType : public NamedEnum<SpeedTypeImpl,SpeedType> {
+
+    public:
+        SpeedType(const SpeedTypeImpl& sti) : NamedEnum<SpeedTypeImpl,SpeedType>(sti) {}
+
+};
 
 } // end namespace DnD;
 

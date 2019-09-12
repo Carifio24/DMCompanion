@@ -5,7 +5,7 @@
 
 namespace DnD {
 
-class DurationType : public NamedEnum<DurationType> {
+class DurationTypeImpl : public NamedEnumImpl<DurationTypeImpl> {
 
     public:
         // The class instances
@@ -13,19 +13,27 @@ class DurationType : public NamedEnum<DurationType> {
 
     private:
         // Constructor
-        constexpr DurationType(const std::string_view& name) : NamedEnum<DurationType>(name) {}
+        constexpr DurationTypeImpl(std::string_view name) : NamedEnumImpl<DurationTypeImpl>(name) {}
 
 };
 
-struct DurationType::Instances {
-    static inline constexpr const DurationType Special{"Special"};
-    static inline constexpr const DurationType Instantaneous{"Instantaneous"};
-    static inline constexpr const DurationType Spanning{"Spanning"};
-    static inline constexpr const DurationType UntilDispelled{"Until dispelled"};
-    static inline constexpr const DurationType* const instances[] = { &Special, &Instantaneous, &Spanning, &UntilDispelled };
+struct DurationTypeImpl::Instances {
+    static inline constexpr const DurationTypeImpl Special{"Special"};
+    static inline constexpr const DurationTypeImpl Instantaneous{"Instantaneous"};
+    static inline constexpr const DurationTypeImpl Spanning{"Spanning"};
+    static inline constexpr const DurationTypeImpl UntilDispelled{"Until dispelled"};
+    static inline constexpr const DurationTypeImpl* const instances[] = { &Special, &Instantaneous, &Spanning, &UntilDispelled };
 };
 
-using DurationTypes = DurationType::Instances;
+using DurationTypes = DurationTypeImpl::Instances;
+
+class DurationType : public NamedEnum<DurationTypeImpl,DurationType> {
+
+    public:
+        DurationType(const DurationTypeImpl& dti) : NamedEnum<DurationTypeImpl,DurationType>(dti) {}
+
+};
+
 
 } // end namespace DnD
 

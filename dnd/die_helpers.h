@@ -7,7 +7,7 @@
 
 namespace DnD {
 
-std::vector<int> roll_die(const Die& d, const int& n);
+std::vector<int> roll_die(const Die& d, const int n);
 int roll_die(const Die& d);
 float average(const Die& d);
 std::string name(const Die& d);
