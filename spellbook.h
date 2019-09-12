@@ -1,7 +1,7 @@
 #ifndef SPELLBOOK_H
 #define SPELLBOOK_H
 
-#include "sort.h"
+#include "sort.hpp"
 #include "profile.h"
 
 #include <string>

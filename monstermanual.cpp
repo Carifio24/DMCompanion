@@ -3,6 +3,7 @@
 #include "monster_parse.h"
 #include "monster_display.h"
 #include "qdisplay.h"
+#include "sort.hpp"
 #include <vector>
 #include <iostream>
 #include <functional>
@@ -14,6 +15,7 @@
 #include <QScrollBar>
 #include <QStringBuilder>
 
+#include "monster_sort_field.h"
 #include "dnd/string_helpers.h"
 
 using namespace DnD;
@@ -57,6 +59,10 @@ MonsterManual::MonsterManual(QWidget *parent) :
     // Set name label font
     QFont titleFont = QFont("Cloister Black", 40, 1);
     ui->nameLabel->setFont(titleFont);
+
+    // Sort the monsters by the default field (name)
+    auto name_cmp = comparator(MonsterSortField::from_name("Name").tricomparator());
+    std::sort(monsters.begin(), monsters.end(), name_cmp);
 
 }
 
@@ -150,7 +156,7 @@ void MonsterManual::display_monster_data(const Monster& m) {
     // Special abilities
     std::vector<SpecialAbility> spcl_abls = m.special_abilities();
     if (spcl_abls.size() > 0) {
-        qsl << title_qstring("Special Abilities");
+        //qsl << title_qstring("Special Abilities");
         for (const SpecialAbility& abl : spcl_abls) {
             qsl << as_qstring(abl);
         }

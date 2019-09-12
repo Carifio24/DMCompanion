@@ -12,8 +12,6 @@
 
 using namespace std::literals::string_view_literals;
 
-namespace DnD {
-
 template <typename Derived>
 class NamedEnumImpl {
 
@@ -142,7 +140,5 @@ template <typename Derived>
 constexpr int NamedEnumImpl<Derived>::n_values() { 
     return std::size(Derived::Instances::instances);
 }
-
-} // end namespace DnD
 
 #endif

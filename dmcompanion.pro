@@ -27,12 +27,11 @@ SOURCES += main.cpp \
     monster_parse.cpp \
     json_helpers.cpp \
     spell_parse.cpp \
-    sort.tpp \
-    sort.cpp \
     spellmodel.cpp
 
 HEADERS  += spellbook.h \
     monster_display.tpp \
+    monster_sort_field.h \
     qdisplay.h \
     dmcompanion.h \
     jsoncpp/json/json.h \
@@ -44,8 +43,9 @@ HEADERS  += spellbook.h \
     qparse.h \
     json_helpers.h \
     monster_parse.h \
+    sort.hpp \
     spell_parse.h \
-    sort.h \
+    spell_sort_field.h \
     spellmodel.h
 
 FORMS    += dmcompanion.ui \

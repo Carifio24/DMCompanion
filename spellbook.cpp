@@ -1,7 +1,8 @@
 #include "spellbook.h"
 #include "ui_spellbook.h"
 #include "spell_parse.h"
-#include "sort.h"
+#include "sort.hpp"
+#include "spell_sort_field.h"
 #include "qdisplay.h"
 #include "jsoncpp/json/json.h"
 #include <boost/algorithm/string/predicate.hpp>
@@ -73,13 +74,11 @@ Spellbook::Spellbook(QWidget *parent) :
     ui->sort2Box->addItem(QString::fromStdString("None"));
 
     // Add the options to the sort ComboBoxes
-    std::cout << "n_sortable is " << n_sortable << std::endl;
-    for (size_t i = 0; i < n_sortable; i++) {
-        std::cout << i << std::endl;
-        std::cout << spell_sort_fields[i] << std::endl;
-        ui->sort1Box->addItem(QString::fromStdString(spell_sort_fields[i]));
-        std::cout << "Here" << std::endl;
-        ui->sort2Box->addItem(QString::fromStdString(spell_sort_fields[i]));
+    std::cout << "n_sortable is " << SpellSortField::n_fields() << std::endl;
+    for (auto x : SpellSortField::instances()) {
+        std::string_view name = x.name();
+        ui->sort1Box->addItem(QLatin1String(name.data(), name.size()));
+        ui->sort2Box->addItem(QLatin1String(name.data(), name.size()));
     }
 
     std::cout << "Added combo box options" << std::endl;
@@ -358,18 +357,20 @@ void Spellbook::sort() {
     if (qstr1.toStdString() == "None") {return;}
 
     // Get the sort fields
-    std::string sort_field1 = qstr1.toStdString();
-    std::string sort_field2 = qstr2.toStdString();
+    std::string sort_field1_str = qstr1.toStdString();
+    std::string sort_field2_str = qstr2.toStdString();
+    SpellSortField sort_field1 = SpellSortField::from_name(sort_field1_str);
+    SpellSortField sort_field2 = SpellSortField::from_name(sort_field2_str);
 
     // We have a map of the form string -> -1,0,1 comparison function
     // So we choose the correct comparison functions for the sort fields, then create the comparator from the comparison functions
     // Use this comparator to sort the list
-    std::function<bool(const Spell&, const Spell&)> lt_comp;
-    if ( (sort_field2 == none_field) || (sort_field1 == default_spell_field) || (sort_field1 == sort_field2) ) {
-        lt_comp = [&sort_field1](const Spell& s1, const Spell& s2) { return less_than(s1, s2, spell_sort_fns.at(sort_field1), spell_sort_fns.at(default_spell_field)); };
-    } else {
-         lt_comp = [&sort_field1, &sort_field2](const Spell& s1, const Spell& s2) { return less_than(s1, s2, spell_sort_fns.at(sort_field1), spell_sort_fns.at(sort_field2), spell_sort_fns.at(default_spell_field)); };
-    }
+    // We can fall back to the one-level sorted if the second field is None, the first field is Name, or the two sort fields are equal
+    auto default_TC = SpellSortField::default_tricomparator();
+    auto TC1 = sort_field1.tricomparator();
+    auto TC2 = sort_field2.tricomparator();
+    bool need_two_levels = !( (sort_field2_str == none_field) || (sort_field1 == SpellSortField::Name) || (sort_field1 == sort_field2) );
+    Comparator<Spell> lt_comp = need_two_levels ? comparator(TC1, TC2, default_TC) : comparator(TC1, default_TC);
     std::sort(spells.begin(), spells.end(), lt_comp);
 
     // Clear the QListWidget and repopulate with the sorted list
