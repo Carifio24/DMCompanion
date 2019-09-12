@@ -1,5 +1,5 @@
 #include "monster_display.h"
-#include "sort.h"
+#include "sort.hpp"
 #include "qdisplay.h"
 
 #include "dnd/helpers.h"

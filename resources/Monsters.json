@@ -12745,7 +12745,7 @@
                 "attack_bonus": 1,
                 "damage_dice": "2d4",
                 "damage_bonus": -1,
-                "desc": "Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 1 (1d4 - 1) bludgeoning damage plus 2 (1d4) poision damage."
+                "desc": "Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 1 (1d4 - 1) bludgeoning damage plus 2 (1d4) poison damage."
             },
             {
                 "name": "Rapport Spores (3/Day)",
@@ -12754,7 +12754,7 @@
         ]
     },
     {
-        "name": "Quaggoth Sport Servant",
+        "name": "Quaggoth Spore Servant",
         "size": "Medium",
         "type": "plant",
         "alignment": "unaligned",

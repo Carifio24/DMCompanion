@@ -360,16 +360,18 @@ void Spellbook::sort() {
     std::string sort_field1_str = qstr1.toStdString();
     std::string sort_field2_str = qstr2.toStdString();
     SpellSortField sort_field1 = SpellSortField::from_name(sort_field1_str);
-    SpellSortField sort_field2 = SpellSortField::from_name(sort_field2_str);
+    bool sf2_is_none = (sort_field2_str == none_field);
+    SpellSortField sort_field2 = !sf2_is_none ? SpellSortField::from_name(sort_field2_str) : SpellSortField::Name;
 
     // We have a map of the form string -> -1,0,1 comparison function
     // So we choose the correct comparison functions for the sort fields, then create the comparator from the comparison functions
     // Use this comparator to sort the list
     // We can fall back to the one-level sorted if the second field is None, the first field is Name, or the two sort fields are equal
+
     auto default_TC = SpellSortField::default_tricomparator();
     auto TC1 = sort_field1.tricomparator();
     auto TC2 = sort_field2.tricomparator();
-    bool need_two_levels = !( (sort_field2_str == none_field) || (sort_field1 == SpellSortField::Name) || (sort_field1 == sort_field2) );
+    bool need_two_levels = !( sf2_is_none || (sort_field1 == SpellSortField::Name) || (sort_field1 == sort_field2) );
     Comparator<Spell> lt_comp = need_two_levels ? comparator(TC1, TC2, default_TC) : comparator(TC1, default_TC);
     std::sort(spells.begin(), spells.end(), lt_comp);
 
