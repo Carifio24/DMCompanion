@@ -19862,7 +19862,7 @@
             {
                 "name": "Magic Weapons",
                 "desc": "The mezzoloth's weapon attacks are magical.",
-            },
+            }
         ],
         "actions": [
             {
@@ -19886,6 +19886,131 @@
             {
                 "name": "Teleport",
                 "desc": "The mezzoloth magically teleports, along with any equipment it is wearing or carrying, up to 60 feet to an unoccupied space it can see."
+            }
+        ]
+    },
+    {
+        "name": "Nycaloth",
+        "size": "Large",
+        "type": "fiend",
+        "subtype": "yugoloth",
+        "alignment": "neutral evil",
+        "armor_class": 18,
+        "hit_points": 123,
+        "hit_dice", "13d10",
+        "speed": "40 ft., fly 60 ft.",
+        "strength": 20,
+        "dexterity": 11,
+        "constitution": 19,
+        "intelligence": 12,
+        "wisdom": 10,
+        "charisma": 15,
+        "intimidation": 6,
+        "perception": 4,
+        "stealth": 4,
+        "damage_resistances": "cold, fire, lightning; bludgeoning, piercing, and slashing from nonmagical weapons",
+        "damage_immunities": "acid, poison",
+        "condition_immunities": "poisoned",
+        "senses": "blindsight 60 ft., darkvision 60 ft., passive Perception 14",
+        "languages": "Abyssal, Infernal, telepathy 60 ft.",
+        "challenge_rating": 9,
+        "special_abilities" : [
+            {
+                "name": "Innate Spellcasting",
+                "desc": "The nycaloth's innate spellcasting ability is Charisma. The nycaloth can innately cast the following spells, requiring no material components:\n\nAt will: darkness, detect magic, dispel magic, invisibility (self only), mirror image"
+            },
+            {
+                "name": "Magic Resistance",
+                "desc": "The nycaloth has advantage on saving throws against spells and other magical effects."
+            },
+            {
+                "name": "Magic Weapons",
+                "desc": "The nycaloth's weapon attacks are magical.",
+            }
+        ],
+        "actions": [
+            {
+                "name": "Multiattack",
+                "desc": "The nycaloth makes two melee attacks, or it makes one melee attack and teleports before or after the attack."
+            },
+            {
+                "name": "Claw",
+                "attack_bonus": 9,
+                "damage_dice": "2d6",
+                "damage_bonus": 5,
+                "desc": "Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 12 (2d6 + 5) slashing damage. If the target is a creature, it must succeed on a DC 16 Constitution saving throw or take 5 (2d4) slashing damage at the start of each of its turns due to a fiendish wound. Each time the nycaloth hits the wounded target with this attack, the damage dealt by the wound increases by 5 (2d4). Any creature can take an action to stanch the wound with a successful DC 13 Wisdom (Medicine) check. The wound also closes if the target receives magical healing."
+            },
+            {
+                "name": "Greataxe",
+                "attack_bonus": 9,
+                "damage_dice": "2d12",
+                "damage_bonus": 5,
+                "desc": "Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 18 (2d12 + 5) slashing damage."
+            },
+            {
+                "name": "Teleport",
+                "desc": "The nycaloth magically teleports, along with any equipment it is wearing or carrying, up to 60 feet to an unoccupied space it can see."
+            }
+        ]
+    },
+    {
+        "name": "Ultroloth",
+        "size": "Medium",
+        "type": "fiend",
+        "subtype": "yugoloth",
+        "alignment": "neutral evil",
+        "armor_class": 19,
+        "hit_points": 153,
+        "hit_dice": "18d8",
+        "speed": "30 ft., fly 60 ft.",
+        "strength": 16,
+        "dexterity": 16,
+        "constitution": 18,
+        "intelligence": 18,
+        "wisdom": 15,
+        "charisma": 19,
+        "intimidation": 9,
+        "perception": 7,
+        "stealth": 8,
+        "damage_resistances": "cold, fire, lightning; bludgeoning, piercing, and slashing from nonmagical weapons",
+        "damage_immunities": "acid, poison",
+        "condition_immunities": "charmed, frightened, poisoned",
+        "senses": "truesight 120 ft., passive Perception 17",
+        "languages": "Abyssal, Infernal, telepathy 120 ft.",
+        "challenge_rating": 13,
+        "special_abilities" : [
+            {
+                "name": "Innate Spellcasting",
+                "desc": "The ultroloth's innate spellcasting ability is Charisma (spell save DC 17). The ultroloth can innately cast the following spells, requiring no material components:\n\nAt will: alter self, clairvoyance, darkness, detect magic, detect thoughts, dispel magic, invisibility (self only), suggestion\n3/day each: dimension door, fear, wall of fire\n1/day each: fire storm, mass suggestion"
+            },
+            {
+                "name": "Magic Resistance",
+                "desc": "The ultroloth has advantage on saving throws against spells and other magical effects."
+            },
+            {
+                "name": "Magic Weapons",
+                "desc": "The ultroloth's weapon attacks are magical.",
+            }
+        ],
+        "actions": [
+            {
+                "name": "Multiattack",
+                "desc": "The ultroloth can use its Hypnotic Gaze and makes three melee attacks."
+            },
+            {
+                "name": "Longsword",
+                "attack_bonus": 8,
+                "damage_dice": "1d8",
+                "damage_bonus": 3,
+                "desc": "Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 7 (1d8 + 3) slashing damage, or 8 (1d10 + 3) slashing damage if used with two hands."
+            },
+            {
+                "name": "Hypnotic Gaze",
+                "desc": "The ultroloth's eyes sparkle with opalescent light as it targets one creature it can see within 30 feet of i.t If the target can see the ultroloth, the target must succeed on a DC 17 Wisdom saving throw against this magic or be charmed until the end of the ultroloth's next turn. The charmed target is stunned. If the target's saving throw is successful, the target is immune to the ultroloth's gaze for the next 24 hours."
+            },
+            {
+                "name": "Teleport",
+                "desc": "The ultroloth magically teleports, along with any equipment it is wearing or carrying, up to 60 feet to an unoccupied space it can see."
             }
         ]
     },
