@@ -72,9 +72,6 @@ Thri-Kreen
 Troglodyte
 Umber Hulk
 Water Weird
-Yeti
-Abominable Yeti
-Yuan-Ti Abomination
-Yuan-Ti Malison
+Yuan-Ti Malison (Need to figure out actions)
 Yuan-Ti Pureblood
 Beholder Zombie
