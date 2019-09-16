@@ -10,8 +10,8 @@ class Fraction {
 public:
 
     // Constructors
-    Fraction(const int& n, const int& d);
-    Fraction(const int& n) : Fraction(n, 1) {}
+    Fraction(int n, int d);
+    Fraction(int n) : Fraction(n, 1) {}
 
     // Default value is zero
     Fraction() : Fraction(0, 1) {}
@@ -30,7 +30,7 @@ private:
     int den;
     int sgn;
 
-    int gcd(const int& a, const int& b) const;
+    int gcd(int a, int b) const;
 };
 
 } // end namespace DnD

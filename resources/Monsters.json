@@ -12772,7 +12772,7 @@
         "condition_immunities": "blinded, charmed, frightened, paralyzed, poisoned",
         "senses": "blindsight 30 ft. (blind beyond this radius), passive Perception 8",
         "languages": "",
-        "challenge": 1,
+        "challenge_rating": 1,
         "actions": [
             {
                 "name": "Multiattack",
@@ -15623,6 +15623,52 @@
         "subtype": ""
     },
     {
+        "name": "Scarecrow",
+        "size": "Medium",
+        "type": "construct",
+        "alignment": "chaotic evil",
+        "armor_class": 11,
+        "hit_points": 36,
+        "hit_dice": "8d8",
+        "speed": "30 ft.",
+        "strength": 11,
+        "dexterity": 13,
+        "constitution": 11,
+        "intelligence": 10,
+        "wisdom": 10,
+        "charisma": 13,
+        "damage_vulnerabilities": "fire",
+        "damage_resistances": "bludgeoning, piercing, and slashing from nonmagical weapons",
+        "damage_immunities": "poison",
+        "condition_immunities": "charmed, exhaustion, frightened, paralyzed, poisoned, unconscious",
+        "senses": "darkvision 60 ft., passive Perception 10",
+        "languages": "understands the languages of its creator but can't speak",
+        "challenge_rating": 1,
+        "special_abilities": [
+            {
+                "name": "False Appearance",
+                "desc": "While the scarecrow remains motionless, it is indistinguishable from an ordinary, inanimate scarecrow."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Multiattack",
+                "desc": "The scarecrow makes two claw attacks."
+            },
+            {
+                "name": "Claw",
+                "attack_bonus": 3,
+                "damage_dice": "2d4",
+                "damage_bonus": 1,
+                "desc": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 6 (2d4 + 1) slashing damage. If the target is a creature, it must succeed on a DC 11 Wisdom saving throw or be frightened until the end of the scarecrow's next turn."
+            },
+            {
+                "name": "Terrifying Glare",
+                "desc": "The scarecrow targets one creature it can see within 30 feet of it. If the target can see the scarecrow, the target must succeed on a DC 11 Wisdom saving throw or be magically frightened until the end of the scarecrow's next turn. The frightened target is paralyzed."
+            }
+        ]
+    },
+    {
         "speed": "40 ft.",
         "image_file": "monster_images/Shadow.jpeg",
         "type": "undead",
@@ -17323,6 +17369,59 @@
         "damage_immunities": ""
     },
     {
+        "name": "Thri-kreen",
+        "size": "Medium",
+        "type": "humanoid",
+        "subtype": "thri-kreen",
+        "alignment": "chaotic neutral",
+        "armor_class": 15,
+        "hit_points": 33,
+        "hit_dice": "6d8",
+        "speed": "40 ft.",
+        "strength": 12,
+        "dexterity": 15,
+        "constitution": 13,
+        "intelligence": 8,
+        "wisdom": 12,
+        "charisma": 7,
+        "perception": 3,
+        "stealth": 4,
+        "survival": 3,
+        "senses": "darkvision 60 ft., passive Perception 13",
+        "languages": "Thri-kreen",
+        "challenge_rating": 1,
+        "special_abilities": [
+            {
+                "name": "Chameleon Carapace",
+                "desc": "The thri-kreen can change the color of its carapace to match the color and texture of its surroundings. As a result, it has advantage on Dexterity (Stealth) checks made to hide."
+            },
+            {
+                "name": "Standing Leap",
+                "desc": "The thri-kreen's long jump is up to 30 feet and its high jump is up to 15 feet, with or without a running start."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Multiattack",
+                "desc": "The thri-kreen makes two attacks: one with its bite and one with its claws."
+            },
+            {
+                "name": "Bite",
+                "attack_bonus": 3,
+                "damage_dice": "1d6",
+                "damage_bonus": 1,
+                "desc": "Melee Weapon Attack: +3 to hit, reach 5 ft., one creature. Hit: 4 (1d6 + 1) piercing damage, and the target must succeed on a DC 11 Constitution saving throw or be poisoned for 1 minute. If the saving throw fails by 5 or more, the target is also paralyzed while poisoned in this way. The poisoned target can repeat the saving throw on each of its turns, ending the effect on itself on a success."
+            },
+            {
+                "name": "Claws",
+                "attack_bonus": 3,
+                "damage_dice": "2d4",
+                "damage_bonus": 1,
+                "desc": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 6 (2d4 + 1) slashing damage."
+            }
+        ]
+    },
+    {
         "speed": "30 ft.",
         "image_file": "monster_images/Treant.jpeg",
         "type": "plant",
@@ -17473,6 +17572,61 @@
         "intelligence": 2,
         "senses": "passive Perception 10",
         "subtype": ""
+    },
+    {
+        "name": "Troglodyte",
+        "size": "Medium",
+        "type": "humanoid",
+        "subtype": "troglodyte",
+        "alignment": "chaotic evil",
+        "armor_class": 11,
+        "hit_points": 13,
+        "hit_dice": "2d8",
+        "speed": "30 ft.",
+        "strength": 14,
+        "dexterity": 10,
+        "constitution": 14,
+        "intelligence": 6,
+        "wisdom": 10,
+        "charisma": 6,
+        "stealth": 2,
+        "senses": "darkvision 60 ft., passive Perception 10",
+        "languages": "Troglodyte",
+        "challenge_rating": "1/4",
+        "special_abilities": [
+            {
+                "name": "Chameleon Skin",
+                "desc": "The troglodyte has advantage on Dexterity (Stealth) checks made to hide."
+            },
+            {
+                "name": "Stench",
+                "desc": "Any creature other than a troglodyte that starts its turn within 5 feet of the troglodyte must succeed on a DC 12 Constitution saving throw or be poisoned until the start of the creature's next turn. On a successful saving throw, the creature is immune to the stench of all troglodytes for 1 hour."
+            },
+            {
+                "name": "Sunlight Sensitivity",
+                "desc": "While in sunlight, the troglodyte has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Multiattack",
+                "desc": "The troglodyte makes three attacks: one with its bite and two with its claws."
+            },
+            {
+                "name": "Bite",
+                "attack_bonus": 4,
+                "damage_dice": "1d4",
+                "damage_bonus": 2,
+                "desc": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) piercing damage."
+            },
+            {
+                "name": "Claw",
+                "attack_bonus": 4,
+                "damage_dice": "1d4",
+                "damage_bonus": 2,
+                "desc": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) slashing damage."
+            }
+        ]
     },
     {
         "speed": "30 ft.",
@@ -19348,8 +19502,42 @@
         "charisma": 14,
         "deception": 6,
         "perception": 3,
-        "stealth": 3
-
+        "stealth": 3,
+        "damage_immunities": "poison",
+        "condition_immunities": "poisoned",
+        "senses": "darkvision 60 ft., passive Perception 13",
+        "languages": "Abyssal, Common, Draconic",
+        "challenge_rating": 1,
+        "special_abilities": [
+            {
+                "name": "Innate Spellcasting",
+                "desc": "The yuan-ti's innate spellcasting ability is Charisma (spell save DC 12). The yuan-ti can innately cast the following spells, requiring no material components:\n\nAt will: animal friendship (snakes only)\n3/day each: poison spray, suggestion"
+            },
+            {
+                "name": "Magic Resistance",
+                "desc": "The yuan-ti has advantage on saving throws against spells and other magical effects."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Multiattack",
+                "desc": "The yuan-ti makes two melee attacks"
+            },
+            {
+                "name": "Scimitar",
+                "attack_bonus": 3,
+                "damage_dice": "1d6",
+                "damage_bonus": 1,
+                "desc": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6 + 1) slashing damage."
+            },
+            {
+                "name": "Shortbow",
+                "attack_bonus": 3,
+                "damage_dice": "3d6",
+                "damage_bonus": 1,
+                "desc": "Ranged Weapon Attack: +3 to hit, range 80/320 ft., one target. Hit: 4 (1d6 + 1) piercing damage plus 7 (2d6) poison damage."
+            }
+        ]
     },
     {
         "speed": "40 ft., fly 80 ft., swim 40 ft.",

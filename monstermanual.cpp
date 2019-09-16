@@ -61,8 +61,8 @@ MonsterManual::MonsterManual(QWidget *parent) :
     ui->nameLabel->setFont(titleFont);
 
     // Sort the monsters by the default field (name)
-    auto name_cmp = comparator(MonsterSortField::from_name("Name").tricomparator());
-    std::sort(monsters.begin(), monsters.end(), name_cmp);
+    auto default_cmp = MonsterSortField::default_tricomparator();
+    std::sort(monsters.begin(), monsters.end(), default_cmp);
 
 }
 

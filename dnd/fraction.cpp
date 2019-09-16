@@ -9,7 +9,7 @@
 namespace DnD {
 
 // Constructors
-Fraction::Fraction(const int& n, const int& d) {
+Fraction::Fraction(const int n, const int d) {
 
     // Denominator can't be zero
     if (d == 0) {
@@ -63,7 +63,7 @@ std::string Fraction::as_string() const {
 }
 
 // GCD
-int Fraction::gcd(const int& a, const int& b) const {
+int Fraction::gcd(const int a, const int b) const {
     return (b == 0) ? a : gcd(b, a % b);
 }
 

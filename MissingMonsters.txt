@@ -62,16 +62,12 @@ Young Remorhaz
 Revenant
 Sahuagin Priestess
 Sahuagin Baron
-Scarecrow
 Red Slaad
 Blue Slaad
 Green Slaad
 Gray Slaad
 Death Slaad
-Thri-Kreen
-Troglodyte
 Umber Hulk
 Water Weird
 Yuan-Ti Malison (Need to figure out actions)
-Yuan-Ti Pureblood
 Beholder Zombie
