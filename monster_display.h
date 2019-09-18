@@ -2,7 +2,7 @@
 #define MONSTER_DISPLAY_H
 
 #include "dnd/monster.h"
-#include "dnd/action.h"
+#include "dnd/feature.h"
 #include "dnd/ability.h"
 #include "dnd/damage_info.h"
 #include <QString>

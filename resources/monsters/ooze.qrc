@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>monster_images/ooze/Black_Pudding.jpeg</file>
+        <file>monster_images/ooze/Gelatinous_Cube.jpeg</file>
+        <file>monster_images/ooze/Gray_Ooze.jpg</file>
+        <file>monster_images/ooze/Ochre_Jelly.jpeg</file>
+    </qresource>
+</RCC>

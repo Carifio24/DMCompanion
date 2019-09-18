@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/">
+        <file>monster_images/elemental/Air_Elemental.jpeg</file>
+        <file>monster_images/elemental/Azer.jpeg</file>
+        <file>monster_images/elemental/Djinni.jpeg</file>
+        <file>monster_images/elemental/Dust_Mephit.jpeg</file>
+        <file>monster_images/elemental/Earth_Elemental.jpeg</file>
+        <file>monster_images/elemental/Efreeti.jpeg</file>
+        <file>monster_images/elemental/Fire_Elemental.jpeg</file>
+        <file>monster_images/elemental/Gargoyle.jpeg</file>
+        <file>monster_images/elemental/Ice_Mephit.jpeg</file>
+        <file>monster_images/elemental/Invisible_Stalker.jpeg</file>
+        <file>monster_images/elemental/Magma_Mephit.jpeg</file>
+        <file>monster_images/elemental/Magmin.jpeg</file>
+        <file>monster_images/elemental/Salamander.jpeg</file>
+        <file>monster_images/elemental/Steam_Mephit.jpeg</file>
+        <file>monster_images/elemental/Water_Elemental.jpeg</file>
+        <file>monster_images/elemental/Xorn.jpeg</file>
+    </qresource>
+</RCC>

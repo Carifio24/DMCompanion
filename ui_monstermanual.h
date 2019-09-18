@@ -304,7 +304,7 @@ public:
         abilitiesScrollArea->setFrameShape(QFrame::NoFrame);
         abilitiesScrollArea->setFrameShadow(QFrame::Plain);
         abilitiesScrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-        abilitiesScrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+        abilitiesScrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         abilitiesScrollArea->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContents);
         abilitiesScrollArea->setWidgetResizable(true);
         abilitiesScrollArea->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);

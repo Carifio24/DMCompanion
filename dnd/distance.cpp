@@ -45,7 +45,6 @@ Distance Distance::from_string(const std::string& s) {
         if (s_split.size() == 1) {
             return Distance(DistanceTypes::Self, 0, LengthUnits::Foot, s);
         } else {
-            for (const auto& x : s_split) { std::cout << x << "\t";}; std::cout << std::endl;
             std::string dist_str = s_split[1];
             if (!starts_with(dist_str, "(") && !ends_with(s, ")")) {
                 throw std::runtime_error("Error parsing radius of Self spell");

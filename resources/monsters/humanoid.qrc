@@ -1,0 +1,44 @@
+<RCC>
+    <qresource prefix="/">
+        <file>monster_images/humanoid/Acolyte.jpg</file>
+        <file>monster_images/humanoid/Archmage.jpeg</file>
+        <file>monster_images/humanoid/Assassin.png</file>
+        <file>monster_images/humanoid/Bandit_Captain.jpeg</file>
+        <file>monster_images/humanoid/Bandit.jpg</file>
+        <file>monster_images/humanoid/Berserker.jpg</file>
+        <file>monster_images/humanoid/Bugbear.jpeg</file>
+        <file>monster_images/humanoid/Commoner.jpg</file>
+        <file>monster_images/humanoid/Cult_Fanatic.jpeg</file>
+        <file>monster_images/humanoid/Cultist.png</file>
+        <file>monster_images/humanoid/Deep_Gnome_(Svirfneblin).jpeg</file>
+        <file>monster_images/humanoid/Drow.jpeg</file>
+        <file>monster_images/humanoid/Druid.jpeg</file>
+        <file>monster_images/humanoid/Duergar.jpeg</file>
+        <file>monster_images/humanoid/Gladiator.jpg</file>
+        <file>monster_images/humanoid/Gnoll.jpeg</file>
+        <file>monster_images/humanoid/Goblin.jpeg</file>
+        <file>monster_images/humanoid/Grimlock.jpeg</file>
+        <file>monster_images/humanoid/Guard.jpg</file>
+        <file>monster_images/humanoid/Hobgoblin.jpeg</file>
+        <file>monster_images/humanoid/Knight.jpg</file>
+        <file>monster_images/humanoid/Kobold.jpeg</file>
+        <file>monster_images/humanoid/Lizardfolk.jpeg</file>
+        <file>monster_images/humanoid/Mage.jpg</file>
+        <file>monster_images/humanoid/Merfolk.jpeg</file>
+        <file>monster_images/humanoid/Noble.jpeg</file>
+        <file>monster_images/humanoid/Orc.jpeg</file>
+        <file>monster_images/humanoid/Priest.jpg</file>
+        <file>monster_images/humanoid/Sahuagin.jpeg</file>
+        <file>monster_images/humanoid/Scout.jpeg</file>
+        <file>monster_images/humanoid/Spy.jpg</file>
+        <file>monster_images/humanoid/Thug.jpeg</file>
+        <file>monster_images/humanoid/Tribal_Warrior.jpg</file>
+        <file>monster_images/humanoid/Veteran.jpg</file>
+        <file>monster_images/humanoid/Werebear.jpeg</file>
+        <file>monster_images/humanoid/Wereboar.jpeg</file>
+        <file>monster_images/humanoid/Wererat.jpeg</file>
+        <file>monster_images/humanoid/Weretiger.jpeg</file>
+        <file>monster_images/humanoid/Werewolf.jpeg</file>
+        <file>monster_images/humanoid/Aarakocra.jpg</file>
+    </qresource>
+</RCC>

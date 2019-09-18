@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>monster_images/aberration/Aboleth.jpeg</file>
+        <file>monster_images/aberration/Chuul.jpeg</file>
+        <file>monster_images/aberration/Cloaker.jpeg</file>
+        <file>monster_images/aberration/Gibbering_Mouther.jpeg</file>
+        <file>monster_images/aberration/Nothic.png</file>
+        <file>monster_images/aberration/Otyugh.jpeg</file>
+        <file>monster_images/aberration/Spectator.png</file>
+    </qresource>
+</RCC>

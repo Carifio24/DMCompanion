@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>monster_images/fey/Blink_Dog.jpeg</file>
+        <file>monster_images/fey/Dryad.jpeg</file>
+        <file>monster_images/fey/Green_Hag.jpeg</file>
+        <file>monster_images/fey/Satyr.jpeg</file>
+        <file>monster_images/fey/Sea_Hag.jpeg</file>
+        <file>monster_images/fey/Sprite.jpeg</file>
+    </qresource>
+</RCC>

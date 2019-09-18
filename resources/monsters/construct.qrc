@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>monster_images/construct/Animated_Armor.jpeg</file>
+        <file>monster_images/construct/Clay_Golem.jpeg</file>
+        <file>monster_images/construct/Flesh_Golem.jpeg</file>
+        <file>monster_images/construct/Flying_Sword.png</file>
+        <file>monster_images/construct/Homunculus.jpeg</file>
+        <file>monster_images/construct/Iron_Golem.jpeg</file>
+        <file>monster_images/construct/Rug_of_Smothering.jpeg</file>
+        <file>monster_images/construct/Shield_Guardian.jpeg</file>
+        <file>monster_images/construct/Stone_Golem.jpeg</file>
+    </qresource>
+</RCC>

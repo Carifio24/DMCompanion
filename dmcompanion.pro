@@ -30,6 +30,7 @@ SOURCES += main.cpp \
     spellmodel.cpp
 
 HEADERS  += spellbook.h \
+    keys.h \
     monster_display.tpp \
     monster_sort_field.h \
     qdisplay.h \
@@ -61,6 +62,7 @@ DISTFILES += \
     MonsterFields.txt \
     Spells.json \
     resources/bookbackground_2.jpg \
+    resources/monsters/Monsters.json \
     star_filled.png \
     star_filled_2.png \
     star_empty.png \
@@ -68,7 +70,22 @@ DISTFILES += \
 
 RESOURCES += \
     fonts.qrc \
-    resources.qrc
+    resources.qrc \
+    resources/monsters/aberration.qrc \
+    resources/monsters/beast.qrc \
+    resources/monsters/celestial.qrc \
+    resources/monsters/construct.qrc \
+    resources/monsters/dragon.qrc \
+    resources/monsters/elemental.qrc \
+    resources/monsters/fey.qrc \
+    resources/monsters/fiend.qrc \
+    resources/monsters/giant.qrc \
+    resources/monsters/humanoid.qrc \
+    resources/monsters/monstrosity.qrc \
+    resources/monsters/ooze.qrc \
+    resources/monsters/plant.qrc \
+    resources/monsters/swarm_of_tiny_beast.qrc \
+    resources/monsters/undead.qrc
 
 win32:CONFIG(release, debug|release): LIBS += /usr/local/lib/release/ -ldnd
 else:win32:CONFIG(debug, debug|release): LIBS += -L/usr/local/lib/debug/ -ldnd

@@ -1,20 +1,20 @@
-#ifndef ACTION_H
-#define ACTION_H
+#ifndef FEATURE_H
+#define FEATURE_H
 
 #include "enumerations.h"
 #include "dice_set.h"
 
 namespace DnD {
 
-class Action {
+class Feature {
 
     public:
 
         // Constructor
-        Action(const std::string& name, const std::string& desc, const int atk_bonus, const DiceSet& dset, const int dmg_bonus) :
+        Feature(const std::string& name, const std::string& desc, const int atk_bonus, const DiceSet& dset, const int dmg_bonus) :
             _name(name), _desc(desc), _atk_bonus(atk_bonus), _dset(dset), _dmg_bonus(dmg_bonus) {}
 
-        Action() : Action("", "", 0, DiceSet(), 0) {}
+        Feature() : Feature("", "", 0, DiceSet(), 0) {}
 
         // Get member values
         std::string name() const noexcept { return _name; }

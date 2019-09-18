@@ -1,0 +1,25 @@
+<RCC>
+    <qresource prefix="/">
+        <file>monster_images/undead/Banshee.jpeg</file>
+        <file>monster_images/undead/Flameskull.png</file>
+        <file>monster_images/undead/Ghast.jpeg</file>
+        <file>monster_images/undead/Ghost.jpeg</file>
+        <file>monster_images/undead/Ghoul.png</file>
+        <file>monster_images/undead/Lich.jpeg</file>
+        <file>monster_images/undead/Minotaur_Skeleton.jpeg</file>
+        <file>monster_images/undead/Mummy_Lord.jpg</file>
+        <file>monster_images/undead/Mummy.jpeg</file>
+        <file>monster_images/undead/Ogre_Zombie.jpeg</file>
+        <file>monster_images/undead/Shadow.jpeg</file>
+        <file>monster_images/undead/Skeleton.jpeg</file>
+        <file>monster_images/undead/Specter.jpeg</file>
+        <file>monster_images/undead/Vampire_Spawn.jpeg</file>
+        <file>monster_images/undead/Vampire.jpeg</file>
+        <file>monster_images/undead/Warhorse_Skeleton.jpg</file>
+        <file>monster_images/undead/Wight.jpeg</file>
+        <file>monster_images/undead/Will-o'-Wisp.jpeg</file>
+        <file>monster_images/undead/Wraith.jpeg</file>
+        <file>monster_images/undead/Zombie.jpeg</file>
+        <file>monster_images/undead/Crawling_Claw.jpg</file>
+    </qresource>
+</RCC>

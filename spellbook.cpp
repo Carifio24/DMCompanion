@@ -58,7 +58,7 @@ Spellbook::Spellbook(QWidget *parent) :
 
     // Read and parse the spell list
     //std::string filename = "5e-SRD-Spells.json";
-    QFile qspellfile(":/resources/Spells.json");
+    QFile qspellfile(":/resources/spells/Spells.json");
     qspellfile.open(QIODevice::ReadOnly);
     spells = read_spell_file(&qspellfile);
     qspellfile.close();
@@ -141,8 +141,8 @@ Spellbook::Spellbook(QWidget *parent) :
     ui->nameLabel->setFont(titleFont);
 
     // Create the button pixmaps
-    star_empty = QPixmap(":/resources/star_empty.png");
-    star_filled = QPixmap(":/resources/star_filled_2.png");
+    star_empty = QPixmap(":/resources/spells/star_empty.png");
+    star_filled = QPixmap(":/resources/spells/star_filled_2.png");
     fav_icon = QIcon(star_filled);
     not_fav_icon = QIcon(star_empty);
 
@@ -333,7 +333,7 @@ void Spellbook::filter() {
 //        unfilter();
 //    } else {
         for (int i = 0; i < spells.size(); ++i) {
-            std::cout << spells[i].name() << std::endl;
+            //std::cout << spells[i].name() << std::endl;
             ui->spellList->setRowHidden(i, filter_item(isClass, favorites, isText, spells[i], cc, search_text));
         }
     //}

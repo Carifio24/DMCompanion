@@ -1,6 +1,7 @@
 #ifndef MONSTERMANUAL_H
 #define MONSTERMANUAL_H
 
+#include <QFile>
 #include <QLabel>
 #include <QWidget>
 
@@ -30,11 +31,15 @@ private:
     void filter();
     void populate_monster_table();
     void display_monster_data(const DnD::Monster& m);
-    static const int image_width = 300;
-    static const int image_height = 300;
+    void read_monster_file(QFile* qmonsterfile);
 
+    static constexpr int image_width = 300;
+    static constexpr int image_height = 300;
+
+    std::string placeholder_image_file = "resources/monsters/monster_images/Placeholder.jpeg";
     Ui::MonsterManual *ui;
     QVector<DnD::Monster> monsters;
+    std::map<std::string,std::string> monster_filenames;
 };
 
 #endif // MONSTERMANUAL_H

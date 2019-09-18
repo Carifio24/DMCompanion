@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>monster_images/giant/Cloud_Giant.jpeg</file>
+        <file>monster_images/giant/Cyclops.jpeg</file>
+        <file>monster_images/giant/Ettin.jpeg</file>
+        <file>monster_images/giant/Fire_Giant.jpeg</file>
+        <file>monster_images/giant/Frost_Giant.jpeg</file>
+        <file>monster_images/giant/Hill_Giant.jpeg</file>
+        <file>monster_images/giant/Ogre.jpeg</file>
+        <file>monster_images/giant/Oni.jpeg</file>
+        <file>monster_images/giant/Stone_Giant.jpeg</file>
+        <file>monster_images/giant/Storm_Giant.jpeg</file>
+        <file>monster_images/giant/Troll.jpeg</file>
+    </qresource>
+</RCC>

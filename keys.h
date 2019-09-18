@@ -3,8 +3,6 @@
 
 #include <string>
 
-namespace DnD {
-
 // Keys for JSON parsing
 namespace keys {
     inline const std::string name_k = "name";
@@ -58,9 +56,9 @@ namespace keys {
     inline const std::string dmg_bonus_k = "damage_bonus";
     inline const std::string dmg_dice_k = "damage_dice";
     inline const std::string actions_k = "actions";
+    inline const std::string reactions_k = "reactions";
     inline const std::string leg_actions_k = "legendary_actions";
+    inline const std::string image_filename_k = "image_file";
 } // end namespace keys
-
-} // end namespace DnD
 
 #endif

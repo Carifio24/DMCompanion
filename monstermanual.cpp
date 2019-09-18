@@ -4,6 +4,7 @@
 #include "monster_display.h"
 #include "qdisplay.h"
 #include "sort.hpp"
+#include "keys.h"
 #include <vector>
 #include <iostream>
 #include <functional>
@@ -13,10 +14,14 @@
 #include <QFile>
 #include <QLabel>
 #include <QScrollBar>
+#include <QTextStream>
 #include <QStringBuilder>
 
+#include "monster_parse.h"
 #include "monster_sort_field.h"
 #include "dnd/string_helpers.h"
+#include "json_helpers.h"
+#include "qhelpers.h"
 
 using namespace DnD;
 
@@ -31,10 +36,17 @@ MonsterManual::MonsterManual(QWidget *parent) :
     //Set items to be transparent
 
     // Read and parse the monster list
-    QFile qmonsterfile(":/resources/Monsters.json");
+    QFile qmonsterfile(":/resources/monsters/Monsters.json");
     qmonsterfile.open(QIODevice::ReadOnly);
-    monsters = read_monster_file(&qmonsterfile);
+    read_monster_file(&qmonsterfile);
     qmonsterfile.close();
+
+    // Sort the monsters by the default field (name)
+    std::cout << "About to sort" << std::endl;
+    auto default_cmp = comparator(MonsterSortField::default_tricomparator());
+    std::cout << "Got the default comparator" << std::endl;
+    std::sort(monsters.begin(), monsters.end(), default_cmp);
+    std::cout << "Done sorting" << std::endl;
 
     // Populate the monster table
     std::cout << "About to populate monster table" << std::endl;
@@ -59,10 +71,6 @@ MonsterManual::MonsterManual(QWidget *parent) :
     // Set name label font
     QFont titleFont = QFont("Cloister Black", 40, 1);
     ui->nameLabel->setFont(titleFont);
-
-    // Sort the monsters by the default field (name)
-    auto default_cmp = MonsterSortField::default_tricomparator();
-    std::sort(monsters.begin(), monsters.end(), default_cmp);
 
 }
 
@@ -108,8 +116,8 @@ void MonsterManual::display_monster_data(const Monster& m) {
     ui->sizeTypeLabel->setText(size_type_string(m));
 
     // Image
-    std::string image_file = m.image_filename();
-    QString image_resource = ":monster_images/resources/" % QString::fromStdString(image_file);
+    std::string image_file = monster_filenames[m.name()];
+    QString image_resource = ":/" % QString::fromStdString(image_file);
     QPixmap img(image_resource);
     img = img.scaled(image_width, image_height, Qt::KeepAspectRatioByExpanding);
     //img = img.scaled(image_width, image_height);
@@ -154,28 +162,28 @@ void MonsterManual::display_monster_data(const Monster& m) {
     QStringList qsl;
 
     // Special abilities
-    std::vector<SpecialAbility> spcl_abls = m.special_abilities();
+    std::vector<Feature> spcl_abls = m.special_abilities();
     if (spcl_abls.size() > 0) {
         //qsl << title_qstring("Special Abilities");
-        for (const SpecialAbility& abl : spcl_abls) {
+        for (const Feature& abl : spcl_abls) {
             qsl << as_qstring(abl);
         }
     }
 
     // Actions
-    std::vector<Action> actions = m.actions();
+    std::vector<Feature> actions = m.actions();
     if (actions.size() > 0) {
         qsl << title_qstring("Actions");
-        for (const Action& act : actions) {
+        for (const Feature& act : actions) {
             qsl << as_qstring(act);
         }
     }
 
     // Legendary actions
-    std::vector<LegendaryAction> leg_acts = m.legendary_actions();
+    std::vector<Feature> leg_acts = m.legendary_actions();
     if (leg_acts.size() > 0) {
         qsl <<title_qstring("Legendary Actions:");
-        for (const LegendaryAction& lact : leg_acts) {
+        for (const Feature& lact : leg_acts) {
             qsl << as_qstring(lact);
         }
     }
@@ -204,4 +212,32 @@ void MonsterManual::filter() {
 void MonsterManual::on_searchBar_textEdited(const QString&)
 {
     filter();
+}
+
+void MonsterManual::read_monster_file(QFile* qmonsterfile) {
+
+    //std::cout << qmonsterfile->fileName().toStdString() << std::endl;
+    QTextStream in(qmonsterfile);
+    std::string data = in.readAll().toStdString();
+
+    Json::Value root;
+    Json::CharReaderBuilder builder;
+    Json::CharReader* reader = builder.newCharReader();
+    std::string errors;
+    reader->parse(data.c_str(), data.c_str() + data.size(), &root, &errors);
+
+    MonsterBuilder b;
+    //std::cout << "There are " << root.size() << " monsters" << std::endl;
+    //std::cout << root.toStyledString() << std::endl;
+    for (const Json::Value& w : root) {
+
+        // Skip the license
+        if (w.isMember("license")) { continue; }
+        Monster m = parse_monster(w, b);
+        monsters.push_back(m);
+        std::string name = m.name();
+        monster_filenames[name] = string_if_member(w, keys::image_filename_k, placeholder_image_file);
+        //std::cout << "Created monster with name " <<m.name() << std::endl;
+    }
+
 }

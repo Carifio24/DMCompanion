@@ -1,0 +1,27 @@
+<RCC>
+    <qresource prefix="/">
+        <file>monster_images/fiend/Balor.jpeg</file>
+        <file>monster_images/fiend/Barbed_Devil.jpeg</file>
+        <file>monster_images/fiend/Bearded_Devil.jpeg</file>
+        <file>monster_images/fiend/Bone_Devil.jpeg</file>
+        <file>monster_images/fiend/Chain_Devil.jpeg</file>
+        <file>monster_images/fiend/Dretch.jpeg</file>
+        <file>monster_images/fiend/Erinyes.jpeg</file>
+        <file>monster_images/fiend/Glabrezu.jpeg</file>
+        <file>monster_images/fiend/Hell_Hound.jpeg</file>
+        <file>monster_images/fiend/Hezrou.jpeg</file>
+        <file>monster_images/fiend/Horned_Devil.jpeg</file>
+        <file>monster_images/fiend/Ice_Devil.jpeg</file>
+        <file>monster_images/fiend/Imp.jpeg</file>
+        <file>monster_images/fiend/Lemure.jpeg</file>
+        <file>monster_images/fiend/Marilith.jpeg</file>
+        <file>monster_images/fiend/Nalfeshnee.jpeg</file>
+        <file>monster_images/fiend/Night_Hag.jpeg</file>
+        <file>monster_images/fiend/Nightmare.jpeg</file>
+        <file>monster_images/fiend/Pit_Fiend.jpeg</file>
+        <file>monster_images/fiend/Quasit.jpeg</file>
+        <file>monster_images/fiend/Rakshasa.jpeg</file>
+        <file>monster_images/fiend/SuccubusIncubus.jpeg</file>
+        <file>monster_images/fiend/Vrock.jpeg</file>
+    </qresource>
+</RCC>

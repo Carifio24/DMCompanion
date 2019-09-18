@@ -1,0 +1,44 @@
+<RCC>
+    <qresource prefix="/">
+        <file>monster_images/monstrosity/Androsphinx.jpeg</file>
+        <file>monster_images/monstrosity/Ankheg.jpeg</file>
+        <file>monster_images/monstrosity/Basilisk.jpeg</file>
+        <file>monster_images/monstrosity/Behir.jpeg</file>
+        <file>monster_images/monstrosity/Bulette.jpeg</file>
+        <file>monster_images/monstrosity/Centaur.jpeg</file>
+        <file>monster_images/monstrosity/Chimera.jpeg</file>
+        <file>monster_images/monstrosity/Cockatrice.jpeg</file>
+        <file>monster_images/monstrosity/Darkmantle.jpeg</file>
+        <file>monster_images/monstrosity/Death_Dog.jpeg</file>
+        <file>monster_images/monstrosity/Doppelganger.jpeg</file>
+        <file>monster_images/monstrosity/Drider.jpeg</file>
+        <file>monster_images/monstrosity/Ettercap.jpeg</file>
+        <file>monster_images/monstrosity/Gorgon.jpeg</file>
+        <file>monster_images/monstrosity/Grick.jpeg</file>
+        <file>monster_images/monstrosity/Griffon.jpeg</file>
+        <file>monster_images/monstrosity/Guardian_Naga.jpeg</file>
+        <file>monster_images/monstrosity/Gynosphinx.jpeg</file>
+        <file>monster_images/monstrosity/Harpy.jpeg</file>
+        <file>monster_images/monstrosity/Hippogriff.jpeg</file>
+        <file>monster_images/monstrosity/Hydra.jpeg</file>
+        <file>monster_images/monstrosity/Kraken.jpeg</file>
+        <file>monster_images/monstrosity/Lamia.jpeg</file>
+        <file>monster_images/monstrosity/Manticore.jpeg</file>
+        <file>monster_images/monstrosity/Medusa.jpeg</file>
+        <file>monster_images/monstrosity/Merrow.jpeg</file>
+        <file>monster_images/monstrosity/Mimic.jpeg</file>
+        <file>monster_images/monstrosity/Minotaur.jpeg</file>
+        <file>monster_images/monstrosity/Owlbear.jpeg</file>
+        <file>monster_images/monstrosity/Phase_Spider.jpeg</file>
+        <file>monster_images/monstrosity/Purple_Worm.jpeg</file>
+        <file>monster_images/monstrosity/Remorhaz.jpeg</file>
+        <file>monster_images/monstrosity/Roc.jpeg</file>
+        <file>monster_images/monstrosity/Roper.jpeg</file>
+        <file>monster_images/monstrosity/Rust_Monster.jpeg</file>
+        <file>monster_images/monstrosity/Spirit_Naga.jpeg</file>
+        <file>monster_images/monstrosity/Tarrasque.jpeg</file>
+        <file>monster_images/monstrosity/Winter_Wolf.jpeg</file>
+        <file>monster_images/monstrosity/Worg.jpeg</file>
+        <file>monster_images/monstrosity/Yeti.jpeg</file>
+    </qresource>
+</RCC>

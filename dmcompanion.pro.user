@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.9.2, 2019-09-16T15:13:33. -->
+<!-- Written by QtCreator 4.10.0, 2019-09-17T15:54:29. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
-  <value type="QByteArray">{051b47f2-d4d2-4a1d-a4aa-b85d74ac0b53}</value>
+  <value type="QByteArray">{6bc10eec-195b-41c0-95d0-9aa8edc8b2d8}</value>
  </data>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
@@ -328,10 +328,10 @@
  </data>
  <data>
   <variable>ProjectExplorer.Project.Updater.FileVersion</variable>
-  <value type="int">21</value>
+  <value type="int">22</value>
  </data>
  <data>
   <variable>Version</variable>
-  <value type="int">21</value>
+  <value type="int">22</value>
  </data>
 </qtcreator>

@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>monster_images/swarm_of_tiny_beasts/Swarm_of_Bats.jpeg</file>
+        <file>monster_images/swarm_of_tiny_beasts/Swarm_of_Insects.jpg</file>
+        <file>monster_images/swarm_of_tiny_beasts/Swarm_of_Poisonous_Snakes.jpg</file>
+        <file>monster_images/swarm_of_tiny_beasts/Swarm_of_Quippers.jpeg</file>
+        <file>monster_images/swarm_of_tiny_beasts/Swarm_of_Rats.jpeg</file>
+        <file>monster_images/swarm_of_tiny_beasts/Swarm_of_Ravens.jpeg</file>
+    </qresource>
+</RCC>

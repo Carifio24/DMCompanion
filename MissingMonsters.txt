@@ -14,12 +14,7 @@ Chasme
 Goristro
 Shadow Demon
 Yochlol
-Spined Devil
 Displacer Beast
-Young Red Shadow Dragon
-Drow Elite Warrior
-Drow Mage
-Drow Priestess of Lolth
 Empyrean
 Faerie Dragon
 Flameskull
@@ -47,16 +42,11 @@ Kuo-Toa Archpriest
 Kuo-Toa Whip
 Lizardfolk Shaman
 Lizard King/Queen
-Mud Mephit
-Smoke Mephit
 Mind Flayer
 Myconid Adult
 Myconid Sovereign
 Bone Naga
 Nothic
-Half-Ogre
-Orc Eye of Gruumsh
-Orog
 Quaggoth
 Young Remorhaz
 Revenant

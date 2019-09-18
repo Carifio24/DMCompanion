@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>monster_images/plant/Awakened_Shrub.jpg</file>
+        <file>monster_images/plant/Awakened_Tree.jpg</file>
+        <file>monster_images/plant/Shambling_Mound.jpeg</file>
+        <file>monster_images/plant/Shrieker.jpeg</file>
+        <file>monster_images/plant/Treant.jpeg</file>
+        <file>monster_images/plant/Twig_Blight.png</file>
+        <file>monster_images/plant/Violet_Fungus.jpeg</file>
+    </qresource>
+</RCC>

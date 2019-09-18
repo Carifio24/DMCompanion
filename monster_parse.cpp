@@ -1,10 +1,10 @@
-#include "dnd/keys.h"
+#include "keys.h"
 #include "dnd/string_helpers.h"
 #include "dnd/speed_type.h"
 #include "dnd/damage_info.h"
 #include "dnd/enummaps.h"
 #include "dnd/dice_set.h"
-#include "dnd/special_ability.h"
+#include "dnd/feature.h"
 #include "dnd/damage_type.h"
 
 #include <QFile>
@@ -79,15 +79,59 @@ std::vector<DamageInfo> damage_modifiers_from_string(std::string s, const std::s
 
 }
 
+
+std::vector<Feature> features_from_json_entry(const Json::Value& root, const std::string& key) {
+
+    using namespace keys;
+
+    std::vector<Feature> features;
+
+    if (root.isMember(key)) {
+
+        Json::Value json = root[key];
+        features.reserve(json.size());
+
+        for (const Json::Value& ftr : json) {
+            std::string name = ftr[name_k].asString();
+            std::string desc = ftr[description_k].asString();
+            int atk_bonus = int_if_member(ftr, atk_bonus_k, 0);
+            int dmg_bonus = int_if_member(ftr, dmg_bonus_k, 0);
+            std::string dmg_dice_str = string_if_member(ftr, dmg_dice_k, "");
+            DiceSet dset;
+            if (!dmg_dice_str.empty()) {
+                dset = DiceSet::from_string(ftr[dmg_dice_k].asString());
+            }
+            features.emplace_back(name, desc, atk_bonus, dset, dmg_bonus);
+        }
+
+    }
+    return features;
+}
+
+
+std::pair<SpeedType,Distance> speed_from_string(const std::string& s) {
+    std::vector<std::string> split_data = split(s, " ");
+    Distance dist;
+    SpeedType speed_type { SpeedType::Walk };
+    if (split_data.size() == 2) { // Walking speed
+        dist = Distance::from_string(s);
+    } else { // Other speed type
+        split_data = split(s, " ", 2);
+        dist = Distance::from_string(split_data[1]);
+        speed_type = SpeedType::from_name(split_data[0]);
+    }
+    return {speed_type, dist};
+}
+
+
 Monster parse_monster(const Json::Value& root, MonsterBuilder& b) {
 
     using namespace keys;
 
-    static const std::string placeholder_image = "monster_images/Placeholder.jpeg";
-
     // Get the basic info
-    std::cout << "Monster name: " << root[name_k].asString() << std::endl;
-    b.set_name(root[name_k].asString());
+    std::string name = root[name_k].asString();
+    //std::cout << "Monster name: " << name << std::endl;
+    b.set_name(name);
     b.set_size(Size::from_name(root[size_k].asString()));
     
     b.set_type(root[type_k].asString());
@@ -102,19 +146,7 @@ Monster parse_monster(const Json::Value& root, MonsterBuilder& b) {
     std::vector<std::string> speed_strs = split(root[speed_k].asString(), ", ");
     std::map<SpeedType,Distance> speeds;
     for (const std::string& s : speed_strs) {
-        //std::cout << "Speed string: " << s << std::endl;
-        std::vector<std::string> split_data = split(s, " ");
-        //std::cout << "Split speed string size: " << split_data.size() << std::endl;
-        if (split_data.size() == 2) { // Walking speed
-            Distance dist = Distance::from_string(s);
-            SpeedType speed_type {SpeedTypes::Walk};
-            speeds.insert(std::make_pair(speed_type, dist));
-        } else { // Other speed type
-            split_data = split(s, " ", 2);
-            Distance dist = Distance::from_string(split_data[1]);
-            SpeedType speed_type = SpeedType::from_name(split_data[0]);
-            speeds.insert(std::make_pair(speed_type, dist));
-        }
+        speeds.insert(speed_from_string(s));
     }
     b.set_speeds(speeds);
 
@@ -130,18 +162,7 @@ Monster parse_monster(const Json::Value& root, MonsterBuilder& b) {
 
             std::map<SpeedType,Distance> cond_speeds;
             for (const std::string& s : alt_speed_strs) {
-                std::vector<std::string> split_data = split(s, " ");
-                Distance dist;
-                if (split_data.size() == 2) { // Walking speed
-                    dist = Distance::from_string(s);
-                    SpeedType speed_type {SpeedTypes::Walk};
-                    cond_speeds.insert(std::make_pair(speed_type, dist));
-                } else { // Other speed type
-                    split_data = split(s, " ", 2);
-                    SpeedType speed_type = SpeedType::from_name(split_data[0]);
-                    dist = Distance::from_string(split_data[1]);
-                    cond_speeds.insert(std::make_pair(speed_type, dist));
-                }
+                cond_speeds.insert(speed_from_string(s));
             }
             alt_speeds.insert(std::make_pair(condition, cond_speeds));
         }
@@ -223,95 +244,14 @@ Monster parse_monster(const Json::Value& root, MonsterBuilder& b) {
     // Languages (just a string for now, need to work on this)
     b.set_languages(root[languages_k].asString());
 
-    // Special abilities
-    std::vector<SpecialAbility> spcl_abls;
-    if (root.isMember(spcl_abls_k)) {
-        Json::Value spcl_abls_json = root[spcl_abls_k];
-        spcl_abls.reserve(spcl_abls_json.size());
-
-        for (const Json::Value& abl : spcl_abls_json) {
-            std::string name = abl[name_k].asString();
-            std::string desc = abl[description_k].asString();
-            int atk_bonus = int_if_member(abl, atk_bonus_k,0);
-            spcl_abls.emplace_back(name, desc, atk_bonus);
-        }
-    }
-    b.set_special_abilities(spcl_abls);
-
-    // Actions
-    std::vector<Action> actions;
-    if (root.isMember(actions_k)) {
-        Json::Value actions_json = root[actions_k];
-        actions.reserve(actions_json.size());
-        for (const Json::Value& act : actions_json) {
-            std::string name = act[name_k].asString();
-            std::string desc = act[description_k].asString();
-            int atk_bonus = int_if_member(act, atk_bonus_k,0);
-            int dmg_bonus = int_if_member(act,dmg_bonus_k,0);
-            std::string dmg_dice_str = act[dmg_dice_k].asString();
-            DiceSet dset;
-            std::cout << dmg_dice_str << std::endl;
-            if (!dmg_dice_str.empty()) {
-                dset = DiceSet::from_string(act[dmg_dice_k].asString());
-            }
-            actions.emplace_back(name, desc, atk_bonus, dset, dmg_bonus);
-        }
-    }
-    b.set_actions(actions);
-
-    // Legendary actions
-    std::vector<LegendaryAction> leg_actions;
-    if (root.isMember(leg_actions_k)) {
-        Json::Value leg_acts_json = root[leg_actions_k];
-        leg_actions.reserve(leg_acts_json.size());
-        for (const Json::Value& lact : leg_acts_json) {
-            std::string name = lact[name_k].asString();
-            std::string desc = lact[description_k].asString();
-            int atk_bonus = int_if_member(lact, atk_bonus_k,0);
-            leg_actions.emplace_back(name, desc, atk_bonus);
-        }
-    }
-    b.set_legendary_actions(leg_actions);
-
-    // Image filename
-    b.set_image_filename(string_if_member(root, "image_file", placeholder_image));
+    // Special abilities, actions, reactions, legendary actions
+    b.set_special_abilities(features_from_json_entry(root, spcl_abls_k));
+    b.set_actions(features_from_json_entry(root, actions_k));
+    b.set_reactions(features_from_json_entry(root, reactions_k));
+    b.set_legendary_actions(features_from_json_entry(root, leg_actions_k));
 
     // Build and return
     Monster m = b.build_and_reset();
     return m;
 
-}
-
-QVector<Monster> read_monster_file(QFile* qmonsterfile) {
-
-    std::cout << qmonsterfile->fileName().toStdString() << std::endl;
-    QTextStream in(qmonsterfile);
-    std::string data = in.readAll().toStdString();
-
-    Json::Value root;
-    Json::CharReaderBuilder builder;
-    Json::CharReader* reader = builder.newCharReader();
-    std::string errors;
-    reader->parse(data.c_str(), data.c_str() + data.size(), &root, &errors);
-
-    QVector<Monster> monsters;
-    monsters.resize(root.size());
-    MonsterBuilder b;
-    int idx = 0;
-    std::cout << "There are " << root.size() << " monsters" << std::endl;
-    std::cout << root.toStyledString() << std::endl;
-    for (const Json::Value& w : root) {
-
-        // Skip the license
-        if (w.isMember("license")) { continue; }
-        Monster m = parse_monster(w, b);
-        std::cout << "Created monster with name " << m.name() << std::endl;
-        monsters[idx++] = m;
-    }
-
-    for (const Monster& m : monsters) {
-        std::cout << m.name() << std::endl;
-    }
-
-    return monsters;
 }
