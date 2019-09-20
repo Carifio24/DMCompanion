@@ -99,11 +99,11 @@ class Monster {
         std::vector<Condition>(), std::map<SenseType, Distance>(), 10, ""s, std::vector<Feature>(),
         std::vector<Feature>(), std::vector<Feature>(), std::vector<Feature>()) {}
 
-        // Copy constructor
+        // Copying
         Monster(const Monster&) = default;
         Monster& operator=(const Monster&) = default;
 
-        // Move constructor
+        // Moving
         Monster(Monster&&) = default;
         Monster& operator=(Monster&&) = default;
 

@@ -52,11 +52,6 @@ Young Remorhaz
 Revenant
 Sahuagin Priestess
 Sahuagin Baron
-Red Slaad
-Blue Slaad
-Green Slaad
-Gray Slaad
-Death Slaad
 Umber Hulk
 Water Weird
 Yuan-Ti Malison (Need to figure out actions)

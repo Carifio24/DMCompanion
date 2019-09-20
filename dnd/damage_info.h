@@ -29,5 +29,5 @@ class DamageInfo {
 
 } // end namespace DnD
 
-#endif // DAMAGEINFO_H
+#endif // DAMAGE_INFO_H
 

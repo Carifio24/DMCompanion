@@ -14,10 +14,10 @@ class Quantity {
         Quantity(QuantityType type, int value, UnitType unit, const std::string& str="") : _type(type), _value(value), _unit(unit), _str(str) {}
 
         // Get member values
-        // Notice that string() is virtual
-        const QuantityType& quantity_type() const noexcept { return _type; }
+        // Note that string() is virtual
+        QuantityType quantity_type() const noexcept { return _type; }
         int value() const noexcept { return _value; }
-        const UnitType& unit_type() const noexcept { return _unit; }
+        UnitType unit_type() const noexcept { return _unit; }
         virtual std::string string() const = 0;
 
         // Comparison operators
