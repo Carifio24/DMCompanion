@@ -6,6 +6,4 @@
 
 std::string snake_case_format(std::string s);
 
-
-
 #endif // QHELPERS_H

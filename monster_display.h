@@ -5,6 +5,7 @@
 #include "dnd/feature.h"
 #include "dnd/ability.h"
 #include "dnd/damage_info.h"
+#include "dnd/feature.h"
 #include <QString>
 #include <QLabel>
 
@@ -26,8 +27,7 @@ QString title_qstring(const QString& qs, int size=16);
 QString ability_score_text(const QString& abbr, int score, int size=3);
 QString size_type_string(const DnD::Monster& m);
 
-// Contains as_qstring(const T&) template used for T = Action, SpecialAbility, and LegendaryAction
-#include "monster_display.tpp"
+QString as_qstring(const DnD::Feature& f);
 
 
 

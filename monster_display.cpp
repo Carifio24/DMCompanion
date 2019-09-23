@@ -176,3 +176,7 @@ QString size_type_string(const Monster& m) {
     QString st_str = size_str % " " % type_str % subt_str % alignment_str;
     return st_str;
 }
+
+QString as_qstring(const Feature& f) {
+    return "<b><i>" % QString::fromStdString(control_to_html(f.name())) % ": </i></b>" % QString::fromStdString(control_to_html(f.description()));
+}

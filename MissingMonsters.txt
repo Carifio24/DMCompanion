@@ -1,11 +1,3 @@
-Beholder
-Death Tyrant
-Spectator
-Twig Blight
-Vine Blight
-Needle Blight
-Bugbear Chief
-Bullywug
 Cambion
 Death Knight
 Demilich
@@ -22,7 +14,6 @@ Flumph
 Fomorian
 Gas Spore
 Galeb Duhr
-Marid
 Githyanki Warrior
 Githyanki Knight
 Githzerai Monk

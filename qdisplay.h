@@ -12,5 +12,6 @@ QString yn_qstring(bool b);
 QString bold(const QString& qs);
 void set_text_none_empty(QLabel* label, const QString& prompt, const QString& text);
 void set_text_hide_empty(QLabel* label, const QString& prompt, const QString& text);
+std::string control_to_html(std::string_view sv);
 
 #endif // DISPLAY_H

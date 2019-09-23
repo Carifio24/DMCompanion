@@ -1,5 +1,7 @@
 #include "qdisplay.h"
 
+#include <boost/algorithm/string/replace.hpp>
+
 #include <QStringBuilder>
 
 QString prompt_text(const QString& prompt, const QString& info, const QString& dlm) {
@@ -51,4 +53,11 @@ void set_text_hide_empty(QLabel* label, const QString& prompt, const QString& te
         label->clear();
         label->hide();
     }
+}
+
+std::string control_to_html(std::string_view sv) {
+    std::string s(sv);
+    boost::replace_all(s, "\n", "<br>");
+    boost::replace_all(s, "\t", "&nbsp&nbsp&nbsp&nbsp");
+    return s;
 }
