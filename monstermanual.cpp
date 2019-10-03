@@ -237,7 +237,7 @@ void MonsterManual::read_monster_file(QFile* qmonsterfile) {
         monsters.push_back(m);
         std::string name = m.name();
         monster_filenames[name] = string_if_member(w, keys::image_filename_k, placeholder_image_file);
-        //std::cout << "Created monster with name " <<m.name() << std::endl;
+        std::cout << "Created monster with name " <<m.name() << std::endl;
     }
 
 }
