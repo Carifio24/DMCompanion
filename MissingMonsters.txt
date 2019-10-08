@@ -1,7 +1,4 @@
-Galeb Duhr
-Githyanki Warrior
-Githyanki Knight
-Githzerai Monk
+Galeb Duhr (just need to add rolling to speed types)
 Githzerai Zerth
 Gnoll Pack Lord
 Gnoll Fang of Yeenoghu
