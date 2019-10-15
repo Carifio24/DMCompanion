@@ -11635,6 +11635,52 @@
         "damage_immunities": "fire"
     },
     {
+        "name": "Helmed Horror",
+        "size": "Medium",
+        "type": "construct",
+        "alignment": "neutral",
+        "armor_class": 20,
+        "hit_points": 60,
+        "hit_dice": "8d8",
+        "speed": "30 ft., fly 30 ft.",
+        "strength": 18,
+        "dexterity": 13,
+        "constitution": 16,
+        "intelligence": 10,
+        "wisdom": 10,
+        "charisma": 10,
+        "perception": 4,
+        "damage_resistances": "bludgeoning, piercing, and slashing from nonmagical weapons that aren't adamantine",
+        "damage_immunities": "force, necrotic, poison",
+        "condition_immunities": "blinded, charmed, deafened, frightened, paralyzed, petrified, poisoned, stunned",
+        "senses": "blindsight 60 ft. (blind beyond this radius), passive Perception 14",
+        "languages": "understands the languages of its creator but can't speak",
+        "challenge_rating": 4,
+        "special_abilities": [
+            {
+                "name": "Magic Resistance",
+                "desc": "The helmed horror has advantage on saving throws against spells and other magical effects."
+            },
+            {
+                "name": "Spell Immunity",
+                "desc": "The helmed horror is immune to three spells chosen by its creator. Typical immunities include fireball, heat metal, and lightning bolt."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Multiattack",
+                "desc": "The helmed horror makes two longsword attacks."
+            },
+            {
+                "name": "Longsword",
+                "attack_bonus": 6,
+                "damage_dice": "1d8",
+                "damage_bonus": 4,
+                "desc": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8 + 4) slashing damage, or 9 (1d10 + 4) slashing damage if used with two hands."
+            }
+        ]
+    },
+    {
         "speed": "30 ft.",
         "image_file": "monster_images/fiend/Hezrou.jpeg",
         "type": "fiend",
