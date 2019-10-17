@@ -1,8 +1,4 @@
 Galeb Duhr (just need to add rolling to speed types)
-Hobgoblin Captain
-Hobgoblin Warlord
-Hook Horror
-Intellect Devourer
 Jackalwere
 Winged Kobold
 Kuo-Toa
