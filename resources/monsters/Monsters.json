@@ -12620,6 +12620,64 @@
         "damage_immunities": "poison"
     },
     {
+        "name": "Jackalwere",
+        "size": "Medium",
+        "type": "humanoid",
+        "subtype": "shapechanger",
+        "alignment": "chaotic evil",
+        "armor_class": 12,
+        "hit_points": 18,
+        "hit_dice": "4d8",
+        "speed": "40 ft.",
+        "strength": 11,
+        "dexterity": 15,
+        "constitution": 11,
+        "intelligence": 13,
+        "wisdom": 11,
+        "charisma": 10,
+        "deception": 4,
+        "perception": 2,
+        "stealth": 4,
+        "damage_immunities": "bludgeoning, piercing, and slashing damage from nonmagical weapons that aren't silvered",
+        "senses": "passive Perception 12",
+        "languages": "Common (can't speak in jackal form)",
+        "challenge_rating": "1/2",
+        "special_abilities": [
+            {
+                "name": "Shapechanger",
+                "desc": "The jackalwere can use its action to polymorph into a specific Medium human or a jackal-humanoid hybrid, or back into its true form (that of a Small jackal). Other than its size, its statistics are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies."
+            },
+            {
+                "name": "Keen Hearing and Smell",
+                "desc": "The jackalwere has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+            },
+            {
+                "name": "Pack Tactics",
+                "desc": "The jackalwere has advantage on an attack roll against a creature if at least one of the jackalwere's allies is within 5 feet of the creature and the ally isn't incapacitated."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Bite (Jack or Hybrid Form Only)",
+                "attack_bonus": 4,
+                "damage_dice": "1d4",
+                "damage_bonus": 2,
+                "desc": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) piercing damage."
+            },
+            {
+                "name": "Scimitar (Human or Hybrid Form Only)",
+                "attack_bonus": 4,
+                "damage_dice": "1d6",
+                "damage_bonus": 2,
+                "desc": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6 + 2) slashing damage."
+            },
+            {
+                "name": "Sleep Gaze",
+                "desc": "The jackalwere gazes at one creature it can see within 30 feet of it. The target must make a DC 10 Wisdom saving throw. On a failed save, the target succumbs to a magical slumber, falling unconscious for 10 minutes or until someone uses an action to shake the target awake. A creature that successfully saves against the effect is immune to this jackalwere's gaze for the next 24 hours. Undead and creatures immune to being charmed aren't affected by it."
+            }
+        ]
+    },
+    {
         "name": "Kenku",
         "size": "Medium",
         "type": "humanoid",
@@ -12665,6 +12723,52 @@
                 "damage_dice": "1d6",
                 "damage_bonus": 3,
                 "desc": "Ranged Weapon Attack: +5 to hit, range 80/320 ft., one target. Hit: 6 (1d6 + 3) piercing damage."
+            }
+        ]
+    },
+    {
+        "name": "Winged Kobold",
+        "size": "Small",
+        "type": "humanoid",
+        "subtype": "kobold",
+        "alignment": "lawful evil",
+        "armor_class": 13,
+        "hit_points": 7,
+        "hit_dice": "3d6",
+        "speed": "30 ft., fly 30 ft.",
+        "strength": 7,
+        "dexterity": 16,
+        "constitution": 9,
+        "intelligence": 8,
+        "wisdom": 7,
+        "charisma": 8,
+        "senses": "darkvision 60 ft., passive Perception 8",
+        "languages": "Common, Draconic",
+        "challenge_rating": "1/4",
+        "special_abilities": [
+            {
+                "name": "Sunlight Sensitivity",
+                "desc": "While in sunlight, the kobold has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+            },
+            {
+                "name": "Pack Tactics",
+                "desc": "The kobold has advantage on an attack roll against a creature if at least one of the kobold's allies is within 5 feet of the creature and the ally isn't incapacitated."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Dagger",
+                "attack_bonus": 5,
+                "damage_dice": "1d4",
+                "damage_bonus": 3,
+                "desc": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 5 (1d4 + 3) piercing damage."
+            },
+            {
+                "name": "Dropped Rock",
+                "attack_bonus": 5,
+                "damage_dice": "1d6",
+                "damage_bonus": 3,
+                "desc": "Ranged Weapon Attack: +5 to hit, one target directly below the kobold. Hit: 6 (1d6 + 3) bludgeoning damage."
             }
         ]
     },
@@ -13055,6 +13159,200 @@
         "subtype": "titan"
     },
     {
+        "name": "Kuo-Toa",
+        "size": "Medium",
+        "type": "humanoid",
+        "subtype": "kuo-toa",
+        "alignment": "neutral evil",
+        "armor_class": 13,
+        "hit_points": 18,
+        "hit_dice": "4d8",
+        "speed": "30 ft., swim 30 ft.",
+        "strength": 13,
+        "dexterity": 10,
+        "constitution": 11,
+        "intelligence": 11,
+        "wisdom": 10,
+        "charisma": 8,
+        "perception": 4,
+        "senses": "darkvision 120 ft., passive Perception 14",
+        "languages": "Undercommon",
+        "challenge_rating": "1/4",
+        "special_abilities": [
+            {
+                "name": "Amphibious",
+                "desc": "The kuo-toa can breathe air and water."
+            },
+            {
+                "name": "Otherworldly Perception",
+                "desc": "The kuo-toa can sense the presence of any creature within 30 feet of it that is invisible or on the Ethereal Plane. It can pinpoint such a creature that is moving."
+            },
+            {
+                "name": "Slippery",
+                "desc": "The kuo-toa has advantage on ability checks and saving throws made to escape a grapple."
+            },
+            {
+                "name": "Sunlight Sensitivity",
+                "desc": "While in sunlight, the kuo-toa has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Bite",
+                "attack_bonus": 3,
+                "damage_dice": "1d4",
+                "damage_bonus": 1,
+                "desc": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 3 (1d4 + 1) piercing damage."
+            },
+            {
+                "name": "Spear",
+                "attack_bonus": 3,
+                "damage_dice": "1d6",
+                "damage_bonus": 1,
+                "desc": "Melee or Ranged Weapon Attack: +3 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 (1d6 + 1) piercing damage, or 5 (1d8 + 1) piercing damage if used with two hands to make a melee attack."
+            },
+            {
+                "name": "Net",
+                "attack_bonus": 3,
+                "desc": "Ranged Weapon Attack: +3 to hit, range 5/15 ft., one Large or smaller creature. Hit: The target is restrained. A creature can use its action to make a DC 10 Strength check to free itself or another creature in a net, ending the effect on a success. Dealing 5 slashing damage to the net (AC 10) frees the target without harming it and destroys the net."
+            }
+        ],
+        "reactions": [
+            {
+                "name": "Sticky Shield",
+                "desc": "When a creature misses the kuo-toa with a melee weapon attack, the kuo-toa uses its sticky shield to catch the weapon. The attacker must succeed on a DC 11 Strength saving throw, or the weapon becomes stuck to the kuo-toa's shield. If the weapon's wielder can't or won't let go of the weapon, the wielder is grappled while the weapon is stuck. While stuck, the weapon can't be used. A creature can pull the weapon free by taking an action to make a DC 11 Strength check and succeeding."
+            }
+        ]
+    },
+    {
+        "name": "Kuo-Toa Archpriest",
+        "size": "Medium",
+        "type": "humanoid",
+        "subtype": "kuo-toa",
+        "alignment": "neutral evil",
+        "armor_class": 13,
+        "hit_points": 97,
+        "hit_dice": "13d8",
+        "speed": "30 ft., swim 30 ft.",
+        "strength": 16,
+        "dexterity": 14,
+        "constitution": 16,
+        "intelligence": 13,
+        "wisdom": 16,
+        "charisma": 14,
+        "perception": 9,
+        "religion": 6,
+        "senses": "darkvision 120 ft., passive Perception 19",
+        "languages": "Undercommon",
+        "challenge_rating": 6,
+        "special_abilities": [
+            {
+                "name": "Amphibious",
+                "desc": "The kuo-toa can breathe air and water."
+            },
+            {
+                "name": "Otherworldly Perception",
+                "desc": "The kuo-toa can sense the presence of any creature within 30 feet of it that is invisible or on the Ethereal Plane. It can pinpoint such a creature that is moving."
+            },
+            {
+                "name": "Slippery",
+                "desc": "The kuo-toa has advantage on ability checks and saving throws made to escape a grapple."
+            },
+            {
+                "name": "Sunlight Sensitivity",
+                "desc": "While in sunlight, the kuo-toa has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+            },
+            {
+                "name": "Spellcasting",
+                "desc": "The kuo-toa is a 10th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 14, +6 to hit with spell attacks). The kuo-toa has the following cleric spells prepared:\n\nCantrips (at will): guidance, sacred flame, thaumaturgy\n1st level (4 slots): detect magic, sanctuary, shield of faith\n2nd level (3 slots): hold person, spiritual weapon\n3rd level (3 slots): spirit guardians, tongues\n4th level (3 slots): control water, divination\n5th level (2 slots): mass cure wounds, scrying"
+            }
+        ],
+        "actions": [
+            {
+                "name": "Multiattack",
+                "desc": "The kuo-toa makes two melee attacks."
+            },
+            {
+                "name": "Scepter",
+                "attack_bonus": 6,
+                "damage_dice": "5d6",
+                "damage_bonus": 3,
+                "desc": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) bludgeoning damage plus 14 (4d6) lightning damage."
+            },
+            {
+                "name": "Unarmed Strike",
+                "attack_bonus": 6,
+                "damage_dice": "1d4",
+                "damage_bonus": 2,
+                "desc": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) bludgeoning damage."
+            }
+        ]
+    },
+    {
+        "name": "Kuo-Toa Whip",
+        "size": "Medium",
+        "type": "humanoid",
+        "subtype": "kuo-toa",
+        "alignment": "neutral evil",
+        "armor_class": 11,
+        "hit_points": 65,
+        "hit_dice": "10d8",
+        "speed": "30 ft., swim 30 ft.",
+        "strength": 14,
+        "dexterity": 10,
+        "constitution": 14,
+        "intelligence": 12,
+        "wisdom": 14,
+        "charisma": 11,
+        "perception": 6,
+        "religion": 4,
+        "senses": "darkvision 120 ft., passive Perception 16",
+        "languages": "Undercommon",
+        "challenge_rating": 1,
+        "special_abilities": [
+            {
+                "name": "Amphibious",
+                "desc": "The kuo-toa can breathe air and water."
+            },
+            {
+                "name": "Otherworldly Perception",
+                "desc": "The kuo-toa can sense the presence of any creature within 30 feet of it that is invisible or on the Ethereal Plane. It can pinpoint such a creature that is moving."
+            },
+            {
+                "name": "Slippery",
+                "desc": "The kuo-toa has advantage on ability checks and saving throws made to escape a grapple."
+            },
+            {
+                "name": "Sunlight Sensitivity",
+                "desc": "While in sunlight, the kuo-toa has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+            },
+            {
+                "name": "Spellcasting",
+                "desc": "The kuo-toa is a 2nd-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). The kuo-toa has the following cleric spells prepared:\n\nCantrips (at will): sacred flame, thaumaturgy\n1st level (3 slots): bane, shield of faith"
+            }
+        ],
+        "actions": [
+            {
+                "name": "Multiattack",
+                "desc": "The kuo-toa makes two attacks: one with its bite and one with its pincer staff."
+            },
+            {
+                "name": "Bite",
+                "attack_bonus": 4,
+                "damage_dice": "1d4",
+                "damage_bonus": 2,
+                "desc": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) piercing damage."
+            },
+            {
+                "name": "Pincer Staff",
+                "attack_bonus": 4,
+                "damage_dice": "1d6",
+                "damage_bonus": 2,
+                "desc": "Melee Weapon Attack: +4 to hit, reach 10 ft., one target. Hit: 5 (1d6 + 2) piercing damage. If the target is a Medium or smaller creature, it is grappled (escape DC 14). Until this grapple ends, the kuo-toa can't use its pincer staff on another target."
+            }
+        ]
+    },
+    {
         "speed": "30 ft.",
         "image_file": "monster_images/monstrosity/Lamia.jpeg",
         "type": "monstrosity",
@@ -13412,6 +13710,64 @@
         "senses": "passive Perception 13",
         "subtype": "lizardfolk",
         "damage_immunities": ""
+    },
+    {
+        "name": "Lizardfolk Shaman",
+        "size": "Medium",
+        "type": "humanoid",
+        "subtype": "lizardfolk",
+        "alignment": "neutral",
+        "armor_class": 13,
+        "hit_points": 27,
+        "hit_dice": "5d8",
+        "speed": "30 ft., swim 30 ft.",
+        "strength": 15,
+        "dexterity": 10,
+        "constitution": 13,
+        "intelligence": 10,
+        "wisdom": 15,
+        "charisma": 8,
+        "perception": 4,
+        "stealth": 4,
+        "survival": 6,
+        "senses": "passive Perception 14",
+        "languages": "Draconic",
+        "challenge_rating": 2,
+        "special_abilities": [
+            {
+                "attack_bonus": 0,
+                "name": "Hold Breath",
+                "desc": "The lizardfolk can hold its breath for 15 minutes."
+            },
+            {
+                "name": "Spellcasting (Lizardfolk Form Only)",
+                "desc": "The lizardfolk is a 5th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). The lizardfolk has the following druid spells prepared:\n\nCantrips (at will): druidcraft, produce flame, thorn whip\n1st Level (4 slots): entangle, fog cloud\n2nd Level (3 slots): heat metal, spike growth\n3rd Level (2 slots): conjure animals (reptiles only), plant growth"
+            }
+        ],
+        "actions": [
+            {
+                "name": "Multiattack (Lizardfolk Form Only)",
+                "desc": "The lizardfolk makes two attacks: one with its bite and one with its claws."
+            },
+            {
+                "name": "Bite",
+                "attack_bonus": 4,
+                "damage_dice": "1d6",
+                "damage_bonus": 2,
+                "desc": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6 + 2) piercing damage, or 7 (1d10 + 2) piercing damage in crocodile form. If the lizardfolk is in crocodile form and the target is a Large or smaller creature, the target is grappled (escape DC 12). Until this grapple ends, the target is restrained, and the lizardfolk can't bite another target. If the lizardfolk reverts to its true form, the grapple ends."
+            },
+            {
+                "name": "Claws (Lizardfolk Form Only)",
+                "attack_bonus": 4,
+                "damage_dice": "1d4",
+                "damage_bonus": 2,
+                "desc": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) slashing damage."
+            },
+            {
+                "name": "Change Shape (Recharges after a Short or Long Rest)",
+                "desc": "The lizardfolk magically polymorphs into a crocodile, remaining in that form for up to 1 hour. It can revert to its true form as a bonus action. Its statistics, other than its size, are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies."
+            }
+        ]
     },
     {
         "speed": "30 ft.",
