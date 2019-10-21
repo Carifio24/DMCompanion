@@ -58,14 +58,16 @@ MonsterManual::MonsterManual(QWidget *parent) :
     // Set the table widget to highlight its entire row
     ui->monsterTable->setSelectionBehavior(QAbstractItemView::SelectRows);
 
-    // Make the labels selectable
+    // Make the labels selectable and set their fonts
     std::vector<QLabel*> labels = {
         ui->nameLabel, ui->acLabel, ui->hpLabel, ui->strLabel, ui->dexLabel, ui->conLabel, ui->intLabel, ui->wisLabel, ui->chaLabel,
         ui->speedLabel, ui->sensesLabel, ui->damageImmunitiesLabel, ui->damageResistancesLabel, ui->damageVulnerabilitiesLabel, ui->conditionImmunitiesLabel,
         ui->challengeRatingLabel, ui->skillsLabel, ui->sizeTypeLabel, ui->abilitiesLabel
     };
+    QFont labelFont = QFont("Bookman", 12, 1);
     for (QLabel* p : labels) {
         p->setTextInteractionFlags(Qt::TextSelectableByMouse);
+        p->setFont(labelFont);
     }
 
     // Set name label font

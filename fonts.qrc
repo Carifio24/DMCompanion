@@ -1,5 +1,21 @@
 <RCC>
     <qresource prefix="/fonts">
-        <file>cloister_black.ttf</file>
+        <file>resources/fonts/cloister_black.ttf</file>
+        <file>resources/fonts/MRSEA~10.TTF</file>
+        <file>resources/fonts/MRSEA~11.TTF</file>
+        <file>resources/fonts/MRSEA~12.TTF</file>
+        <file>resources/fonts/MRSEAV~1.TTF</file>
+        <file>resources/fonts/MRSEAV~2.TTF</file>
+        <file>resources/fonts/MRSEAV~3.TTF</file>
+        <file>resources/fonts/MRSEAV~4.TTF</file>
+        <file>resources/fonts/MRSEAV~5.TTF</file>
+        <file>resources/fonts/MRSEAV~6.TTF</file>
+        <file>resources/fonts/MRSEAV~7.TTF</file>
+        <file>resources/fonts/MRSEAV~8.TTF</file>
+        <file>resources/fonts/MRSEAV~9.TTF</file>
+        <file>resources/fonts/texgyrebonum-bold.otf</file>
+        <file>resources/fonts/texgyrebonum-bolditalic.otf</file>
+        <file>resources/fonts/texgyrebonum-italic.otf</file>
+        <file>resources/fonts/texgyrebonum-regular.otf</file>
     </qresource>
 </RCC>
