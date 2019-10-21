@@ -7814,7 +7814,7 @@
             },
             {
                 "name": "Innate Spellcasting",
-                "desc": "The dragon's innate spellcasting ability is Charisma (spell save DC 13). It can innately cast a number of spells, requiring no material components. As the dragon ages and changes color, it gains additional spells as shown below.\n\nRed, 1/day each: dancing lights, mage hand, minor illusion\Orange, 1/day: color spray\nYellow, 1/day: mirror image\nGreen, 1/day: suggestion\nBlue, 1/day: major image\nIndigo, 1/day: hallucinatory terrain\nViolet, 1/day: polymorph"
+                "desc": "The dragon's innate spellcasting ability is Charisma (spell save DC 13). It can innately cast a number of spells, requiring no material components. As the dragon ages and changes color, it gains additional spells as shown below.\n\nRed, 1/day each: dancing lights, mage hand, minor illusion\nOrange, 1/day: color spray\nYellow, 1/day: mirror image\nGreen, 1/day: suggestion\nBlue, 1/day: major image\nIndigo, 1/day: hallucinatory terrain\nViolet, 1/day: polymorph"
             }
         ],
         "actions": [
@@ -13768,6 +13768,28 @@
                 "desc": "The lizardfolk magically polymorphs into a crocodile, remaining in that form for up to 1 hour. It can revert to its true form as a bonus action. Its statistics, other than its size, are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies."
             }
         ]
+    },
+    {
+        "name": "Lizard King/Queen",
+        "size": "Medium",
+        "type": "humanoid",
+        "subtype": "Lizardfolk",
+        "alignment": "chaotic evil",
+        "armor_class": 15,
+        "hit_points": 78,
+        "hit_dice": "12d8",
+        "speed": "30 ft., swim 30 ft.",
+        "strength": 17,
+        "dexterity": 12,
+        "constitution": 15,
+        "intelligence": 11,
+        "wisdom": 11,
+        "charisma": 15,
+        "constitution_save": 4,
+        "wisdom_save": 2,
+        "perception": 4,
+        "stealth": 5,
+        "survival": 4,
     },
     {
         "speed": "30 ft.",
@@ -21119,7 +21141,7 @@
         "armor_class": 16,
         "hit_points": 85,
         "hit_dice": "9d8",
-        "speed": "15 ft. (30 ft. when rolling, 60 ft. rolling downhill)",
+        "speed": "15 ft., rolling 30 ft., downhill 60 ft.",
         "strength": 20,
         "dexterity": 14,
         "constitution": 20,

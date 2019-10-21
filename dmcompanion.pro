@@ -12,7 +12,7 @@ TARGET = DMCompanion
 TEMPLATE = app
 
 QMAKE_CXX = gcc-7
-QMAKE_CXXFLAGS += -O3 -std=c++17
+QMAKE_CXXFLAGS += -O3 -std=c++17 -static
 
 SOURCES += main.cpp \
     qdisplay.cpp \
@@ -55,7 +55,7 @@ FORMS    += dmcompanion.ui \
 
 UI_DIR = $$PWD
 
-CONFIG    += c++17
+CONFIG    += c++17 static
 
 DISTFILES += \
     BookBackground.jpeg \

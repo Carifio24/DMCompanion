@@ -25,7 +25,9 @@ struct SpeedTypeImpl::Instances {
     static inline constexpr const SpeedTypeImpl Climb{"climb"sv};
     static inline constexpr const SpeedTypeImpl Fly{"fly"sv};
     static inline constexpr const SpeedTypeImpl Swim{"swim"sv};
-    static inline constexpr const SpeedTypeImpl* const instances[] = { &Walk, &Burrow, &Climb, &Fly, &Swim };
+    static inline constexpr const SpeedTypeImpl Rolling{"rolling"sv};
+    static inline constexpr const SpeedTypeImpl Downhill{"downhill"sv};
+    static inline constexpr const SpeedTypeImpl* const instances[] = { &Walk, &Burrow, &Climb, &Fly, &Swim, &Rolling, &Downhill };
 };
 
 using SpeedTypes = SpeedTypeImpl::Instances;
