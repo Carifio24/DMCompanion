@@ -13790,6 +13790,47 @@
         "perception": 4,
         "stealth": 5,
         "survival": 4,
+        "condition_immunities": "frightened",
+        "senses": "darkvision 60 ft., passive Perception 14",
+        "languages": "Abyssal, Draconic",
+        "challenge_rating": 4,
+        "special_abilities": [
+            {
+                "name": "Hold Breath",
+                "desc": "The lizardfolk can hold its breath for 15 minutes."
+            },
+            {
+                "name": "Skewer",
+                "desc": "Once per turn, when the lizardfolk makes a melee attack with its trident and hits, the target takes an extra 10 (3d6) damage, and the lizardfolk gains temporary hit points equal to the extra damage dealt."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Multiattack",
+                "desc": "The lizardfolk makes two attacks: one with its bite and one with its claws or trident or two melee attacks with its trident."
+            },
+            {
+                "name": "Bite",
+                "attack_bonus": 5,
+                "damage_dice": "1d6",
+                "damage_bonus": 3,
+                "desc": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) piercing damage."
+            },
+            {
+                "name": "Claws",
+                "attack_bonus": 5,
+                "damage_dice": "1d4",
+                "damage_bonus": 3,
+                "desc": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 5 (1d4 + 3) slashing damage."
+            },
+            {
+                "name": "Trident",
+                "attack_bonus": 5,
+                "damage_dice": "1d6",
+                "damage_bonus": 3,
+                "desc": "Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 6 (1d6 + 3) piercing damage, or 7 (1d8 + 3) piercing damage if used with two hands to make a melee attack."
+            }
+        ]
     },
     {
         "speed": "30 ft.",
@@ -14485,6 +14526,64 @@
         "subtype": "shapechanger"
     },
     {
+        "name": "Mind Flayer",
+        "size": "Medium",
+        "type": "aberration",
+        "alignment": "lawful evil",
+        "armor_class": 15,
+        "hit_points": 71,
+        "hit_dice": "13d8",
+        "speed": "30 ft.",
+        "strength": 11,
+        "dexterity": 12,
+        "constitution": 12,
+        "intelligence": 19,
+        "wisdom": 17,
+        "charisma": 17,
+        "intelligence_save": 7,
+        "wisdom_save": 6,
+        "charisma_save": 6,
+        "arcana": 7,
+        "deception": 6,
+        "insight": 6,
+        "perception": 6,
+        "persuasion": 6,
+        "stealth": 4,
+        "senses": "darkvision 120 ft., passive Perception 16",
+        "languages": "Deep Speech, Undercommon, telepathy 120 ft.",
+        "challenge_rating": 7,
+        "special_abilities": [
+            {
+                "name": "Magic Resistance",
+                "desc": "The mind flayer has advantage on saving throws against spells and other magical effects."
+            },
+            {
+                "name": "Innate Spellcasting (Psionics)",
+                "desc": "The mind flayer's innate spellcasting ability is Intelligence (spell save DC 15). It can innately cast the following spells, requiring no components:\n\nAt will: detect thoughts, levitate\n1/day each: dominate monster, plane shift (self only)"
+            }
+        ],
+        "actions": [
+            {
+                "name": "Tentacles",
+                "attack_bonus": 7,
+                "damage_dice": "2d10",
+                "damage_bonus": 4,
+                "desc": "Melee Weapon Attack: +7 to hit, reach 5 ft., one creature. Hit: 15 (2d10 + 4) psychic damage. If the target is Medium or smaller, it is grappled (escape DC 15) and must succeed on a DC 15 Intelligence saving throw or be stunned until this grapple ends."
+            },
+            {
+                "name": "Extract Brain",
+                "attack_bonus": 7,
+                "damage_dice": "10d10",
+                "damage_bonus": 0,
+                "desc": "Melee Weapon Attack: +7 to hit, reach 5 ft., one incapacitated humanoid grappled by the mind flayer. Hit: The target takes 55 (10d10) piercing damage. If this damage reduces the target to 0 hit points, the mind flayer kills the target by extracting and devouring its brain."
+            },
+            {
+                "name": "Mind Blast (Recharge 5-6)",
+                "desc": "The mind flayer magically emits psychic energy in a 60-foot cone. Each creature in that area must succeed on a DC 15 Intelligence saving throw or take 22 (4d8 + 4) psychic damage and be stunned for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+            }
+        ]
+    },
+    {
         "speed": "40 ft.",
         "image_file": "monster_images/monstrosity/Minotaur.jpeg",
         "type": "monstrosity",
@@ -15117,6 +15216,146 @@
         ]
     },
     {
+        "name": "Myconid Adult",
+        "size": "Medium",
+        "type": "plant",
+        "alignment": "lawful neutral",
+        "armor_class": 12,
+        "hit_points": 22,
+        "hit_dice": "4d8",
+        "speed": "20 ft.",
+        "strength": 10,
+        "dexterity": 10,
+        "constitution": 12,
+        "intelligence": 10,
+        "wisdom": 13,
+        "charisma": 7,
+        "senses": "darkvision 120 ft., passive Perception 11",
+        "languages": "",
+        "challenge_rating": "1/2",
+        "special_abilities": [
+            {
+                "name": "Distress Spores",
+                "desc": "When the myconid takes damage, all other myconids within 240 feet of it can sense its pain."
+            },
+            {
+                "name": "Sun Sickness",
+                "desc": "While in sunlight, the myconid has disadvantage on ability checks, attack rolls, and saving throws. The myconid dies if it spends more than 1 hour in direct sunlight."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Fist",
+                "attack_bonus": 2,
+                "damage_dice": "4d4",
+                "damage_bonus": 0,
+                "desc": "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 5 (2d4) bludgeoning damage plus 5 (2d4) poison damage."
+            },
+            {
+                "name": "Pacifying Spores (3/Day)",
+                "desc": "The myconid ejects spores at one creature it can see within 5 feet of it. The target must succeed on a DC 11 Constitution saving throw or be stunned for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+            },
+            {
+                "name": "Rapport Spores",
+                "desc": "A 20-foot radius of spores extends from the myconid. These spores can go around corners and affect only creatures with an Intelligence of 2 or higher that aren't undead, constructs, or elementals. Affected creatures can communicate telepathically with one another while they are within 30 feet of each other. The effect lasts for 1 hour."
+            }
+        ]
+    },
+    {
+        "name": "Myconid Sovereign",
+        "size": "Large",
+        "type": "plant",
+        "alignment": "lawful neutral",
+        "armor_class": 13,
+        "hit_points": 60,
+        "hit_dice": "8d10",
+        "speed": "30 ft.",
+        "strength": 12,
+        "dexterity": 10,
+        "constitution": 14,
+        "intelligence": 13,
+        "wisdom": 15,
+        "charisma": 10,
+        "senses": "darkvision 120 ft., passive Perception 12",
+        "languages": "",
+        "challenge_rating": 2,
+        "special_abilities": [
+            {
+                "name": "Distress Spores",
+                "desc": "When the myconid takes damage, all other myconids within 240 feet of it can sense its pain."
+            },
+            {
+                "name": "Sun Sickness",
+                "desc": "While in sunlight, the myconid has disadvantage on ability checks, attack rolls, and saving throws. The myconid dies if it spends more than 1 hour in direct sunlight."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Multiattack",
+                "desc": "The myconid uses either its Hallucination Spores or its Pacifying Spores, then makes a fist attack."
+            },
+            {
+                "name": "Fist",
+                "attack_bonus": 3,
+                "damage_dice": "6d4",
+                "damage_bonus": 1,
+                "desc": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 8 (3d4 + 1) bludgeoning damage plus 7 (3d4) poison damage."
+            },
+            {
+                "name": "Animating Spores (3/Day)",
+                "desc": "The myconid targets one corpse of a humanoid or a Large or smaller beast within 5 feet of it and releases spores at the corpse. In 24 hours, the corpse rises as a spore servant. The corpse stays animated for 1d4 + 1 weeks or until destroyed, and it can't be animated again in this way."
+            },
+            {
+                "name": "Hallucination Spores",
+                "desc": "The myconid ejects spores at one creature it can see within 5 feet of it. The target must succeed on a DC 12 Constitution saving throw or be poisoned for 1 minute. The poisoned target is incapacitated while it hallucinates. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+            },
+            {
+                "name": "Pacifying Spores",
+                "desc": "The myconid ejects spores at one creature it can see within 5 feet of it. The target must succeed on a DC 12 Constitution saving throw or be stunned for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+            },
+            {
+                "name": "Rapport Spores",
+                "desc": "A 30-foot radius of spores extends from the myconid. These spores can go around corners and affect only creatures with an Intelligence of 2 or higher that aren't undead, constructs, or elementals. Affected creatures can communicate telepathically with one another while they are within 30 feet of each other. The effect lasts for 1 hour."
+            }
+        ]
+    },
+    {
+        "name": "Bone Naga",
+        "size": "Large",
+        "type": "undead",
+        "alignment": "lawful evil",
+        "armor_class": 15,
+        "hit_points": 58,
+        "hit_dice": "9d10",
+        "speed": "30 ft.",
+        "strength": 15,
+        "dexterity": 16,
+        "constitution": 12,
+        "intelligence": 15,
+        "wisdom": 15,
+        "charisma": 16,
+        "damage_immunities": "poison",
+        "condition_immunities": "charmed, exhaustion, paralyzed, poisoned",
+        "senses": "darkvision 60 ft., passive Perception 12",
+        "languages": "Common plus one other language",
+        "challenge_rating": 4,
+        "special_abilities": [
+            {
+                "name": "Spellcasting",
+                "desc": "The naga is a 5th-level spellcaster (spell save DC 12, +4 to hit with spell attacks) that needs only verbal components to cast its spells.\n\tIf the naga was a guardian naga in life, its spellcasting ability is Wisdom, and it has the following cleric spells prepared:\n\nCantrips (at will): mending, sacred flame, thaumaturgy\n1st level (4 slots): command, shield of faith\n2nd level (3 slots): calm emotions, hold person\n3rd level (2 slots): bestow curse\n\nIf the naga was a spirit naga in life, its spellcasting ability is Intelligence, and it has the following wizard spells prepared:\n\nCantrips (at will): mage hand, minor illusion, ray of frost\n1st level (4 slots): charm person, sleep\n2nd level (3 slots): detect thoughts, hold person\n3rd level (2 slots): lightning bolt"
+            }
+        ],
+        "actions": [
+            {
+                "name": "Bite",
+                "attack_bonus": 5,
+                "damage_dice": "5d6",
+                "damage_bonus": 3,
+                "desc": "Melee Weapon Attack: +5 to hit, reach 10 ft., one creature. Hit: 10 (2d6 + 3) piercing damage plus 10 (3d6) poison damage."
+            }
+        ]
+    },
+    {
         "speed": "20 ft., fly 30 ft.",
         "image_file": "monster_images/fiend/Nalfeshnee.jpeg",
         "type": "fiend",
@@ -15323,6 +15562,56 @@
         "intelligence": 10,
         "senses": "passive Perception 11",
         "subtype": ""
+    },
+    {
+        "name": "Nothic",
+        "size": "Medium",
+        "type": "aberration",
+        "alignment": "neutral evil",
+        "armor_class": 15,
+        "hit_points": 45,
+        "hit_dice": "6d8",
+        "speed": "30 ft.",
+        "strength": 14,
+        "dexterity": 16,
+        "constitution": 16,
+        "intelligence": 13,
+        "wisdom": 10,
+        "charisma": 8,
+        "arcana": 3,
+        "insight": 4,
+        "perception": 2,
+        "stealth": 5,
+        "senses": "truesight 120 ft., passive Perception 12",
+        "languages": "Undercommon",
+        "challenge_rating": 2,
+        "special_abilities": [
+            {
+                "name": "Keen Sight",
+                "desc": "The nothic has advantage on Wisdom (Perception) checks that rely on sight."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Multiattack",
+                "desc": "The nothic makes two claw attacks."
+            },
+            {
+                "name": "Claw",
+                "attack_bonus": 4,
+                "damage_dice": "1d6",
+                "damage_bonus": 3,
+                "desc": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) slashing damage."
+            },
+            {
+                "name": "Rotting Gaze",
+                "desc": "The nothic targets one creature it can see within 30 feet of it. The target must succeed on a DC 12 Constitution saving throw against this magic or take 10 (3d6) necrotic damage."
+            },
+            {
+                "name": "Weird Insight",
+                "desc": "The nothic targets one creature it can see within 30 feet of it. The target must contest its Charisma (Deception) check against the nothic's Wisdom (Insight) check. If the nothic wins, it magically learns one fact or secret about the target. The target automatically wins if it is immune to being charmed."
+            }
+        ]
     },
     {
         "speed": "30 ft.",
@@ -15595,6 +15884,47 @@
         "intelligence": 3,
         "senses": "darkvision 60 ft., passive Perception 8",
         "subtype": ""
+    },
+    {
+        "name": "Beholder Zombie",
+        "size": "Large",
+        "type": "undead",
+        "alignment": "neutral evil",
+        "armor_class": 15,
+        "hit_points": 93,
+        "hit_dice": "11d10",
+        "speed": "0 ft., fly 20 ft. (hover)",
+        "strength": 10,
+        "dexterity": 8,
+        "constitution": 16,
+        "intelligence": 3,
+        "wisdom": 8,
+        "charisma": 5,
+        "wisdom_save": 2,
+        "damage_immunities": "poison",
+        "condition_immunities": "poisoned",
+        "senses": "darkvision 60 ft., passive Perception 9",
+        "languages": "understands Deep Speech and Undercommon but can't speak",
+        "challenge_rating": 5,
+        "special_abilities": [
+            {
+                "name": "Undead Fortitude",
+                "desc": "If damage reduces the zombie to 0 hit points, it must make a Constitution saving throw with a DC of 5 + the damage taken, unless the damage is radiant or from a critical hit. On a success, the zombie drop to 1 hit point instead."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Bite",
+                "attack_bonus": 3,
+                "damage_dice": "4d6",
+                "damage_bonus": 0,
+                "desc": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 14 (4d6) piercing damage."
+            },
+            {
+                "name": "Eye Ray",
+                "desc": "The zombie uses a random magical eye ray, choosing a target that it can see within 60 feet of it.\n\n1. Paralyzing Ray. The targeted creature must succeed on a DC 14 Constitution saving throw or be paralyzed for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.\n2. Fear Ray. The targeted creature must succeed on a DC 14 Wisdom saving throw or be frightened for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.\n3. Enervation Ray. The targeted creature must make a DC 14 Constitution saving throw, taking 36 (8d8) necrotic damage on a failed save, or half as much damage on a successful one.\n4. Disintegration Ray. If the target is a creature, it must succeed on a DC 14 Dexterity saving throw or take 45 (10d8) force damage. If this damage reduces the creature to 0 hit points, its body becomes a pile of fine gray dust.\n\tIf the target is a Large or smaller nonmagical object or creation of magical force, it is disintegrated without a saving throw. If the target is a Huge or larger nonmagical object or creation of magical force, this ray disintegrates a 10-foot cube of it."
+            }
+        ]
     },
     {
         "speed": "30 ft., fly 30 ft.",
@@ -16974,6 +17304,48 @@
         "subtype": ""
     },
     {
+        "name": "Quaggoth",
+        "size": "Medium",
+        "type": "humanoid",
+        "subtype": "quaggoth",
+        "alignment": "chaotic neutral",
+        "armor_class": 13,
+        "hit_points": 46,
+        "hit_dice": "6d8",
+        "speed": "30 ft., climb 30 ft.",
+        "strength": 17,
+        "dexterity": 12,
+        "constitution": 16,
+        "intelligence": 6,
+        "wisdom": 12,
+        "charisma": 7,
+        "athletics": 5,
+        "damage_immunities": "poison",
+        "condition_immunities": "poisoned",
+        "senses": "darkvision 120 ft., passive Perception 10",
+        "languages": "Undercommon",
+        "challenge_rating": 2,
+        "special_abilities": [
+            {
+                "name": "Wounded Fury",
+                "desc": "While it has 10 hit points or fewer, the quaggoth has advantage on attack rolls. In addition, it deals an extra 7 (2d6) damage to any target it hits with a melee attack."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Multiattack",
+                "desc": "The quaggoth makes two claw attacks."
+            },
+            {
+                "name": "Claw",
+                "attack_bonus": 5,
+                "damage_dice": "1d6",
+                "damage_bonus": 3,
+                "desc": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) slashing damage."
+            }
+        ]
+    },
+    {
         "speed": "40 ft.",
         "image_file": "monster_images/fiend/Quasit.jpeg",
         "type": "fiend",
@@ -17357,6 +17729,41 @@
         "damage_immunities": ""
     },
     {
+        "name": "Young Remorhaz",
+        "size": "Large",
+        "type": "monstrosity",
+        "alignment": "unaligned",
+        "armor_class": 14,
+        "hit_points": 93,
+        "hit_dice": "11d10",
+        "speed": "30 ft., burrow 20 ft.",
+        "strength": 18,
+        "dexterity": 13,
+        "constitution": 17,
+        "intelligence": 3,
+        "wisdom": 10,
+        "charisma": 4,
+        "damage_immunities": "cold, fire",
+        "senses": "darkvision 60 ft., tremorsense 60 ft., passive Perception 10",
+        "languages": "",
+        "challenge_rating": 5,
+        "special_abilities": [
+            {
+                "name": "Heated Body",
+                "desc": "A creature that touches the remorhaz or hits it with a melee attack while within 5 feet of it takes 7 (2d6) fire damage."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Bite",
+                "attack_bonus": 6,
+                "damage_dice": "3d10 + 2d6",
+                "damage_bonus": 4,
+                "desc": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 20 (3d10 + 4) piercing damage plus 7 (2d6) fire damage."
+            }
+        ]
+    },
+    {
         "speed": "30 ft., burrow 20 ft.",
         "image_file": "monster_images/monstrosity/Remorhaz.jpeg",
         "type": "monstrosity",
@@ -17402,6 +17809,67 @@
         "intelligence": 4,
         "senses": "darkvision 60 ft., tremorsense 60 ft., passive Perception 10",
         "subtype": ""
+    },
+    {
+        "name": "Revenant",
+        "size": "Medium",
+        "type": "undead",
+        "alignment": "neutral",
+        "armor_class": 13,
+        "hit_points": 136,
+        "hit_dice": "16d8",
+        "speed": "30 ft.",
+        "strength": 18,
+        "dexterity": 14,
+        "constitution": 18,
+        "intelligence": 13,
+        "wisdom": 16,
+        "charisma": 18,
+        "strength_save": 7,
+        "constitution_save": 7,
+        "wisdom_save": 6,
+        "charisma_save": 7,
+        "damage_resistances": "necrotic, psychic",
+        "damage_immunities": "poison",
+        "condition_immunities": "charmed, exhaustion, frightened, paralyzed, poisoned, stunned",
+        "senses": "darkvision 60 ft., passive Perception 13",
+        "languages": "the languages it knew in life",
+        "challenge_rating": 5,
+        "special_abilities": [
+            {
+                "name": "Regeneration",
+                "desc": "The revenant regains 10 hit points at the start of its turn. If the revenant takes fire or radiant damage, this trait doesn't function at the start of the revenant's next turn. The revenant's boy is destroyed only if it starts its turn with 0 hit points and doesn't regenerate."
+            },
+            {
+                "name": "Rejuvenation",
+                "desc": "When the revenant's body is destroyed, its soul lingers. After 24 hours, the soul inhabits and animates another corpse on the same plane of existence and regains all its hit points. While the soul is bodiless, a wish spell can be used to force the soul to go to the afterlife and not return."
+            },
+            {
+                "name": "Turn Immunity",
+                "desc": "The revenant is immune to effects that turn undead."
+            },
+            {
+                "name": "Vengeful Tracker",
+                "desc": "The revenant knows the distance to and direction of any creature against which it seeks revenge, even if the creature and the revenant are on different planes of existence. If the creature being tracked by the revenant dies, the revenant knows."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Multiattack",
+                "desc": "The revenant makes two fist attacks."
+            },
+            {
+                "name": "Fist",
+                "attack_bonus": 7,
+                "damage_dice": "2d6",
+                "damage_bonus": 4,
+                "desc": "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 11 (2d6 + 4) bludgeoning damage. If the target is a creature against which the revenant has sworn vengeance, the target takes an extra 14 (4d6) bludgeoning damage. Instead of dealing damage, the revenant can grapple the target (escape DC 14) provided the target is Large or smaller."
+            },
+            {
+                "name": "Vengeful Glare",
+                "desc": "The revenant targets one creature it can see within 30 feet of it and against which it has sworn vengeance. The target must make a DC 15 Wisdom saving throw. On a failure, the target is paralyzed until the revenant deals damage to it, or until the end of the revenant's next turn. When the paralysis ends, the target is frightened of the revenant for 1 minute. The frightened target can repeat the saving throw at the end of each of its turns, with disadvantage if it can see the revenant, ending the frightened condition on itself on a success."
+            }
+        ]
     },
     {
         "speed": "40 ft.",
@@ -17832,6 +18300,133 @@
         "senses": "darkvision 120 ft., passive Perception 15",
         "subtype": "sahuagin",
         "damage_immunities": ""
+    },
+    {
+        "name": "Sahuagin Priestess",
+        "size": "Medium",
+        "type": "humanoid",
+        "subtype": "sahuagin",
+        "alignment": "lawful evil",
+        "armor_class": 12,
+        "hit_points": 33,
+        "hit_dice": "6d8",
+        "speed": "30 ft., swim 40 ft.",
+        "strength": 13,
+        "dexterity": 11,
+        "constitution": 12,
+        "intelligence": 12,
+        "wisdom": 14,
+        "charisma": 13,
+        "perception": 6,
+        "religion": 3,
+        "senses": "darkvision 120 ft., passive Perception 16",
+        "languages": "Sahuagin",
+        "challenge_rating": 2,
+        "special_abilities": [
+            {
+                "name": "Blood Frenzy",
+                "desc": "The sahuagin has advantage on melee attack rolls against any creature that doesn't have all its hit points."
+            },
+            {
+                "name": "Limited Amphibiousness",
+                "desc": "The sahuagin can breathe air and water, but she needs to be submerged at least once every 4 hours to avoid suffocating."
+            },
+            {
+                "name": "Shark Telepathy",
+                "desc": "The sahuagin can magically command any shark within 120 feet of her, using a limited telepathy."
+            },
+            {
+                "name": "Spellcasting",
+                "desc": "The sahuagin is a 6th-level spellcaster. Her spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). She has the following cleric spells prepared:\n\nCantrips (at will): guidance, thaumaturgy\n1st level (4 slots): bless, detect magic, guiding bolt\n2nd level (3 slots): hold person, spiritual weapon (trident)\n3rd level (3 slots): mass healing word, tongues"
+            }
+        ],
+        "actions": [
+            {
+                "name": "Multiattack",
+                "desc": "The sahuagin makes two attacks: one with her bite and one with her claws."
+            },
+            {
+                "attack_bonus": 3,
+                "name": "Bite",
+                "damage_bonus": 1,
+                "desc": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 3 (1d4 + 1) piercing damage.",
+                "damage_dice": "1d4"
+            },
+            {
+                "attack_bonus": 3,
+                "name": "Claws",
+                "damage_bonus": 1,
+                "desc": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 3 (1d4 + 1) slashing damage.",
+                "damage_dice": "1d4"
+            }
+        ]
+    },
+    {
+        "name": "Sahuagin Baron",
+        "size": "Large",
+        "type": "humanoid",
+        "subtype": "sahuagin",
+        "alignment": "lawful evil",
+        "armor_class": 16,
+        "hit_points": 76,
+        "hit_dice": "9d10",
+        "speed": "30 ft., swim 50 ft.",
+        "strength": 19,
+        "dexterity": 15,
+        "constitution": 16,
+        "intelligence": 14,
+        "wisdom": 13,
+        "charisma": 17,
+        "dexterity_save": 5,
+        "constitution_save": 6,
+        "intelligence_save": 5,
+        "wisdom_save": 4,
+        "perception": 7,
+        "religion": 3,
+        "senses": "darkvision 120 ft., passive Perception 17",
+        "languages": "Sahuagin",
+        "challenge_rating": 5,
+        "special_abilities": [
+            {
+                "name": "Blood Frenzy",
+                "desc": "The sahuagin has advantage on melee attack rolls against any creature that doesn't have all its hit points."
+            },
+            {
+                "name": "Limited Amphibiousness",
+                "desc": "The sahuagin can breathe air and water, but he needs to be submerged at least once every 4 hours to avoid suffocating."
+            },
+            {
+                "name": "Shark Telepathy",
+                "desc": "The sahuagin can magically command any shark within 120 feet of him, using a limited telepathy."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Multiattack",
+                "desc": "The sahuagin makes three attacks: one with his bite and two with his claws or trident."
+            },
+            {
+                "attack_bonus": 7,
+                "name": "Bite",
+                "damage_bonus": 4,
+                "desc": "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 9 (2d4 + 4) piercing damage.",
+                "damage_dice": "2d4"
+            },
+            {
+                "attack_bonus": 7,
+                "name": "Claws",
+                "damage_bonus": 4,
+                "desc": "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 11 (2d6 + 4) slashing damage.",
+                "damage_dice": "2d6"
+            },
+            {
+                "name": "Trident",
+                "attack_bonus": 7,
+                "damage_dice": "2d6",
+                "damage_bonus": 4,
+                "desc": "Melee or Ranged Weapon Attack: +7 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 11 (2d6 + 4) piercing damage, or 13 (2d8 + 4) piercing damage if used with two hands to make a melee attack."
+            }
+        ]
     },
     {
         "name": "Fire Snake",
@@ -20674,6 +21269,55 @@
         "damage_immunities": ""
     },
     {
+        "name": "Umber Hulk",
+        "size": "Large",
+        "type": "monstrosity",
+        "alignment": "chaotic evil",
+        "armor_class": 18,
+        "hit_points": 93,
+        "hit_dice": "11d10",
+        "speed": "30 ft., burrow 20 ft.",
+        "strength": 20,
+        "dexterity": 13,
+        "constitution": 16,
+        "intelligence": 9,
+        "wisdom": 10,
+        "charisma": 10,
+        "senses": "darkvision 120 ft., tremorsense 60 ft., passive Perception 10",
+        "languages": "Umber Hulk",
+        "challenge_rating": 5,
+        "special_abilities": [
+            {
+                "name": "Confusing Gaze",
+                "desc": "When a creature starts its turn within 30 feet of the umber hulk and is able to see the umber hulk's eyes, the umber hulk can magically force it to make a DC 15 Charisma saving throw, unless the umber hulk is incapacitated.\n\tOn a failed saving throw, the creature can't take reactions until the start of its next turn and rolls a d8 to determine what it does during that turn. On a 1 to 4, the creature does nothing. On a 5 or 6, the creature takes no action but uses all its movement to move in a random direction. On a 7 or 8, the creature makes one melee attack against a random creature, or it does nothing if no creature is within reach.\n\tUnless surprised, a creature can avert its eyes to avoid the saving throw at the start of its turn. If the creature does so, it can't see the umber hulk until the start of its next turn, when it can avert its eyes again. If the creature looks at the umber hulk in the meantime, it must immediately make the save."
+            },
+            {
+                "name": "Tunneler",
+                "desc": "The umber hulk can burrow through solid rock at half its burrowing speed and leaves a 5-foot-wide, 8-foot-high tunnel in its wake."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Multiattack",
+                "desc": "The umber hulk makes three attacks: two with its claws and one with its mandibles."
+            },
+            {
+                "name": "Claw",
+                "attack_bonus": 8,
+                "damage_dice": "1d8",
+                "damage_bonus": 5,
+                "desc": "Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 9 (1d8 + 5) slashing damage."
+            },
+            {
+                "name": "Mandibles",
+                "attack_bonus": 8,
+                "damage_bonus": "2d8",
+                "damage_dice": 5,
+                "desc": "Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 14 (2d8 + 5) slashing damage."
+            }
+        ]
+    },
+    {
         "speed": "50 ft.",
         "image_file": "monster_images/beast/Tyrannosaurus_Rex.jpeg",
         "type": "beast",
@@ -21032,6 +21676,47 @@
         "senses": "darkvision 60 ft., passive Perception 13",
         "subtype": "",
         "damage_immunities": ""
+    },
+    {
+        "name": "Water Weird",
+        "size": "Large",
+        "type": "elemental",
+        "alignment": "neutral",
+        "armor_class": 13,
+        "hit_points": 58,
+        "hit_dice": "9d10",
+        "speed": "0 ft., swim 60 ft.",
+        "strength": 17,
+        "dexterity": 16,
+        "constitution": 13,
+        "intelligence": 11,
+        "wisdom": 10,
+        "charisma": 10,
+        "damage_resistances": "fire; bludgeoning, piercing, and slashing from nonmagical weapons",
+        "damage_immunities": "poison",
+        "condition_immunities": "exhaustion, grappled, paralyzed, poisoned, restrained, prone, unconscious",
+        "senses": "blindsight 30 ft., passive Perception 10",
+        "languages": "understands Aquan but doesn't speak",
+        "challenge_rating": 3,
+        "special_abilities": [
+            {
+                "name": "Invisible in Water",
+                "desc": "The water weird is invisible while fully immersed in water."
+            },
+            {
+                "name": "Water Bound",
+                "desc": "The water weird dies if it leaves the water to which it is bound or if that water is destroyed."
+            }
+        ],
+        "actions": [
+            {
+                "name": "Constrict",
+                "attack_bonus": 5,
+                "damage_dice": "3d6",
+                "damage_bonus": 3,
+                "desc": "Melee Weapon Attack: +5 to hit, reach 10 ft., one creature. Hit: 13 (3d6 + 3) bludgeoning damage. If the target is Medium or smaller, it is grappled (escape DC 13) and pulled 5 feet toward the water weird. Until this grapple ends, the target is restrained, the water weird tries to drown it, and the water weird can't constrict another target."
+            }
+        ]
     },
     {
         "speed": "30 ft.",
@@ -22579,7 +23264,7 @@
         ]
     },
     {
-        "name": "Yuan-Ti Malison",
+        "name": "Yuan-Ti Malison (Type 1)",
         "size": "Medium",
         "type": "monstrosity",
         "subtype": "shapechanger/yuan-ti",
@@ -22615,8 +23300,166 @@
                 "desc": "The yuan-ti has advantage on saving throws against spells and other magical effects."
             },
             {
-                "name": "Melison Type",
+                "name": "Malison Type",
                 "desc": "The yuan-ti has one of the following types:\n\nType 1: Human body with snake head\nType 2: Human head and body with snakes for arms\nType 3: Human head and upper body with a serpentine lower body instead of legs"
+            }
+        ],
+        "actions": [
+            {
+                "name": "Multiattack (Yuan-ti Form Only)",
+                "desc": "The yuan-ti makes two ranged attacks or two melee attacks, but can use its bite only once."
+            },
+            {
+                "name": "Bite",
+                "attack_bonus": 5,
+                "damage_dice": "1d4 + 2d6",
+                "damage_bonus": 3,
+                "desc": "Melee Weapon Attack: +5 to hit, reach 5 ft., one creature. Hit: 5 (1d4 + 3) piercing damage plus 7 (2d6) poison damage."
+            },
+            {
+                "name": "Scimitar (Yuan-ti Form Only)",
+                "attack_bonus": 5,
+                "damage_dice": "1d6",
+                "damage_bonus": 3,
+                "desc": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) slashing damage."
+            },
+            {
+                "name": "Longbow (Yuan-ti Form Only)",
+                "attack_bonus": 4,
+                "damage_dice": "1d8 + 2d6",
+                "damage_bonus": 2,
+                "desc": "Ranged Weapon Attack: +4 to hit, range 150/600 ft., one target. Hit: 6 (1d8 + 2) piercing damage plus 7 (2d6) poison damage."
+            }
+        ]
+    },
+    {
+        "name": "Yuan-Ti Malison (Type 2)",
+        "size": "Medium",
+        "type": "monstrosity",
+        "subtype": "shapechanger/yuan-ti",
+        "alignment": "neutral evil",
+        "armor_class": 12,
+        "hit_points": 66,
+        "hit_dice": "12d8",
+        "speed": "30 ft.",
+        "strength": 16,
+        "dexterity": 14,
+        "constitution": 13,
+        "intelligence": 14,
+        "wisdom": 12,
+        "charisma": 16,
+        "deception": 5,
+        "stealth": 4,
+        "damage_immunities": "poison",
+        "condition_immunities": "poisoned",
+        "senses": "darkvision 60 ft., passive Perception 11",
+        "languages": "Abyssal, Common, Draconic",
+        "challenge_rating": 3,
+        "special_abilities": [
+            {
+                "name": "Shapechanger",
+                "desc": "The yuan-ti can use its action to polymorph into a Medium snake, or back into its true form. Its statistics are the same in each form. Any equipment it is wearing or carrying isn't transformed. It doesn't change form if it dies."
+            },
+            {
+                "name": "Innate Spellcasting (Yuan-Ti Form Only)",
+                "desc": "The yuan-ti's innate spellcasting ability is Charisma (spell save DC 13). The yuan-ti can innately cast the following spells, requiring no material components:\n\nAt will: Animal friendship (snakes only)\n3/day: suggestion"
+            },
+            {
+                "name": "Magic Resistance",
+                "desc": "The yuan-ti has advantage on saving throws against spells and other magical effects."
+            },
+            {
+                "name": "Malison Type",
+                "desc": "The yuan-ti has one of the following types:\n\nType 1: Human body with snake head\nType 2: Human head and body with snakes for arms\nType 3: Human head and upper body with a serpentine lower body instead of legs"
+            }
+        ],
+        "actions": [
+            {
+                "name": "Multiattack (Yuan-ti Form Only)",
+                "desc": "The yuan-ti makes two bite attacks using its snake arms."
+            },
+            {
+                "name": "Bite",
+                "attack_bonus": 5,
+                "damage_dice": "1d4 + 2d6",
+                "damage_bonus": 3,
+                "desc": "Melee Weapon Attack: +5 to hit, reach 5 ft., one creature. Hit: 5 (1d4 + 3) piercing damage plus 7 (2d6) poison damage."
+            }
+        ]
+    },
+    {
+        "name": "Yuan-Ti Malison (Type 3)",
+        "size": "Medium",
+        "type": "monstrosity",
+        "subtype": "shapechanger/yuan-ti",
+        "alignment": "neutral evil",
+        "armor_class": 12,
+        "hit_points": 66,
+        "hit_dice": "12d8",
+        "speed": "30 ft.",
+        "strength": 16,
+        "dexterity": 14,
+        "constitution": 13,
+        "intelligence": 14,
+        "wisdom": 12,
+        "charisma": 16,
+        "deception": 5,
+        "stealth": 4,
+        "damage_immunities": "poison",
+        "condition_immunities": "poisoned",
+        "senses": "darkvision 60 ft., passive Perception 11",
+        "languages": "Abyssal, Common, Draconic",
+        "challenge_rating": 3,
+        "special_abilities": [
+            {
+                "name": "Shapechanger",
+                "desc": "The yuan-ti can use its action to polymorph into a Medium snake, or back into its true form. Its statistics are the same in each form. Any equipment it is wearing or carrying isn't transformed. It doesn't change form if it dies."
+            },
+            {
+                "name": "Innate Spellcasting (Yuan-Ti Form Only)",
+                "desc": "The yuan-ti's innate spellcasting ability is Charisma (spell save DC 13). The yuan-ti can innately cast the following spells, requiring no material components:\n\nAt will: Animal friendship (snakes only)\n3/day: suggestion"
+            },
+            {
+                "name": "Magic Resistance",
+                "desc": "The yuan-ti has advantage on saving throws against spells and other magical effects."
+            },
+            {
+                "name": "Malison Type",
+                "desc": "The yuan-ti has one of the following types:\n\nType 1: Human body with snake head\nType 2: Human head and body with snakes for arms\nType 3: Human head and upper body with a serpentine lower body instead of legs"
+            }
+        ],
+        "actions": [
+            {
+                "name": "Multiattack (Yuan-ti Form Only)",
+                "desc": "The yuan-ti makes two ranged attacks or two melee attacks, but can constrict only once."
+            },
+            {
+                "name": "Bite (Snake Form Only)",
+                "attack_bonus": 5,
+                "damage_dice": "1d4 + 2d6",
+                "damage_bonus": 3,
+                "desc": "Melee Weapon Attack: +5 to hit, reach 5 ft., one creature. Hit: 5 (1d4 + 3) piercing damage plus 7 (2d6) poison damage."
+            },
+            {
+                "name": "Constrict",
+                "attack_bonus": 5,
+                "damage_dice": "2d6",
+                "damage_bonus": 3,
+                "desc": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6 + 3) bludgeoning damage, and the target is grappled (escape DC 13). Until this grapple ends, the target is restrained, and the yuan-ti can't constrict another target."
+            },
+            {
+                "name": "Scimitar (Yuan-ti Form Only)",
+                "attack_bonus": 5,
+                "damage_dice": "1d6",
+                "damage_bonus": 3,
+                "desc": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) slashing damage."
+            },
+            {
+                "name": "Longbow (Yuan-ti Form Only)",
+                "attack_bonus": 4,
+                "damage_dice": "1d8",
+                "damage_bonus": 2,
+                "desc": "Ranged Weapon Attack: +4 to hit, range 150/600 ft., one target. Hit: 6 (1d8 + 2) piercing damage."
             }
         ]
     },
