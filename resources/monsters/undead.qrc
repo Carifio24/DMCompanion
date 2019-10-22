@@ -1,6 +1,13 @@
 <RCC>
     <qresource prefix="/">
+        <file>monster_images/undead/Adult_Blue_Dracolich.jpg</file>
         <file>monster_images/undead/Banshee.jpeg</file>
+        <file>monster_images/undead/Beholder_Zombie.png</file>
+        <file>monster_images/undead/Bone_Naga.jpg</file>
+        <file>monster_images/undead/Crawling_Claw.jpg</file>
+        <file>monster_images/undead/Death_Knight.jpeg</file>
+        <file>monster_images/undead/Death_Tyrant.jpg</file>
+        <file>monster_images/undead/Demilich.jpg</file>
         <file>monster_images/undead/Flameskull.png</file>
         <file>monster_images/undead/Ghast.jpeg</file>
         <file>monster_images/undead/Ghost.jpeg</file>
@@ -10,6 +17,7 @@
         <file>monster_images/undead/Mummy_Lord.jpg</file>
         <file>monster_images/undead/Mummy.jpeg</file>
         <file>monster_images/undead/Ogre_Zombie.jpeg</file>
+        <file>monster_images/undead/Revenant.png</file>
         <file>monster_images/undead/Shadow.jpeg</file>
         <file>monster_images/undead/Skeleton.jpeg</file>
         <file>monster_images/undead/Specter.jpeg</file>
@@ -20,6 +28,5 @@
         <file>monster_images/undead/Will-o'-Wisp.jpeg</file>
         <file>monster_images/undead/Wraith.jpeg</file>
         <file>monster_images/undead/Zombie.jpeg</file>
-        <file>monster_images/undead/Crawling_Claw.jpg</file>
     </qresource>
 </RCC>

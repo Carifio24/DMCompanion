@@ -14,6 +14,8 @@ TEMPLATE = app
 QMAKE_CXX = gcc-7
 QMAKE_CXXFLAGS += -O3 -std=c++17 -static
 
+INCLUDEPATH += /opt/Qt/5.12.3/Src/qtbase/include/QtCore
+
 SOURCES += main.cpp \
     qdisplay.cpp \
     dmcompanion.cpp \

@@ -11,5 +11,7 @@
         <file>monster_images/giant/Stone_Giant.jpeg</file>
         <file>monster_images/giant/Storm_Giant.jpeg</file>
         <file>monster_images/giant/Troll.jpeg</file>
+        <file>monster_images/giant/Fomorian.png</file>
+        <file>monster_images/giant/Half-Ogre.jpg</file>
     </qresource>
 </RCC>

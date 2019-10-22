@@ -40,5 +40,24 @@
         <file>monster_images/humanoid/Weretiger.jpeg</file>
         <file>monster_images/humanoid/Werewolf.jpeg</file>
         <file>monster_images/humanoid/Aarakocra.jpg</file>
+        <file>monster_images/humanoid/Half-Red_Dragon_Veteran.jpeg</file>
+        <file>monster_images/humanoid/Bullywug.jpg</file>
+        <file>monster_images/humanoid/Drow_Elite_Warrior.jpg</file>
+        <file>monster_images/humanoid/Drow_Mage.jpg</file>
+        <file>monster_images/humanoid/Drow_Priestess_of_Lolth.jpg</file>
+        <file>monster_images/humanoid/Githyanki.jpg</file>
+        <file>monster_images/humanoid/Githzerai.jpg</file>
+        <file>monster_images/humanoid/Jackalwere.jpg</file>
+        <file>monster_images/humanoid/Kenku.jpg</file>
+        <file>monster_images/humanoid/Kuo-Toa_Archpriest.jpg</file>
+        <file>monster_images/humanoid/Kuo-Toa_Whip.jpg</file>
+        <file>monster_images/humanoid/Kuo-Toa.jpg</file>
+        <file>monster_images/humanoid/Orog.jpeg</file>
+        <file>monster_images/humanoid/Quaggoth.jpeg</file>
+        <file>monster_images/humanoid/Sahuagin_Baron.jpg</file>
+        <file>monster_images/humanoid/Thri-Kreen.jpg</file>
+        <file>monster_images/humanoid/Troglodyte.jpg</file>
+        <file>monster_images/humanoid/Winged_Kobold.jpg</file>
+        <file>monster_images/humanoid/Yuan-ti_Pureblood.jpg</file>
     </qresource>
 </RCC>

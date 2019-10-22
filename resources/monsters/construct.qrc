@@ -9,5 +9,12 @@
         <file>monster_images/construct/Rug_of_Smothering.jpeg</file>
         <file>monster_images/construct/Shield_Guardian.jpeg</file>
         <file>monster_images/construct/Stone_Golem.jpeg</file>
+        <file>monster_images/construct/Duodrone.jpg</file>
+        <file>monster_images/construct/Helmed_Horror.jpg</file>
+        <file>monster_images/construct/Monodrone.jpg</file>
+        <file>monster_images/construct/Pentadrone.jpg</file>
+        <file>monster_images/construct/Quadrone.jpeg</file>
+        <file>monster_images/construct/Scarecrow.jpg</file>
+        <file>monster_images/construct/Tridrone.jpg</file>
     </qresource>
 </RCC>

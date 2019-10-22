@@ -130,7 +130,7 @@ Monster parse_monster(const Json::Value& root, MonsterBuilder& b) {
 
     // Get the basic info
     std::string name = root[name_k].asString();
-    std::cout << "Monster name: " << name << std::endl;
+    //std::cout << "Monster name: " << name << std::endl;
     b.set_name(name);
     b.set_size(Size::from_name(root[size_k].asString()));
     
@@ -143,7 +143,7 @@ Monster parse_monster(const Json::Value& root, MonsterBuilder& b) {
     b.set_challenge_rating(Fraction::from_string(root[challenge_rating_k].asString()));
 
     // Get the various speeds
-    std::cout << "About to parse speeds" << std::endl;
+    //std::cout << "About to parse speeds" << std::endl;
     std::vector<std::string> speed_strs = split(root[speed_k].asString(), ", ");
     std::map<SpeedType,Distance> speeds;
     for (const std::string& s : speed_strs) {
@@ -203,7 +203,7 @@ Monster parse_monster(const Json::Value& root, MonsterBuilder& b) {
 
     // Vulnerabilities, resistances, immunities
     const std::string list_sep = ", ";
-    std::cout << "About to parse damage conditions" << std::endl;
+    //std::cout << "About to parse damage conditions" << std::endl;
     //std::cout << string_if_member(root, dmg_vuls_k) << std::endl;
     b.set_damage_vulnerabilities(damage_modifiers_from_string(string_if_member(root, dmg_vuls_k), list_sep));
     b.set_damage_resistances(damage_modifiers_from_string(string_if_member(root, dmg_rsts_k), list_sep));
@@ -221,7 +221,7 @@ Monster parse_monster(const Json::Value& root, MonsterBuilder& b) {
     b.set_condition_immunities(cond_imns);
 
     // Senses and passive perception
-    std::cout << "About to parse senses and passive perception" << std::endl;
+    //std::cout << "About to parse senses and passive perception" << std::endl;
     std::map<SenseType,Distance> senses;
     int prcp  = 10;
     std::vector<std::string> senses_and_perception = split(root[senses_k].asString(), ", ");

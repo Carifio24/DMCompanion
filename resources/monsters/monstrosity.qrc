@@ -40,5 +40,13 @@
         <file>monster_images/monstrosity/Winter_Wolf.jpeg</file>
         <file>monster_images/monstrosity/Worg.jpeg</file>
         <file>monster_images/monstrosity/Yeti.jpeg</file>
+        <file>monster_images/monstrosity/Carrion_Crawler.jpg</file>
+        <file>monster_images/monstrosity/Displacer_Beast.jpg</file>
+        <file>monster_images/monstrosity/Hook_Horror.jpg</file>
+        <file>monster_images/monstrosity/Peryton.jpg</file>
+        <file>monster_images/monstrosity/Piercer.jpg</file>
+        <file>monster_images/monstrosity/Umber_Hulk.jpg</file>
+        <file>monster_images/monstrosity/Yuan-ti_Abomination.jpg</file>
+        <file>monster_images/monstrosity/Yuan-ti_Malison.jpg</file>
     </qresource>
 </RCC>

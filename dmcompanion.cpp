@@ -7,6 +7,8 @@
 #include <QIcon>
 #include <QFontDatabase>
 
+#include <iostream>
+
 DMCompanion::DMCompanion(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::DMCompanion)
@@ -38,8 +40,12 @@ DMCompanion::DMCompanion(QWidget *parent) :
     palette.setBrush(QPalette::Background, bkgnd);
     this->setPalette(palette);
 
-    // Add the Cloister Black font
-    QFontDatabase::addApplicationFont(":/fonts/cloister_black.ttf");
+    // Add the necessary fonts to the database
+    QFontDatabase::addApplicationFont(":/resources/fonts/cloister_black.ttf");
+    int ssID = QFontDatabase::addApplicationFont(":/resources/fonts/ScalaSans-Regular.otf");
+    int ssCID = QFontDatabase::addApplicationFont(":/resources/fonts/ScalaSans-RegularSC.otf");
+    std::cout << QFontDatabase::applicationFontFamilies(ssID).at(0).toStdString() << std::endl;
+    std::cout << QFontDatabase::applicationFontFamilies(ssCID).at(0).toStdString() << std::endl;
 }
 
 DMCompanion::~DMCompanion()

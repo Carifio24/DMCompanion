@@ -126,14 +126,16 @@ Spellbook::Spellbook(QWidget *parent) :
     // Make the table view not editable
     ui->spellList->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
-    // Make the labels selectable
+    // Make the labels selectable and set their font
     std::vector<QLabel*> labels = {
         ui->nameLabel, ui->schoolLabel, ui->ritualLabel,ui->concentrationLabel, ui->levelLabel, ui->rangeLabel,
         ui->descriptionTitle, ui->descriptionLabel, ui->durationLabel, ui->componentsLabel, ui->castingTimeLabel,
-        ui->pageLabel, ui->materialLabel, ui->classesLabel
+        ui->pageLabel, ui->materialLabel, ui->classesLabel, ui->higherLevelLabel
     };
+    QFont labelFont = QFont("Scala Sans", 11, 1);
     for (QLabel* p : labels) {
         p->setTextInteractionFlags(Qt::TextSelectableByMouse);
+        p->setFont(labelFont);
     }
 
     // Set the spell title font

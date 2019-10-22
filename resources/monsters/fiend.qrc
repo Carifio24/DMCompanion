@@ -23,5 +23,17 @@
         <file>monster_images/fiend/Rakshasa.jpeg</file>
         <file>monster_images/fiend/SuccubusIncubus.jpeg</file>
         <file>monster_images/fiend/Vrock.jpeg</file>
+        <file>monster_images/fiend/Barlgura.jpg</file>
+        <file>monster_images/fiend/Cambion.jpg</file>
+        <file>monster_images/fiend/Chasme.jpg</file>
+        <file>monster_images/fiend/Goristro.jpg</file>
+        <file>monster_images/fiend/Manes.jpg</file>
+        <file>monster_images/fiend/Shadow_Demon.jpg</file>
+        <file>monster_images/fiend/Yochlol.jpg</file>
+        <file>monster_images/fiend/Arcanaloth.png</file>
+        <file>monster_images/fiend/Mezzoloth.jpg</file>
+        <file>monster_images/fiend/Nycaloth.jpg</file>
+        <file>monster_images/fiend/Spined_Devil.jpg</file>
+        <file>monster_images/fiend/Ultroloth.jpg</file>
     </qresource>
 </RCC>

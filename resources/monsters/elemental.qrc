@@ -16,5 +16,12 @@
         <file>monster_images/elemental/Steam_Mephit.jpeg</file>
         <file>monster_images/elemental/Water_Elemental.jpeg</file>
         <file>monster_images/elemental/Xorn.jpeg</file>
+        <file>monster_images/elemental/Dao.jpg</file>
+        <file>monster_images/elemental/Fire_Snake.jpeg</file>
+        <file>monster_images/elemental/Galeb_Duhr.jpg</file>
+        <file>monster_images/elemental/Marid.jpg</file>
+        <file>monster_images/elemental/Mud_Mephit.jpg</file>
+        <file>monster_images/elemental/Smoke_Mephit.jpg</file>
+        <file>monster_images/elemental/Water_Weird.jpg</file>
     </qresource>
 </RCC>

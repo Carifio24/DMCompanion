@@ -16,6 +16,7 @@
 #include <QScrollBar>
 #include <QTextStream>
 #include <QStringBuilder>
+#include <QFontDatabase>
 
 #include "monster_parse.h"
 #include "monster_sort_field.h"
@@ -62,9 +63,9 @@ MonsterManual::MonsterManual(QWidget *parent) :
     std::vector<QLabel*> labels = {
         ui->nameLabel, ui->acLabel, ui->hpLabel, ui->strLabel, ui->dexLabel, ui->conLabel, ui->intLabel, ui->wisLabel, ui->chaLabel,
         ui->speedLabel, ui->sensesLabel, ui->damageImmunitiesLabel, ui->damageResistancesLabel, ui->damageVulnerabilitiesLabel, ui->conditionImmunitiesLabel,
-        ui->challengeRatingLabel, ui->skillsLabel, ui->sizeTypeLabel, ui->abilitiesLabel
+        ui->challengeRatingLabel, ui->skillsLabel, ui->sizeTypeLabel, ui->abilitiesLabel, ui->languagesLabel, ui->savingThrowsLabel
     };
-    QFont labelFont = QFont("Bookman", 12, 1);
+    QFont labelFont = QFont("Scala Sans", 11, 1);
     for (QLabel* p : labels) {
         p->setTextInteractionFlags(Qt::TextSelectableByMouse);
         p->setFont(labelFont);
@@ -175,7 +176,7 @@ void MonsterManual::display_monster_data(const Monster& m) {
     // Actions
     std::vector<Feature> actions = m.actions();
     if (actions.size() > 0) {
-        qsl << title_qstring("Actions");
+        qsl << title_qstring("Actions:");
         for (const Feature& act : actions) {
             qsl << as_qstring(act);
         }
@@ -240,6 +241,7 @@ void MonsterManual::read_monster_file(QFile* qmonsterfile) {
         monsters.push_back(m);
         std::string name = m.name();
         monster_filenames[name] = string_if_member(w, keys::image_filename_k, placeholder_image_file);
+        //std::cout << monster_filenames[name] << std::endl;
         //std::cout << "Created monster with name " <<m.name() << std::endl;
     }
 

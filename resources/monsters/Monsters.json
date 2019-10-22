@@ -5,6 +5,7 @@
         "armor_class": 12,
         "type": "humanoid",
         "subtype": "aarakocra",
+        "alignment": "neutral good",
         "hit_points": 13,
         "hit_dice": "3d8",
         "speed": "20 ft., fly 50 ft.",
@@ -369,7 +370,8 @@
         ],
         "senses": "blindsight 60 ft., darkvision 120 ft., passive Perception 22",
         "subtype": "",
-        "damage_immunities": "lightning, poison"
+        "damage_immunities": "lightning, poison",
+        "image_file": "monster_images/undead/Adult_Blue_Dracolich.jpg"
     },
     {
         "name": "Young Red Shadow Dragon",
@@ -435,7 +437,8 @@
                 "damage_dice": "16d6",
                 "desc": "The dragon exhales shadowy fire in a 30-foot cone. Each creature in that area must make a DC 18 Dexterity saving throw, taking 56 (16d6) necrotic damage on a failed save, or half as much damage on a successful one. A humanoid reduced to 0 hit points by this damage dies, and an undead shadow rises from its corpse and acts immediately after the dragon in the initiative count. The shadow is under the dragon's control."
             }
-        ]
+        ],
+        "image_file": "monster_images/dragon/Young_Red_Shadow_Dragon.jpg"
     },
     {
         "speed": "40 ft., burrow 30 ft., fly 80 ft.",
@@ -3072,7 +3075,8 @@
                 "damage_bonus": 4,
                 "desc": "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 9 (1d10 + 4) bludgeoning damage."
             }
-        ]
+        ],
+        "image_file": "monster_images/fiend/Barlgura.jpg"
     },
     {
         "name": "Chasme",
@@ -3121,7 +3125,8 @@
                 "damage_bonus": 2,
                 "desc": "Melee Weapon Attack: +5 to hit, reach 5 ft., one creature. Hit: 16 (4d6 + 2) piercing damage plus 24 (7d6) necrotic damage, and the target's hit point maximum is reduced by an amount equal to the necrotic damage taken. If this effect reduces a creature's hit point maximum to 0, the creature dies. This reduction to a creature's hit point maximum lasts until the creature finishes a long rest or until it is affected by a spell like greater restoration."
             }
-        ]
+        ],
+        "image_file": "monster_images/fiend/Chasme.jpg"
     },
     {
         "speed": "30 ft.",
@@ -3279,7 +3284,8 @@
                 "damage_bonus": 0,
                 "desc": "The banshee releases a mournful wail, provided that she isn't in sunlight. This wail has no effect on constructs and undead. All other creatures within 30 feet of her that can hear her must make a DC 13 Constitution saving throw. On a failure, a creature drops to 0 hit points. On a success, a creature takes 10 (3d6) psychic damage."
             }
-        ]
+        ],
+        "image_file": "monster_images/undead/Banshee.jpeg"
     },
     {
         "speed": "30 ft.",
@@ -3617,7 +3623,8 @@
                 "name": "Eye Ray",
                 "desc": "The beholder uses one random eye ray."
             }
-        ]
+        ],
+        "image_file": "monster_images/aberration/Beholder.jpg"
     },
     {
         "name": "Death Tyrant",
@@ -3669,7 +3676,8 @@
                 "name": "Eye Ray",
                 "desc": "The death tyrant uses one random eye ray."
             }
-        ]
+        ],
+        "image_file": "monster_images/undead/Death_Tyrant.jpg"
     },
     {
         "name": "Spectator",
@@ -3680,6 +3688,7 @@
         "hit_points": 39,
         "hit_dice": "6d8",
         "speed": "0 ft., fly 30 ft. (hover)",
+        "image_file": "monster_images/aberration/Spectator.jpg",
         "strength": 8,
         "dexterity": 14,
         "constitution": 14,
@@ -3720,6 +3729,7 @@
         "size": "Small",
         "type": "plant",
         "alignment": "neutral evil",
+        "image_file": "monster_images/plant/Twig_Blight.png",
         "armor_class": 13,
         "hit_points": 4,
         "hit_dice": "1d6",
@@ -3790,7 +3800,8 @@
                 "name": "Entangling Plants (Recharge 5-6)",
                 "desc": "Grasping roots and vines sprout in a 15-foot radius centered on the blight, withering away after 1 minute. For the duration, that area is difficult terrain for nonplant creatures. In addition, each creature of the blight's choice in that area when the plants appear must succeed on a DC 12 Strength saving throw or become restrained. A creature can use its action to make a DC 12 Strength check, freeing itself or another entangled creature within reach on a success."
             }
-        ]
+        ],
+        "image_file": "monster_images/plant/Vine_Blight.jpg"
     },
     {
         "name": "Needle Blight",
@@ -3826,7 +3837,8 @@
                 "damage_bonus": 1,
                 "desc": "Ranged Weapon Attack: +3 to hit, range 30/60 ft., one target. Hit: 8 (2d6 + 1) piercing damage."
             }
-        ]
+        ],
+        "image_file": "monster_images/plant/Needle_Blight.png"
     },
     {
         "speed": "30 ft.",
@@ -4500,6 +4512,7 @@
         "type": "humanoid",
         "subtype": "goblinoid",
         "alignment": "chaotic evil",
+        "image_file": "monster_images/humanoid/Bugbear.jpeg",
         "armor_class": 17,
         "hit_points": 65,
         "hit_dice": "10d8",
@@ -4655,7 +4668,8 @@
                 "damage_bonus": 1,
                 "desc": "Melee or Ranged Weapon Attack: +3 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 (1d6 + 1) piercing damage, or 5 (1d8 + 1) piercing damage if used with two hands to make a melee attack."
             }
-        ]
+        ],
+        "image_file": "monster_images/humanoid/Bullywug.jpg"
     },
     {
         "name": "Cambion",
@@ -4717,7 +4731,8 @@
                 "name": "Fiendish Charm",
                 "desc": "One humanoid the cambion can see within 30 feet of it must succeed on a DC 14 Wisdom saving throw or be magically charmed for 1 day. The charmed target obeys the cambion's spoken commands. If the target suffers any harm from the cambion or another creature or receives a suicidal command from the cambion, the target can repeat the saving throw, ending the effect on itself on a success. If a target's saving throw is successful, or if the effect ends for it, the creature is immune to the cambion's Fiendish Charm for the next 24 hours."
             }
-        ]
+        ],
+        "image_file": "monster_images/fiend/Cambion.jpg"
     },
     {
         "speed": "50 ft.",
@@ -4808,7 +4823,8 @@
         "intelligence": 1,
         "senses": "darkvision 60 ft., passive Perception 13",
         "subtype": "",
-        "damage_immunities": ""
+        "damage_immunities": "",
+        "image_file": "monster_images/monstrosity/Carrion_Crawler.jpg"
     },
     {
         "speed": "40 ft., climb 30 ft.",
@@ -5662,7 +5678,8 @@
                 "damage_bonus": 6,
                 "desc": "Ranged Weapon Attack: +9 to hit, range 30/120 ft., one target. Hit: 28 (4d10 + 6) bludgeoning damage."
             }
-        ]
+        ],
+        "image_file": "monster_images/giant/Cyclops.jpeg"
     },
     {
         "speed": "20 ft., swim 20 ft.",
@@ -5912,7 +5929,8 @@
                 "damage_bonus": 6,
                 "desc": "Melee Weapon Attack: +10 to hit, reach 5 ft., one target. Hit: 20 (4d6 + 6) bludgeoning damage. If the target is a Huge or smaller creature, it must succeed on a DC 18 Strength check or be knocked prone."
             }
-        ]
+        ],
+        "image_file": "monster_images/elemental/Dao.jpg"
     },
     {
         "speed": "10 ft., fly 30 ft.",
@@ -6027,7 +6045,8 @@
                 "name": "Parry",
                 "desc": "The death knight adds 6 to its AC against one melee attack that would hit it. To do so, the death knight must see the attacker and be wielding a melee weapon."
             }
-        ]
+        ],
+        "image_file": "monster_images/undead/Death_Knight.jpeg"
     },
     {
         "name": "Demilich",
@@ -6095,7 +6114,8 @@
                 "name": "Vile Curse (Costs 3 Actions)",
                 "desc": "The demilich targets one creature it can see within 30 feet of it. The target must succeed on a DC 15 Wisdom saving throw or be magically cursed. Until the curse ends, the target has disadvantage on attack rolls and saving throws. The target can repeat the saving throw at the end of each of its turns, ending the curse on a success."
             }
-        ]
+        ],
+        "image_file": "monster_images/undead/Demilich.jpg"
     },
     {
         "speed": "40 ft.",
@@ -6782,7 +6802,7 @@
     {
         "name": "Drow Elite Warrior",
         "size": "Medium",
-        "type:": "humanoid",
+        "type": "humanoid",
         "subtype": "elf",
         "alignment": "neutral evil",
         "armor_class": 18,
@@ -6842,7 +6862,8 @@
                 "name": "Parry",
                 "desc": "The drow adds 3 to its AC against one melee attack that would hit it. To do so, the drow must see the attacker and be wielding a melee weapon."
             }
-        ]
+        ],
+        "image_file": "monster_images/humanoid/Drow_Elite_Warrior.jpg"
     },
     {
         "name": "Drow Mage",
@@ -6897,7 +6918,8 @@
                 "name": "Summon Demon (1/Day)",
                 "desc": "The drow magically summons a quasit, or attempts to summon a shadow demon with a 50 percent change of success. The summoned demon appears in an unoccupied space within 60 feet of its summoner, acts as an ally of its summoner, and can't summon other demons. It remains for 10 minutes, until it or its summoner dies, or until its summoner dismisses it as an action."
             }
-        ]
+        ],
+        "image_file": "monster_images/humanoid/Drow_Mage.jpg"
     },
     {
         "name": "Drow Priestess of Lolth",
@@ -6943,7 +6965,7 @@
                 "desc": "While in sunlight, the drow has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
             }
         ],
-        "actions":[
+        "actions": [
             {
                 "name": "Multiattack",
                 "desc": "The drow makes two scourge attacks."
@@ -6959,7 +6981,8 @@
                 "name": "Summon Demon (1/Day)",
                 "desc": "The drow attempts to magically summon a yochlol with a 30 percent change of success. If the attempt fails, the drow takes 5 (1d10) psychic damage. Otherwise, the summoned demon appears in an unoccupied space within 60 feet of its summoner, acts as an ally of its summoner, and can't summon other demons. It remains for 10 minutes, until it or its summoner dies, or until its summoner dismisses it as an action."
             }
-        ]
+        ],
+        "image_file": "monster_images/humanoid/Drow_Priestess_of_Lolth.jpg"
     },
     {
         "name": "Empyrean",
@@ -7034,7 +7057,8 @@
                 "name": "Trembling Strike (Costs 2 Actions)",
                 "desc": "The empyrean strikes the ground with its maul, triggering an earth tremor. All other creatures on the ground within 60 feet of the empyrean must succeed on a DC 25 Strength saving throw or be knocked prone."
             }
-        ]
+        ],
+        "image_file": "monster_images/celestial/Empyrean.jpg"
     },
     {
         "speed": "30 ft.",
@@ -7472,7 +7496,8 @@
                 "name": "Water Jet",
                 "desc": "The marid magically shoots water in a 60-foot line that is 5 feet wide. Each creature in that line must make a DC 16 Dexterity saving throw. On a failure, a target takes 21 (6d6) bludgeoning damage and, if it is Huge or smaller, is pushed up to 20 feet away from the marid and knocked prone. On a success, a target takes half the bludgeoning damage, but is neither pushed nor knocked prone."
             }
-        ]
+        ],
+        "image_file": "monster_images/elemental/Marid.jpg"
     },
     {
         "speed": "40 ft.",
@@ -7828,7 +7853,8 @@
                 "name": "Euphoria Breath (Recharge 5-6)",
                 "desc": "The dragon exhales a puff of euphoria gas at one creature within 5 feet of it. The target must succeed on a DC 11 Wisdom saving throw, or for 1 minute, the target can't take reactions and must roll a d6 at the start of each of its turns to determine its behavior during the turn:\n\t1-4. The target takes no action or bonus action and uses all of its movement to move in a random direction.\n\t5-6. The target doesn't move, and the only thing it can do on its turn is make a DC 11 Wisdom saving throw, ending the effect on itself on a success."
             }
-        ]
+        ],
+        "image_file": "monster_images/dragon/Faerie_Dragon.jpg"
     },
     {
         "name": "Flameskull",
@@ -7883,13 +7909,15 @@
                 "damage_bonus": 0,
                 "desc": "Ranged Spell Attack: +5 to hit, range 30 ft., one target. Hit: 10 (3d6) fire damage."
             }
-        ]
+        ],
+        "image_file": "monster_images/undead/Flameskull.png"
     },
     {
         "name": "Flumph",
         "size": "Small",
         "type": "aberration",
         "alignment": "lawful good",
+        "image_file": "monster_images/aberration/Flumph.jpg",
         "armor_class": 12,
         "hit_points": 7,
         "hit_dice": "2d6",
@@ -7975,7 +8003,8 @@
                 "name": "Cure of the Evil Eye (Recharges after a Short or Long Rest)",
                 "desc": "With a stare, the fomorian uses Evil Eye, but on a failed save, the creature is also cursed with magical deformities. While deformed, the creature has its speed halved and has disadvantage on ability checks, saving throws, and attacks based on Strength or Dexterity.\n\tThe transformed creature can repeat the saving throw whenever it finishes a long rest, ending the effect on a success."
             }
-        ]
+        ],
+        "image_file": "monster_images/giant/Fomorian.png"
     },
     {
         "speed": "50 ft.",
@@ -9472,7 +9501,8 @@
         "name": "Giant Rat",
         "intelligence": 2,
         "senses": "darkvision 60 ft., passive Perception 10",
-        "subtype": ""
+        "subtype": "",
+        "image_file": "monster_images/beast/Giant_Rat_(Diseased).jpeg"
     },
     {
         "speed": "30 ft.",
@@ -10006,6 +10036,7 @@
         "type": "humanoid",
         "subtype": "gith",
         "alignment": "lawful evil",
+        "image_file": "monster_images/humanoid/Githyanki.jpg",
         "armor_class": 17,
         "hit_points": 49,
         "hit_dice": "9d8",
@@ -10048,6 +10079,7 @@
         "type": "humanoid",
         "subtype": "gith",
         "alignment": "lawful evil",
+        "image_file": "monster_images/humanoid/Githyanki.jpg",
         "armor_class": 18,
         "hit_points": 91,
         "hit_dice": "14d8",
@@ -10090,6 +10122,7 @@
         "type": "humanoid",
         "subtype": "gith",
         "alignment": "lawful neutral",
+        "image_file": "monster_images/humanoid/Githzerai.jpg",
         "armor_class": 14,
         "hit_points": 38,
         "hit_dice": "7d8",
@@ -10137,6 +10170,7 @@
         "type": "humanoid",
         "subtype": "gith",
         "alignment": "lawful neutral",
+        "image_file": "monster_images/humanoid/Githzerai.jpg",
         "armor_class": 17,
         "hit_points": 84,
         "hit_dice": "13d8",
@@ -10277,24 +10311,6 @@
         "challenge_rating": 17,
         "actions": [
             {
-                "name": "Charge",
-                "desc": "If the goristro moves at least 15 feet straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 38 (7d10) piercing damage. If the target is a creature, it must succeed on a DC 21 Strength saving throw or be pushed up to 20 feet away and knocked prone."
-            },
-            {
-                "name": "Labyrinthine Recall",
-                "desc": "The goristro can perfectly recall any path it has traveled."
-            },
-            {
-                "name": "Magic Resistance",
-                "desc": "The goristro has advantage on saving throws against spells and other magical effects."
-            },
-            {
-                "name": "Siege Monster",
-                "desc": "The goristro deals double damage to objects and structures."
-            }
-        ],
-        "actions": [
-            {
                 "name": "Multiattack",
                 "desc": "The goristro makes three attacks: two with its fists and one with its hoof."
             },
@@ -10319,7 +10335,8 @@
                 "damage_bonus": 7,
                 "desc": "Melee Weapon Attack: +13 to hit, reach 10 ft., one target. Hit: 45 (7d10 + 7) piercing damage."
             }
-        ]
+        ],
+        "image_file": "monster_images/fiend/Goristro.jpg"
     },
     {
         "speed": "30 ft.",
@@ -11005,6 +11022,7 @@
         "subtype": "",
         "alignment": "neutral evil",
         "speed": "10 ft., fly 30 ft. (hover)",
+        "image_file": "monster_images/aberration/Grell.jpg",
         "strength": 15,
         "dexterity": 14,
         "constitution": 13,
@@ -11678,7 +11696,8 @@
                 "damage_bonus": 4,
                 "desc": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8 + 4) slashing damage, or 9 (1d10 + 4) slashing damage if used with two hands."
             }
-        ]
+        ],
+        "image_file": "monster_images/construct/Helmed_Horror.jpg"
     },
     {
         "speed": "30 ft.",
@@ -11902,6 +11921,7 @@
         "type": "humanoid",
         "subtype": "goblinoid",
         "alignment": "lawful evil",
+        "image_file": "monster_images/humanoid/Hobgoblin.jpeg",
         "armor_class": 17,
         "hit_points": 39,
         "hit_dice": "6d8",
@@ -11952,6 +11972,7 @@
         "type": "humanoid",
         "subtype": "goblinoid",
         "alignment": "lawful evil",
+        "image_file": "monster_images/humanoid/Hobgoblin.jpeg",
         "armor_class": 20,
         "hit_points": 97,
         "hit_dice": "13d8",
@@ -12093,7 +12114,8 @@
                 "damage_bonus": 4,
                 "desc": "Melee Weapon Attack: +6 to hit, reach 10 ft., one target. Hit: 11 (2d6 + 4) piercing damage."
             }
-        ]
+        ],
+        "image_file": "monster_images/monstrosity/Hook_Horror.jpg"
     },
     {
         "speed": "20 ft., fly 60 ft.",
@@ -12277,6 +12299,7 @@
         "size": "Tiny",
         "type": "aberration",
         "alignment": "lawful evil",
+        "image_file": "monster_images/aberration/Intellect_Devourer.png",
         "armor_class": 12,
         "hit_points": 21,
         "hit_dice": "6d4",
@@ -12675,7 +12698,8 @@
                 "name": "Sleep Gaze",
                 "desc": "The jackalwere gazes at one creature it can see within 30 feet of it. The target must make a DC 10 Wisdom saving throw. On a failed save, the target succumbs to a magical slumber, falling unconscious for 10 minutes or until someone uses an action to shake the target awake. A creature that successfully saves against the effect is immune to this jackalwere's gaze for the next 24 hours. Undead and creatures immune to being charmed aren't affected by it."
             }
-        ]
+        ],
+        "image_file": "monster_images/humanoid/Jackalwere.jpg"
     },
     {
         "name": "Kenku",
@@ -12724,7 +12748,8 @@
                 "damage_bonus": 3,
                 "desc": "Ranged Weapon Attack: +5 to hit, range 80/320 ft., one target. Hit: 6 (1d6 + 3) piercing damage."
             }
-        ]
+        ],
+        "image_file": "monster_images/humanoid/Kenku.jpg"
     },
     {
         "name": "Winged Kobold",
@@ -12770,7 +12795,8 @@
                 "damage_bonus": 3,
                 "desc": "Ranged Weapon Attack: +5 to hit, one target directly below the kobold. Hit: 6 (1d6 + 3) bludgeoning damage."
             }
-        ]
+        ],
+        "image_file": "monster_images/humanoid/Winged_Kobold.jpg"
     },
     {
         "speed": "30 ft.",
@@ -13159,11 +13185,12 @@
         "subtype": "titan"
     },
     {
-        "name": "Kuo-Toa",
+        "name": "Kuo-toa",
         "size": "Medium",
         "type": "humanoid",
         "subtype": "kuo-toa",
         "alignment": "neutral evil",
+        "image_file": "monster_images/humanoid/Kuo-Toa.jpg",
         "armor_class": 13,
         "hit_points": 18,
         "hit_dice": "4d8",
@@ -13225,7 +13252,7 @@
         ]
     },
     {
-        "name": "Kuo-Toa Archpriest",
+        "name": "Kuo-toa Archpriest",
         "size": "Medium",
         "type": "humanoid",
         "subtype": "kuo-toa",
@@ -13286,10 +13313,11 @@
                 "damage_bonus": 2,
                 "desc": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) bludgeoning damage."
             }
-        ]
+        ],
+        "image_file": "monster_images/humanoid/Kuo-Toa_Archpriest.jpg"
     },
     {
-        "name": "Kuo-Toa Whip",
+        "name": "Kuo-toa Whip",
         "size": "Medium",
         "type": "humanoid",
         "subtype": "kuo-toa",
@@ -13350,7 +13378,8 @@
                 "damage_bonus": 2,
                 "desc": "Melee Weapon Attack: +4 to hit, reach 10 ft., one target. Hit: 5 (1d6 + 2) piercing damage. If the target is a Medium or smaller creature, it is grappled (escape DC 14). Until this grapple ends, the kuo-toa can't use its pincer staff on another target."
             }
-        ]
+        ],
+        "image_file": "monster_images/humanoid/Kuo-Toa_Whip.jpg"
     },
     {
         "speed": "30 ft.",
@@ -13717,6 +13746,7 @@
         "type": "humanoid",
         "subtype": "lizardfolk",
         "alignment": "neutral",
+        "image_file": "monster_images/humanoid/Lizardfolk.jpeg",
         "armor_class": 13,
         "hit_points": 27,
         "hit_dice": "5d8",
@@ -13775,6 +13805,7 @@
         "type": "humanoid",
         "subtype": "Lizardfolk",
         "alignment": "chaotic evil",
+        "image_file": "monster_images/humanoid/Lizardfolk.jpeg",
         "armor_class": 15,
         "hit_points": 78,
         "hit_dice": "12d8",
@@ -13983,7 +14014,8 @@
                 "name": "Mud Breath (Recharge 6)",
                 "desc": "The mephit belches viscid mud onto one creature within 5 feet of it. If the target is Medium or smaller, it must succeed on a DC 11 Dexterity saving throw or be restrained for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
             }
-        ]
+        ],
+        "image_file": "monster_images/elemental/Mud_Mephit.jpg"
     },
     {
         "speed": "30 ft.",
@@ -14169,7 +14201,8 @@
                 "damage_bonus": 0,
                 "desc": "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 5 (2d4) slashing damage."
             }
-        ]
+        ],
+        "image_file": "monster_images/fiend/Manes.jpg"
     },
     {
         "speed": "40 ft.",
@@ -14530,6 +14563,7 @@
         "size": "Medium",
         "type": "aberration",
         "alignment": "lawful evil",
+        "image_file": "monster_images/aberration/Mind_Flayer.jpg",
         "armor_class": 15,
         "hit_points": 71,
         "hit_dice": "13d8",
@@ -14689,7 +14723,8 @@
                 "damage_bonus": 1,
                 "desc": "Melee or Ranged Weapon Attack: +3 to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 4 (1d6 + 1) piercing damage."
             }
-        ]
+        ],
+        "image_file": "monster_images/construct/Monodrone.jpg"
     },
     {
         "name": "Duodrone",
@@ -14742,7 +14777,8 @@
                 "damage_bonus": 1,
                 "desc": "Melee or Ranged Weapon Attack: +3 to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 4 (1d6 + 1) piercing damage."
             }
-        ]
+        ],
+        "image_file": "monster_images/construct/Duodrone.jpg"
     },
     {
         "name": "Tridrone",
@@ -14795,7 +14831,8 @@
                 "damage_bonus": 1,
                 "desc": "Melee or Ranged Weapon Attack: +3 to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 4 (1d6 + 1) piercing damage."
             }
-        ]
+        ],
+        "image_file": "monster_images/construct/Tridrone.jpg"
     },
     {
         "name": "Quadrone",
@@ -14848,7 +14885,8 @@
                 "damage_bonus": 2,
                 "desc": "Ranged Weapon Attack: +4 to hit, range 80/320 ft., one target. Hit: 5 (1d6 + 2) piercing damage."
             }
-        ]
+        ],
+        "image_file": "monster_images/construct/Quadrone.jpeg"
     },
     {
         "name": "Pentadrone",
@@ -14900,7 +14938,8 @@
                 "desc": "The pentadrone exhales a 30-foot cone of gas. Each creature in that area must succeed on a DC 11 Constitution saving throw or be paralyzed for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
             }
         ],
-        "perception": 4
+        "perception": 4,
+        "image_file": "monster_images/construct/Pentadrone.jpg"
     },
     {
         "speed": "40 ft.",
@@ -15142,6 +15181,7 @@
         "type": "plant",
         "subtype": "",
         "alignment": "lawful neutral",
+        "image_file": "monster_images/plant/Myconid.jpg",
         "armor_class": 10,
         "hit_points": 7,
         "hit_dice": "2d6",
@@ -15220,6 +15260,7 @@
         "size": "Medium",
         "type": "plant",
         "alignment": "lawful neutral",
+        "image_file": "monster_images/plant/Myconid.jpg",
         "armor_class": 12,
         "hit_points": 22,
         "hit_dice": "4d8",
@@ -15266,6 +15307,7 @@
         "size": "Large",
         "type": "plant",
         "alignment": "lawful neutral",
+        "image_file": "monster_images/plant/Myconid.jpg",
         "armor_class": 13,
         "hit_points": 60,
         "hit_dice": "8d10",
@@ -15353,7 +15395,8 @@
                 "damage_bonus": 3,
                 "desc": "Melee Weapon Attack: +5 to hit, reach 10 ft., one creature. Hit: 10 (2d6 + 3) piercing damage plus 10 (3d6) poison damage."
             }
-        ]
+        ],
+        "image_file": "monster_images/undead/Bone_Naga.jpg"
     },
     {
         "speed": "20 ft., fly 30 ft.",
@@ -15611,7 +15654,8 @@
                 "name": "Weird Insight",
                 "desc": "The nothic targets one creature it can see within 30 feet of it. The target must contest its Charisma (Deception) check against the nothic's Wisdom (Insight) check. If the nothic wins, it magically learns one fact or secret about the target. The target automatically wins if it is immune to being charmed."
             }
-        ]
+        ],
+        "image_file": "monster_images/aberration/Nothic.png"
     },
     {
         "speed": "30 ft.",
@@ -15841,7 +15885,8 @@
                 "damage_bonus": 3,
                 "desc": "Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 10 (2d6 + 3) piercing damage."
             }
-        ]
+        ],
+        "image_file": "monster_images/giant/Half-Ogre.jpg"
     },
     {
         "speed": "30 ft.",
@@ -15924,7 +15969,8 @@
                 "name": "Eye Ray",
                 "desc": "The zombie uses a random magical eye ray, choosing a target that it can see within 60 feet of it.\n\n1. Paralyzing Ray. The targeted creature must succeed on a DC 14 Constitution saving throw or be paralyzed for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.\n2. Fear Ray. The targeted creature must succeed on a DC 14 Wisdom saving throw or be frightened for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.\n3. Enervation Ray. The targeted creature must make a DC 14 Constitution saving throw, taking 36 (8d8) necrotic damage on a failed save, or half as much damage on a successful one.\n4. Disintegration Ray. If the target is a creature, it must succeed on a DC 14 Dexterity saving throw or take 45 (10d8) force damage. If this damage reduces the creature to 0 hit points, its body becomes a pile of fine gray dust.\n\tIf the target is a Large or smaller nonmagical object or creation of magical force, it is disintegrated without a saving throw. If the target is a Huge or larger nonmagical object or creation of magical force, this ray disintegrates a 10-foot cube of it."
             }
-        ]
+        ],
+        "image_file": "monster_images/undead/Beholder_Zombie.png"
     },
     {
         "speed": "30 ft., fly 30 ft.",
@@ -16119,6 +16165,7 @@
         "type": "humanoid",
         "subtype": "orc",
         "alignment": "chaotic evil",
+        "image_file": "monster_images/humanoid/Orc.jpeg",
         "armor_class": 16,
         "hit_points": 45,
         "hit_dice": "6d8",
@@ -16204,7 +16251,8 @@
                 "damage_bonus": 4,
                 "desc": "Melee or Ranged Weapon Attack: +6 to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 7 (1d6 + 4) piercing damage."
             }
-        ]
+        ],
+        "image_file": "monster_images/humanoid/Orog.jpeg"
     },
     {
         "speed": "30 ft.",
@@ -16512,7 +16560,8 @@
                 "damage_bonus": 3,
                 "desc": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 8 (2d4 + 3) piercing damage."
             }
-        ]
+        ],
+        "image_file": "monster_images/monstrosity/Peryton.jpg"
     },
     {
         "name": "Piercer",
@@ -16551,7 +16600,8 @@
                 "damage_bonus": 0,
                 "desc": "Melee Weapon Attack: +3 to hit, one creature directly underneath the piercer. Hit: +3 (1d6) piercing damage per 10 feet fallen, up to 21 (6d6). Miss: The piercer takes half the normal falling damage for the distance fallen."
             }
-        ]
+        ],
+        "image_file": "monster_images/monstrosity/Piercer.jpg"
     },
     {
         "name": "Pixie",
@@ -16588,7 +16638,8 @@
                 "name": "Superior Invisibility",
                 "desc": "The pixie magically turns invisible until its concentration ends (as if concentrating on a spell). Any equipment the pixie wears or carries is invisible with it."
             }
-        ]
+        ],
+        "image_file": "monster_images/fey/Pixie.jpg"
     },
     {
         "speed": "30 ft., climb 30 ft.",
@@ -16733,6 +16784,7 @@
         "type": "fiend",
         "subtype": "devil",
         "alignment": "lawful evil",
+        "image_file": "monster_images/fiend/Spined_Devil.jpg",
         "armor_class": 13,
         "hit_points": 22,
         "hit_dice": "5d6",
@@ -16835,7 +16887,8 @@
                 "damage_bonus": 4,
                 "desc": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 8 (1d8 + 4) slashing damage."
             }
-        ]
+        ],
+        "image_file": "monster_images/beast/Allosaurus.jpg"
     },
     {
         "name": "Ankylosaurus",
@@ -16863,7 +16916,8 @@
                 "damage_bonus": 4,
                 "desc": "Melee Weapon Attack: +7 to hit, reach 10 ft., one target. Hit: 18 (4d6 + 4) bludgeoning damage. If the target is a creature, it must succeed on a DC 14 Strength saving throw or be knocked prone."
             }
-        ]
+        ],
+        "image_file": "monster_images/beast/Ankylosaurus.jpg"
     },
     {
         "speed": "40 ft., fly 120 ft.",
@@ -17011,7 +17065,8 @@
                 "damage_bonus": 1,
                 "desc": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 6 (2d4 + 1) piercing damage."
             }
-        ]
+        ],
+        "image_file": "monster_images/beast/Pteranodon.jpg"
     },
     {
         "speed": "30 ft., swim 30 ft.",
@@ -17343,7 +17398,8 @@
                 "damage_bonus": 3,
                 "desc": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) slashing damage."
             }
-        ]
+        ],
+        "image_file": "monster_images/humanoid/Quaggoth.jpeg"
     },
     {
         "speed": "40 ft.",
@@ -17455,7 +17511,8 @@
                 "damage_bonus": 3,
                 "desc": "Melee Weapon Attack: +5 to hit, reach 5 ft., one creature. Hit: 10 (2d6 + 3) psychic damage or, if the demon had advantage on the attack roll, 17 (4d6 + 3) psychic damage."
             }
-        ]
+        ],
+        "image_file": "monster_images/fiend/Shadow_Demon.jpg"
     },
     {
         "speed": "swim 40 ft.",
@@ -17733,6 +17790,7 @@
         "size": "Large",
         "type": "monstrosity",
         "alignment": "unaligned",
+        "image_file": "monster_images/monstrosity/Remorhaz.jpeg",
         "armor_class": 14,
         "hit_points": 93,
         "hit_dice": "11d10",
@@ -17869,7 +17927,8 @@
                 "name": "Vengeful Glare",
                 "desc": "The revenant targets one creature it can see within 30 feet of it and against which it has sworn vengeance. The target must make a DC 15 Wisdom saving throw. On a failure, the target is paralyzed until the revenant deals damage to it, or until the end of the revenant's next turn. When the paralysis ends, the target is frightened of the revenant for 1 minute. The frightened target can repeat the saving throw at the end of each of its turns, with disadvantage if it can see the revenant, ending the frightened condition on itself on a success."
             }
-        ]
+        ],
+        "image_file": "monster_images/undead/Revenant.png"
     },
     {
         "speed": "40 ft.",
@@ -18307,6 +18366,7 @@
         "type": "humanoid",
         "subtype": "sahuagin",
         "alignment": "lawful evil",
+        "image_file": "monster_images/humanoid/Sahuagin.jpeg",
         "armor_class": 12,
         "hit_points": 33,
         "hit_dice": "6d8",
@@ -18426,12 +18486,13 @@
                 "damage_bonus": 4,
                 "desc": "Melee or Ranged Weapon Attack: +7 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 11 (2d6 + 4) piercing damage, or 13 (2d8 + 4) piercing damage if used with two hands to make a melee attack."
             }
-        ]
+        ],
+        "image_file": "monster_images/humanoid/Sahuagin_Baron.jpg"
     },
     {
         "name": "Fire Snake",
         "size": "Medium",
-        "type": "Elemental",
+        "type": "elemental",
         "alignment": "neutral evil",
         "armor_class": 14,
         "hit_points": 22,
@@ -18474,7 +18535,8 @@
                 "damage_bonus": 1,
                 "desc": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 3 (1d4 + 1) bludgeoning damage plus 3 (1d6) fire damage."
             }
-        ]
+        ],
+        "image_file": "monster_images/elemental/Fire_Snake.jpeg"
     },
     {
         "speed": "30 ft.",
@@ -18835,7 +18897,8 @@
                 "name": "Terrifying Glare",
                 "desc": "The scarecrow targets one creature it can see within 30 feet of it. If the target can see the scarecrow, the target must succeed on a DC 11 Wisdom saving throw or be magically frightened until the end of the scarecrow's next turn. The frightened target is paralyzed."
             }
-        ]
+        ],
+        "image_file": "monster_images/construct/Scarecrow.jpg"
     },
     {
         "speed": "40 ft.",
@@ -19042,7 +19105,8 @@
                 "damage_bonus": 1,
                 "desc": "Melee Weapon Attack: +0 to hit, reach 5 ft., one creature. Hit: 1 poison damage, and the creature must succeed on a DC 10 Constitution saving throw or become infected with the disease described in the Death Burst trait."
             }
-        ]
+        ],
+        "image_file": "monster_images/plant/Gas_Spore.jpg"
     },
     {
         "speed": "0 ft.",
@@ -19204,7 +19268,8 @@
                 "damage_bonus": 2,
                 "desc": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) piercing damage."
             }
-        ]
+        ],
+        "image_file": "monster_images/aberration/Slaad_Tadpole.jpeg"
     },
     {
         "name": "Red Slaad",
@@ -19255,7 +19320,8 @@
                 "damage_bonus": 3,
                 "desc": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 7 (1d8+3) piercing damage. If the target is a humanoid, it must succeed on a DC 14 Constitution saving throw or be infected with a disease - a minuscule slaad egg.\n\tA humanoid can carry only one slaad egg to term at a time. Over three months, the egg moves to the chest cavity, gestates, and forms a slaad tadpole. In the 24-hour period before giving birth, the host starts to feel unwell, its speed is halved, and it has disadvantage on attack rolls, ability checks, and saving throws. At birth, the tadpole chews its way through vital organs and out of the host's chest in 1 round, killing the host in the process.\n\tIf the disease is cured before the tadpole's emergence, the unborn slaad is disintegrated."
             }
-        ]
+        ],
+        "image_file": "monster_images/aberration/Red_Slaad.jpg"
     },
     {
         "name": "Blue Slaad",
@@ -19306,7 +19372,8 @@
                 "damage_bonus": 5,
                 "desc": "Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 12 (2d6 + 5) slashing damage. If the target is a humanoid, it must succeed on a DC 15 Constitution saving throw or be infected with a disease called chaos phage. While infected, the target can't regain hit points, and its hit point maximum is reduced by 10 (3d6) every 24 hours. If the disease reduces the target's hit point maximum to 0, the target instantly transforms into a red slaad or, if it has the ability to cast spells of 3rd level or higher, a green slaad. Only a wish spell can reverse the transformation."
             }
-        ]
+        ],
+        "image_file": "monster_images/aberration/Blue_Slaad.jpg"
     },
     {
         "name": "Green Slaad",
@@ -19381,7 +19448,8 @@
                 "damage_bonus": 0,
                 "desc": "Ranged Spell Attack: +4 to hit, range 60 ft., one target. Hit: 10 (3d6) fire damage. The fire ignites flammable objects that aren't being worn or carried."
             }
-        ]
+        ],
+        "image_file": "monster_images/aberration/Green_Slaad.jpg"
     },
     {
         "name": "Gray Slaad",
@@ -19453,7 +19521,8 @@
                 "damage_bonus": 3,
                 "desc": "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 10 (2d6 + 3) slashing damage."
             }
-        ]
+        ],
+        "image_file": "monster_images/aberration/Gray_Slaad.jpg"
     },
     {
         "name": "Death Slaad",
@@ -19525,7 +19594,8 @@
                 "damage_bonus": 5,
                 "desc": "Melee Weapon Attack: +9 to hit, reach 5 ft., one target. Hit: 12 (2d6 + 5) slashing damage plus 7 (2d6) necrotic damage."
             }
-        ]
+        ],
+        "image_file": "monster_images/aberration/Death_Slaad.jpg"
     },
     {
         "speed": "50 ft., fly 150 ft.",
@@ -19988,7 +20058,8 @@
                 "name": "Cinder Breath (Recharge 6)",
                 "desc": "The mephit exhales a 15-foot cone of smoldering ash. Each creature in that area must succeed on a DC 10 Dexterity saving throw or be blinded until the end of the mephit's next turn."
             }
-        ]
+        ],
+        "image_file": "monster_images/elemental/Smoke_Mephit.jpg"
     },
     {
         "speed": "10 ft., fly 40 ft.",
@@ -20950,6 +21021,7 @@
         "type": "humanoid",
         "subtype": "thri-kreen",
         "alignment": "chaotic neutral",
+        "image_file": "monster_images/humanoid/Thri-Kreen.jpg",
         "armor_class": 15,
         "hit_points": 33,
         "hit_dice": "6d8",
@@ -21202,7 +21274,8 @@
                 "damage_bonus": 2,
                 "desc": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) slashing damage."
             }
-        ]
+        ],
+        "image_file": "monster_images/humanoid/Troglodyte.jpg"
     },
     {
         "speed": "30 ft.",
@@ -21311,11 +21384,12 @@
             {
                 "name": "Mandibles",
                 "attack_bonus": 8,
-                "damage_bonus": "2d8",
-                "damage_dice": 5,
+                "damage_dice": "2d8",
+                "damage_bonus": 5,
                 "desc": "Melee Weapon Attack: +8 to hit, reach 5 ft., one target. Hit: 14 (2d8 + 5) slashing damage."
             }
-        ]
+        ],
+        "image_file": "monster_images/monstrosity/Umber_Hulk.jpg"
     },
     {
         "speed": "50 ft.",
@@ -21404,7 +21478,8 @@
                 "damage_bonus": 4,
                 "desc": "Melee Weapon Attack: +6 to hit, reach 10 ft., one target. Hit: 7 (1d6 + 4) bludgeoning damage plus 3 (1d6) piercing damage."
             }
-        ]
+        ],
+        "image_file": "monster_images/monstrosity/Displacer_Beast.jpg"
     },
     {
         "speed": "50 ft.",
@@ -21716,7 +21791,8 @@
                 "damage_bonus": 3,
                 "desc": "Melee Weapon Attack: +5 to hit, reach 10 ft., one creature. Hit: 13 (3d6 + 3) bludgeoning damage. If the target is Medium or smaller, it is grappled (escape DC 13) and pulled 5 feet toward the water weird. Until this grapple ends, the target is restrained, the water weird tries to drown it, and the water weird can't constrict another target."
             }
-        ]
+        ],
+        "image_file": "monster_images/elemental/Water_Weird.jpg"
     },
     {
         "speed": "30 ft.",
@@ -21861,7 +21937,8 @@
                 "name": "Animate Boulders (1/Day)",
                 "desc": "The galeb duhr magically animates up to two boulders it can see within 60 feet of it. A boulder has statistics like those of a galeb duhr, except it has Intelligence 1 and Charisma 1, it can't be charmed or frightened, and it lacks this action option. A boulder remains animated as long as the galeb duhr maintains concentration, up to 1 minute (as if concentrating on a spell)."
             }
-        ]
+        ],
+        "image_file": "monster_images/elemental/Galeb_Duhr.jpg"
     },
     {
         "speed": "40 ft., fly 60 ft.",
@@ -21977,7 +22054,7 @@
             },
             {
                 "name": "Innate Spellcasting",
-                "desc": "The yochlol's spellcasting ability is Charisma (spell save DC 14). The yochlol can innately cast the following spells, requiring no material components:\n\nAt will: detect thoughts, web\1/day: dominate person"
+                "desc": "The yochlol's spellcasting ability is Charisma (spell save DC 14). The yochlol can innately cast the following spells, requiring no material components:\n\nAt will: detect thoughts, web\n1/day: dominate person"
             },
             {
                 "name": "Web Walker",
@@ -22000,7 +22077,8 @@
                 "name": "Mist Form",
                 "desc": "The yochlol transforms into toxic mist or reverts to its true form. Any equipment it is wearing or carrying is also transformed. It reverts to its true form if it dies.\n\tWhile in mist form, the yochlol is incapacitated and can't speak. It has a flying speed of 30 feet, can hover, and can pass through any space that isn't airtight. It has advantage on Strength, Dexterity, and Constitution saving throws, and it is immune to nonmagical damage.\n\tWhile in mist form, the yochlol can enter a creature's space and stop there. Each time that creature starts its turn with the yochlol in its space, the creature must succeed on a DC 14 Constitution saving throw or be poisoned until the start of its next turn. While poisoned in this way, the target is incapacitated."
             }
-        ]
+        ],
+        "image_file": "monster_images/fiend/Yochlol.jpg"
     },
     {
         "speed": "10 ft., fly 50 ft.",
@@ -23128,7 +23206,8 @@
                 "damage_bonus": 0,
                 "desc": "The yeti targets one creature it can see within 30 feet of it. If the target can see the yeti, the target must succeed on a DC 13 Constitution saving throw against this magic or take 10 (3d6) cold damage and then be paralyzed for 1 minute, unless it is immune to cold damage. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If the target's saving throw is succesful, or if the effect ends on it, the target is immune to the Chilling Gaze of all yetis (but not abominable yetis) for 1 hour."
             }
-        ]
+        ],
+        "image_file": "monster_images/monstrosity/Yeti.jpeg"
     },
     {
         "name": "Abominable Yeti",
@@ -23139,6 +23218,7 @@
         "hit_points": 137,
         "hit_dice": "11d12",
         "speed": "40 ft., climb 40 ft.",
+        "image_file": "monster_images/monstrosity/Yeti.jpeg",
         "strength": 24,
         "dexterity": 10,
         "constitution": 22,
@@ -23197,6 +23277,7 @@
         "type": "monstrosity",
         "subtype": "shapechanger, yuan-ti",
         "alignment": "neutral evil",
+        "image_file": "monster_images/monstrosity/Yuan-ti_Abomination.jpg",
         "armor_class": 15,
         "hit_points": 127,
         "hit_dice": "15d10",
@@ -23269,6 +23350,7 @@
         "type": "monstrosity",
         "subtype": "shapechanger/yuan-ti",
         "alignment": "neutral evil",
+        "image_file": "monster_images/monstrosity/Yuan-ti_Malison.jpg",
         "armor_class": 12,
         "hit_points": 66,
         "hit_dice": "12d8",
@@ -23338,6 +23420,7 @@
         "type": "monstrosity",
         "subtype": "shapechanger/yuan-ti",
         "alignment": "neutral evil",
+        "image_file": "monster_images/monstrosity/Yuan-ti_Malison.jpg",
         "armor_class": 12,
         "hit_points": 66,
         "hit_dice": "12d8",
@@ -23393,6 +23476,7 @@
         "type": "monstrosity",
         "subtype": "shapechanger/yuan-ti",
         "alignment": "neutral evil",
+        "image_file": "monster_images/monstrosity/Yuan-ti_Malison.jpg",
         "armor_class": 12,
         "hit_points": 66,
         "hit_dice": "12d8",
@@ -23469,6 +23553,7 @@
         "type": "humanoid",
         "subtype": "yuan-ti",
         "alignment": "neutral evil",
+        "image_file": "monster_images/humanoid/Yuan-ti_Pureblood.jpg",
         "armor_class": 11,
         "hit_points": 40,
         "hit_dice": "9d8",
@@ -24189,6 +24274,7 @@
         "type": "fiend",
         "subtype": "yugoloth",
         "alignment": "neutral evil",
+        "image_file": "monster_images/fiend/Arcanaloth.png",
         "armor_class": 17,
         "hit_points": 104,
         "hit_dice": "16d8",
@@ -24251,6 +24337,7 @@
         "type": "fiend",
         "subtype": "yugoloth",
         "alignment": "neutral evil",
+        "image_file": "monster_images/fiend/Mezzoloth.jpg",
         "armor_class": 18,
         "hit_points": 75,
         "hit_dice": "10d8",
@@ -24313,6 +24400,7 @@
         "type": "fiend",
         "subtype": "yugoloth",
         "alignment": "neutral evil",
+        "image_file": "monster_images/fiend/Nycaloth.jpg",
         "armor_class": 18,
         "hit_points": 123,
         "hit_dice": "13d10",
@@ -24377,6 +24465,7 @@
         "type": "fiend",
         "subtype": "yugoloth",
         "alignment": "neutral evil",
+        "image_file": "monster_images/fiend/Ultroloth.jpg",
         "armor_class": 19,
         "hit_points": 153,
         "hit_dice": "18d8",

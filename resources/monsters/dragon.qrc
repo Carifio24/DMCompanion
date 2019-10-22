@@ -28,7 +28,6 @@
         <file>monster_images/dragon/Dragon_Turtle.jpeg</file>
         <file>monster_images/dragon/Gold_Dragon_Wyrmling.jpeg</file>
         <file>monster_images/dragon/Green_Dragon_Wyrmling.jpeg</file>
-        <file>monster_images/dragon/Half-Red_Dragon_Veteran.jpeg</file>
         <file>monster_images/dragon/Pseudodragon.jpeg</file>
         <file>monster_images/dragon/Red_Dragon_Wyrmling.jpeg</file>
         <file>monster_images/dragon/Silver_Dragon_Wyrmling.jpeg</file>
@@ -44,5 +43,7 @@
         <file>monster_images/dragon/Young_Red_Dragon.jpeg</file>
         <file>monster_images/dragon/Young_Silver_Dragon.jpeg</file>
         <file>monster_images/dragon/Young_White_Dragon.jpeg</file>
+        <file>monster_images/dragon/Faerie_Dragon.jpg</file>
+        <file>monster_images/dragon/Young_Red_Shadow_Dragon.jpg</file>
     </qresource>
 </RCC>

@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/fonts">
+    <qresource prefix="/">
         <file>resources/fonts/cloister_black.ttf</file>
         <file>resources/fonts/MRSEA~10.TTF</file>
         <file>resources/fonts/MRSEA~11.TTF</file>
@@ -17,5 +17,7 @@
         <file>resources/fonts/texgyrebonum-bolditalic.otf</file>
         <file>resources/fonts/texgyrebonum-italic.otf</file>
         <file>resources/fonts/texgyrebonum-regular.otf</file>
+        <file>resources/fonts/ScalaSans-RegularSC.otf</file>
+        <file>resources/fonts/ScalaSans-Regular.otf</file>
     </qresource>
 </RCC>

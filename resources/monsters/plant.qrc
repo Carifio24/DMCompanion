@@ -7,5 +7,10 @@
         <file>monster_images/plant/Treant.jpeg</file>
         <file>monster_images/plant/Twig_Blight.png</file>
         <file>monster_images/plant/Violet_Fungus.jpeg</file>
+        <file>monster_images/plant/Gas_Spore.jpg</file>
+        <file>monster_images/plant/Myconid.jpg</file>
+        <file>monster_images/plant/Needle_Blight.png</file>
+        <file>monster_images/plant/Twig_Blight.jpg</file>
+        <file>monster_images/plant/Vine_Blight.jpg</file>
     </qresource>
 </RCC>

@@ -7,5 +7,17 @@
         <file>monster_images/aberration/Nothic.png</file>
         <file>monster_images/aberration/Otyugh.jpeg</file>
         <file>monster_images/aberration/Spectator.png</file>
+        <file>monster_images/aberration/Beholder.jpg</file>
+        <file>monster_images/aberration/Blue_Slaad.jpg</file>
+        <file>monster_images/aberration/Death_Slaad.jpg</file>
+        <file>monster_images/aberration/Flumph.jpg</file>
+        <file>monster_images/aberration/Gray_Slaad.jpg</file>
+        <file>monster_images/aberration/Green_Slaad.jpg</file>
+        <file>monster_images/aberration/Grell.jpg</file>
+        <file>monster_images/aberration/Intellect_Devourer.png</file>
+        <file>monster_images/aberration/Mind_Flayer.jpg</file>
+        <file>monster_images/aberration/Red_Slaad.jpg</file>
+        <file>monster_images/aberration/Slaad_Tadpole.jpeg</file>
+        <file>monster_images/aberration/Spectator.jpg</file>
     </qresource>
 </RCC>
