@@ -13,7 +13,18 @@ DMCompanion::DMCompanion(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::DMCompanion)
 {
+    // Add the necessary fonts to the database
+    QFontDatabase::addApplicationFont(":/resources/fonts/DejaVuSans.ttf");
+    QFontDatabase::addApplicationFont(":/resources/fonts/cloister_black.ttf");
+    QFontDatabase::addApplicationFont(":/resources/fonts/ScalaSans-Regular.otf");
+    QFontDatabase::addApplicationFont(":/resources/fonts/ScalaSans-RegularSC.otf");
+    // setFont(QFont("Sans Serif", 9, 1));
+
+    // UI setup
     ui->setupUi(this);
+
+    // Set the title
+    setWindowTitle(QString::fromStdString("D&D 5th edition DM companion"));
 
 //    Create the spellbook and add it as a tab
 //    Spellbook* spellbook = new Spellbook(this);
@@ -40,12 +51,16 @@ DMCompanion::DMCompanion(QWidget *parent) :
     palette.setBrush(QPalette::Background, bkgnd);
     this->setPalette(palette);
 
-    // Add the necessary fonts to the database
-    QFontDatabase::addApplicationFont(":/resources/fonts/cloister_black.ttf");
-    int ssID = QFontDatabase::addApplicationFont(":/resources/fonts/ScalaSans-Regular.otf");
-    int ssCID = QFontDatabase::addApplicationFont(":/resources/fonts/ScalaSans-RegularSC.otf");
-    std::cout << QFontDatabase::applicationFontFamilies(ssID).at(0).toStdString() << std::endl;
-    std::cout << QFontDatabase::applicationFontFamilies(ssCID).at(0).toStdString() << std::endl;
+    //std::cout << QFontDatabase::applicationFontFamilies(dvuID).at(0).toStdString() << std::endl;
+    //std::cout << QFontDatabase::applicationFontFamilies(ssCID).at(0).toStdString() << std::endl;
+
+    // Set the default font, for both the main application and for the widget in each tab
+    QFont default_font = QFont("DejaVu Sans", 12, 1);
+    setFont(default_font);
+    for (int i = 0; i < ui->tabWidget->count(); ++i) {
+        ui->tabWidget->widget(i)->setFont(default_font);
+    }
+
 }
 
 DMCompanion::~DMCompanion()

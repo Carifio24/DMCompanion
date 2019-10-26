@@ -1,0 +1,1 @@
+sudo ./linuxdeployqt-6-x86_64.AppImage /home/jon/git/DMCompanion/image/usr/share/applications/DMCompanion.desktop -unsupported-allow-new-glibc -appimage

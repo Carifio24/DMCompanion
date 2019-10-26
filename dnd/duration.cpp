@@ -6,9 +6,9 @@
 
 namespace DnD {
 
-bool Duration::operator==(const Duration& other) const noexcept {
-    return time_in_seconds() == other.time_in_seconds();
-}
+// bool Duration::operator==(const Duration& other) const noexcept {
+//     return time_in_seconds() == other.time_in_seconds();
+// }
 
 std::string Duration::string() const {
     if (!_str.empty()) {

@@ -32,7 +32,7 @@ MonsterManual::MonsterManual(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    std::cout << "Making monster manual" << std::endl;
+    //std::cout << "Making monster manual" << std::endl;
 
     //Set items to be transparent
 
@@ -42,15 +42,21 @@ MonsterManual::MonsterManual(QWidget *parent) :
     read_monster_file(&qmonsterfile);
     qmonsterfile.close();
 
+    // Set the font
+//    QFont default_font = QFont("DejaVu Sans", 9, 1);
+//    setFont(default_font);
+//    ui->monsterTable->setFont(default_font);
+//    std::cout << "Set Monster Manual font" << std::endl;
+
     // Sort the monsters by the default field (name)
-    std::cout << "About to sort" << std::endl;
+    //std::cout << "About to sort" << std::endl;
     auto default_cmp = comparator(MonsterSortField::default_tricomparator());
-    std::cout << "Got the default comparator" << std::endl;
+    //std::cout << "Got the default comparator" << std::endl;
     std::sort(monsters.begin(), monsters.end(), default_cmp);
-    std::cout << "Done sorting" << std::endl;
+    //std::cout << "Done sorting" << std::endl;
 
     // Populate the monster table
-    std::cout << "About to populate monster table" << std::endl;
+    //std::cout << "About to populate monster table" << std::endl;
     populate_monster_table();
 
     // Make the table view not editable
@@ -74,6 +80,9 @@ MonsterManual::MonsterManual(QWidget *parent) :
     // Set name label font
     QFont titleFont = QFont("Cloister Black", 40, 1);
     ui->nameLabel->setFont(titleFont);
+
+    // Set the table font
+    //ui->monsterTable->setFont(QFont("DejaVu Sans", 12, 1));
 
 }
 
@@ -185,7 +194,7 @@ void MonsterManual::display_monster_data(const Monster& m) {
     // Legendary actions
     std::vector<Feature> leg_acts = m.legendary_actions();
     if (leg_acts.size() > 0) {
-        qsl <<title_qstring("Legendary Actions:");
+        qsl << title_qstring("Legendary Actions:");
         for (const Feature& lact : leg_acts) {
             qsl << as_qstring(lact);
         }

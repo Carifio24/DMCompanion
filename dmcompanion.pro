@@ -11,8 +11,13 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = DMCompanion
 TEMPLATE = app
 
-QMAKE_CXX = gcc-7
+# Compilation flags
+QMAKE_CC = gcc-7
+QMAKE_CXX = g++-7
 QMAKE_CXXFLAGS += -O3 -std=c++17 -static
+
+# Linking stuff
+QMAKE_LIB
 
 INCLUDEPATH += /opt/Qt/5.12.3/Src/qtbase/include/QtCore
 
@@ -57,7 +62,7 @@ FORMS    += dmcompanion.ui \
 
 UI_DIR = $$PWD
 
-CONFIG    += c++17 static
+CONFIG    += c++17 staticlib
 
 DISTFILES += \
     BookBackground.jpeg \

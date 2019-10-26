@@ -44,6 +44,11 @@
       <height>4000</height>
      </size>
     </property>
+    <property name="font">
+     <font>
+      <family>DejaVu Sans</family>
+     </font>
+    </property>
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>

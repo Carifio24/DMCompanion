@@ -18,10 +18,10 @@ class DurationTypeImpl : public NamedEnumImpl<DurationTypeImpl> {
 };
 
 struct DurationTypeImpl::Instances {
-    static inline constexpr const DurationTypeImpl Special{"Special"};
-    static inline constexpr const DurationTypeImpl Instantaneous{"Instantaneous"};
-    static inline constexpr const DurationTypeImpl Spanning{"Spanning"};
-    static inline constexpr const DurationTypeImpl UntilDispelled{"Until dispelled"};
+    static inline constexpr const DurationTypeImpl Special{"Special"sv};
+    static inline constexpr const DurationTypeImpl Instantaneous{"Instantaneous"sv};
+    static inline constexpr const DurationTypeImpl Spanning{"Spanning"sv};
+    static inline constexpr const DurationTypeImpl UntilDispelled{"Until dispelled"sv};
     static inline constexpr const DurationTypeImpl* const instances[] = { &Special, &Instantaneous, &Spanning, &UntilDispelled };
 };
 

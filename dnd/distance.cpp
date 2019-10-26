@@ -6,9 +6,9 @@
 
 namespace DnD {
 
-bool Distance::operator==(const Distance& other) const noexcept {
-    return length_in_feet() == other.length_in_feet();
-}
+// bool Distance::operator==(const Distance& other) const noexcept {
+//     return length_in_feet() == other.length_in_feet();
+// }
 
 std::string Distance::string() const {
 

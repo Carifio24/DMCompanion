@@ -17,7 +17,7 @@ class Duration : public Quantity<DurationType, TimeUnit> {
         Duration(const DurationType& rt, const int& value, const TimeUnit& unit, const std::string& str="") : Quantity<DurationType, TimeUnit>(rt, value, unit, str) {}
         Duration() : Duration(DurationTypes::Instantaneous, 0, TimeUnits::Second) {}
 
-        bool operator==(const Duration& other) const noexcept;
+        //bool operator==(const Duration& other) const noexcept;
 
         // Methods
         int time_in_seconds() const noexcept { return base_value(); }

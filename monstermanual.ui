@@ -10,6 +10,11 @@
     <height>925</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <family>DejaVu Sans</family>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
@@ -36,6 +41,11 @@
      </property>
      <item>
       <widget class="QLineEdit" name="searchBar">
+       <property name="font">
+        <font>
+         <family>DejaVu Sans</family>
+        </font>
+       </property>
        <property name="styleSheet">
         <string notr="true">background:transparent</string>
        </property>
@@ -54,6 +64,11 @@
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>DejaVu Sans</family>
+        </font>
        </property>
        <property name="autoFillBackground">
         <bool>false</bool>
@@ -101,7 +116,7 @@
       <widget class="QLabel" name="nameLabel">
        <property name="font">
         <font>
-         <family>URW Chancery L</family>
+         <family>DejaVu Sans</family>
          <pointsize>30</pointsize>
          <italic>true</italic>
         </font>
@@ -148,6 +163,11 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+            </font>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -155,6 +175,11 @@
          </item>
          <item>
           <widget class="QLabel" name="speedLabel">
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+            </font>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -162,6 +187,11 @@
          </item>
          <item>
           <widget class="QLabel" name="hpLabel">
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+            </font>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -174,6 +204,11 @@
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+            </font>
            </property>
            <property name="text">
             <string/>
@@ -191,6 +226,11 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+            </font>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -206,6 +246,11 @@
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+            </font>
            </property>
            <property name="text">
             <string/>
@@ -223,6 +268,11 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+            </font>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -238,6 +288,11 @@
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+            </font>
            </property>
            <property name="text">
             <string/>
@@ -255,6 +310,11 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+            </font>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -270,6 +330,11 @@
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+            </font>
            </property>
            <property name="text">
             <string/>
@@ -287,6 +352,11 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+            </font>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -302,6 +372,11 @@
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+            </font>
            </property>
            <property name="text">
             <string/>
@@ -321,6 +396,11 @@
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="font">
+          <font>
+           <family>DejaVu Sans</family>
+          </font>
+         </property>
          <property name="frameShape">
           <enum>QFrame::Box</enum>
          </property>
@@ -338,6 +418,11 @@
       <layout class="QHBoxLayout" name="abilityScoresLayout">
        <item>
         <widget class="QLabel" name="strLabel">
+         <property name="font">
+          <font>
+           <family>DejaVu Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string/>
          </property>
@@ -348,6 +433,11 @@
        </item>
        <item>
         <widget class="QLabel" name="dexLabel">
+         <property name="font">
+          <font>
+           <family>DejaVu Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string/>
          </property>
@@ -358,6 +448,11 @@
        </item>
        <item>
         <widget class="QLabel" name="conLabel">
+         <property name="font">
+          <font>
+           <family>DejaVu Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string/>
          </property>
@@ -368,6 +463,11 @@
        </item>
        <item>
         <widget class="QLabel" name="intLabel">
+         <property name="font">
+          <font>
+           <family>DejaVu Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string/>
          </property>
@@ -378,6 +478,11 @@
        </item>
        <item>
         <widget class="QLabel" name="wisLabel">
+         <property name="font">
+          <font>
+           <family>DejaVu Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string/>
          </property>
@@ -388,6 +493,11 @@
        </item>
        <item>
         <widget class="QLabel" name="chaLabel">
+         <property name="font">
+          <font>
+           <family>DejaVu Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string/>
          </property>
@@ -405,6 +515,11 @@
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>DejaVu Sans</family>
+        </font>
        </property>
        <property name="layoutDirection">
         <enum>Qt::LeftToRight</enum>
@@ -451,6 +566,11 @@
         <layout class="QVBoxLayout" name="verticalLayout">
          <item>
           <widget class="QLabel" name="abilitiesLabel">
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+            </font>
+           </property>
            <property name="text">
             <string/>
            </property>

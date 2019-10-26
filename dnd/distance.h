@@ -17,7 +17,7 @@ class Distance : public Quantity<DistanceType, LengthUnit> {
         Distance(const DistanceType& rt, const int& value, const LengthUnit& unit, const std::string& str="") : Quantity<DistanceType, LengthUnit>(rt, value, unit, str) {}
         Distance() : Distance(DistanceType(DistanceTypes::Self), 0, LengthUnit(LengthUnits::Foot)) {}
 
-        bool operator==(const Distance& other) const noexcept;
+        //bool operator==(const Distance& other) const noexcept;
 
         // Methods
         int length_in_feet() const noexcept { return base_value(); }

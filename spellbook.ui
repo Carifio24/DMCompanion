@@ -26,6 +26,11 @@
       <layout class="QGridLayout" name="sortFilterLayout">
        <item row="0" column="1">
         <widget class="QLabel" name="sort2Label">
+         <property name="font">
+          <font>
+           <family>DejaVu Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string>Sort field 2</string>
          </property>
@@ -33,6 +38,11 @@
        </item>
        <item row="1" column="0">
         <widget class="QComboBox" name="sort1Box">
+         <property name="font">
+          <font>
+           <family>DejaVu Sans</family>
+          </font>
+         </property>
          <property name="styleSheet">
           <string notr="true">background-color : rgb(231,208,166)</string>
          </property>
@@ -40,6 +50,11 @@
        </item>
        <item row="0" column="2">
         <widget class="QLabel" name="filterLabel">
+         <property name="font">
+          <font>
+           <family>DejaVu Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string>Filter by class</string>
          </property>
@@ -47,6 +62,11 @@
        </item>
        <item row="0" column="0">
         <widget class="QLabel" name="sort1Label">
+         <property name="font">
+          <font>
+           <family>DejaVu Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string>Sort field 1</string>
          </property>
@@ -54,6 +74,11 @@
        </item>
        <item row="1" column="1">
         <widget class="QComboBox" name="sort2Box">
+         <property name="font">
+          <font>
+           <family>DejaVu Sans</family>
+          </font>
+         </property>
          <property name="styleSheet">
           <string notr="true">background-color : rgb(231,208,166)</string>
          </property>
@@ -61,6 +86,11 @@
        </item>
        <item row="1" column="2">
         <widget class="QComboBox" name="filterBox">
+         <property name="font">
+          <font>
+           <family>DejaVu Sans</family>
+          </font>
+         </property>
          <property name="styleSheet">
           <string notr="true">background-color : rgb(231,208,166)</string>
          </property>
@@ -72,6 +102,13 @@
       <layout class="QHBoxLayout" name="favoritesSearchLayout">
        <item>
         <widget class="QRadioButton" name="favoritesButton">
+         <property name="font">
+          <font>
+           <family>DejaVu Sans</family>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
          <property name="text">
           <string>Favorites</string>
          </property>
@@ -79,6 +116,11 @@
        </item>
        <item>
         <widget class="QLineEdit" name="searchBar">
+         <property name="font">
+          <font>
+           <family>DejaVu Sans</family>
+          </font>
+         </property>
          <property name="focusPolicy">
           <enum>Qt::ClickFocus</enum>
          </property>
@@ -114,6 +156,13 @@
        </property>
        <item>
         <widget class="QCheckBox" name="phbCheckbox">
+         <property name="font">
+          <font>
+           <family>DejaVu Sans</family>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
          <property name="text">
           <string>Player's Handbook</string>
          </property>
@@ -124,6 +173,13 @@
        </item>
        <item>
         <widget class="QCheckBox" name="xgeCheckbox">
+         <property name="font">
+          <font>
+           <family>DejaVu Sans</family>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
          <property name="text">
           <string>Xanathar's GTE</string>
          </property>
@@ -131,6 +187,13 @@
        </item>
        <item>
         <widget class="QCheckBox" name="scagCheckbox">
+         <property name="font">
+          <font>
+           <family>DejaVu Sans</family>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
          <property name="text">
           <string>Sword Coast AG</string>
          </property>
@@ -140,6 +203,11 @@
      </item>
      <item>
       <widget class="QTableWidget" name="spellList">
+       <property name="font">
+        <font>
+         <family>DejaVu Sans</family>
+        </font>
+       </property>
        <property name="styleSheet">
         <string notr="true">background:transparent</string>
        </property>
@@ -209,7 +277,7 @@
         <widget class="QLabel" name="nameLabel">
          <property name="font">
           <font>
-           <family>URW Chancery L</family>
+           <family>DejaVu Sans</family>
            <pointsize>30</pointsize>
            <italic>true</italic>
           </font>
@@ -229,6 +297,11 @@
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>DejaVu Sans</family>
+          </font>
          </property>
          <property name="focusPolicy">
           <enum>Qt::NoFocus</enum>
@@ -251,6 +324,11 @@
      </item>
      <item>
       <widget class="QLabel" name="levelLabel">
+       <property name="font">
+        <font>
+         <family>DejaVu Sans</family>
+        </font>
+       </property>
        <property name="text">
         <string/>
        </property>
@@ -258,6 +336,11 @@
      </item>
      <item>
       <widget class="QLabel" name="rangeLabel">
+       <property name="font">
+        <font>
+         <family>DejaVu Sans</family>
+        </font>
+       </property>
        <property name="text">
         <string/>
        </property>
@@ -268,6 +351,11 @@
      </item>
      <item>
       <widget class="QLabel" name="concentrationLabel">
+       <property name="font">
+        <font>
+         <family>DejaVu Sans</family>
+        </font>
+       </property>
        <property name="text">
         <string/>
        </property>
@@ -275,6 +363,11 @@
      </item>
      <item>
       <widget class="QLabel" name="schoolLabel">
+       <property name="font">
+        <font>
+         <family>DejaVu Sans</family>
+        </font>
+       </property>
        <property name="text">
         <string/>
        </property>
@@ -282,6 +375,11 @@
      </item>
      <item>
       <widget class="QLabel" name="ritualLabel">
+       <property name="font">
+        <font>
+         <family>DejaVu Sans</family>
+        </font>
+       </property>
        <property name="text">
         <string/>
        </property>
@@ -289,6 +387,11 @@
      </item>
      <item>
       <widget class="QLabel" name="durationLabel">
+       <property name="font">
+        <font>
+         <family>DejaVu Sans</family>
+        </font>
+       </property>
        <property name="text">
         <string/>
        </property>
@@ -301,6 +404,11 @@
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>DejaVu Sans</family>
+        </font>
        </property>
        <property name="text">
         <string/>
@@ -315,6 +423,11 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="font">
+        <font>
+         <family>DejaVu Sans</family>
+        </font>
+       </property>
        <property name="text">
         <string/>
        </property>
@@ -322,6 +435,11 @@
      </item>
      <item>
       <widget class="QLabel" name="pageLabel">
+       <property name="font">
+        <font>
+         <family>DejaVu Sans</family>
+        </font>
+       </property>
        <property name="text">
         <string/>
        </property>
@@ -334,6 +452,11 @@
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>DejaVu Sans</family>
+        </font>
        </property>
        <property name="text">
         <string/>
@@ -354,6 +477,11 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="font">
+        <font>
+         <family>DejaVu Sans</family>
+        </font>
+       </property>
        <property name="text">
         <string/>
        </property>
@@ -361,6 +489,11 @@
      </item>
      <item>
       <widget class="QLabel" name="descriptionTitle">
+       <property name="font">
+        <font>
+         <family>DejaVu Sans</family>
+        </font>
+       </property>
        <property name="text">
         <string/>
        </property>
@@ -373,6 +506,11 @@
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>DejaVu Sans</family>
+        </font>
        </property>
        <property name="autoFillBackground">
         <bool>true</bool>
@@ -425,6 +563,11 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+            </font>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -450,6 +593,11 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+            </font>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -465,6 +613,11 @@
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+            </font>
            </property>
            <property name="text">
             <string/>

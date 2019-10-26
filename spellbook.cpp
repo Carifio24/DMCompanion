@@ -33,9 +33,6 @@ Spellbook::Spellbook(QWidget *parent) :
 
     ui->setupUi(this);
 
-    // Set the title
-    setWindowTitle(QString::fromStdString("D&D 5th edition spellbook"));
-
     // Set items to be transparent
 //    setStyleSheet("background-color:transparent");
 //    ui->descScrollArea->setStyleSheet("background-color:transparent");
@@ -63,25 +60,25 @@ Spellbook::Spellbook(QWidget *parent) :
     spells = read_spell_file(&qspellfile);
     qspellfile.close();
 
-    std::cout << "Read spell file" << std::endl;
+    //std::cout << "Read spell file" << std::endl;
 
     // Add the spells to the QTableWidget and display them
     populate_spell_table();
 
-    std::cout << "Populated spell table" << std::endl;
+    //std::cout << "Populated spell table" << std::endl;
 
     // Add the "None" option for the second sort ComboBox
     ui->sort2Box->addItem(QString::fromStdString("None"));
 
     // Add the options to the sort ComboBoxes
-    std::cout << "n_sortable is " << SpellSortField::n_fields() << std::endl;
+    //std::cout << "n_sortable is " << SpellSortField::n_fields() << std::endl;
     for (auto x : SpellSortField::instances()) {
         std::string_view name = x.name();
         ui->sort1Box->addItem(QLatin1String(name.data(), name.size()));
         ui->sort2Box->addItem(QLatin1String(name.data(), name.size()));
     }
 
-    std::cout << "Added combo box options" << std::endl;
+    //std::cout << "Added combo box options" << std::endl;
 
     // Set the Name option on the second sort box to be red, as this is the starting selection for the first sort box
     ui->sort2Box->setItemData(1, QBrush(Qt::red), Qt::TextColorRole);
@@ -93,7 +90,7 @@ Spellbook::Spellbook(QWidget *parent) :
         ui->filterBox->addItem(QLatin1String(name.data(), name.size()));
     }
 
-    std::cout << "Finished combo boxes" << std::endl;
+    //std::cout << "Finished combo boxes" << std::endl;
 
     /*
     for (const std::string& sname : subclassNames) {
@@ -158,7 +155,7 @@ Spellbook::Spellbook(QWidget *parent) :
     // Load favorites
     load_favorites();
 
-    std::cout << "Finished spellbook setup" << std::endl;
+    //std::cout << "Finished spellbook setup" << std::endl;
 }
 
 Spellbook::~Spellbook()
@@ -349,7 +346,7 @@ void Spellbook::sort() {
     // If this entry is greyed out, do nothing
     int index1 = ui->sort1Box->currentIndex();
     int index2 = ui->sort2Box->currentIndex();
-    if (index2 == index1 + 1) {return;}
+    if (index2 == index1 + 1) { return; }
 
     // Get the strings
     QString qstr1 = ui->sort1Box->currentText();

@@ -29,7 +29,7 @@ class Quantity {
         }
 
         bool operator==(const Quantity& other) const {
-            return (_type.get() == other._type) && (base_value() == other.base_value());
+            return (_type.get() == other._type.get()) && (base_value() == other.base_value());
         }
 
     protected:

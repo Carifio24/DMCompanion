@@ -23,7 +23,7 @@ QString condition_immunities_string(const DnD::Monster& m);
 
 QString ability_score_string(int x);
 QString as_qstring(const DnD::DamageInfo& dinf);
-QString title_qstring(const QString& qs, int size=16);
+QString title_qstring(const QString& qs, int size=14);
 QString ability_score_text(const QString& abbr, int score, int size=3);
 QString size_type_string(const DnD::Monster& m);
 

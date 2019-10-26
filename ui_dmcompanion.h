@@ -44,6 +44,9 @@ public:
         tabWidget->setEnabled(true);
         tabWidget->setGeometry(QRect(0, 0, 1421, 831));
         tabWidget->setMaximumSize(QSize(4000, 4000));
+        QFont font;
+        font.setFamily(QString::fromUtf8("DejaVu Sans"));
+        tabWidget->setFont(font);
         tabWidget->setAutoFillBackground(false);
         tabWidget->setStyleSheet(QString::fromUtf8(""));
         spellTab = new Spellbook();

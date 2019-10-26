@@ -64,6 +64,9 @@ public:
         if (MonsterManual->objectName().isEmpty())
             MonsterManual->setObjectName(QString::fromUtf8("MonsterManual"));
         MonsterManual->resize(1005, 925);
+        QFont font;
+        font.setFamily(QString::fromUtf8("DejaVu Sans"));
+        MonsterManual->setFont(font);
         MonsterManual->setStyleSheet(QString::fromUtf8("background-color: transparent"));
         horizontalLayout = new QHBoxLayout(MonsterManual);
         horizontalLayout->setSpacing(3);
@@ -75,6 +78,7 @@ public:
         leftLayout->setObjectName(QString::fromUtf8("leftLayout"));
         searchBar = new QLineEdit(MonsterManual);
         searchBar->setObjectName(QString::fromUtf8("searchBar"));
+        searchBar->setFont(font);
         searchBar->setStyleSheet(QString::fromUtf8("background:transparent"));
 
         leftLayout->addWidget(searchBar);
@@ -87,6 +91,7 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(monsterTable->sizePolicy().hasHeightForWidth());
         monsterTable->setSizePolicy(sizePolicy);
+        monsterTable->setFont(font);
         monsterTable->setAutoFillBackground(false);
         monsterTable->setStyleSheet(QString::fromUtf8("background:transparent"));
         monsterTable->setShowGrid(false);
@@ -111,24 +116,24 @@ public:
         dataLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
         nameLabel = new QLabel(MonsterManual);
         nameLabel->setObjectName(QString::fromUtf8("nameLabel"));
-        QFont font;
-        font.setFamily(QString::fromUtf8("URW Chancery L"));
-        font.setPointSize(30);
-        font.setItalic(true);
-        nameLabel->setFont(font);
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("DejaVu Sans"));
+        font1.setPointSize(30);
+        font1.setItalic(true);
+        nameLabel->setFont(font1);
         nameLabel->setAlignment(Qt::AlignCenter);
 
         dataLayout->addWidget(nameLabel);
 
         sizeTypeLabel = new QLabel(MonsterManual);
         sizeTypeLabel->setObjectName(QString::fromUtf8("sizeTypeLabel"));
-        QFont font1;
-        font1.setFamily(QString::fromUtf8("DejaVu Sans"));
-        font1.setPointSize(12);
-        font1.setBold(false);
-        font1.setItalic(true);
-        font1.setWeight(50);
-        sizeTypeLabel->setFont(font1);
+        QFont font2;
+        font2.setFamily(QString::fromUtf8("DejaVu Sans"));
+        font2.setPointSize(12);
+        font2.setBold(false);
+        font2.setItalic(true);
+        font2.setWeight(50);
+        sizeTypeLabel->setFont(font2);
         sizeTypeLabel->setStyleSheet(QString::fromUtf8("font : italic"));
         sizeTypeLabel->setAlignment(Qt::AlignHCenter|Qt::AlignTop);
 
@@ -145,16 +150,19 @@ public:
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(acLabel->sizePolicy().hasHeightForWidth());
         acLabel->setSizePolicy(sizePolicy1);
+        acLabel->setFont(font);
 
         statsLayout->addWidget(acLabel);
 
         speedLabel = new QLabel(MonsterManual);
         speedLabel->setObjectName(QString::fromUtf8("speedLabel"));
+        speedLabel->setFont(font);
 
         statsLayout->addWidget(speedLabel);
 
         hpLabel = new QLabel(MonsterManual);
         hpLabel->setObjectName(QString::fromUtf8("hpLabel"));
+        hpLabel->setFont(font);
 
         statsLayout->addWidget(hpLabel);
 
@@ -165,6 +173,7 @@ public:
         sizePolicy2.setVerticalStretch(0);
         sizePolicy2.setHeightForWidth(savingThrowsLabel->sizePolicy().hasHeightForWidth());
         savingThrowsLabel->setSizePolicy(sizePolicy2);
+        savingThrowsLabel->setFont(font);
         savingThrowsLabel->setWordWrap(true);
 
         statsLayout->addWidget(savingThrowsLabel);
@@ -173,6 +182,7 @@ public:
         sensesLabel->setObjectName(QString::fromUtf8("sensesLabel"));
         sizePolicy2.setHeightForWidth(sensesLabel->sizePolicy().hasHeightForWidth());
         sensesLabel->setSizePolicy(sizePolicy2);
+        sensesLabel->setFont(font);
         sensesLabel->setWordWrap(true);
 
         statsLayout->addWidget(sensesLabel);
@@ -181,6 +191,7 @@ public:
         damageImmunitiesLabel->setObjectName(QString::fromUtf8("damageImmunitiesLabel"));
         sizePolicy2.setHeightForWidth(damageImmunitiesLabel->sizePolicy().hasHeightForWidth());
         damageImmunitiesLabel->setSizePolicy(sizePolicy2);
+        damageImmunitiesLabel->setFont(font);
         damageImmunitiesLabel->setWordWrap(true);
 
         statsLayout->addWidget(damageImmunitiesLabel);
@@ -189,6 +200,7 @@ public:
         languagesLabel->setObjectName(QString::fromUtf8("languagesLabel"));
         sizePolicy2.setHeightForWidth(languagesLabel->sizePolicy().hasHeightForWidth());
         languagesLabel->setSizePolicy(sizePolicy2);
+        languagesLabel->setFont(font);
         languagesLabel->setWordWrap(true);
 
         statsLayout->addWidget(languagesLabel);
@@ -197,6 +209,7 @@ public:
         conditionImmunitiesLabel->setObjectName(QString::fromUtf8("conditionImmunitiesLabel"));
         sizePolicy2.setHeightForWidth(conditionImmunitiesLabel->sizePolicy().hasHeightForWidth());
         conditionImmunitiesLabel->setSizePolicy(sizePolicy2);
+        conditionImmunitiesLabel->setFont(font);
         conditionImmunitiesLabel->setWordWrap(true);
 
         statsLayout->addWidget(conditionImmunitiesLabel);
@@ -205,6 +218,7 @@ public:
         challengeRatingLabel->setObjectName(QString::fromUtf8("challengeRatingLabel"));
         sizePolicy2.setHeightForWidth(challengeRatingLabel->sizePolicy().hasHeightForWidth());
         challengeRatingLabel->setSizePolicy(sizePolicy2);
+        challengeRatingLabel->setFont(font);
         challengeRatingLabel->setWordWrap(true);
 
         statsLayout->addWidget(challengeRatingLabel);
@@ -213,6 +227,7 @@ public:
         damageResistancesLabel->setObjectName(QString::fromUtf8("damageResistancesLabel"));
         sizePolicy2.setHeightForWidth(damageResistancesLabel->sizePolicy().hasHeightForWidth());
         damageResistancesLabel->setSizePolicy(sizePolicy2);
+        damageResistancesLabel->setFont(font);
         damageResistancesLabel->setWordWrap(true);
 
         statsLayout->addWidget(damageResistancesLabel);
@@ -221,6 +236,7 @@ public:
         damageVulnerabilitiesLabel->setObjectName(QString::fromUtf8("damageVulnerabilitiesLabel"));
         sizePolicy2.setHeightForWidth(damageVulnerabilitiesLabel->sizePolicy().hasHeightForWidth());
         damageVulnerabilitiesLabel->setSizePolicy(sizePolicy2);
+        damageVulnerabilitiesLabel->setFont(font);
         damageVulnerabilitiesLabel->setWordWrap(true);
 
         statsLayout->addWidget(damageVulnerabilitiesLabel);
@@ -229,6 +245,7 @@ public:
         skillsLabel->setObjectName(QString::fromUtf8("skillsLabel"));
         sizePolicy2.setHeightForWidth(skillsLabel->sizePolicy().hasHeightForWidth());
         skillsLabel->setSizePolicy(sizePolicy2);
+        skillsLabel->setFont(font);
         skillsLabel->setWordWrap(true);
 
         statsLayout->addWidget(skillsLabel);
@@ -243,6 +260,7 @@ public:
         sizePolicy3.setVerticalStretch(0);
         sizePolicy3.setHeightForWidth(imageLabel->sizePolicy().hasHeightForWidth());
         imageLabel->setSizePolicy(sizePolicy3);
+        imageLabel->setFont(font);
         imageLabel->setFrameShape(QFrame::Box);
         imageLabel->setLineWidth(3);
 
@@ -255,36 +273,42 @@ public:
         abilityScoresLayout->setObjectName(QString::fromUtf8("abilityScoresLayout"));
         strLabel = new QLabel(MonsterManual);
         strLabel->setObjectName(QString::fromUtf8("strLabel"));
+        strLabel->setFont(font);
         strLabel->setAlignment(Qt::AlignCenter);
 
         abilityScoresLayout->addWidget(strLabel);
 
         dexLabel = new QLabel(MonsterManual);
         dexLabel->setObjectName(QString::fromUtf8("dexLabel"));
+        dexLabel->setFont(font);
         dexLabel->setAlignment(Qt::AlignCenter);
 
         abilityScoresLayout->addWidget(dexLabel);
 
         conLabel = new QLabel(MonsterManual);
         conLabel->setObjectName(QString::fromUtf8("conLabel"));
+        conLabel->setFont(font);
         conLabel->setAlignment(Qt::AlignCenter);
 
         abilityScoresLayout->addWidget(conLabel);
 
         intLabel = new QLabel(MonsterManual);
         intLabel->setObjectName(QString::fromUtf8("intLabel"));
+        intLabel->setFont(font);
         intLabel->setAlignment(Qt::AlignCenter);
 
         abilityScoresLayout->addWidget(intLabel);
 
         wisLabel = new QLabel(MonsterManual);
         wisLabel->setObjectName(QString::fromUtf8("wisLabel"));
+        wisLabel->setFont(font);
         wisLabel->setAlignment(Qt::AlignCenter);
 
         abilityScoresLayout->addWidget(wisLabel);
 
         chaLabel = new QLabel(MonsterManual);
         chaLabel->setObjectName(QString::fromUtf8("chaLabel"));
+        chaLabel->setFont(font);
         chaLabel->setAlignment(Qt::AlignCenter);
 
         abilityScoresLayout->addWidget(chaLabel);
@@ -299,6 +323,7 @@ public:
         sizePolicy4.setVerticalStretch(0);
         sizePolicy4.setHeightForWidth(abilitiesScrollArea->sizePolicy().hasHeightForWidth());
         abilitiesScrollArea->setSizePolicy(sizePolicy4);
+        abilitiesScrollArea->setFont(font);
         abilitiesScrollArea->setLayoutDirection(Qt::LeftToRight);
         abilitiesScrollArea->setStyleSheet(QString::fromUtf8("background-color: transparent"));
         abilitiesScrollArea->setFrameShape(QFrame::NoFrame);
@@ -320,6 +345,7 @@ public:
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         abilitiesLabel = new QLabel(abilitiesContents);
         abilitiesLabel->setObjectName(QString::fromUtf8("abilitiesLabel"));
+        abilitiesLabel->setFont(font);
         abilitiesLabel->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
         abilitiesLabel->setWordWrap(true);
 
