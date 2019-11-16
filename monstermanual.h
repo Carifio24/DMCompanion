@@ -32,6 +32,7 @@ private:
     void populate_monster_table();
     void display_monster_data(const DnD::Monster& m);
     void read_monster_file(QFile* qmonsterfile);
+    void sort();
 
     static constexpr int image_width = 300;
     static constexpr int image_height = 300;

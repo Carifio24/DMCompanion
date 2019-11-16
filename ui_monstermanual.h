@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'monstermanual.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.3
+** Created by: Qt User Interface Compiler version 5.13.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -27,6 +28,9 @@ class Ui_MonsterManual
 public:
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *leftLayout;
+    QVBoxLayout *sortLayout;
+    QLabel *sortLabel;
+    QComboBox *sortComboBox;
     QLineEdit *searchBar;
     QTableWidget *monsterTable;
     QVBoxLayout *dataLayout;
@@ -76,6 +80,22 @@ public:
         leftLayout = new QVBoxLayout();
         leftLayout->setSpacing(6);
         leftLayout->setObjectName(QString::fromUtf8("leftLayout"));
+        sortLayout = new QVBoxLayout();
+        sortLayout->setObjectName(QString::fromUtf8("sortLayout"));
+        sortLabel = new QLabel(MonsterManual);
+        sortLabel->setObjectName(QString::fromUtf8("sortLabel"));
+
+        sortLayout->addWidget(sortLabel);
+
+        sortComboBox = new QComboBox(MonsterManual);
+        sortComboBox->setObjectName(QString::fromUtf8("sortComboBox"));
+        sortComboBox->setStyleSheet(QString::fromUtf8("background-color : rgb(231,208,166)"));
+
+        sortLayout->addWidget(sortComboBox);
+
+
+        leftLayout->addLayout(sortLayout);
+
         searchBar = new QLineEdit(MonsterManual);
         searchBar->setObjectName(QString::fromUtf8("searchBar"));
         searchBar->setFont(font);
@@ -105,8 +125,8 @@ public:
 
         leftLayout->addWidget(monsterTable);
 
-        leftLayout->setStretch(0, 3);
-        leftLayout->setStretch(1, 7);
+        leftLayout->setStretch(1, 3);
+        leftLayout->setStretch(2, 7);
 
         horizontalLayout->addLayout(leftLayout);
 
@@ -335,7 +355,7 @@ public:
         abilitiesScrollArea->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
         abilitiesContents = new QWidget();
         abilitiesContents->setObjectName(QString::fromUtf8("abilitiesContents"));
-        abilitiesContents->setGeometry(QRect(0, 0, 732, 437));
+        abilitiesContents->setGeometry(QRect(0, 0, 732, 439));
         QSizePolicy sizePolicy5(QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
         sizePolicy5.setHorizontalStretch(0);
         sizePolicy5.setVerticalStretch(0);
@@ -373,8 +393,9 @@ public:
 
     void retranslateUi(QWidget *MonsterManual)
     {
-        MonsterManual->setWindowTitle(QApplication::translate("MonsterManual", "Form", nullptr));
-        searchBar->setPlaceholderText(QApplication::translate("MonsterManual", "Search", nullptr));
+        MonsterManual->setWindowTitle(QCoreApplication::translate("MonsterManual", "Form", nullptr));
+        sortLabel->setText(QCoreApplication::translate("MonsterManual", "Sort Field", nullptr));
+        searchBar->setPlaceholderText(QCoreApplication::translate("MonsterManual", "Search", nullptr));
         nameLabel->setText(QString());
         sizeTypeLabel->setText(QString());
         acLabel->setText(QString());

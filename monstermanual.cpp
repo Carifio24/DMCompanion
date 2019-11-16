@@ -55,6 +55,12 @@ MonsterManual::MonsterManual(QWidget *parent) :
     std::sort(monsters.begin(), monsters.end(), default_cmp);
     //std::cout << "Done sorting" << std::endl;
 
+    // Add the options to the sort ComboBox
+    for (auto x : MonsterSortField::instances()) {
+        std::string_view name = x.name();
+        ui->sortComboBox->addItem(QLatin1String(name.data(), name.size()));
+    }
+
     // Populate the monster table
     //std::cout << "About to populate monster table" << std::endl;
     populate_monster_table();
@@ -204,6 +210,31 @@ void MonsterManual::display_monster_data(const Monster& m) {
 
 }
 
+
+void MonsterManual::sort() {
+
+    // Get the sort field from its name
+    QString sort_field_qstr = ui->sortComboBox->currentText();
+    std::string sort_field_str = sort_field_qstr.toStdString();
+    MonsterSortField sort_field = MonsterSortField::from_name(sort_field_str);
+
+    // Get the comparator function
+    BinaryIntFunc<DnD::Monster> sort_field_TC = sort_field.tricomparator();
+    BinaryIntFunc<DnD::Monster> default_TC = MonsterSortField::default_tricomparator();
+    Comparator<DnD::Monster> cmp = comparator(sort_field_TC, default_TC);
+
+    // Sort the monsters
+    std::sort(monsters.begin(), monsters.end(), cmp);
+
+    // Clear the QListWidget and repopulate with the sorted list
+    for (int i = 0; i < monsters.size(); i++) {
+
+        ui->monsterTable->setItem(i,0,new QTableWidgetItem(QString::fromStdString(monsters[i].name())));
+    }
+
+}
+
+
 bool MonsterManual::filter_item(const Monster& m, const bool filter_text, const std::string& text) {
     bool hide = false;
     std::string name = m.name();
@@ -254,4 +285,9 @@ void MonsterManual::read_monster_file(QFile* qmonsterfile) {
         //std::cout << "Created monster with name " <<m.name() << std::endl;
     }
 
+}
+
+void MonsterManual::on_sortComboBox_currentIndexChanged(const QString &arg1)
+{
+    sort();
 }

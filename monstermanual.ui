@@ -35,10 +35,28 @@
     <number>5</number>
    </property>
    <item>
-    <layout class="QVBoxLayout" name="leftLayout" stretch="3,7">
+    <layout class="QVBoxLayout" name="leftLayout" stretch="0,3,7">
      <property name="spacing">
       <number>6</number>
      </property>
+     <item>
+      <layout class="QVBoxLayout" name="sortLayout">
+       <item>
+        <widget class="QLabel" name="sortLabel">
+         <property name="text">
+          <string>Sort Field</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="sortComboBox">
+         <property name="styleSheet">
+          <string notr="true">background-color : rgb(231,208,166)</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
      <item>
       <widget class="QLineEdit" name="searchBar">
        <property name="font">
@@ -554,7 +572,7 @@
           <x>0</x>
           <y>0</y>
           <width>732</width>
-          <height>437</height>
+          <height>439</height>
          </rect>
         </property>
         <property name="sizePolicy">

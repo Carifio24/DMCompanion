@@ -67,4 +67,17 @@ int Fraction::gcd(const int a, const int b) const {
     return (b == 0) ? a : gcd(b, a % b);
 }
 
+// Operator <
+bool operator<(const Fraction& f1, const Fraction& f2) {
+
+    if (f1.is_zero()) {
+        return f2.is_positive();
+    }
+    if (f1.is_positive() && f2.is_nonpositive()) { return false; }
+    if (f1.is_negative() && f2.is_nonnegative() { return true; }
+    int det = f1.numerator() * f2.denominator() - f1.denominator() * f2.numerator();
+    return f1.is_positive() ? (det < 0) : (det > 0);)
+
+}
+
 } // end namespace DnD
