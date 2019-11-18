@@ -228,7 +228,6 @@ void MonsterManual::sort() {
 
     // Clear the QListWidget and repopulate with the sorted list
     for (int i = 0; i < monsters.size(); i++) {
-
         ui->monsterTable->setItem(i,0,new QTableWidgetItem(QString::fromStdString(monsters[i].name())));
     }
 
@@ -242,6 +241,7 @@ bool MonsterManual::filter_item(const Monster& m, const bool filter_text, const 
     hide = hide || (filter_text && !boost::contains(name, text));
     return hide;
 }
+
 
 void MonsterManual::filter() {
     std::string search_text = ui->searchBar->text().toStdString();
@@ -287,7 +287,8 @@ void MonsterManual::read_monster_file(QFile* qmonsterfile) {
 
 }
 
-void MonsterManual::on_sortComboBox_currentIndexChanged(const QString &arg1)
+
+void MonsterManual::on_sortComboBox_currentIndexChanged(const QString& arg1)
 {
     sort();
 }

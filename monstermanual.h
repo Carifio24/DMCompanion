@@ -26,6 +26,8 @@ private slots:
 
     void on_searchBar_textEdited(const QString &arg1);
 
+    void on_sortComboBox_currentIndexChanged(const QString &arg1);
+
 private:
     bool filter_item(const DnD::Monster& m, const bool filter_text, const std::string& text);
     void filter();

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'monstermanual.ui'
 **
-** Created by: Qt User Interface Compiler version 5.13.0
+** Created by: Qt User Interface Compiler version 5.12.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -84,11 +84,17 @@ public:
         sortLayout->setObjectName(QString::fromUtf8("sortLayout"));
         sortLabel = new QLabel(MonsterManual);
         sortLabel->setObjectName(QString::fromUtf8("sortLabel"));
+        sortLabel->setFont(font);
 
         sortLayout->addWidget(sortLabel);
 
         sortComboBox = new QComboBox(MonsterManual);
         sortComboBox->setObjectName(QString::fromUtf8("sortComboBox"));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("DejaVu Sans"));
+        font1.setBold(false);
+        font1.setWeight(50);
+        sortComboBox->setFont(font1);
         sortComboBox->setStyleSheet(QString::fromUtf8("background-color : rgb(231,208,166)"));
 
         sortLayout->addWidget(sortComboBox);
@@ -136,24 +142,24 @@ public:
         dataLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
         nameLabel = new QLabel(MonsterManual);
         nameLabel->setObjectName(QString::fromUtf8("nameLabel"));
-        QFont font1;
-        font1.setFamily(QString::fromUtf8("DejaVu Sans"));
-        font1.setPointSize(30);
-        font1.setItalic(true);
-        nameLabel->setFont(font1);
+        QFont font2;
+        font2.setFamily(QString::fromUtf8("DejaVu Sans"));
+        font2.setPointSize(30);
+        font2.setItalic(true);
+        nameLabel->setFont(font2);
         nameLabel->setAlignment(Qt::AlignCenter);
 
         dataLayout->addWidget(nameLabel);
 
         sizeTypeLabel = new QLabel(MonsterManual);
         sizeTypeLabel->setObjectName(QString::fromUtf8("sizeTypeLabel"));
-        QFont font2;
-        font2.setFamily(QString::fromUtf8("DejaVu Sans"));
-        font2.setPointSize(12);
-        font2.setBold(false);
-        font2.setItalic(true);
-        font2.setWeight(50);
-        sizeTypeLabel->setFont(font2);
+        QFont font3;
+        font3.setFamily(QString::fromUtf8("DejaVu Sans"));
+        font3.setPointSize(12);
+        font3.setBold(false);
+        font3.setItalic(true);
+        font3.setWeight(50);
+        sizeTypeLabel->setFont(font3);
         sizeTypeLabel->setStyleSheet(QString::fromUtf8("font : italic"));
         sizeTypeLabel->setAlignment(Qt::AlignHCenter|Qt::AlignTop);
 
@@ -393,9 +399,9 @@ public:
 
     void retranslateUi(QWidget *MonsterManual)
     {
-        MonsterManual->setWindowTitle(QCoreApplication::translate("MonsterManual", "Form", nullptr));
-        sortLabel->setText(QCoreApplication::translate("MonsterManual", "Sort Field", nullptr));
-        searchBar->setPlaceholderText(QCoreApplication::translate("MonsterManual", "Search", nullptr));
+        MonsterManual->setWindowTitle(QApplication::translate("MonsterManual", "Form", nullptr));
+        sortLabel->setText(QApplication::translate("MonsterManual", "Sort Field", nullptr));
+        searchBar->setPlaceholderText(QApplication::translate("MonsterManual", "Search", nullptr));
         nameLabel->setText(QString());
         sizeTypeLabel->setText(QString());
         acLabel->setText(QString());

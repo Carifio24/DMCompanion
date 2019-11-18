@@ -14,7 +14,7 @@ using namespace DnD;
 QString hp_string(const Monster& m) {
     QString hp_str = QString::number(m.hit_points()) % " (" % QString::fromStdString(m.hit_dice().as_string());
     if (m.hp_bonus() != 0) {
-        QString pm_str = m.hp_bonus() > 0 ? " + " : " - ";
+        QString pm_str = m.hp_bonus() > 0 ? " + " : " ";
         hp_str = hp_str % pm_str % QString::number(m.hp_bonus());
     }
     hp_str = hp_str % ")";

@@ -38,14 +38,15 @@ Fraction::Fraction(const int n, const int d) {
 Fraction Fraction::from_string(const std::string& s) {
     std::vector<std::string> num_den = split(s, "/");
     if (num_den.size() > 2) { throw std::runtime_error("Invalid string format for Fraction: " + s);}
-    int n, d = 0;
+    int n = 0;
+    int d = 1;
     try {
         n = std::stoi(num_den[0]);
         d = (num_den.size() > 1) ? std::stoi(num_den[1]) : 1;
     } catch (std::exception& e) {
         std::cout << e.what() << std::endl;
     }
-    return Fraction(n,d); // Should never be reached
+    return Fraction(n,d);
 }
 
 // Return true if the fraction is an integer, false otherwise
@@ -70,14 +71,17 @@ int Fraction::gcd(const int a, const int b) const {
 // Operator <
 bool operator<(const Fraction& f1, const Fraction& f2) {
 
-    if (f1.is_zero()) {
-        return f2.is_positive();
-    }
+    if (f1.is_zero()) { return f2.is_positive(); }
     if (f1.is_positive() && f2.is_nonpositive()) { return false; }
-    if (f1.is_negative() && f2.is_nonnegative() { return true; }
+    if (f1.is_negative() && f2.is_nonnegative()) { return true; }
     int det = f1.numerator() * f2.denominator() - f1.denominator() * f2.numerator();
-    return f1.is_positive() ? (det < 0) : (det > 0);)
+    return f1.is_positive() ? (det < 0) : (det > 0);
 
+}
+
+bool operator==(const Fraction& f1, const Fraction& f2) {
+    int det = f1.numerator() * f2.denominator() - f1.denominator() * f2.numerator();
+    return (det == 0);
 }
 
 } // end namespace DnD

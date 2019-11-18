@@ -20,13 +20,13 @@ public:
     static Fraction from_string(const std::string& s);
 
     // Accessors
-    int denominator() { return den; }
-    int numerator() { return sgn * num; }
-    bool is_positive() { return (sgn > 1); }
-    bool is_nonnegative() { return (sgn >= 0); }
-    bool is_negative() { return (sgn < 0); }
-    bool is_nonpositive() { return (sgn <= 0); }
-    bool is_zero() { return (sgn == 0); }
+    int denominator() const noexcept { return den; }
+    int numerator() const noexcept { return sgn * num; }
+    bool is_positive() const noexcept { return (sgn > 0); }
+    bool is_nonnegative() const noexcept { return (sgn >= 0); }
+    bool is_negative() const noexcept { return (sgn < 0); }
+    bool is_nonpositive() const noexcept { return (sgn <= 0); }
+    bool is_zero() const noexcept { return (sgn == 0); }
 
 
     // Methods
@@ -45,6 +45,7 @@ private:
 
 
 bool operator<(const Fraction& f1, const Fraction& f2);
+bool operator==(const Fraction& f1, const Fraction& f2);
 
 } // end namespace DnD
 
