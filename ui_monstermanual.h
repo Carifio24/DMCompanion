@@ -105,7 +105,9 @@ public:
         searchBar = new QLineEdit(MonsterManual);
         searchBar->setObjectName(QString::fromUtf8("searchBar"));
         searchBar->setFont(font);
-        searchBar->setStyleSheet(QString::fromUtf8("background:transparent"));
+        searchBar->setStyleSheet(QString::fromUtf8("border: 1px solid gray;\n"
+"background: transparent\n"
+""));
 
         leftLayout->addWidget(searchBar);
 

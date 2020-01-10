@@ -295,10 +295,6 @@ void Spellbook::load_favorites() {
                 break;
             }
         }
-
-        if (!inSpellbook) {
-            throw std::runtime_error("Bad spell name!");
-        }
     }
 }
 

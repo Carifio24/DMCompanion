@@ -69,6 +69,7 @@ DMCompanion::~DMCompanion()
 }
 
 void DMCompanion::resizeEvent(QResizeEvent* evt) {
+
     // We resize the background image when the window is resized
     QPixmap bkgnd(background);
     bkgnd = bkgnd.scaled(size(), Qt::IgnoreAspectRatio);

@@ -288,7 +288,7 @@ void MonsterManual::read_monster_file(QFile* qmonsterfile) {
 }
 
 
-void MonsterManual::on_sortComboBox_currentIndexChanged(const QString& arg1)
+void MonsterManual::on_sortComboBox_currentIndexChanged(const QString&)
 {
     sort();
 }

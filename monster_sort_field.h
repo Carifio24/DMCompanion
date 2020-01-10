@@ -29,9 +29,10 @@ struct MonsterSortFieldImpl::Instances {
     static inline constexpr const MonsterSortFieldImpl Intelligence{"Intelligence"};
     static inline constexpr const MonsterSortFieldImpl Wisdom{"Wisdom"};
     static inline constexpr const MonsterSortFieldImpl Charisma{"Charisma"};
+    static inline constexpr const MonsterSortFieldImpl PassivePerception{"Passive Perception"};
     static inline constexpr const MonsterSortFieldImpl* const instances[] = {
         &Name, &Type, &ChallengeRating, &ArmorClass, &HitPoints, &Strength, &Dexterity,
-        &Constitution, &Intelligence, &Wisdom, &Charisma
+        &Constitution, &Intelligence, &Wisdom, &Charisma, &PassivePerception
     };
 };
 
@@ -78,6 +79,7 @@ class MonsterSortField : public NamedEnum<MonsterSortFieldImpl,MonsterSortField>
             { Intelligence.index(), test_less_equal(&DnD::Monster::intelligence) },
             { Wisdom.index(), test_less_equal(&DnD::Monster::wisdom) },
             { Charisma.index(), test_less_equal(&DnD::Monster::charisma) },
+            { PassivePerception.index(), test_less_equal(&DnD::Monster::passive_perception) }
         };
 
 };

@@ -144,7 +144,8 @@ public:
         searchBar->setFont(font);
         searchBar->setFocusPolicy(Qt::ClickFocus);
         searchBar->setAutoFillBackground(false);
-        searchBar->setStyleSheet(QString::fromUtf8("background:transparent;"));
+        searchBar->setStyleSheet(QString::fromUtf8("border: 1px solid gray;\n"
+"background: transparent"));
 
         favoritesSearchLayout->addWidget(searchBar);
 
