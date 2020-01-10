@@ -20,5 +20,6 @@
         <file>resources/fonts/ScalaSans-RegularSC.otf</file>
         <file>resources/fonts/ScalaSans-Regular.otf</file>
         <file>resources/fonts/DejaVuSans.ttf</file>
+        <file>resources/fonts/ScalaSans-Italic.ttf</file>
     </qresource>
 </RCC>

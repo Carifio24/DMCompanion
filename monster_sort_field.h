@@ -45,15 +45,16 @@ class MonsterSortField : public NamedEnum<MonsterSortFieldImpl,MonsterSortField>
         // Constructor
         MonsterSortField(const MonsterSortFieldImpl& msfi) : NamedEnum<MonsterSortFieldImpl,MonsterSortField>(msfi) {}
 
-        // Get the tri-comparator function
-        BinaryIntFunc<DnD::Monster> tricomparator() const noexcept {
+        // Get the tri-comparator function, reversed if desired
+        BinaryIntFunc<DnD::Monster> tricomparator(const bool reverse=false) const noexcept {
 
             // Find the MonsterSortFieldImpl in the map
             auto it = monster_sort_TCs.find(_impl.get().index());
 
             // Get the tri-comparator from the iterator, falling back to name comparison if it wasn't found
             BinaryIntFunc<DnD::Monster> cmp = (it != monster_sort_TCs.end()) ? it->second : default_tricomparator();
-            return cmp;
+            int reverse_sign = reverse ? -1 : 1;
+            return [reverse_sign, cmp](const DnD::Monster& t1, const DnD::Monster& t2) { return reverse_sign * cmp(t1,t2); };
         }
 
         // Alias for the number of sort fields

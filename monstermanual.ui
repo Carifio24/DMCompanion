@@ -40,8 +40,22 @@
       <number>6</number>
      </property>
      <item>
-      <layout class="QVBoxLayout" name="sortLayout">
-       <item>
+      <layout class="QGridLayout" name="gridLayout" columnstretch="4,1">
+       <item row="1" column="0">
+        <widget class="QComboBox" name="sortComboBox">
+         <property name="font">
+          <font>
+           <family>DejaVu Sans</family>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color : rgb(231,208,166)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
         <widget class="QLabel" name="sortLabel">
          <property name="font">
           <font>
@@ -53,17 +67,19 @@
          </property>
         </widget>
        </item>
-       <item>
-        <widget class="QComboBox" name="sortComboBox">
-         <property name="font">
-          <font>
-           <family>DejaVu Sans</family>
-           <weight>50</weight>
-           <bold>false</bold>
-          </font>
+       <item row="1" column="1">
+        <widget class="QPushButton" name="sortReverse">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color : rgb(231,208,166)</string>
+          <string notr="true">background: none; border: none;</string>
+         </property>
+         <property name="text">
+          <string/>
          </property>
         </widget>
        </item>

@@ -36,15 +36,16 @@ class SpellSortField : public NamedEnum<SpellSortFieldImpl,SpellSortField> {
         // Constructor
         SpellSortField(const SpellSortFieldImpl& ssfi) : NamedEnum<SpellSortFieldImpl,SpellSortField>(ssfi) {}
 
-        // Get the tri-comparator function
-        BinaryIntFunc<DnD::Spell> tricomparator() const noexcept {
+        // Get the tri-comparator function, reversed if desired
+        BinaryIntFunc<DnD::Spell> tricomparator(const bool reverse=false) const noexcept {
 
             // Find the SpellSortFieldImpl in the map
             auto it = spell_sort_TCs.find(_impl.get().index());
 
             // Get the tri-comparator from the iterator, falling back to name comparison if it wasn't found
             BinaryIntFunc<DnD::Spell> cmp = (it != spell_sort_TCs.end()) ? it->second : default_tricomparator();
-            return cmp;
+            int reverse_sign = reverse ? -1 : 1;
+            return [reverse_sign, cmp](const DnD::Spell& t1, const DnD::Spell& t2) { return reverse_sign * cmp(t1,t2); };
         }
 
         // Alias for the number of spell sort fields

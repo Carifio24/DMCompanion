@@ -2,6 +2,7 @@
 #include "string_helpers.h"
 
 #include <string>
+#include <sstream>
 
 namespace DnD {
 
@@ -30,6 +31,35 @@ bool Spell::usable_by(const CasterClass& cc) const {
         }
     }
     return false;
+}
+
+std::string Spell::school_level_string() const {
+    std::stringstream ss;
+    switch (_level) {
+        case 0:
+            ss << _school.name() << " cantrip"; break;
+        case 1:
+            ss << "1st"; break;
+        case 2:
+            ss << "2nd"; break;
+        case 3:
+            ss << "3rd"; break;
+        default:
+            ss << std::to_string(_level) << "th"; break;
+    }
+
+    if (_level > 0) {
+        std::string school_name(_school.name());
+        to_lowercase(school_name);
+        ss << "-level " << school_name;
+    }
+
+    if (_ritual) {
+        ss << " (ritual)";
+    }
+
+    return ss.str();
+
 }
 
 } // end namespace DnD

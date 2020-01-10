@@ -18,6 +18,7 @@ DMCompanion::DMCompanion(QWidget *parent) :
     QFontDatabase::addApplicationFont(":/resources/fonts/cloister_black.ttf");
     QFontDatabase::addApplicationFont(":/resources/fonts/ScalaSans-Regular.otf");
     QFontDatabase::addApplicationFont(":/resources/fonts/ScalaSans-RegularSC.otf");
+    QFontDatabase::addApplicationFont(":/resources/fonts/ScalaSans-Italic.ttf");
     // setFont(QFont("Sans Serif", 9, 1));
 
     // UI setup

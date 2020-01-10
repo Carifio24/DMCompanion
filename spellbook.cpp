@@ -123,11 +123,16 @@ Spellbook::Spellbook(QWidget *parent) :
     // Make the table view not editable
     ui->spellList->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
+    // The level/school/ritual label
+    QFont levelSchoolFont = QFont("Scala Sans", 18, 1, true);
+    ui->levelSchoolLabel->setFont(levelSchoolFont);
+    ui->levelSchoolLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
+
     // Make the labels selectable and set their font
     std::vector<QLabel*> labels = {
-        ui->nameLabel, ui->schoolLabel, ui->ritualLabel,ui->concentrationLabel, ui->levelLabel, ui->rangeLabel,
+        ui->nameLabel, ui->concentrationLabel, ui->rangeLabel,
         ui->descriptionTitle, ui->descriptionLabel, ui->durationLabel, ui->componentsLabel, ui->castingTimeLabel,
-        ui->pageLabel, ui->materialLabel, ui->classesLabel, ui->higherLevelLabel
+        ui->pageLabel, ui->materialLabel, ui->classesLabel, ui->higherLevelTitle, ui->higherLevelLabel
     };
     QFont labelFont = QFont("Scala Sans", 11, 1);
     for (QLabel* p : labels) {
@@ -151,6 +156,18 @@ Spellbook::Spellbook(QWidget *parent) :
         {Sourcebooks::XanatharsGTE, ui->xgeCheckbox},
         {Sourcebooks::SwordCoastAG, ui->scagCheckbox}
     };
+
+    // Create the arrow icons
+    up_arrow = QPixmap(":/resources/icons/up_arrow.png");
+    down_arrow = QPixmap(":/resources/icons/down_arrow.png");
+    up_icon = QIcon(up_arrow);
+    down_icon = QIcon(down_arrow);
+
+    // Set the arrow icons
+    ui->sortReverse1->setIcon(down_icon);
+    ui->sortReverse2->setIcon(down_icon);
+    ui->sortReverse1->setIconSize(QSize(arrowSize,arrowSize));
+    ui->sortReverse2->setIconSize(QSize(arrowSize,arrowSize));
 
     // Load favorites
     load_favorites();
@@ -202,7 +219,7 @@ void Spellbook::on_favoritesButton_clicked()
 
 void Spellbook::on_favoritesButton_released()
 {
-    filter();
+    //filter();
 }
 
 void Spellbook::on_favButton_clicked()
@@ -298,7 +315,7 @@ void Spellbook::load_favorites() {
     }
 }
 
-bool Spellbook::filter_item(const bool& isClass, const bool& isFav, const bool& isText, const Spell& s, const CasterClass& cc, const std::string& text) {
+bool Spellbook::filter_item(const bool isClass, const bool isFav, const bool isText, const Spell& s, const CasterClass& cc, const std::string& text) {
    if (sourcebookCheckboxes.size() == 0) {
        sourcebookCheckboxes = {
            {Sourcebooks::PlayersHandbook, ui->phbCheckbox},
@@ -364,8 +381,8 @@ void Spellbook::sort() {
     // We can fall back to the one-level sorted if the second field is None, the first field is Name, or the two sort fields are equal
 
     auto default_TC = SpellSortField::default_tricomparator();
-    auto TC1 = sort_field1.tricomparator();
-    auto TC2 = sort_field2.tricomparator();
+    auto TC1 = sort_field1.tricomparator(reverse1);
+    auto TC2 = sort_field2.tricomparator(reverse2);
     bool need_two_levels = !( sf2_is_none || (sort_field1 == SpellSortField::Name) || (sort_field1 == sort_field2) );
     Comparator<Spell> lt_comp = need_two_levels ? comparator(TC1, TC2, default_TC) : comparator(TC1, default_TC);
     std::sort(spells.begin(), spells.end(), lt_comp);
@@ -393,10 +410,8 @@ void Spellbook::display_spelldata(const Spell& spell) {
 
     // Create the display text
     QString nameText = QString::fromStdString(spell.name());
-    QString schoolText = prompt_text("School", QString(spell.school().name().data()));
-    QString ritualText = prompt_text("Ritual", yn_qstring(spell.ritual()));
+    QString levelSchoolText = QString::fromStdString(spell.school_level_string());
     QString concentrationText = prompt_text("Concentration", yn_qstring(spell.concentration()));
-    QString levelText = prompt_text("Level", QString::number(spell.level()));
     QString rangeText = prompt_text("Range", spell.range().string());
     QString descTitleText = QStringLiteral("<b>Description:</b>");
     QString descriptionText = QString::fromStdString(spell.description());
@@ -438,10 +453,8 @@ void Spellbook::display_spelldata(const Spell& spell) {
 
     // Add the appropriate text to the labels
     ui->nameLabel->setText(nameText);
-    ui->schoolLabel->setText(schoolText);
-    ui->ritualLabel->setText(ritualText);
+    ui->levelSchoolLabel->setText(levelSchoolText);
     ui->concentrationLabel->setText(concentrationText);
-    ui->levelLabel->setText(levelText);
     ui->rangeLabel->setText(rangeText);
     ui->durationLabel->setText(durationText);
     ui->componentsLabel->setText(compText);
@@ -477,4 +490,26 @@ void Spellbook::update_button() {
         ui->favButton->setIcon(not_fav_icon);
     }
     ui->favButton->setIconSize(QSize(iconSize,iconSize));
+}
+
+void Spellbook::on_sort_button_clicked(bool& reverse, QPushButton* button) {
+
+    reverse = !reverse;
+    if (reverse) {
+        button->setIcon(up_icon);
+    } else {
+        button->setIcon(down_icon);
+    }
+    button->setIconSize(QSize(arrowSize, arrowSize));
+    sort();
+}
+
+void Spellbook::on_sortReverse1_clicked()
+{
+    on_sort_button_clicked(reverse1, ui->sortReverse1);
+}
+
+void Spellbook::on_sortReverse2_clicked()
+{
+    on_sort_button_clicked(reverse2, ui->sortReverse2);
 }

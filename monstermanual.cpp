@@ -90,6 +90,16 @@ MonsterManual::MonsterManual(QWidget *parent) :
     // Set the table font
     //ui->monsterTable->setFont(QFont("DejaVu Sans", 12, 1));
 
+    // Create the arrow icons
+    up_arrow = QPixmap(":/resources/icons/up_arrow.png");
+    down_arrow = QPixmap(":/resources/icons/down_arrow.png");
+    up_icon = QIcon(up_arrow);
+    down_icon = QIcon(down_arrow);
+
+    // Set the arrow icon
+    ui->sortReverse->setIcon(down_icon);
+    ui->sortReverse->setIconSize(QSize(arrowSize, arrowSize));
+
 }
 
 MonsterManual::~MonsterManual()
@@ -219,7 +229,7 @@ void MonsterManual::sort() {
     MonsterSortField sort_field = MonsterSortField::from_name(sort_field_str);
 
     // Get the comparator function
-    BinaryIntFunc<DnD::Monster> sort_field_TC = sort_field.tricomparator();
+    BinaryIntFunc<DnD::Monster> sort_field_TC = sort_field.tricomparator(reverse);
     BinaryIntFunc<DnD::Monster> default_TC = MonsterSortField::default_tricomparator();
     Comparator<DnD::Monster> cmp = comparator(sort_field_TC, default_TC);
 
@@ -287,8 +297,25 @@ void MonsterManual::read_monster_file(QFile* qmonsterfile) {
 
 }
 
+void MonsterManual::on_sort_button_clicked(bool& reverse, QPushButton* button) {
+
+    reverse = !reverse;
+    if (reverse) {
+        button->setIcon(up_icon);
+    } else {
+        button->setIcon(down_icon);
+    }
+    button->setIconSize(QSize(arrowSize, arrowSize));
+    sort();
+}
+
 
 void MonsterManual::on_sortComboBox_currentIndexChanged(const QString&)
 {
     sort();
+}
+
+void MonsterManual::on_sortReverse_clicked()
+{
+    on_sort_button_clicked(reverse, ui->sortReverse);
 }

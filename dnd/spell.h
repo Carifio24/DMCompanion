@@ -39,6 +39,7 @@ class Spell {
         std::string components_string() const;
         std::string classes_string() const;
         bool usable_by(const CasterClass& cc) const;
+        std::string school_level_string() const;
 
         // Constructor
         Spell(const std::string& name, const std::string& description, const std::string& higher_level, const int page, const Distance& range, const std::array<bool,3>& components, const std::string& material, const bool ritual, const Duration& duration, const bool concentration, const std::string& casting_time, const int level, const School& school, const std::vector<CasterClass>& classes, const Sourcebook& sourcebook)

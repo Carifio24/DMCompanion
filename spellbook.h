@@ -10,6 +10,7 @@
 #include <QCheckBox>
 #include <QIcon>
 #include <QPixmap>
+#include <QPushButton>
 #include "dnd/spell.h"
 #include "dnd/sourcebook.h"
 #include "dnd/ref_wrap_comp.h"
@@ -52,6 +53,10 @@ private slots:
 
     void on_scagCheckbox_toggled(bool checked);
 
+    void on_sortReverse1_clicked();
+
+    void on_sortReverse2_clicked();
+
 private:
 
     void resizeEvent(QResizeEvent*);
@@ -72,9 +77,11 @@ private:
 
     void update_button();
 
-    bool filter_item(const bool& isClass, const bool& isFav, const bool& isText, const DnD::Spell& s, const DnD::CasterClass& cc, const std::string& text);
+    bool filter_item(const bool isClass, const bool isFav, const bool isText, const DnD::Spell& s, const DnD::CasterClass& cc, const std::string& text);
 
     void populate_spell_table();
+
+    void on_sort_button_clicked(bool& reverse, QPushButton* button);
 
     Ui::Spellbook *ui;
     QVector<DnD::Spell> spells;
@@ -87,8 +94,15 @@ private:
     QPixmap star_filled;
     QIcon fav_icon;
     QIcon not_fav_icon;
+    QPixmap up_arrow;
+    QPixmap down_arrow;
+    QIcon up_icon;
+    QIcon down_icon;
+    int arrowSize = 25;
     int iconSize = 40;
     Profile profile;
+    bool reverse1 = false;
+    bool reverse2 = false;
 
     std::map<DnD::Sourcebook,QCheckBox*> sourcebookCheckboxes;
 

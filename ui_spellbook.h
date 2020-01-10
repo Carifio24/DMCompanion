@@ -34,11 +34,14 @@ public:
     QVBoxLayout *leftLayout;
     QGridLayout *sortFilterLayout;
     QLabel *sort2Label;
-    QComboBox *sort1Box;
     QLabel *filterLabel;
     QLabel *sort1Label;
     QComboBox *sort2Box;
     QComboBox *filterBox;
+    QComboBox *sort1Box;
+    QLabel *label_2;
+    QPushButton *sortReverse1;
+    QPushButton *sortReverse2;
     QHBoxLayout *favoritesSearchLayout;
     QRadioButton *favoritesButton;
     QLineEdit *searchBar;
@@ -51,11 +54,9 @@ public:
     QHBoxLayout *nameFavoritesLayout;
     QLabel *nameLabel;
     QPushButton *favButton;
-    QLabel *levelLabel;
+    QLabel *levelSchoolLabel;
     QLabel *rangeLabel;
     QLabel *concentrationLabel;
-    QLabel *schoolLabel;
-    QLabel *ritualLabel;
     QLabel *durationLabel;
     QLabel *castingTimeLabel;
     QLabel *componentsLabel;
@@ -89,20 +90,13 @@ public:
         font.setFamily(QString::fromUtf8("DejaVu Sans"));
         sort2Label->setFont(font);
 
-        sortFilterLayout->addWidget(sort2Label, 0, 1, 1, 1);
-
-        sort1Box = new QComboBox(Spellbook);
-        sort1Box->setObjectName(QString::fromUtf8("sort1Box"));
-        sort1Box->setFont(font);
-        sort1Box->setStyleSheet(QString::fromUtf8("background-color : rgb(231,208,166)"));
-
-        sortFilterLayout->addWidget(sort1Box, 1, 0, 1, 1);
+        sortFilterLayout->addWidget(sort2Label, 0, 2, 1, 1);
 
         filterLabel = new QLabel(Spellbook);
         filterLabel->setObjectName(QString::fromUtf8("filterLabel"));
         filterLabel->setFont(font);
 
-        sortFilterLayout->addWidget(filterLabel, 0, 2, 1, 1);
+        sortFilterLayout->addWidget(filterLabel, 0, 4, 1, 1);
 
         sort1Label = new QLabel(Spellbook);
         sort1Label->setObjectName(QString::fromUtf8("sort1Label"));
@@ -115,15 +109,56 @@ public:
         sort2Box->setFont(font);
         sort2Box->setStyleSheet(QString::fromUtf8("background-color : rgb(231,208,166)"));
 
-        sortFilterLayout->addWidget(sort2Box, 1, 1, 1, 1);
+        sortFilterLayout->addWidget(sort2Box, 1, 2, 1, 1);
 
         filterBox = new QComboBox(Spellbook);
         filterBox->setObjectName(QString::fromUtf8("filterBox"));
         filterBox->setFont(font);
         filterBox->setStyleSheet(QString::fromUtf8("background-color : rgb(231,208,166)"));
 
-        sortFilterLayout->addWidget(filterBox, 1, 2, 1, 1);
+        sortFilterLayout->addWidget(filterBox, 1, 4, 1, 1);
 
+        sort1Box = new QComboBox(Spellbook);
+        sort1Box->setObjectName(QString::fromUtf8("sort1Box"));
+        sort1Box->setFont(font);
+        sort1Box->setStyleSheet(QString::fromUtf8("background-color : rgb(231,208,166)"));
+
+        sortFilterLayout->addWidget(sort1Box, 1, 0, 1, 1);
+
+        label_2 = new QLabel(Spellbook);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("DejaVu Sans"));
+        font1.setPointSize(7);
+        font1.setItalic(false);
+        label_2->setFont(font1);
+
+        sortFilterLayout->addWidget(label_2, 0, 3, 1, 1);
+
+        sortReverse1 = new QPushButton(Spellbook);
+        sortReverse1->setObjectName(QString::fromUtf8("sortReverse1"));
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(sortReverse1->sizePolicy().hasHeightForWidth());
+        sortReverse1->setSizePolicy(sizePolicy);
+        sortReverse1->setStyleSheet(QString::fromUtf8("background : none; border : none"));
+
+        sortFilterLayout->addWidget(sortReverse1, 1, 1, 1, 1);
+
+        sortReverse2 = new QPushButton(Spellbook);
+        sortReverse2->setObjectName(QString::fromUtf8("sortReverse2"));
+        sizePolicy.setHeightForWidth(sortReverse2->sizePolicy().hasHeightForWidth());
+        sortReverse2->setSizePolicy(sizePolicy);
+        sortReverse2->setStyleSheet(QString::fromUtf8("background : none; border : none"));
+
+        sortFilterLayout->addWidget(sortReverse2, 1, 3, 1, 1);
+
+        sortFilterLayout->setColumnStretch(0, 4);
+        sortFilterLayout->setColumnStretch(1, 1);
+        sortFilterLayout->setColumnStretch(2, 4);
+        sortFilterLayout->setColumnStretch(3, 1);
+        sortFilterLayout->setColumnStretch(4, 4);
 
         leftLayout->addLayout(sortFilterLayout);
 
@@ -131,11 +166,11 @@ public:
         favoritesSearchLayout->setObjectName(QString::fromUtf8("favoritesSearchLayout"));
         favoritesButton = new QRadioButton(Spellbook);
         favoritesButton->setObjectName(QString::fromUtf8("favoritesButton"));
-        QFont font1;
-        font1.setFamily(QString::fromUtf8("DejaVu Sans"));
-        font1.setBold(false);
-        font1.setWeight(50);
-        favoritesButton->setFont(font1);
+        QFont font2;
+        font2.setFamily(QString::fromUtf8("DejaVu Sans"));
+        font2.setBold(false);
+        font2.setWeight(50);
+        favoritesButton->setFont(font2);
 
         favoritesSearchLayout->addWidget(favoritesButton);
 
@@ -158,20 +193,20 @@ public:
         sourcebooksLayout->setContentsMargins(0, 0, 0, -1);
         phbCheckbox = new QCheckBox(Spellbook);
         phbCheckbox->setObjectName(QString::fromUtf8("phbCheckbox"));
-        phbCheckbox->setFont(font1);
+        phbCheckbox->setFont(font2);
         phbCheckbox->setChecked(true);
 
         sourcebooksLayout->addWidget(phbCheckbox);
 
         xgeCheckbox = new QCheckBox(Spellbook);
         xgeCheckbox->setObjectName(QString::fromUtf8("xgeCheckbox"));
-        xgeCheckbox->setFont(font1);
+        xgeCheckbox->setFont(font2);
 
         sourcebooksLayout->addWidget(xgeCheckbox);
 
         scagCheckbox = new QCheckBox(Spellbook);
         scagCheckbox->setObjectName(QString::fromUtf8("scagCheckbox"));
-        scagCheckbox->setFont(font1);
+        scagCheckbox->setFont(font2);
 
         sourcebooksLayout->addWidget(scagCheckbox);
 
@@ -215,20 +250,17 @@ public:
         nameFavoritesLayout->setObjectName(QString::fromUtf8("nameFavoritesLayout"));
         nameLabel = new QLabel(Spellbook);
         nameLabel->setObjectName(QString::fromUtf8("nameLabel"));
-        QFont font2;
-        font2.setFamily(QString::fromUtf8("DejaVu Sans"));
-        font2.setPointSize(30);
-        font2.setItalic(true);
-        nameLabel->setFont(font2);
+        QFont font3;
+        font3.setFamily(QString::fromUtf8("DejaVu Sans"));
+        font3.setPointSize(30);
+        font3.setItalic(true);
+        nameLabel->setFont(font3);
         nameLabel->setAlignment(Qt::AlignCenter);
 
         nameFavoritesLayout->addWidget(nameLabel);
 
         favButton = new QPushButton(Spellbook);
         favButton->setObjectName(QString::fromUtf8("favButton"));
-        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(favButton->sizePolicy().hasHeightForWidth());
         favButton->setSizePolicy(sizePolicy);
         favButton->setFont(font);
@@ -242,11 +274,15 @@ public:
 
         rightLayout->addLayout(nameFavoritesLayout);
 
-        levelLabel = new QLabel(Spellbook);
-        levelLabel->setObjectName(QString::fromUtf8("levelLabel"));
-        levelLabel->setFont(font);
+        levelSchoolLabel = new QLabel(Spellbook);
+        levelSchoolLabel->setObjectName(QString::fromUtf8("levelSchoolLabel"));
+        QFont font4;
+        font4.setFamily(QString::fromUtf8("DejaVu Sans"));
+        font4.setPointSize(16);
+        font4.setItalic(true);
+        levelSchoolLabel->setFont(font4);
 
-        rightLayout->addWidget(levelLabel);
+        rightLayout->addWidget(levelSchoolLabel);
 
         rangeLabel = new QLabel(Spellbook);
         rangeLabel->setObjectName(QString::fromUtf8("rangeLabel"));
@@ -260,18 +296,6 @@ public:
         concentrationLabel->setFont(font);
 
         rightLayout->addWidget(concentrationLabel);
-
-        schoolLabel = new QLabel(Spellbook);
-        schoolLabel->setObjectName(QString::fromUtf8("schoolLabel"));
-        schoolLabel->setFont(font);
-
-        rightLayout->addWidget(schoolLabel);
-
-        ritualLabel = new QLabel(Spellbook);
-        ritualLabel->setObjectName(QString::fromUtf8("ritualLabel"));
-        ritualLabel->setFont(font);
-
-        rightLayout->addWidget(ritualLabel);
 
         durationLabel = new QLabel(Spellbook);
         durationLabel->setObjectName(QString::fromUtf8("durationLabel"));
@@ -348,7 +372,7 @@ public:
         descScrollArea->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 798, 527));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 798, 555));
         QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::MinimumExpanding);
         sizePolicy4.setHorizontalStretch(0);
         sizePolicy4.setVerticalStretch(0);
@@ -413,6 +437,9 @@ public:
         sort2Label->setText(QApplication::translate("Spellbook", "Sort field 2", nullptr));
         filterLabel->setText(QApplication::translate("Spellbook", "Filter by class", nullptr));
         sort1Label->setText(QApplication::translate("Spellbook", "Sort field 1", nullptr));
+        label_2->setText(QString());
+        sortReverse1->setText(QString());
+        sortReverse2->setText(QString());
         favoritesButton->setText(QApplication::translate("Spellbook", "Favorites", nullptr));
         searchBar->setText(QString());
         searchBar->setPlaceholderText(QApplication::translate("Spellbook", "Search", nullptr));
@@ -421,11 +448,9 @@ public:
         scagCheckbox->setText(QApplication::translate("Spellbook", "Sword Coast AG", nullptr));
         nameLabel->setText(QString());
         favButton->setText(QString());
-        levelLabel->setText(QString());
+        levelSchoolLabel->setText(QString());
         rangeLabel->setText(QString());
         concentrationLabel->setText(QString());
-        schoolLabel->setText(QString());
-        ritualLabel->setText(QString());
         durationLabel->setText(QString());
         castingTimeLabel->setText(QString());
         componentsLabel->setText(QString());

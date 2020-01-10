@@ -77,6 +77,7 @@ DISTFILES += \
 
 RESOURCES += \
     fonts.qrc \
+    icons.qrc \
     resources.qrc \
     resources/monsters/aberration.qrc \
     resources/monsters/beast.qrc \
